@@ -1,0 +1,14 @@
+p {
+  color: black;
+  text-align: left;
+}
+
+body {
+  background-color: #787575;
+}
+
+div {
+  height: 25px;
+  width: auto;
+  background-color: white;
+}
