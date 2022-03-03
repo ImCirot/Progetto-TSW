@@ -7,8 +7,15 @@ body {
   background-color: #787575;
 }
 
-div {
+#menu {
   height: 25px;
   width: auto;
   background-color: white;
+}
+
+#head {
+  height:200px;
+  width: auto;
+  background-color: white;
+  border-style: groove;
 }
