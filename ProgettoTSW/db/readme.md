@@ -1,1 +1,1 @@
-Here are a list of dumps from the db
+List of dumps of the db.
