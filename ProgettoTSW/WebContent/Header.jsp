@@ -15,7 +15,7 @@
         <img src="./Images/logopreciso.png" alt="">
       </div>
       <div class="ricerca">
-       	<input type="text" name="searchBar" placeholder="Search" />	
+<!--        	<input type="text" name="searchBar" placeholder="Search" />	 -->
       </div>
     </div>
     <div class="navbar">
