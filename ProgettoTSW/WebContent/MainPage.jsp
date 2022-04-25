@@ -8,6 +8,22 @@
 </head>
 <body>
 	<jsp:include page="./Header.jsp" />
-  	<jsp:include page="./Footer.jsp" />
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <p>a</p>
+  <jsp:include page="./Footer.jsp" />
 </body>
 </html>
