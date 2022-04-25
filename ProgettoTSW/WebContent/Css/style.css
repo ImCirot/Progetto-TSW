@@ -100,7 +100,21 @@ a{
   font-size: 20px;
 }
 
-*,
+footer{
+  background-color: #9932CC;
+  height: 15%;
+  display: block;
+  padding: 20px;
+}
+
+.socialLogo{
+  display: inline;
+  margin: 5px;
+  position: inherit;
+  width: 32px;
+  height: 32px;
+}
+
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
