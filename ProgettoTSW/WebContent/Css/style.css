@@ -8,10 +8,6 @@ a{
   text-decoration: none;
 }
 
-.ricerca{
-  /* TODO:  LO FARA LUIGI !!!! */
-}
-
 .header{
   width: 100%;
   padding: 30px;
@@ -25,7 +21,6 @@ a{
 
 .header_filter{
   background: white;
-
   position: absolute;
   width: 100%;
   height: 100%;
@@ -34,8 +29,8 @@ a{
   z-index: 0;
   opacity: 0.5;
 }
-.logo{
 
+.logo{
   position: relative;
   z-index: 1;
 }
@@ -44,12 +39,6 @@ a{
   height: 100%;
   width: 100%;
 }
- .ricerca{
-
-   width: 10%;
-   position: relative;
-   z-index: 1;
- }
 
 .navbar{
   width: 100%;
@@ -58,6 +47,12 @@ a{
   background: #9932CC;
   position: sticky;
   top: 0;
+}
+
+.search{
+  position: inherit;
+  width: 16px;
+  height: 16px;
 }
 
 .catalogo{
@@ -82,7 +77,6 @@ a{
 .menu ul li a:hover{
   background: #B23AEE;
   color: white;
-  font-size: 20px;
 }
 
 /* navbar caalogo */
@@ -95,9 +89,9 @@ a{
   display: block;
   color: white;
 }
+
 .catalogo ul li a:hover{
   background: #B23AEE;
-  font-size: 20px;
 }
 
 footer{
@@ -105,6 +99,14 @@ footer{
   height: 15%;
   display: block;
   padding: 20px;
+}
+
+address {
+  text-align: center;
+  color: black;
+  font-size: 12px;
+  font-style: normal;
+  padding: 5px;
 }
 
 .socialLogo{
@@ -115,6 +117,7 @@ footer{
   height: 32px;
 }
 
+*,
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
