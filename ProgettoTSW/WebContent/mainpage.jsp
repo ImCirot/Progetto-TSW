@@ -7,7 +7,7 @@
 <title>Snackz</title>
 </head>
 <body>
-  <jsp:include page="./Header.jsp" />
+  <jsp:include page="./header.jsp" />
   <p>a</p>
   <p>a</p>
   <p>a</p>
@@ -24,6 +24,6 @@
   <p>a</p>
   <p>a</p>
   <p>a</p>
-  <jsp:include page="./Footer.jsp" />
+  <jsp:include page="./footer.jsp" />
 </body>
 </html>

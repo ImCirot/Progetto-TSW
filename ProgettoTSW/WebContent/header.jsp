@@ -1,21 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Snackz</title>
-<link rel="stylesheet" href="./Css/style.css">
-</head>
-<body>
-<div class="header">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./Css/style.css">
+    <title>Snackz</title>
+  </head>
+  <body>
+    <div class="header">
       <div class="header_filter">
       </div>
       <div class="logo">
-        <img src="./Images/logopreciso.png" alt="">
-      </div>
-      <div class="ricerca">
-<!--        	<input type="text" name="searchBar" placeholder="Search" />	 -->
+        <img src="./Images/logopreciso.png" alt="logo">
       </div>
     </div>
     <div class="navbar">
@@ -29,8 +26,8 @@
       <div class="menu">
         <ul>
           <li><a href="">Home</a></li>
-          <li><a href="">Simone</a></li>
           <li><a href="">Contact</a></li>
+          <li><a href=""><img src="./Images/search.png" alt="search" class="search" /></a></li>
         </ul>
       </div>
     </div>
