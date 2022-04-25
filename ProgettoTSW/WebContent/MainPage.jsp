@@ -7,7 +7,7 @@
 <title>Snackz</title>
 </head>
 <body>
-	<jsp:include page="./Header.jsp" />
+  <jsp:include page="./Header.jsp" />
   <p>a</p>
   <p>a</p>
   <p>a</p>
