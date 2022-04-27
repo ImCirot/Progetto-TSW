@@ -43,6 +43,7 @@ a{
 .navbar{
   width: 100%;
   display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   background: #9932CC;
   position: sticky;
@@ -96,9 +97,9 @@ a{
 
 footer{
   background-color: #9932CC;
-  height: 15%;
-  display: block;
+  height: auto;
   padding: 20px;
+  width: 100%;
 }
 
 address {
@@ -115,6 +116,27 @@ address {
   position: inherit;
   width: 32px;
   height: 32px;
+}
+
+.container-catalogo{
+  display: flex;
+  width: 100%;
+  height: auto;
+  border: 1px solid red;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+.prodotto{
+  border: 1px solid blue;
+  width: 30%;
+  margin: 10px;
+}
+
+.prodotto img {
+  width: 60%;
+  height: auto;
 }
 
 *,

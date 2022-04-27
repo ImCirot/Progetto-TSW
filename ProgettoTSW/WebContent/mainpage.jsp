@@ -8,41 +8,12 @@
 </head>
 <body>
   <jsp:include page="./header.jsp" />
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>a</p>
-  <p>gigi</p>
-  <p>gigi</p>
-  <p>gigi</p>
-  <p>gigi</p>
-  <p>gigi</p>
-  <p>gigi</p>
-  <p>gigi</p>
-  <p>gigi</p>
-  <p>gigi</p>
-  <p>ciro</p>
-  <p>ciro</p>
-  <p>ciro</p>
-  <p>ciro</p>
-  <p>ciro</p>
-  <p>ciro</p>
-  <p>ciro</p>
-  <p>ciro</p>
-  <p>ciro</p>
-  <p>ciro</p>
+  <div class="container-catalogo">
+    <div class="prodotto"><img src="./Images/m&m.png" alt="prodottoImg"><p>Nome</p></div>
+    <div class="prodotto"><img src="./Images/oreoMint.png" alt="prodottoImg"><p>Nome</p></div>
+    <div class="prodotto"><img src="./Images/snickersAlmond.png" alt="prodottoImg"><p>Nome</p></div>
+    <div class="prodotto"><img src="./Images/m&m.png" alt="prodottoImg"><p>Nome</p></div>
+  </div>
   <jsp:include page="./footer.jsp" />
 </body>
 </html>
