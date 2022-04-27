@@ -132,10 +132,12 @@ address {
   border: 1px solid blue;
   width: 30%;
   margin: 10px;
+  display: block flex;
+  justify-content: center;
 }
 
 .prodotto img {
-  width: 60%;
+  width: 50%;
   height: auto;
 }
 
