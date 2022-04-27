@@ -9,8 +9,8 @@
   </head>
   <body>
     <footer>
-      <a href="https://it-it.facebook.com/" target="_blank" class="links"><img alt="fb-logo" src="./Images/facebook.png" class="socialLogo" /></a>
-      <a href="https://www.instagram.com/" target="_blank" class="links"><img src="./Images/instagram.png" alt="insta-logo" class="socialLogo" /></a>
+      <a href="https://it-it.facebook.com/" target="_blank" class="links"><img alt="fb-logo" src="./Images/facebook-icon.png" class="socialLogo" /></a>
+      <a href="https://www.instagram.com/" target="_blank" class="links"><img src="./Images/instagram-icon.png" alt="insta-logo" class="socialLogo" /></a>
       <address class="address">
         <p>Snackz &copy; 2022. All rights reserved.</p>
       </address>
