@@ -26,7 +26,7 @@
       </div>
       <div class="menu">
         <ul>
-          <li><a href=""><img src="./Images/search.png" alt="search" class="icons" /></a></li>
+          <li><a href=""><img src="./Images/search-icon.png" alt="search" class="icons" /></a></li>
           <li><a href=""><img src="./Images/shopping-cart.png" alt="cart" class="icons" /></a></li>
           <li><a href=""><img src="./Images/user.png" alt="user" class="icons" /></a></li>
         </ul>
