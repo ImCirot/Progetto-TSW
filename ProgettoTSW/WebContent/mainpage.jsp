@@ -32,6 +32,7 @@
   <p>gigi</p>
   <p>gigi</p>
   <p>gigi</p>
+  <p>gigi</p>
   <jsp:include page="./footer.jsp" />
 </body>
 </html>
