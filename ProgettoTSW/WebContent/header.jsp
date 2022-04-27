@@ -18,6 +18,7 @@
     <div class="navbar">
       <div class="catalogo">
         <ul>
+          <li><a href="">Home</a></li>
           <li><a href="">Caramelle</a></li>
           <li><a href="">Snack</a></li>
           <li><a href="">Bibite</a></li>
@@ -25,9 +26,9 @@
       </div>
       <div class="menu">
         <ul>
-          <li><a href="">Home</a></li>
-          <li><a href="">Contact</a></li>
-          <li><a href=""><img src="./Images/search.png" alt="search" class="search" /></a></li>
+          <li><a href=""><img src="./Images/search.png" alt="search" class="icons" /></a></li>
+          <li><a href=""><img src="./Images/shopping-cart.png" alt="cart" class="icons" /></a></li>
+          <li><a href=""><img src="./Images/user.png" alt="user" class="icons" /></a></li>
         </ul>
       </div>
     </div>
