@@ -5,6 +5,8 @@ import java.io.Serializable;
 public class AppartenzaBean implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	/*LUIGI*/
+	
 	private String prodotto;
 	private String sottocategoria;
 	
