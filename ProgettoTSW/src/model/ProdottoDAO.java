@@ -148,4 +148,9 @@ public class ProdottoDAO implements ModelDAO<ProdottoBean> {
 		return prodotti;
 	}
 
+	@Override
+	public ProdottoBean doRetrieveByKey(String key1, String key2) throws SQLException {
+		throw new UnsupportedOperationException("Operazione non valida per questo DAO");
+	}
+	
 }
