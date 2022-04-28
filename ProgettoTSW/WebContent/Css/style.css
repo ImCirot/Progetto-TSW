@@ -48,6 +48,7 @@ a{
   background: #9932CC;
   position: sticky;
   top: 0;
+  z-index: 2;
 }
 
 .icons{
@@ -122,9 +123,9 @@ address {
   display: flex;
   width: 100%;
   height: auto;
-  justify-content: space-between;
+  justify-content: space-evenly flex-start;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 50px;
 }
 
 .prodotto{
@@ -132,11 +133,27 @@ address {
   max-width: 200px;
   margin: auto;
   text-align: center;
-  font-family: arial;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  z-index: 1;
+}
+
+.prodotto:hover{
+  opacity: 0.7;
 }
 
 .prodotto img {
-  max-width: 300px;
+  max-width: 80%;
+}
+
+prodotto h4 {
+  text-align: left;
+}
+
+.prezzo {
+  font-size: 16px;
 }
 
 *,
