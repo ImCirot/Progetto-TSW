@@ -91,7 +91,7 @@ public class DettaglioProdottoDAO implements ModelDAO<DettaglioProdottoBean> {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			statement.setString(1, key1);
-			statement.setString(2, key2);
+			statement.setString(2, key2); //prova
 			
 			ResultSet result = statement.executeQuery();
 			
