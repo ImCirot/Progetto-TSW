@@ -57,6 +57,7 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 			
 			result = statement.executeUpdate();
 			
+			//con.commit(); // togliere commento se vuoi cancellare davvero dal db ad ogni delete
 		} finally {
 			try {
 				if(statement != null) {
