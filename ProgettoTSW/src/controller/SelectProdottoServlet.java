@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.DettaglioProdottoDAO;
+import model.ProdottoDAO;
+
 /**
  * Servlet implementation class SelectProdottoServlet
  */
@@ -26,8 +29,8 @@ public class SelectProdottoServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath()).append(request.getParameter("prodotto"));
+		ProdottoDAO dbProdotto = new ProdottoDAO();
+		DettaglioProdottoDAO dbDettagli = new DettaglioProdottoDAO();
 	}
 
 	/**

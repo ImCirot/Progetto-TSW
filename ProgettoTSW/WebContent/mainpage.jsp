@@ -35,13 +35,6 @@
   			</div>
 
   		<%}%>
-
-<!--     <div class="prodotto"><img src="./Images/m&m.png" alt="prodottoImg"><h4>Nome prodotto</h4><p class="prezzo">$4.99</p></div> -->
-<!--     <div class="prodotto"><img src="./Images/oreoMint.png" alt="prodottoImg"><h4>Nome prodotto</h4><p class="prezzo">$4.99</p></div> -->
-<!--     <div class="prodotto"><img src="./Images/snickersAlmond.png" alt="prodottoImg"><h4>Nome prodotto</h4><p class="prezzo">$4.99</p></div> -->
-<!--     <div class="prodotto"><img src="./Images/m&m.png" alt="prodottoImg"><h4>Nome prodotto</h4><p class="prezzo">$4.99</p></div> -->
-<!--     <div class="prodotto"><img src="./Images/oreoMint.png" alt="prodottoImg"><h4>Nome prodotto</h4><p class="prezzo">$4.99</p></div> -->
-<!--     <div class="prodotto"><img src="./Images/snickersAlmond.png" alt="prodottoImg"><h4>Nome prodotto</h4><p class="prezzo">$4.99</p></div> -->
   </div>
   <jsp:include page="./footer.jsp" />
 </body>
