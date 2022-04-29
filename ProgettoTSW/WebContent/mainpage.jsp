@@ -31,7 +31,6 @@
   				</a>
   				<h4><% out.println(prodotto.getNome()); %></h4>
   				<p class="prezzo"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
-  				
   			</div>
 
   		<%}%>

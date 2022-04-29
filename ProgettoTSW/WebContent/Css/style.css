@@ -157,14 +157,62 @@ prodotto h4 {
   font-size: 16px;
 }
 
-input[type=submit]{
-  background-color: #04AA6D;
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
+.prodottoDettagli{
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: space-evenly flex-start;
+  flex-wrap: wrap;
+  padding: 50px;
+}
+
+.prodottoDettagli img {
+  width: 30%;
+}
+
+.prodottoDettagli img:hover{
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.descrizione p {
+	padding: 20px;
+}
+
+.descrizione .prezzo {
+	font-size: 24px;
+}
+
+.descrizione {
+  max-width: 50%;
+  padding: 20px;
+}
+
+.descrizione button {
+	padding: 10px;
+	margin-left: 20px;
+	border: none;
+	background-color: #9932CC;
+	color: white;
+	font-size: 16px;
+}
+
+.descrizione button:hover{
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.dati p{
+  padding: 50px;
+}
+
+.login {
+  padding: 50px;
+}
+
+.dati input[type=submit] {
+	margin-bottom: 20px;
+	margin-left: 50px;
 }
 
 *,
