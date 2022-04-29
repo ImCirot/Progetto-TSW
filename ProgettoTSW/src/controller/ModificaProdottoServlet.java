@@ -42,7 +42,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 		DettaglioProdottoDAO dbDettagli = new DettaglioProdottoDAO();
 		
 		if(mode.equalsIgnoreCase("elimina")) {
-			String prodotto = (String) request.getParameter("prodotto");
+			String prodotto = request.getParameter("prodotto");
 			try {
 				dbProdotto.doDelete(prodotto);
 				} catch (SQLException e) {
