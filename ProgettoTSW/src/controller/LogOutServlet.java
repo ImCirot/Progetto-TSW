@@ -29,6 +29,7 @@ public class LogOutServlet extends HttpServlet {
 		request.getSession().removeAttribute("nome");
 		request.getSession().removeAttribute("cognome");
 		request.getSession().removeAttribute("logged");
+		request.getSession().removeAttribute("admin");
 		request.getSession().invalidate();
 		response.sendRedirect("catalogo");
 	}

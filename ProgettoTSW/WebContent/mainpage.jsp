@@ -33,7 +33,19 @@
   				<p class="prezzo"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
   			</div>
 
-  		<%}%>
+  		<%} 
+  		if(request.getSession(false) != null) {
+  		Boolean admin = (Boolean) request.getSession().getAttribute("admin");
+  			if(admin != null || admin.booleanValue()) {
+  		%>
+  			<div class="prodotto">
+  				<a href="aggiungiProdotto">
+  				<img src="https://gdurl.com/ccq0/" alt="aggiungiProdotto">
+  				</a>
+  				<h4>Aggiungi prodotto</h4>
+  			</div>
+  		<% }
+  		} %>
   </div>
   <jsp:include page="./footer.jsp" />
 </body>

@@ -52,6 +52,12 @@ public class LoginServlet extends HttpServlet {
 			request.getSession().setAttribute("cognome", user.getCognome());
 			request.getSession().setAttribute("logged", (Boolean) true);
 			
+			if(user.getAdmin()) {
+				request.getSession().setAttribute("admin", (Boolean) true);
+			} else {
+				request.getSession().setAttribute("admin", (Boolean) false);
+			}
+			
 			RequestDispatcher view = request.getRequestDispatcher("./userPersonalArea.jsp");
 			view.forward(request, response);
 		} else {
