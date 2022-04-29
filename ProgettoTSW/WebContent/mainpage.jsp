@@ -17,7 +17,7 @@
 			<a href="gestisciProdotti">
 			<img src="https://gdurl.com/ccq0/" alt="aggiungiProdotto">
 			</a>
-			<h4>Aggiungi prodotto</h4>
+			<h4>Gestisci prodotti</h4>
 		</div>
 	<% }
   	List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");

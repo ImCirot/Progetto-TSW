@@ -208,4 +208,38 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 		return dettagliProdotti;
 	}
 	
+	@Override
+	public synchronized void doUpdate(DettaglioProdottoBean bean) throws SQLException {
+		Connection con = null;
+		PreparedStatement statement = null;
+		
+		String query = "UPDATE " + DettaglioProdottoDAO.TABLE_NAME + " SET "
+				+ "tipo = ?,prodotto = ?,costoUnitario = ?,IVA = ?,quantita = ?,origine = ?, scadenza = ?,"
+				+ " peso = ?, volume = ?, immagine = ?";
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			
+			statement.setString(1, bean.getTipo());
+			statement.setString(2, bean.getProdotto());
+			statement.setDouble(3, bean.getCostoUnitario().doubleValue());
+			statement.setInt(4, bean.getIVA());
+			statement.setInt(5, bean.getQuantita());
+			statement.setString(6, bean.getScadenza());
+			statement.setString(7, bean.getPeso());
+			statement.setString(8, bean.getVolume());
+			statement.setString(9, bean.getImmagine());
+			
+			statement.executeUpdate();
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+	}
 }

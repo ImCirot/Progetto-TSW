@@ -1,50 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="model.*" import="java.util.*" %>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="./Css/style.css">
 <title>Snackz</title>
 </head>
 <body>
-	<% boolean admin = (boolean) request.getSession().getAttribute("admin");
-		if(!admin){
-			response.sendError(401);
-		}
-	%>
 	<jsp:include page="./header.jsp" />
-  <div class="gestisciProdotti">
-    <table class="tableProdotti" border="1">
-    <tr>
-      <th>Codice Seriale</th>
-      <th>Nome</th>
-      <th>Marca</th>
-      <th>Opzioni</th>
-    <% List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
-    	Iterator<ProdottoBean> iter = prodotti.iterator();
-    	ProdottoBean prodotto = new ProdottoBean();
-    	while(iter.hasNext()){
-    		prodotto = iter.next();
-    %>
-     <tr>
-    	<td><%out.println(prodotto.getCodiceSeriale());%></td>
-      <td><%out.println(prodotto.getNome());%></td>
-      <td><%out.println(prodotto.getMarca());%></td>
-      <td>
-        <a href="./modificaProdottoForm.jsp?prodotto=<% out.println(prodotto.getCodiceSeriale());%>">Modifica</a><br><br>
-        <a href="modificaProdotto?mode=elimina&prodotto=<% out.println(prodotto.getCodiceSeriale());%>">Elimina</a>
-      </td>
-     </tr>
-    	<%}%>
-    </table>
-    </div>
-    <br><br><br><br><br>
-    <div class="aggiungiProdotto">
-	    <h3>Aggiungi un prodotto</h3>
-	    <form action="modificaProdotto" method="get">
-	      <input type="hidden" name="mode" value="aggiungi">	
-	      <label for="codiceSeriale">Codice Seriale</label><br>
+	<div class="modificaForm">
+	<form action="modificaProdotto" method="post">
+		<h4>Riempi i campi che vuoi cambiare con la modifica</h4>
+		<input type = "hidden" name = "mode" value = "modifica">
+		 <label for="codiceSeriale">Codice Seriale</label><br>
 	      <input type="text" name="codiceSeriale" placeholder="Codice seriale"><br><br>
 	      <label for="nome">Nome</label><br>
 	      <input type="text" name="nome" placeholder="Nome"><br><br>
@@ -75,10 +43,9 @@
 	      <input type="text" name="volume" placeholder="Lascia vuoto e usa peso per gli snack"><br><br>
 	      <label for="img">Link immagine</label><br>
 	      <input type="text" name="img" placeholder="Vai su gdurl, genera link e incollalo qui"><br><br>
-	      <input type="submit" value="Aggiungi Prodotto">
-	    </form>
-    </div>
-    <br><br><br>
-  <jsp:include page="./footer.jsp" />
+	      <input type="submit" value="Modifica Prodotto">
+	</form>
+	</div>
+	<jsp:include page="./footer.jsp" />
 </body>
 </html>
