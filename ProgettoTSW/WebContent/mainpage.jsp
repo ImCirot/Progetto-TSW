@@ -26,14 +26,12 @@
   			%>
 
   			<div class="prodotto">
-  				<form action="selectProdotto" method="get">
-  				<a href="../../src/control/SelectProdottoServlet.java">
+  				<a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>">
   				<img src="<% out.println(dettagli.getImmagine()); %>" alt="prodotto">
+  				</a>
   				<h4><% out.println(prodotto.getNome()); %></h4>
   				<p class="prezzo"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
-  				<input type="hidden" value="<%out.println(prodotto.getCodiceSeriale());%>">
-  				</a>
-  				</form>
+  				
   			</div>
 
   		<%}%>
