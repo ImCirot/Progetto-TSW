@@ -55,7 +55,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 			String codiceSeriale = request.getParameter("codiceSeriale");
 			String nome = request.getParameter("nome");
 			String marca = request.getParameter("marca");
-			String descrizione = request.getParameter("descrizione");
+			String descrizione = request.getParameter("desc");
 			String edLimitata = request.getParameter("edLimitata");
 			String tipo = request.getParameter("tipo");
 			String costo = request.getParameter("costo");
@@ -102,10 +102,9 @@ public class ModificaProdottoServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher("./mainpage.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("catalogo");
 		view.forward(request, response);
 	}
 
