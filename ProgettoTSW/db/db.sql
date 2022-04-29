@@ -54,7 +54,7 @@ DROP TABLE IF EXISTS `dettaglioProdotto`;
 CREATE TABLE `dettaglioProdotto` (
   `tipo` enum('snack','drink') NOT NULL,
   `prodotto` varchar(25) NOT NULL,
-  `costoUnitario` double NOT NULL,
+  `costoUnitario` decimal(4,2) NOT NULL,
   `IVA` int NOT NULL,
   `quantita` int NOT NULL,
   `origine` varchar(50) DEFAULT NULL,
@@ -74,7 +74,7 @@ CREATE TABLE `dettaglioProdotto` (
 
 LOCK TABLES `dettaglioProdotto` WRITE;
 /*!40000 ALTER TABLE `dettaglioProdotto` DISABLE KEYS */;
-INSERT INTO `dettaglioProdotto` VALUES ('snack','GesKKqnx',6,22,99,'Giappone','2023-04-28','50g',NULL,'https://gdurl.com/AHQy/'),('snack','gFEfPBJg',2.99,22,99,'USA','2023-04-26','154g',NULL,'https://gdurl.com/LmYd/'),('snack','Pz7nszym',2.49,22,99,'USA','2023-04-10','49.9g',NULL,'https://gdurl.com/Q7D7/'),('snack','PZzimtRa',1.99,22,99,'USA','2023-04-22','47g',NULL,'https://gdurl.com/JDt7/'),('snack','tyih29rt',1.59,22,99,'UK','2023-04-21',NULL,'330ml','https://gdurl.com/CcXa/'),('snack','UoESj9xK',4.99,22,99,'USA','2023-04-17','226g',NULL,'https://gdurl.com/kxoy/'),('snack','xBDiMhYa',1.99,22,99,'USA','2023-04-20','40g',NULL,'https://gdurl.com/gYjUK/'),('drink','hcCcRJX5',5.99,22,99,'Giappone','2023-04-19',NULL,'355ml','https://gdurl.com/G16E/'),('drink','T4iGqTCG',6.5,22,99,'Giappone','2023-04-07','115g',NULL,'https://gdurl.com/MsbP/'),('drink','zC3RFPrT',1.5,22,99,'Internazionale','2023-04-30',NULL,'500ml','https://gdurl.com/obje/');
+INSERT INTO `dettaglioProdotto` VALUES ('snack','GesKKqnx',6.00,22,99,'Giappone','2023-04-28','50g',NULL,'https://gdurl.com/AHQy/'),('snack','gFEfPBJg',2.99,22,99,'USA','2023-04-26','154g',NULL,'https://gdurl.com/LmYd/'),('snack','Pz7nszym',2.49,22,99,'USA','2023-04-10','49.9g',NULL,'https://gdurl.com/Q7D7/'),('snack','PZzimtRa',1.99,22,99,'USA','2023-04-22','47g',NULL,'https://gdurl.com/JDt7/'),('snack','tyih29rt',1.59,22,99,'UK','2023-04-21',NULL,'330ml','https://gdurl.com/CcXa/'),('snack','UoESj9xK',4.99,22,99,'USA','2023-04-17','226g',NULL,'https://gdurl.com/kxoy/'),('snack','xBDiMhYa',1.99,22,99,'USA','2023-04-20','40g',NULL,'https://gdurl.com/gYjUK/'),('drink','hcCcRJX5',5.99,22,99,'Giappone','2023-04-19',NULL,'355ml','https://gdurl.com/G16E/'),('drink','T4iGqTCG',6.50,22,99,'Giappone','2023-04-07','115g',NULL,'https://gdurl.com/MsbP/'),('drink','zC3RFPrT',1.50,22,99,'Internazionale','2023-04-30',NULL,'500ml','https://gdurl.com/obje/');
 /*!40000 ALTER TABLE `dettaglioProdotto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -127,6 +127,35 @@ LOCK TABLES `sottocategoria` WRITE;
 INSERT INTO `sottocategoria` VALUES ('biscotti'),('energy drink'),('merendine'),('patatine'),('snack dolci'),('snack salati'),('soft drink');
 /*!40000 ALTER TABLE `sottocategoria` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `utente`
+--
+
+DROP TABLE IF EXISTS `utente`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `utente` (
+  `username` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `nome` varchar(50) NOT NULL,
+  `cognome` varchar(50) DEFAULT NULL,
+  `sesso` enum('M','F','X') NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `utente`
+--
+
+LOCK TABLES `utente` WRITE;
+/*!40000 ALTER TABLE `utente` DISABLE KEYS */;
+INSERT INTO `utente` VALUES ('root','cm9vdA==','root@email.com','root','sudo','X',1),('utenteA','cGFzc3dvcmQ=','utentea@email.com','nome','cognome','M',0);
+/*!40000 ALTER TABLE `utente` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -137,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-28 16:55:12
+-- Dump completed on 2022-04-29 11:03:54
