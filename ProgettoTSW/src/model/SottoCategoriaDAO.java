@@ -7,27 +7,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
+public class SottoCategoriaDAO extends AbstractDAO<SottoCategoriaBean> {
 	
-	private static final String TABLE_NAME = "prodotto";
+	private static final String TABLE_NAME = "sottocategoria";
 	
 	@Override
-	public synchronized void doSave(ProdottoBean bean) throws SQLException {
+	public synchronized void doSave(SottoCategoriaBean bean) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		
-		String query = "INSERT INTO " + ProdottoDAO.TABLE_NAME + 
-					" (codiceSeriale,nome,marca,descrizioneBreve,edLimitata) VALUES (?,?,?,?,?);";
+		String query = "INSERT INTO " + SottoCategoriaDAO.TABLE_NAME + 
+					" (nome) VALUES (?);";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			
-			statement.setString(1, bean.getCodiceSeriale());
-			statement.setString(2, bean.getNome());
-			statement.setString(3, bean.getMarca());
-			statement.setString(4, bean.getDescrizioneBreve());
-			statement.setBoolean(5, bean.isEdLimitata());
+			statement.setString(1, bean.getNome());
 			
 			statement.executeUpdate();
 			
@@ -48,7 +44,7 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 		Connection con = null;
 		PreparedStatement statement = null;
 		int result = 0;
-		String query = "DELETE FROM " + ProdottoDAO.TABLE_NAME + " WHERE codiceSeriale = ?";
+		String query = "DELETE FROM " + SottoCategoriaDAO.TABLE_NAME + " WHERE nome = ?";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -68,14 +64,14 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 		
 		return result != 0;
 	}
-
+	
 	@Override
-	public synchronized ProdottoBean doRetrieveByKey(String key) throws SQLException {
+	public synchronized SottoCategoriaBean doRetrieveByKey(String key) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
-		ProdottoBean prodotto = new ProdottoBean();
+		SottoCategoriaBean sottocategoria = new SottoCategoriaBean();
 		
-		String query = "SELECT * FROM " + ProdottoDAO.TABLE_NAME + " WHERE codiceSeriale = ?";
+		String query = "SELECT * FROM " + SottoCategoriaDAO.TABLE_NAME + " WHERE nome = ?";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -85,11 +81,7 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
-				prodotto.setCodiceSeriale(result.getString("codiceSeriale"));
-				prodotto.setNome(result.getString("nome"));
-				prodotto.setMarca(result.getString("marca"));
-				prodotto.setDescrizioneBreve(result.getString("descrizioneBreve"));
-				prodotto.setEdLimitata(result.getBoolean("edLimitata"));
+				sottocategoria.setNome(result.getString("nome"));
 			}
 		} finally {
 			try {
@@ -101,17 +93,17 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 			}
 		}
 		
-		return prodotto;
+		return sottocategoria;
 	}
 
 	@Override
-	public synchronized List<ProdottoBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized List<SottoCategoriaBean> doRetrieveAll(String order) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		
-		List<ProdottoBean> prodotti = new ArrayList<>();
+		List<SottoCategoriaBean> sottocategorie = new ArrayList<>();
 		
-		String query = "SELECT * FROM " + ProdottoDAO.TABLE_NAME;
+		String query = "SELECT * FROM " + SottoCategoriaDAO.TABLE_NAME;
 		
 //		if(checkOrder(order)) {
 //			query += " ORDER BY" + order;
@@ -125,15 +117,11 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
-				ProdottoBean prodotto = new ProdottoBean();
+				SottoCategoriaBean sottocategoria = new SottoCategoriaBean();
 				
-				prodotto.setCodiceSeriale(result.getString("codiceSeriale"));
-				prodotto.setNome(result.getString("nome"));
-				prodotto.setMarca(result.getString("marca"));
-				prodotto.setDescrizioneBreve(result.getString("descrizioneBreve"));
-				prodotto.setEdLimitata(result.getBoolean("edLimitata"));
+				sottocategoria.setNome(result.getString("nome"));
 				
-				prodotti.add(prodotto);
+				sottocategorie.add(sottocategoria);
 			}
 		} finally {
 			try {
@@ -145,6 +133,7 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 			}
 		}
 		
-		return prodotti;
+		return sottocategorie;
 	}
+
 }

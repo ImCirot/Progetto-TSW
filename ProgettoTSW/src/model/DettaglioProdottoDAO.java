@@ -4,14 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
-public class DettaglioProdottoDAO implements ModelDAO<DettaglioProdottoBean> {
+public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 	
 	private static final String TABLE_NAME = "dettaglioProdotto";
 	
 	@Override
-	public void doSave(DettaglioProdottoBean bean) throws SQLException {
+	public synchronized void doSave(DettaglioProdottoBean bean) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		
@@ -47,18 +48,19 @@ public class DettaglioProdottoDAO implements ModelDAO<DettaglioProdottoBean> {
 			}
 		}
 	}
-
+	
 	@Override
-	public boolean doDelete(String key) throws SQLException {
+	public synchronized boolean doDelete(String key1, String key2) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		int result = 0;
-		String query = "DELETE FROM " + DettaglioProdottoDAO.TABLE_NAME + " WHERE codiceSeriale = ?";
+		String query = "DELETE FROM " + DettaglioProdottoDAO.TABLE_NAME + " WHERE tipo = ? AND prodotto = ?";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
-			statement.setString(1, key);
+			statement.setString(1, key1);
+			statement.setString(2, key2);
 			
 			result = statement.executeUpdate();
 		} finally {
@@ -75,12 +77,7 @@ public class DettaglioProdottoDAO implements ModelDAO<DettaglioProdottoBean> {
 	}
 
 	@Override
-	public DettaglioProdottoBean doRetrieveByKey(String key) throws SQLException {
-		throw new UnsupportedOperationException("Operazione non valida per questo DAO");
-	}
-	
-	@Override
-	public DettaglioProdottoBean doRetrieveByKey(String key1, String key2) throws SQLException {
+	public synchronized DettaglioProdottoBean doRetrieveByKey(String key1, String key2) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		DettaglioProdottoBean dettaglioProdotto = new DettaglioProdottoBean();
@@ -91,7 +88,7 @@ public class DettaglioProdottoDAO implements ModelDAO<DettaglioProdottoBean> {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			statement.setString(1, key1);
-			statement.setString(2, key2); //prova
+			statement.setString(2, key2);
 			
 			ResultSet result = statement.executeQuery();
 			
@@ -121,11 +118,51 @@ public class DettaglioProdottoDAO implements ModelDAO<DettaglioProdottoBean> {
 	}
 
 	@Override
-	public List<DettaglioProdottoBean> doRetrieveAll(String order) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public synchronized List<DettaglioProdottoBean> doRetrieveAll(String order) throws SQLException {
+		Connection con = null;
+		PreparedStatement statement = null;
+		
+		List<DettaglioProdottoBean> dettagliProdotti = new ArrayList<>();
+		
+		String query = "SELECT * FROM " + DettaglioProdottoDAO.TABLE_NAME;
+		
+//		if(checkOrder(order)) {
+//			query += " ORDER BY" + order;
+//		}
+//		se ne parla dopo TODO
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				DettaglioProdottoBean dettaglioProdotto = new DettaglioProdottoBean();
+				
+				dettaglioProdotto.setTipo(result.getString("tipo"));
+				dettaglioProdotto.setProdotto(result.getString("prodotto"));
+				dettaglioProdotto.setCostoUnitario(Double.parseDouble(result.getString("costoUnitario")));
+				dettaglioProdotto.setIVA(Integer.parseInt(result.getString("IVA")));
+				dettaglioProdotto.setQuantita(Integer.parseInt(result.getString("quantita")));
+				dettaglioProdotto.setOrigine(result.getString("origine"));
+				dettaglioProdotto.setScadenza(result.getString("scadenza"));
+				dettaglioProdotto.setPeso(result.getString("peso"));
+				dettaglioProdotto.setVolume(result.getString("volume"));
+				dettaglioProdotto.setImmagine(result.getString("immagine"));
+				
+				dettagliProdotti.add(dettaglioProdotto);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+		return dettagliProdotti;
 	}
-
-	
-
 }

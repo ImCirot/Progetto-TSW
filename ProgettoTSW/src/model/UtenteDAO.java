@@ -7,27 +7,29 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
+public class UtenteDAO extends AbstractDAO<UtenteBean> {
 	
-	private static final String TABLE_NAME = "prodotto";
+	private static final String TABLE_NAME = "utente";
 	
 	@Override
-	public synchronized void doSave(ProdottoBean bean) throws SQLException {
+	public synchronized void doSave(UtenteBean bean) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		
-		String query = "INSERT INTO " + ProdottoDAO.TABLE_NAME + 
-					" (codiceSeriale,nome,marca,descrizioneBreve,edLimitata) VALUES (?,?,?,?,?);";
+		String query = "INSERT INTO " + UtenteDAO.TABLE_NAME + 
+					" (username,password,email,nome,cognome,sesso,admin) VALUES (?,?,?,?,?,?,?);";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			
-			statement.setString(1, bean.getCodiceSeriale());
-			statement.setString(2, bean.getNome());
-			statement.setString(3, bean.getMarca());
-			statement.setString(4, bean.getDescrizioneBreve());
-			statement.setBoolean(5, bean.isEdLimitata());
+			statement.setString(1, bean.getUsername());
+			statement.setString(2, bean.getPassword());
+			statement.setString(3, bean.getEmail());
+			statement.setString(4, bean.getNome());
+			statement.setString(5, bean.getCognome());
+			statement.setString(6, bean.getSesso());
+			statement.setBoolean(7, bean.getAdmin());
 			
 			statement.executeUpdate();
 			
@@ -48,7 +50,7 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 		Connection con = null;
 		PreparedStatement statement = null;
 		int result = 0;
-		String query = "DELETE FROM " + ProdottoDAO.TABLE_NAME + " WHERE codiceSeriale = ?";
+		String query = "DELETE FROM " + UtenteDAO.TABLE_NAME + " WHERE username = ?";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -70,12 +72,12 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 	}
 
 	@Override
-	public synchronized ProdottoBean doRetrieveByKey(String key) throws SQLException {
+	public synchronized UtenteBean doRetrieveByKey(String key) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
-		ProdottoBean prodotto = new ProdottoBean();
+		UtenteBean user = new UtenteBean();
 		
-		String query = "SELECT * FROM " + ProdottoDAO.TABLE_NAME + " WHERE codiceSeriale = ?";
+		String query = "SELECT * FROM " + UtenteDAO.TABLE_NAME + " WHERE username = ?";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -85,11 +87,13 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
-				prodotto.setCodiceSeriale(result.getString("codiceSeriale"));
-				prodotto.setNome(result.getString("nome"));
-				prodotto.setMarca(result.getString("marca"));
-				prodotto.setDescrizioneBreve(result.getString("descrizioneBreve"));
-				prodotto.setEdLimitata(result.getBoolean("edLimitata"));
+				user.setUsername(result.getString("username"));
+				user.setPassword(result.getString("password"));
+				user.setEmail(result.getString("email"));
+				user.setNome(result.getString("nome"));
+				user.setCognome(result.getString("cognome"));
+				user.setSesso(result.getString("sesso"));
+				user.setAdmin(result.getBoolean("admin"));
 			}
 		} finally {
 			try {
@@ -101,22 +105,22 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 			}
 		}
 		
-		return prodotto;
+		return user;
 	}
 
 	@Override
-	public synchronized List<ProdottoBean> doRetrieveAll(String order) throws SQLException {
+	public synchronized List<UtenteBean> doRetrieveAll(String order) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		
-		List<ProdottoBean> prodotti = new ArrayList<>();
+		List<UtenteBean> users = new ArrayList<>();
 		
-		String query = "SELECT * FROM " + ProdottoDAO.TABLE_NAME;
+		String query = "SELECT * FROM " + UtenteDAO.TABLE_NAME;
 		
 //		if(checkOrder(order)) {
 //			query += " ORDER BY" + order;
 //		}
-//		se ne parla dopo TODO
+//		non ora TODO
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -125,15 +129,17 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
-				ProdottoBean prodotto = new ProdottoBean();
+				UtenteBean user = new UtenteBean();
 				
-				prodotto.setCodiceSeriale(result.getString("codiceSeriale"));
-				prodotto.setNome(result.getString("nome"));
-				prodotto.setMarca(result.getString("marca"));
-				prodotto.setDescrizioneBreve(result.getString("descrizioneBreve"));
-				prodotto.setEdLimitata(result.getBoolean("edLimitata"));
+				user.setUsername(result.getString("username"));
+				user.setPassword(result.getString("password"));
+				user.setEmail(result.getString("email"));
+				user.setNome(result.getString("nome"));
+				user.setCognome(result.getString("cognome"));
+				user.setSesso(result.getString("sesso"));
+				user.setAdmin(result.getBoolean("admin"));
 				
-				prodotti.add(prodotto);
+				users.add(user);
 			}
 		} finally {
 			try {
@@ -145,6 +151,6 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 			}
 		}
 		
-		return prodotti;
+		return users;
 	}
 }
