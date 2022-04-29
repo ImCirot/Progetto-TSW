@@ -14,7 +14,7 @@
 		if((admin != null) && admin) {
 	%>
 		<div class="prodotto">
-			<a href="./aggiungProdottoForm.jsp">
+			<a href="gestisciProdotti">
 			<img src="https://gdurl.com/ccq0/" alt="aggiungiProdotto">
 			</a>
 			<h4>Aggiungi prodotto</h4>

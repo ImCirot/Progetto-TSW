@@ -8,6 +8,11 @@
 <link rel="stylesheet" href="./Css/style.css">
 </head>
 <body>
+	<% boolean logged = (boolean) request.getSession().getAttribute("logged");
+		if(!logged){
+			response.sendRedirect("./loginForm.jsp");
+		}
+	%>
 	<jsp:include page="./header.jsp" />
 	<div class="dati">
     <p>

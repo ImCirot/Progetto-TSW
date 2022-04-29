@@ -215,6 +215,18 @@ prodotto h4 {
 	margin-left: 50px;
 }
 
+.gestisciProdotti table {
+	margin: 50px;
+}
+
+.aggiungiProdotto form {
+	margin: 50px;
+}
+
+.aggiungiProdotto h3 {
+	margin: 50px;
+}
+
 *,
 *:before,
 *:after {
