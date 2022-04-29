@@ -21,7 +21,7 @@
       <th>Nome</th>
       <th>Marca</th>
       <th>Opzioni</th>
-    <% List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getAttribute("prodotti");
+    <% List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
     	Iterator<ProdottoBean> iter = prodotti.iterator();
     	ProdottoBean prodotto = new ProdottoBean();
     	while(iter.hasNext()){
@@ -32,8 +32,8 @@
       <td><%out.println(prodotto.getNome());%></td>
       <td><%out.println(prodotto.getMarca());%></td>
       <td>
-        <a href="modificaProdotto">Modifica</a><br>
-        <a href="eliminaProdotto">Elimina</a>
+        <a href="modificaProdotto?mode=modifica&prodotto=<% out.println(prodotto.getCodiceSeriale());%>">Modifica</a><br><br>
+        <a href="modificaProdotto?mode=elimina&prodotto=<% out.println(prodotto.getCodiceSeriale());%>">Elimina</a>
       </td>
      </tr>
     	<%}%>
@@ -42,7 +42,8 @@
     <br><br><br><br><br>
     <div class="aggiungiProdotto">
 	    <h3>Aggiungi un prodotto</h3>
-	    <form action="aggiungiProdotto" method="post">
+	    <form action="modificaProdotto" method="get">
+	      <input type="hidden" name="mode" value="aggiungi">	
 	      <label for="codiceSeriale">Codice Seriale</label><br>
 	      <input type="text" name="codiceSeriale" placeholder="Codice seriale"><br><br>
 	      <label for="nome">Nome</label><br>
