@@ -48,7 +48,7 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 		Connection con = null;
 		PreparedStatement statement = null;
 		int result = 0;
-		String query = "DELETE FROM " + ProdottoDAO.TABLE_NAME + " WHERE (codiceSeriale = ?)";
+		String query = "DELETE FROM " + ProdottoDAO.TABLE_NAME + " WHERE codiceSeriale = ?";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
