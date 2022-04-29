@@ -1,13 +1,14 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class DettaglioProdottoBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String tipo;
 	private String prodotto;
-	private double costoUnitario;
+	private BigDecimal costoUnitario;
 	private int IVA;
 	private int quantita;
 	private String origine;
@@ -19,7 +20,7 @@ public class DettaglioProdottoBean implements Serializable {
 	public DettaglioProdottoBean() {
 		this.tipo = "null";
 		this.prodotto = "null";
-		this.costoUnitario = -1;
+		this.costoUnitario = BigDecimal.valueOf(-1);
 		this.IVA = -1;
 		this.quantita = -1;
 		this.origine = "null";
@@ -45,11 +46,11 @@ public class DettaglioProdottoBean implements Serializable {
 		this.prodotto = prodotto;
 	}
 
-	public double getCostoUnitario() {
+	public BigDecimal getCostoUnitario() {
 		return costoUnitario;
 	}
 
-	public void setCostoUnitario(double costoUnitario) {
+	public void setCostoUnitario(BigDecimal costoUnitario) {
 		this.costoUnitario = costoUnitario;
 	}
 

@@ -1,5 +1,6 @@
 package model;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +27,7 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 			
 			statement.setString(1, bean.getTipo());
 			statement.setString(2, bean.getProdotto());
-			statement.setDouble(3, bean.getCostoUnitario());
+			statement.setBigDecimal(3, bean.getCostoUnitario());
 			statement.setInt(4, bean.getIVA());
 			statement.setInt(5, bean.getQuantita());
 			statement.setString(6, bean.getOrigine());
@@ -95,7 +96,7 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 			while(result.next()) {
 				dettaglioProdotto.setTipo(result.getString("tipo"));
 				dettaglioProdotto.setProdotto(result.getString("prodotto"));
-				dettaglioProdotto.setCostoUnitario(Double.parseDouble(result.getString("costoUnitario")));
+				dettaglioProdotto.setCostoUnitario(result.getBigDecimal("costoUnitario"));
 				dettaglioProdotto.setIVA(Integer.parseInt(result.getString("IVA")));
 				dettaglioProdotto.setQuantita(Integer.parseInt(result.getString("quantita")));
 				dettaglioProdotto.setOrigine(result.getString("origine"));
@@ -129,7 +130,6 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 //		if(checkOrder(order)) {
 //			query += " ORDER BY" + order;
 //		}
-//		se ne parla dopo TODO
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -142,7 +142,7 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 				
 				dettaglioProdotto.setTipo(result.getString("tipo"));
 				dettaglioProdotto.setProdotto(result.getString("prodotto"));
-				dettaglioProdotto.setCostoUnitario(Double.parseDouble(result.getString("costoUnitario")));
+				dettaglioProdotto.setCostoUnitario(result.getBigDecimal("costoUnitario"));
 				dettaglioProdotto.setIVA(Integer.parseInt(result.getString("IVA")));
 				dettaglioProdotto.setQuantita(Integer.parseInt(result.getString("quantita")));
 				dettaglioProdotto.setOrigine(result.getString("origine"));
@@ -165,4 +165,5 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 		
 		return dettagliProdotti;
 	}
+	
 }

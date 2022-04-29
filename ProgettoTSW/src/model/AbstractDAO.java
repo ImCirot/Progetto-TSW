@@ -34,5 +34,5 @@ public abstract class AbstractDAO<T> implements ModelDAO<T> {
 	public synchronized List<T> doRetrieveAll(String order) throws SQLException {
 		throw new UnsupportedOperationException("Operazione non supportata da questo DAO");
 	}
-
+	
 }
