@@ -227,6 +227,10 @@ prodotto h4 {
 	margin: 50px;
 }
 
+.login p {
+	color: red;
+}
+
 *,
 *:before,
 *:after {

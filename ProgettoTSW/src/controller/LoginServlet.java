@@ -62,7 +62,8 @@ public class LoginServlet extends HttpServlet {
 			view.forward(request, response);
 		} else {
 			request.getSession().setAttribute("logged", (Boolean) false);
-			response.sendRedirect("./InvalidLogin.jsp");
+			request.getSession().setAttribute("error", "Username e/o password invalidi.");
+			response.sendRedirect("./loginForm.jsp");
 		}
 	}
 	

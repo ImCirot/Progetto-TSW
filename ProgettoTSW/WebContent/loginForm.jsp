@@ -22,6 +22,13 @@
   		<input type="password" name="password" id="password" /><br /><br />
   		<input type="submit" value="Login" />
   	</form>
+  	<% String error = (String) request.getSession().getAttribute("error");
+  		if(error != null) {%>
+  		<p class="error"><%out.println(error);%></p>
+  		
+  		<%
+  		request.getSession().removeAttribute("error");
+  		}%>
   </div>
 	<br />
 	<jsp:include page="./footer.jsp" />
