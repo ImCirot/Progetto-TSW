@@ -29,7 +29,7 @@ public class UtenteDAO extends AbstractDAO<UtenteBean> {
 			statement.setString(4, bean.getNome());
 			statement.setString(5, bean.getCognome());
 			statement.setString(6, bean.getSesso());
-			statement.setBoolean(7, bean.getAdmin());
+			statement.setBoolean(7, bean.isAdmin());
 			
 			statement.executeUpdate();
 			

@@ -9,7 +9,18 @@
 <body>
   <jsp:include page="./header.jsp" />
   <div class="container-catalogo">
-  	<% List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getAttribute("prodotti");
+  	<% 
+  	Boolean admin = (boolean) request.getSession().getAttribute("admin");
+		if((admin != null) && admin) {
+	%>
+		<div class="prodotto">
+			<a href="./aggiungProdottoForm.jsp">
+			<img src="https://gdurl.com/ccq0/" alt="aggiungiProdotto">
+			</a>
+			<h4>Aggiungi prodotto</h4>
+		</div>
+	<% }
+  	List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getAttribute("prodotti");
   		List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getAttribute("dettagliProdotti");
   		Iterator<ProdottoBean> iterProdotto = prodotti.iterator();
   		Iterator<DettaglioProdottoBean> iterDettagli;
@@ -22,8 +33,7 @@
   			while(iterDettagli.hasNext()){
   				dettagli = iterDettagli.next();
   				if(prodotto.getCodiceSeriale().equals(dettagli.getProdotto())) break;
-  			}
-  			%>
+  			}%>
 
   			<div class="prodotto">
   				<a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>">
@@ -33,19 +43,8 @@
   				<p class="prezzo"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
   			</div>
 
-  		<%} 
-  		if(request.getSession(false) != null) {
-  		Boolean admin = (Boolean) request.getSession().getAttribute("admin");
-  			if(admin != null || admin.booleanValue()) {
-  		%>
-  			<div class="prodotto">
-  				<a href="aggiungiProdotto">
-  				<img src="https://gdurl.com/ccq0/" alt="aggiungiProdotto">
-  				</a>
-  				<h4>Aggiungi prodotto</h4>
-  			</div>
-  		<% }
-  		} %>
+  		<%} %>
+  		
   </div>
   <jsp:include page="./footer.jsp" />
 </body>

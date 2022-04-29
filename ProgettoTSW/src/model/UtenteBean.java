@@ -11,7 +11,7 @@ public class UtenteBean implements Serializable {
 	private String nome;
 	private String cognome;
 	private String sesso;
-	private Boolean admin;
+	private boolean admin;
 	
 	public UtenteBean() {
 		this.username = "null";
@@ -71,11 +71,11 @@ public class UtenteBean implements Serializable {
 		this.sesso = sesso;
 	}
 
-	public Boolean getAdmin() {
+	public Boolean isAdmin() {
 		return admin;
 	}
 
-	public void setAdmin(Boolean admin) {
+	public void setAdmin(boolean admin) {
 		this.admin = admin;
 	}
 

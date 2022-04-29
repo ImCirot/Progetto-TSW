@@ -51,7 +51,9 @@ public class CatalogoServlet extends HttpServlet {
 		
 		request.setAttribute("prodotti", prodotti);
 		request.setAttribute("dettagliProdotti", dettagliProdotti);
-		request.getSession().setAttribute("admin", (Boolean) false);
+		if (request.getSession().getAttribute("admin") == null) {
+			request.getSession().setAttribute("admin",false);
+		}
 		
 		RequestDispatcher view = request.getRequestDispatcher("./mainpage.jsp");
 		view.forward(request, response);
