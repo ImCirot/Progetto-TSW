@@ -15,13 +15,13 @@
 	%>
 		<div class="prodotto">
 			<a href="gestisciProdotti">
-			<img src="https://gdurl.com/ccq0/" alt="aggiungiProdotto">
+			<img src="https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/plus.png" alt="aggiungiProdotto">
 			</a>
 			<h4>Gestisci prodotti</h4>
 		</div>
 	<% }
-  	List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
-  		List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");
+  	List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getAttribute("prodotti");
+  		List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getAttribute("dettagliProdotti");
   		Iterator<ProdottoBean> iterProdotto = prodotti.iterator();
   		Iterator<DettaglioProdottoBean> iterDettagli;
   		ProdottoBean prodotto = new ProdottoBean();

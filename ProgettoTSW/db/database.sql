@@ -61,7 +61,7 @@ CREATE TABLE `dettaglioProdotto` (
   `scadenza` date NOT NULL,
   `peso` varchar(25) DEFAULT NULL,
   `volume` varchar(25) DEFAULT NULL,
-  `immagine` varchar(100) DEFAULT NULL,
+  `immagine` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`tipo`,`prodotto`),
   KEY `fk_new_table_1_idx` (`prodotto`),
   CONSTRAINT `fk_new_table_1` FOREIGN KEY (`prodotto`) REFERENCES `prodotto` (`codiceSeriale`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -74,7 +74,7 @@ CREATE TABLE `dettaglioProdotto` (
 
 LOCK TABLES `dettaglioProdotto` WRITE;
 /*!40000 ALTER TABLE `dettaglioProdotto` DISABLE KEYS */;
-INSERT INTO `dettaglioProdotto` VALUES ('snack','GesKKqnx',6.00,22,99,'Giappone','2023-04-28','50g',NULL,'https://gdurl.com/AHQy/'),('snack','gFEfPBJg',2.99,22,99,'USA','2023-04-26','154g',NULL,'https://gdurl.com/LmYd/'),('snack','Pz7nszym',2.49,22,99,'USA','2023-04-10','49.9g',NULL,'https://gdurl.com/Q7D7/'),('snack','PZzimtRa',1.99,22,99,'USA','2023-04-22','47g',NULL,'https://gdurl.com/JDt7/'),('snack','tyih29rt',1.59,22,99,'UK','2023-04-21',NULL,'330ml','https://gdurl.com/CcXa/'),('snack','UoESj9xK',4.99,22,99,'USA','2023-04-17','226g',NULL,'https://gdurl.com/kxoy/'),('snack','xBDiMhYa',1.99,22,99,'USA','2023-04-20','40g',NULL,'https://gdurl.com/gYjUK/'),('drink','hcCcRJX5',5.99,22,99,'Giappone','2023-04-19',NULL,'355ml','https://gdurl.com/G16E/'),('drink','T4iGqTCG',6.50,22,99,'Giappone','2023-04-07','115g',NULL,'https://gdurl.com/MsbP/'),('drink','zC3RFPrT',1.50,22,99,'Internazionale','2023-04-30',NULL,'500ml','https://gdurl.com/obje/');
+INSERT INTO `dettaglioProdotto` VALUES ('snack','GesKKqnx',6.00,22,99,'Giappone','2023-04-28','50g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/mildsalt.png'),('snack','gFEfPBJg',2.99,22,99,'USA','2023-04-26','154g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Oreo-Mint-Flavour-154g_1800x1800.png'),('snack','Pz7nszym',2.49,22,99,'USA','2023-04-10','49.9g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Snickers-Almond-50g_1800x1800.png'),('snack','PZzimtRa',1.99,22,99,'USA','2023-04-22','47g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/reesesnutbar.png'),('snack','tyih29rt',1.59,22,99,'UK','2023-04-21',NULL,'330ml','https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Dr-Pepper-330ml_1_1800x1800.png'),('snack','UoESj9xK',4.99,22,99,'USA','2023-04-17','226g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/cheetos-crunchy-226g_1800x1800.png'),('snack','xBDiMhYa',1.99,22,99,'USA','2023-04-20','40g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/memFudgeBrownie.png'),('drink','hcCcRJX5',5.99,22,99,'Giappone','2023-04-19',NULL,'355ml','https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Monster-Cuba-Libre-355ml_1800x1800.png'),('drink','T4iGqTCG',6.50,22,99,'Giappone','2023-04-07','115g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/chipstarnori.png'),('drink','zC3RFPrT',1.50,22,99,'Internazionale','2023-04-30',NULL,'500ml','https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/mangoloco.png');
 /*!40000 ALTER TABLE `dettaglioProdotto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,4 +166,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-29 12:55:26
+-- Dump completed on 2022-04-29 19:34:13

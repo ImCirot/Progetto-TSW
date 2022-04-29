@@ -49,8 +49,8 @@ public class CatalogoServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		request.getSession().setAttribute("prodotti", prodotti);
-		request.getSession().setAttribute("dettagliProdotti", dettagliProdotti);
+		request.setAttribute("prodotti", prodotti);
+		request.setAttribute("dettagliProdotti", dettagliProdotti);
 		if (request.getSession().getAttribute("admin") == null) {
 			request.getSession().setAttribute("admin",false);
 		}

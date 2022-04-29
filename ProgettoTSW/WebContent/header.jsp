@@ -18,7 +18,7 @@
     <div class="navbar">
       <div class="catalogo">
         <ul>
-          <li><a href="./mainpage.jsp">Home</a></li>
+          <li><a href="catalogo">Home</a></li>
           <li><a href="#">Caramelle</a></li>
           <li><a href="#">Snack</a></li>
           <li><a href="#">Bibite</a></li>
