@@ -20,8 +20,8 @@
 			<h4>Gestisci prodotti</h4>
 		</div>
 	<% }
-  	List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getAttribute("prodotti");
-  		List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getAttribute("dettagliProdotti");
+  	List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
+  		List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");
   		Iterator<ProdottoBean> iterProdotto = prodotti.iterator();
   		Iterator<DettaglioProdottoBean> iterDettagli;
   		ProdottoBean prodotto = new ProdottoBean();
