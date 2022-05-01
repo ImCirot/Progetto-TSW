@@ -120,24 +120,23 @@ address {
 }
 
 .container-catalogo{
+
   display: flex;
   width: 100%;
   height: auto;
-  justify-content: space-evenly flex-start;
+  justify-content:  flex-start;
   flex-wrap: wrap;
-  padding: 50px;
+  padding: 100px;
 }
 
 .prodotto{
+  border:2px solid violet;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 200px;
-  margin: auto;
+  max-width: 250px;
   text-align: center;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  z-index: 1;
+  margin: 20px;
+  padding:20px;
+ 
 }
 
 .prodotto:hover{
