@@ -97,8 +97,6 @@ a{
 }
 
 footer{
-  position: absolute;
-  bottom:0;
   background-color: #9932CC;
   height: auto;
   padding: 20px;
