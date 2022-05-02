@@ -131,9 +131,10 @@ public class ModificaProdottoServlet extends HttpServlet {
 	}
 
 	/**
+	 * @throws IOException 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProdottoDAO dbProdotto = new ProdottoDAO();
 		DettaglioProdottoDAO dbDettagli = new DettaglioProdottoDAO();
 		
@@ -226,6 +227,8 @@ public class ModificaProdottoServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		RequestDispatcher view = request.getRequestDispatcher("./gestisciProdotti.jsp");
+		view.forward(request, response);
 	}
 
 }

@@ -232,6 +232,8 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 			statement.setString(9, bean.getImmagine());
 			
 			statement.executeUpdate();
+			
+			con.commit();
 		} finally {
 			try {
 				if(statement != null) {

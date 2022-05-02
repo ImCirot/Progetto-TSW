@@ -169,6 +169,8 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 			statement.setBoolean(5, bean.isEdLimitata());
 			
 			statement.executeUpdate();
+			
+			con.commit();
 		} finally {
 			try {
 				if(statement != null) {
