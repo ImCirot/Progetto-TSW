@@ -58,8 +58,8 @@ public class DettaglioProdottoBean implements Serializable {
 		return IVA;
 	}
 
-	public void setIVA(int iVA) {
-		IVA = iVA;
+	public void setIVA(int IVA) {
+		this.IVA = IVA;
 	}
 
 	public int getQuantita() {

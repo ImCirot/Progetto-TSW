@@ -3,7 +3,11 @@ package controller;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -40,62 +44,33 @@ public class ModificaProdottoServlet extends HttpServlet {
 		String mode = request.getParameter("mode");
 		ProdottoDAO dbProdotto = new ProdottoDAO();
 		DettaglioProdottoDAO dbDettagli = new DettaglioProdottoDAO();
+		String pathForward = null;
 		
 		if(mode.equalsIgnoreCase("elimina")) {
 			String prodotto = request.getParameter("prodotto");
 			try {
 				dbProdotto.doDelete(prodotto);
 				} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else if (mode.equalsIgnoreCase("modifica")) {
-			String codiceSeriale = request.getParameter("codiceSeriale");
-			String nome = request.getParameter("nome");
-			String marca = request.getParameter("marca");
-			String descrizione = request.getParameter("desc");
-			String edLimitata = request.getParameter("edLimitata");
-			String tipo = request.getParameter("tipo");
-			String costo = request.getParameter("costo");
-			String IVA = request.getParameter("IVA");
-			String quantita = request.getParameter("quantita");
-			String origine = request.getParameter("origine");
-			String scadenza = request.getParameter("scadenza");
-			String peso = request.getParameter("peso");
-			String volume = request.getParameter("volume");
-			String img = request.getParameter("img");
 			
+			pathForward = "catalogo";
+			
+		} else if (mode.equalsIgnoreCase("modifica")) {
 			ProdottoBean prodotto = new ProdottoBean();
 			DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
-			
-			prodotto.setCodiceSeriale(codiceSeriale);
-			prodotto.setNome(nome);
-			prodotto.setMarca(marca);
-			prodotto.setDescrizioneBreve(descrizione);
-			if(edLimitata.equalsIgnoreCase("si")) {
-				prodotto.setEdLimitata(true);
-			} else {
-				prodotto.setEdLimitata(false);
-			}
-			
-			dettagli.setProdotto(codiceSeriale);
-			dettagli.setTipo(tipo);
-			dettagli.setCostoUnitario(BigDecimal.valueOf(Double.parseDouble(costo)));
-			dettagli.setIVA(Integer.parseInt(IVA));
-			dettagli.setQuantita(Integer.parseInt(quantita));
-			dettagli.setOrigine(origine);
-			dettagli.setScadenza(scadenza);
-			dettagli.setPeso(peso);
-			dettagli.setVolume(volume);
-			dettagli.setImmagine(img);
+			String codiceSeriale = request.getParameter("prodotto");
 			
 			try {
-				dbProdotto.doUpdate(prodotto);
-				dbDettagli.doUpdate(dettagli);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				prodotto = dbProdotto.doRetrieveByKey(codiceSeriale);
+				dettagli = dbDettagli.doRetrieveByKey(codiceSeriale);
+			} catch (SQLException e1) {
+				e1.printStackTrace();
 			}
+			
+			request.setAttribute("prodotto", prodotto);
+			request.setAttribute("dettagli", dettagli);
+			pathForward = "./modificaProdottoForm.jsp";
 			
 		} else if (mode.equalsIgnoreCase("aggiungi")) {
 			String codiceSeriale = request.getParameter("codiceSeriale");
@@ -145,21 +120,112 @@ public class ModificaProdottoServlet extends HttpServlet {
 				dbProdotto.doSave(prodotto);
 				dbDettagli.doSave(dettagli);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			
+			pathForward = "catalogo";
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher("catalogo");
+		RequestDispatcher view = request.getRequestDispatcher(pathForward);
 		view.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+		ProdottoDAO dbProdotto = new ProdottoDAO();
+		DettaglioProdottoDAO dbDettagli = new DettaglioProdottoDAO();
+		
+		String codiceSeriale = request.getParameter("codiceSeriale");
+		String nome = request.getParameter("nome");
+		String marca = request.getParameter("marca");
+		String descrizione = request.getParameter("desc");
+		String edLimitata = request.getParameter("edLimitata");
+		String tipo = request.getParameter("tipo");
+		BigDecimal valore = BigDecimal.valueOf(Double.parseDouble(request.getParameter("costo")));
+		Integer IVA = Integer.parseInt(request.getParameter("IVA"));
+		Integer quantita = Integer.parseInt(request.getParameter("quantita"));
+		String origine = request.getParameter("origine");
+		String scadenza = request.getParameter("scadenza");
+		String peso = request.getParameter("peso");
+		String volume = request.getParameter("volume");
+		String img = request.getParameter("img");
+		
+		ProdottoBean prodotto = new ProdottoBean();
+		DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
+		
+		try {
+			prodotto = dbProdotto.doRetrieveByKey(codiceSeriale);
+			dettagli = dbDettagli.doRetrieveByKey(codiceSeriale);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		if(!prodotto.getNome().equals(nome)) {
+			prodotto.setNome(nome);
+		}
+		
+		if(!prodotto.getMarca().equals(marca)) {
+			prodotto.setMarca(marca);
+		}
+		
+		if(!prodotto.getDescrizioneBreve().equals(descrizione)) {
+			prodotto.setDescrizioneBreve(descrizione);
+		}
+		
+		if(prodotto.isEdLimitata() && edLimitata.equalsIgnoreCase("no")) {
+			prodotto.setEdLimitata(false);
+		} else if (!prodotto.isEdLimitata() && edLimitata.equalsIgnoreCase("si")) {
+			prodotto.setEdLimitata(true);
+		}
+		
+		if(!dettagli.getTipo().equalsIgnoreCase(tipo)) {
+			if(tipo.equalsIgnoreCase("snack") || tipo.equalsIgnoreCase("drink")) {
+				dettagli.setTipo(tipo.toLowerCase());
+			}
+		}
+		
+		if(!dettagli.getCostoUnitario().equals(valore)) {
+			dettagli.setCostoUnitario(valore);
+		}
+		
+		if(dettagli.getIVA() != IVA) {
+			dettagli.setIVA(IVA);
+		}
+		
+		if(dettagli.getQuantita() != quantita) {
+			dettagli.setQuantita(quantita);
+		}
+		
+		if(!dettagli.getOrigine().equalsIgnoreCase(origine)) {
+			dettagli.setOrigine(origine);
+		}
+		
+		if(!dettagli.getScadenza().equalsIgnoreCase(scadenza)) {
+			dettagli.setScadenza(scadenza);
+		}
+		
+		if(!dettagli.getPeso().equalsIgnoreCase(peso) && dettagli.getTipo().equalsIgnoreCase("snack")) {
+			dettagli.setPeso(peso);
+		}
+		
+		if(!dettagli.getVolume().equalsIgnoreCase(volume) && dettagli.getTipo().equalsIgnoreCase("drink")) {
+			dettagli.setVolume(volume);
+		}
+		
+		if(!dettagli.getImmagine().equals(img)) {
+			dettagli.setImmagine(img);
+		}
+		
+		try {
+			dbProdotto.doUpdate(prodotto);
+			dbDettagli.doUpdate(dettagli);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }
