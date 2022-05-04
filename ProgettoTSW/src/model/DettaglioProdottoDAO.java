@@ -226,11 +226,12 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 			statement.setDouble(2, bean.getCostoUnitario().doubleValue());
 			statement.setInt(3, bean.getIVA());
 			statement.setInt(4, bean.getQuantita());
-			statement.setString(5, bean.getScadenza());
-			statement.setString(6, bean.getPeso());
-			statement.setString(7, bean.getVolume());
-			statement.setString(8, bean.getImmagine());
-			statement.setString(9, bean.getProdotto());
+			statement.setString(5, bean.getOrigine());
+			statement.setString(6, bean.getScadenza());
+			statement.setString(7, bean.getPeso());
+			statement.setString(8, bean.getVolume());
+			statement.setString(9, bean.getImmagine());
+			statement.setString(10, bean.getProdotto());
 			
 			result = statement.executeUpdate();
 			

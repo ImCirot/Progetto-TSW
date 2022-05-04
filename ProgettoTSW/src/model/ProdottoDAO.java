@@ -157,7 +157,7 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 		int result = 0;
 		
 		String query = "UPDATE " + ProdottoDAO.TABLE_NAME + " SET "
-				+ "nome = ?, marca = ?, descrizione = ?, edLimitata = ? WHERE codiceSeriale = ?;";
+				+ "nome = ?, marca = ?, descrizioneBreve = ?, edLimitata = ? WHERE codiceSeriale = ?;";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();

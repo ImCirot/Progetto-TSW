@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -137,6 +138,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ProdottoDAO dbProdotto = new ProdottoDAO();
 		DettaglioProdottoDAO dbDettagli = new DettaglioProdottoDAO();
+		Writer out = response.getWriter();
 		
 		String codiceSeriale = request.getParameter("prodotto");
 		String nome = request.getParameter("nome");
@@ -195,7 +197,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 			dettagli.setIVA(IVA);
 		}
 		
-		if(dettagli.getQuantita() != quantita) {
+		if(dettagli.getQuantita() != quantita.intValue()) {
 			dettagli.setQuantita(quantita);
 		}
 		
@@ -230,8 +232,6 @@ public class ModificaProdottoServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		response.getWriter().println(prodotto.getCodiceSeriale() + " " + prodotto.getNome() + " " + prodotto.getMarca() + " " + prodotto.getDescrizioneBreve() + " " + prodotto.isEdLimitata() + " " + dettagli.getTipo() + " " + dettagli.getCostoUnitario() +
-				" " + dettagli.getIVA() + " " + dettagli.getQuantita() + " " + dettagli.getOrigine() + " " + dettagli.getScadenza() + " " + dettagli.getPeso() + " " + dettagli.getVolume() + " " + dettagli.getImmagine());
 		RequestDispatcher view = request.getRequestDispatcher("./gestisciProdotti.jsp");
 		view.forward(request, response);
 	}
