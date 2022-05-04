@@ -138,7 +138,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 		ProdottoDAO dbProdotto = new ProdottoDAO();
 		DettaglioProdottoDAO dbDettagli = new DettaglioProdottoDAO();
 		
-		String codiceSeriale = request.getParameter("codiceSeriale");
+		String codiceSeriale = request.getParameter("prodotto");
 		String nome = request.getParameter("nome");
 		String marca = request.getParameter("marca");
 		String descrizione = request.getParameter("desc");
@@ -207,12 +207,16 @@ public class ModificaProdottoServlet extends HttpServlet {
 			dettagli.setScadenza(scadenza);
 		}
 		
-		if(!dettagli.getPeso().equalsIgnoreCase(peso) && dettagli.getTipo().equalsIgnoreCase("snack")) {
-			dettagli.setPeso(peso);
+		if(dettagli.getTipo().equalsIgnoreCase("snack")) {
+			if(!dettagli.getPeso().equalsIgnoreCase(peso)) {
+				dettagli.setPeso(peso);
+			}
 		}
 		
-		if(!dettagli.getVolume().equalsIgnoreCase(volume) && dettagli.getTipo().equalsIgnoreCase("drink")) {
-			dettagli.setVolume(volume);
+		if(dettagli.getTipo().equalsIgnoreCase("drink")) {
+			if(!dettagli.getVolume().equalsIgnoreCase(volume)) {
+				dettagli.setVolume(volume);
+			}
 		}
 		
 		if(!dettagli.getImmagine().equals(img)) {
@@ -223,10 +227,11 @@ public class ModificaProdottoServlet extends HttpServlet {
 			dbProdotto.doUpdate(prodotto);
 			dbDettagli.doUpdate(dettagli);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		response.getWriter().println(prodotto.getCodiceSeriale() + " " + prodotto.getNome() + " " + prodotto.getMarca() + " " + prodotto.getDescrizioneBreve() + " " + prodotto.isEdLimitata() + " " + dettagli.getTipo() + " " + dettagli.getCostoUnitario() +
+				" " + dettagli.getIVA() + " " + dettagli.getQuantita() + " " + dettagli.getOrigine() + " " + dettagli.getScadenza() + " " + dettagli.getPeso() + " " + dettagli.getVolume() + " " + dettagli.getImmagine());
 		RequestDispatcher view = request.getRequestDispatcher("./gestisciProdotti.jsp");
 		view.forward(request, response);
 	}

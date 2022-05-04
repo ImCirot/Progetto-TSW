@@ -10,6 +10,6 @@ public interface ModelDAO<T> {
 	public abstract T doRetrieveByKey(String key) throws SQLException;
 	public abstract T doRetrieveByKey(String key1,String key2) throws SQLException;
 	public  List<T> doRetrieveAll(String order) throws SQLException;
-	public void doUpdate(T bean) throws SQLException;
+	public boolean doUpdate(T bean) throws SQLException;
 }
 

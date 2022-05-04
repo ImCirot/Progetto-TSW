@@ -151,24 +151,25 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 	}
 
 	@Override
-	public synchronized void doUpdate(ProdottoBean bean) throws SQLException {
+	public synchronized boolean doUpdate(ProdottoBean bean) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
+		int result = 0;
 		
 		String query = "UPDATE " + ProdottoDAO.TABLE_NAME + " SET "
-				+ "codiceSeriale = ?,nome = ?,marca = ?,descrizione = ?,edLimitata = ?";
+				+ "nome = ?, marca = ?, descrizione = ?, edLimitata = ? WHERE codiceSeriale = ?;";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			
-			statement.setString(1, bean.getCodiceSeriale());
-			statement.setString(2, bean.getNome());
-			statement.setString(3, bean.getMarca());
-			statement.setString(4, bean.getDescrizioneBreve());
-			statement.setBoolean(5, bean.isEdLimitata());
+			statement.setString(1, bean.getNome());
+			statement.setString(2, bean.getMarca());
+			statement.setString(3, bean.getDescrizioneBreve());
+			statement.setBoolean(4, bean.isEdLimitata());
+			statement.setString(5, bean.getCodiceSeriale());
 			
-			statement.executeUpdate();
+			result = statement.executeUpdate();
 			
 			con.commit();
 		} finally {
@@ -180,7 +181,7 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 				DriverManagerConnectionPool.releaseConnection(con);
 			}
 		}
+		
+		return result != 0;
 	}
-	
-	
 }

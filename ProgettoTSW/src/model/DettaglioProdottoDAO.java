@@ -209,29 +209,30 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 	}
 	
 	@Override
-	public synchronized void doUpdate(DettaglioProdottoBean bean) throws SQLException {
+	public synchronized boolean doUpdate(DettaglioProdottoBean bean) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
+		int result = 0;
 		
 		String query = "UPDATE " + DettaglioProdottoDAO.TABLE_NAME + " SET "
-				+ "tipo = ?,prodotto = ?,costoUnitario = ?,IVA = ?,quantita = ?,origine = ?, scadenza = ?,"
-				+ " peso = ?, volume = ?, immagine = ?";
+				+ "tipo = ?, costoUnitario = ?, IVA = ?, quantita = ?, origine = ?, scadenza = ?,"
+				+ " peso = ?, volume = ?, immagine = ? WHERE prodotto = ?;";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			
 			statement.setString(1, bean.getTipo());
-			statement.setString(2, bean.getProdotto());
-			statement.setDouble(3, bean.getCostoUnitario().doubleValue());
-			statement.setInt(4, bean.getIVA());
-			statement.setInt(5, bean.getQuantita());
-			statement.setString(6, bean.getScadenza());
-			statement.setString(7, bean.getPeso());
-			statement.setString(8, bean.getVolume());
-			statement.setString(9, bean.getImmagine());
+			statement.setDouble(2, bean.getCostoUnitario().doubleValue());
+			statement.setInt(3, bean.getIVA());
+			statement.setInt(4, bean.getQuantita());
+			statement.setString(5, bean.getScadenza());
+			statement.setString(6, bean.getPeso());
+			statement.setString(7, bean.getVolume());
+			statement.setString(8, bean.getImmagine());
+			statement.setString(9, bean.getProdotto());
 			
-			statement.executeUpdate();
+			result = statement.executeUpdate();
 			
 			con.commit();
 		} finally {
@@ -243,5 +244,7 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 				DriverManagerConnectionPool.releaseConnection(con);
 			}
 		}
+		
+		return result != 0;
 	}
 }
