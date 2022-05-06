@@ -22,7 +22,7 @@ public class DriverManagerConnectionPool {
 		Connection newConnection = null;
 		String ip = "localhost";
 		String port = "3306";
-		String db = "eCommerceDB";
+		String db = "ecommercedb";
 		String username = "root";
 		String password = "root";
 

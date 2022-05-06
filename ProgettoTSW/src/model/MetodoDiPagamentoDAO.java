@@ -9,7 +9,7 @@ import java.util.List;
 
 public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 	
-	private static final String TABLE_NAME = "metodoDiPagamento";
+	private static final String TABLE_NAME = "metododipagamento";
 	
 	@Override
 	public synchronized void doSave(MetodoDiPagamentoBean bean) throws SQLException {

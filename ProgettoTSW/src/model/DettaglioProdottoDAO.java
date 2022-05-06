@@ -10,7 +10,7 @@ import java.util.List;
 
 public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 	
-	private static final String TABLE_NAME = "dettaglioProdotto";
+	private static final String TABLE_NAME = "dettaglioprodotto";
 	
 	@Override
 	public synchronized void doSave(DettaglioProdottoBean bean) throws SQLException {
