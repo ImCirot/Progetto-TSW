@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `eCommerceDB` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `eCommerceDB`;
--- MySQL dump 10.13  Distrib 8.0.28, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Linux (x86_64)
 --
 -- Host: localhost    Database: eCommerceDB
 -- ------------------------------------------------------
--- Server version	8.0.28
+-- Server version	8.0.29-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -45,6 +45,31 @@ INSERT INTO `appartenenza` VALUES ('gFEfPBJg','biscotti'),('hcCcRJX5','energy dr
 UNLOCK TABLES;
 
 --
+-- Table structure for table `composizioneOrdine`
+--
+
+DROP TABLE IF EXISTS `composizioneOrdine`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `composizioneOrdine` (
+  `prodotto` varchar(25) NOT NULL,
+  `quantitaProdotto` int NOT NULL,
+  `costoUnitario` double NOT NULL,
+  PRIMARY KEY (`prodotto`,`quantitaProdotto`),
+  CONSTRAINT `ordine_prodotto_codiceSeriale_fk` FOREIGN KEY (`prodotto`) REFERENCES `prodotto` (`codiceSeriale`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `composizioneOrdine`
+--
+
+LOCK TABLES `composizioneOrdine` WRITE;
+/*!40000 ALTER TABLE `composizioneOrdine` DISABLE KEYS */;
+/*!40000 ALTER TABLE `composizioneOrdine` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `dettaglioProdotto`
 --
 
@@ -76,6 +101,107 @@ LOCK TABLES `dettaglioProdotto` WRITE;
 /*!40000 ALTER TABLE `dettaglioProdotto` DISABLE KEYS */;
 INSERT INTO `dettaglioProdotto` VALUES ('snack','GesKKqnx',6.00,22,99,'Giappone','2023-04-28','50g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/mildsalt.png'),('snack','gFEfPBJg',2.99,22,99,'USA','2023-04-26','154g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Oreo-Mint-Flavour-154g_1800x1800.png'),('snack','Pz7nszym',2.49,22,99,'USA','2023-04-10','49.9g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Snickers-Almond-50g_1800x1800.png'),('snack','PZzimtRa',1.99,22,99,'USA','2023-04-22','47g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/reesesnutbar.png'),('snack','tyih29rt',1.59,22,99,'UK','2023-04-21',NULL,'330ml','https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Dr-Pepper-330ml_1_1800x1800.png'),('snack','UoESj9xK',4.99,22,99,'USA','2023-04-17','226g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/cheetos-crunchy-226g_1800x1800.png'),('snack','xBDiMhYa',1.99,22,99,'USA','2023-04-20','40g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/memFudgeBrownie.png'),('drink','hcCcRJX5',5.99,22,99,'Giappone','2023-04-19',NULL,'355ml','https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Monster-Cuba-Libre-355ml_1800x1800.png'),('drink','T4iGqTCG',6.50,22,99,'Giappone','2023-04-07','115g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/chipstarnori.png'),('drink','zC3RFPrT',1.50,22,99,'Internazionale','2023-04-30',NULL,'500ml','https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/mangoloco.png');
 /*!40000 ALTER TABLE `dettaglioProdotto` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `indirizzo`
+--
+
+DROP TABLE IF EXISTS `indirizzo`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `indirizzo` (
+  `numIndirizzoProgessivo` int NOT NULL AUTO_INCREMENT,
+  `utente` varchar(50) NOT NULL,
+  `via` varchar(50) NOT NULL,
+  `citta` varchar(50) NOT NULL,
+  `CAP` varchar(10) NOT NULL,
+  `civico` varchar(10) NOT NULL,
+  `provincia` varchar(10) NOT NULL,
+  `scala` varchar(5) DEFAULT NULL,
+  `interno` varchar(20) DEFAULT NULL,
+  `preferito` enum('si','no') NOT NULL,
+  PRIMARY KEY (`numIndirizzoProgessivo`,`utente`),
+  KEY `indirizzo_utente_username_fk` (`utente`),
+  CONSTRAINT `indirizzo_utente_username_fk` FOREIGN KEY (`utente`) REFERENCES `utente` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `indirizzo`
+--
+
+LOCK TABLES `indirizzo` WRITE;
+/*!40000 ALTER TABLE `indirizzo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `indirizzo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `metodoDiPagamento`
+--
+
+DROP TABLE IF EXISTS `metodoDiPagamento`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `metodoDiPagamento` (
+  `numPagamentoProgessivo` int NOT NULL AUTO_INCREMENT,
+  `utente` varchar(50) NOT NULL,
+  `via` varchar(50) NOT NULL,
+  `citta` varchar(50) NOT NULL,
+  `CAP` varchar(10) NOT NULL,
+  `civico` varchar(10) NOT NULL,
+  `tipo` enum('carta','IBAN') NOT NULL,
+  `IBAN` char(27) DEFAULT NULL,
+  `numCarta` varchar(19) DEFAULT NULL,
+  `preferito` enum('si','no') NOT NULL,
+  PRIMARY KEY (`numPagamentoProgessivo`,`utente`),
+  KEY `metodoDiPagamento_utente_username_fk` (`utente`),
+  CONSTRAINT `metodoDiPagamento_utente_username_fk` FOREIGN KEY (`utente`) REFERENCES `utente` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `metodoDiPagamento`
+--
+
+LOCK TABLES `metodoDiPagamento` WRITE;
+/*!40000 ALTER TABLE `metodoDiPagamento` DISABLE KEYS */;
+/*!40000 ALTER TABLE `metodoDiPagamento` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `ordine`
+--
+
+DROP TABLE IF EXISTS `ordine`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `ordine` (
+  `numOrdineProgessivo` int NOT NULL AUTO_INCREMENT,
+  `cliente` varchar(50) NOT NULL,
+  `tipoPagamento` enum('carta','IBAN') NOT NULL,
+  `IBAN` char(27) DEFAULT NULL,
+  `numCarta` varchar(19) DEFAULT NULL,
+  `Citta` varchar(50) NOT NULL,
+  `CAP` varchar(10) NOT NULL,
+  `via` varchar(50) NOT NULL,
+  `civico` varchar(10) DEFAULT NULL,
+  `provincia` varchar(10) NOT NULL,
+  `dataAcquisto` date NOT NULL,
+  `costoTotale` double NOT NULL,
+  PRIMARY KEY (`numOrdineProgessivo`,`cliente`),
+  KEY `ordine_utente_username_fk` (`cliente`),
+  CONSTRAINT `ordine_utente_username_fk` FOREIGN KEY (`cliente`) REFERENCES `utente` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ordine`
+--
+
+LOCK TABLES `ordine` WRITE;
+/*!40000 ALTER TABLE `ordine` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ordine` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -166,4 +292,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-04-29 19:34:13
+-- Dump completed on 2022-05-06 12:51:58
