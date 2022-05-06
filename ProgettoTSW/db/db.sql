@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `eCommerceDB` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `eCommerceDB`;
 -- MySQL dump 10.13  Distrib 8.0.25, for Linux (x86_64)
 --
 -- Host: localhost    Database: eCommerceDB
@@ -52,11 +50,14 @@ DROP TABLE IF EXISTS `composizioneOrdine`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `composizioneOrdine` (
+  `ordine` int NOT NULL,
   `prodotto` varchar(25) NOT NULL,
   `quantitaProdotto` int NOT NULL,
-  `costoUnitario` double NOT NULL,
-  PRIMARY KEY (`prodotto`,`quantitaProdotto`),
-  CONSTRAINT `ordine_prodotto_codiceSeriale_fk` FOREIGN KEY (`prodotto`) REFERENCES `prodotto` (`codiceSeriale`)
+  `costoUnitario` decimal(4,2) NOT NULL,
+  PRIMARY KEY (`ordine`,`prodotto`),
+  KEY `composizioneOrdine_prodotto_codiceSeriale_fk` (`prodotto`),
+  CONSTRAINT `composizioneOrdine_ordine_numOrdineProgessivo_fk` FOREIGN KEY (`ordine`) REFERENCES `ordine` (`numOrdineProgessivo`),
+  CONSTRAINT `composizioneOrdine_prodotto_codiceSeriale_fk` FOREIGN KEY (`prodotto`) REFERENCES `prodotto` (`codiceSeriale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -182,7 +183,7 @@ CREATE TABLE `ordine` (
   `tipoPagamento` enum('carta','IBAN') NOT NULL,
   `IBAN` char(27) DEFAULT NULL,
   `numCarta` varchar(19) DEFAULT NULL,
-  `Citta` varchar(50) NOT NULL,
+  `citta` varchar(50) NOT NULL,
   `CAP` varchar(10) NOT NULL,
   `via` varchar(50) NOT NULL,
   `civico` varchar(10) DEFAULT NULL,
@@ -292,4 +293,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-06 12:51:58
+-- Dump completed on 2022-05-06 13:14:05

@@ -2,7 +2,9 @@ package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
@@ -69,20 +71,111 @@ public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 
 	@Override
 	public synchronized ComposizioneOrdineBean doRetrieveByKey(String key) throws SQLException {
-		// TODO Auto-generated method stub
-		return super.doRetrieveByKey(key);
+		Connection con = null;
+		PreparedStatement statement = null;
+		ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
+		
+		String query = "SELECT * FROM " + ComposizioneOrdineDAO.TABLE_NAME + " WHERE ordine = ?";
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			statement.setString(1, key);
+			
+			ResultSet result = statement.executeQuery();
+				
+			while(result.next()) {
+				composizione.setOrdine(result.getInt("ordine"));
+				composizione.setProdotto(result.getString("prodotto"));
+				composizione.setQuantitaProdotto(result.getInt("quantitaProdotto"));
+				composizione.setCostoUnitario(result.getBigDecimal("costoUnitario"));
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+		return composizione;
 	}
 
 	@Override
 	public synchronized List<ComposizioneOrdineBean> doRetrieveAll(String order) throws SQLException {
-		// TODO Auto-generated method stub
-		return super.doRetrieveAll(order);
+		Connection con = null;
+		PreparedStatement statement = null;
+		
+		List<ComposizioneOrdineBean> composizioniOrdini = new ArrayList<>();
+		
+		String query = "SELECT * FROM " + ComposizioneOrdineDAO.TABLE_NAME;
+		
+//		if(checkOrder(order)) {
+//			query += " ORDER BY" + order;
+//		}
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
+				
+				composizione.setOrdine(result.getInt("ordine"));
+				composizione.setProdotto(result.getString("prodotto"));
+				composizione.setQuantitaProdotto(result.getInt("quantitaProdotto"));
+				composizione.setCostoUnitario(result.getBigDecimal("costoUnitario"));
+				
+				composizioniOrdini.add(composizione);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+		return composizioniOrdini;
 	}
 
 	@Override
 	public synchronized boolean doUpdate(ComposizioneOrdineBean bean) throws SQLException {
-		// TODO Auto-generated method stub
-		return super.doUpdate(bean);
+		Connection con = null;
+		PreparedStatement statement = null;
+		int result = 0;
+		
+		String query = "UPDATE " + ComposizioneOrdineDAO.TABLE_NAME + " SET "
+				+ "ordine = ?, prodotto = ?, quantitaProdotto = ?, costoUnitario = ? WHERE ordine = ? AND prodotto = ?;";
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			
+			statement.setInt(1, bean.getOrdine());
+			statement.setString(2, bean.getProdotto());
+			statement.setInt(3, bean.getQuantitaProdotto());
+			statement.setBigDecimal(4, bean.getCostoUnitario());
+			result = statement.executeUpdate();
+			
+			con.commit();
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+		return result != 0;
 	}
 	
 }
