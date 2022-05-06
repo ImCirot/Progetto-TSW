@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Snackz</title>
-<link rel="stylesheet" href="./Css/style.css">
+<link rel="stylesheet" href="./Css/userArea.css">
 </head>
 <body>
 	<jsp:include page="./header.jsp" />

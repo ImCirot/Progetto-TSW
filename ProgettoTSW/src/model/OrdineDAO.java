@@ -78,17 +78,18 @@ public class OrdineDAO extends AbstractDAO<OrdineBean> {
 	}
 	
 	@Override
-	public synchronized OrdineBean doRetrieveByKey(String key) throws SQLException {
+	public synchronized OrdineBean doRetrieveByKey(String key1, String key2) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		OrdineBean ordine = new OrdineBean();
 		
-		String query = "SELECT * FROM " + OrdineDAO.TABLE_NAME + " WHERE numOrdineProgressivo = ? ";
+		String query = "SELECT * FROM " + OrdineDAO.TABLE_NAME + " WHERE numOrdineProgressivo = ? AND cliente = ?";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
-			statement.setInt(1, Integer.parseInt(key));
+			statement.setInt(1, Integer.parseInt(key1));
+			statement.setString(2, key2);
 			
 			
 			ResultSet result = statement.executeQuery();
@@ -217,5 +218,60 @@ public class OrdineDAO extends AbstractDAO<OrdineBean> {
 		
 		return result != 0;
 	}
+
+	@Override
+	public synchronized List<OrdineBean> doRetrieveAllByKey(String key) throws SQLException {
+		Connection con = null;
+		PreparedStatement statement = null;
+		
+		List<OrdineBean> ordini = new ArrayList<>();
+		
+		String query = "SELECT * FROM " + OrdineDAO.TABLE_NAME + " WHERE numOrdineProgessivo = ?";
+		
+//		if(checkOrder(order)) {
+//			query += " ORDER BY" + order;
+//		}
+//		se ne parla dopo TODO
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			statement.setString(1, key);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				OrdineBean ordine = new OrdineBean();
+				
+				ordine.setNumOrdineProgressivo(result.getInt("numOrdineProgressivo"));
+				ordine.setCliente(result.getString("cliente"));
+				ordine.setTipoPagamento(result.getString("tipoPagamento"));
+				ordine.setIBAN(result.getString("IBAN"));
+				ordine.setNumCarta(result.getString("numCarta"));
+				ordine.setCitta(result.getString("citta"));
+				ordine.setCAP(result.getString("CAP"));
+				ordine.setVia(result.getString("via"));
+				ordine.setCivico(result.getString("civico"));
+				ordine.setProvincia(result.getString("provincia"));
+				ordine.setNazione(result.getString("nazione"));
+				ordine.setDataAcquisto(result.getString("dataAcquisto"));
+				ordine.setCostoTotale(result.getBigDecimal("costoTotale"));
+				
+				ordini.add(ordine);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+		return ordini;
+	}
+	
+	
 }
 	

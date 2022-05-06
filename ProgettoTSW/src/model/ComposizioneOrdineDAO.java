@@ -17,16 +17,17 @@ public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 		PreparedStatement statement = null;
 		
 		String query = "INSERT INTO " + ComposizioneOrdineDAO.TABLE_NAME + 
-					" (ordine,prodotto,quantitaProdotto,costoUnitario VALUES (?,?,?);";
+					" (ordine,cliente,prodotto,quantitaProdotto,costoUnitario VALUES (?,?,?,?,?);";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			
 			statement.setInt(1, bean.getOrdine());
-			statement.setString(2, bean.getProdotto());
-			statement.setInt(3, bean.getQuantitaProdotto());
-			statement.setBigDecimal(4, bean.getCostoUnitario());
+			statement.setString(2, bean.getCliente());
+			statement.setString(3, bean.getProdotto());
+			statement.setInt(4, bean.getQuantitaProdotto());
+			statement.setBigDecimal(5, bean.getCostoUnitario());
 			
 			statement.executeUpdate();
 			
@@ -42,18 +43,18 @@ public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 		}
 	}
 
-	@Override
-	public synchronized boolean doDelete(String key1,String key2) throws SQLException {
+	public synchronized boolean doDelete(String key1,String key2,String key3) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		int result = 0;
-		String query = "DELETE FROM " + ComposizioneOrdineDAO.TABLE_NAME + " WHERE ordine = ? AND prodotto = ?";
+		String query = "DELETE FROM " + ComposizioneOrdineDAO.TABLE_NAME + " WHERE ordine = ? AND cliente = ? AND prodotto = ?";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			statement.setString(1, key1);
 			statement.setString(2, key2);
+			statement.setString(3, key3);
 			
 			result = statement.executeUpdate();
 		} finally {
@@ -69,23 +70,25 @@ public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 		return result != 0;
 	}
 
-	@Override
-	public synchronized ComposizioneOrdineBean doRetrieveByKey(String key) throws SQLException {
+	public synchronized ComposizioneOrdineBean doRetrieveByKey(String key1, String key2, String key3) throws SQLException {
 		Connection con = null;
 		PreparedStatement statement = null;
 		ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
 		
-		String query = "SELECT * FROM " + ComposizioneOrdineDAO.TABLE_NAME + " WHERE ordine = ?";
+		String query = "SELECT * FROM " + ComposizioneOrdineDAO.TABLE_NAME + " WHERE ordine = ? AND cliente = ? AND prodotto = ?";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
-			statement.setString(1, key);
+			statement.setString(1, key1);
+			statement.setString(2, key2);
+			statement.setString(3, key3);
 			
 			ResultSet result = statement.executeQuery();
 				
 			while(result.next()) {
 				composizione.setOrdine(result.getInt("ordine"));
+				composizione.setCliente(result.getString("cliente"));
 				composizione.setProdotto(result.getString("prodotto"));
 				composizione.setQuantitaProdotto(result.getInt("quantitaProdotto"));
 				composizione.setCostoUnitario(result.getBigDecimal("costoUnitario"));
@@ -126,6 +129,7 @@ public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 				ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
 				
 				composizione.setOrdine(result.getInt("ordine"));
+				composizione.setCliente(result.getString("cliente"));
 				composizione.setProdotto(result.getString("prodotto"));
 				composizione.setQuantitaProdotto(result.getInt("quantitaProdotto"));
 				composizione.setCostoUnitario(result.getBigDecimal("costoUnitario"));
@@ -144,6 +148,46 @@ public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 		
 		return composizioniOrdini;
 	}
+	
+	
+
+	@Override
+	public synchronized List<ComposizioneOrdineBean> doRetrieveAllByKey(String key) throws SQLException {
+		Connection con = null;
+		PreparedStatement statement = null;
+		List<ComposizioneOrdineBean> composizioni = new ArrayList<>();
+		ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
+		
+		String query = "SELECT * FROM " + ComposizioneOrdineDAO.TABLE_NAME + " WHERE ordine = ?";
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			statement.setString(1, key);
+			
+			ResultSet result = statement.executeQuery();
+				
+			while(result.next()) {
+				composizione.setOrdine(result.getInt("ordine"));
+				composizione.setCliente(result.getString("cliente"));
+				composizione.setProdotto(result.getString("prodotto"));
+				composizione.setQuantitaProdotto(result.getInt("quantitaProdotto"));
+				composizione.setCostoUnitario(result.getBigDecimal("costoUnitario"));
+				
+				composizioni.add(composizione);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+		return composizioni;
+	}
 
 	@Override
 	public synchronized boolean doUpdate(ComposizioneOrdineBean bean) throws SQLException {
@@ -152,16 +196,17 @@ public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 		int result = 0;
 		
 		String query = "UPDATE " + ComposizioneOrdineDAO.TABLE_NAME + " SET "
-				+ "ordine = ?, prodotto = ?, quantitaProdotto = ?, costoUnitario = ? WHERE ordine = ? AND prodotto = ?;";
+				+ "ordine = ?, cliente = ?, prodotto = ?, quantitaProdotto = ?, costoUnitario = ? WHERE ordine = ? AND prodotto = ?;";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			
 			statement.setInt(1, bean.getOrdine());
-			statement.setString(2, bean.getProdotto());
-			statement.setInt(3, bean.getQuantitaProdotto());
-			statement.setBigDecimal(4, bean.getCostoUnitario());
+			statement.setString(2, bean.getCliente());
+			statement.setString(3, bean.getProdotto());
+			statement.setInt(4, bean.getQuantitaProdotto());
+			statement.setBigDecimal(5, bean.getCostoUnitario());
 			result = statement.executeUpdate();
 			
 			con.commit();

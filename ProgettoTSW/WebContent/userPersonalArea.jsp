@@ -29,14 +29,18 @@
   	<% List<IndirizzoBean> indirizzi = (List<IndirizzoBean>) request.getSession().getAttribute("indirizzi"); 
   		Iterator<IndirizzoBean> iterIndirizzi = indirizzi.iterator();
   		int i = 0;
-  		IndirizzoBean indirizzo = new IndirizzoBean();
+  		IndirizzoBean indirizzo = new IndirizzoBean(); %>
   		
-  		while(iterIndirizzi.hasNext()){
+  		<div class="info">
+  			<a href="#">Aggiungi un indirizzo di consegna</a>
+  		</div>
+  		
+  		<% while(iterIndirizzi.hasNext()){
   			indirizzo = iterIndirizzi.next();%>
   			i += 1;
   			<div class="info">
   			<h4>Indirizzo <%out.print(i);%></h4>
-  			<p class="indirizzo">
+  			<p>
   				<% out.print(indirizzo.getVia() + " " + indirizzo.getCivico() + " ");
   					if(indirizzo.getScala() != "null") {
   						out.print(indirizzo.getScala() + " ");
@@ -48,12 +52,63 @@
   					
   					out.print("\n");
   					out.println(indirizzo.getCitta() + "," + indirizzo.getProvincia() + " " + indirizzo.getCAP());
-  					out.println(indirizzo.getNazione());
-  				%>
+  					out.println(indirizzo.getNazione()); %>
   			</p>
+  			<% if(indirizzo.getPreferito().equalsIgnoreCase("si")) { %>
+  						<h4>Indirizzo predefinito</h4>
+  					<%}%>
   			</div>
   		<%}%>
-  	
+  		
+  		<h4>I tuoi metodi di pagamento</h4>
+  		<% List<MetodoDiPagamentoBean> metodiPagamento = (List<MetodoDiPagamentoBean>) request.getSession().getAttribute("metodiPagamento"); 
+  		Iterator<MetodoDiPagamentoBean> iterMetodi = metodiPagamento.iterator();
+  		i = 0;
+  		MetodoDiPagamentoBean metodoPagamento = new MetodoDiPagamentoBean(); %>
+  		
+  		<div class="info">
+  			<a href="#">Aggiungi un metodo di pagamento</a>
+  		</div>
+  		
+  		<% while(iterMetodi.hasNext()){
+  			metodoPagamento = iterMetodi.next();%>
+  			i += 1;
+  			<div class="info">
+  			<h4>Metodo di pagamento <%out.print(i);%></h4>
+  			<p>
+  				<% 
+  					out.println(metodoPagamento.getTipo());
+  					if(metodoPagamento.getIBAN() != "null") {
+  						out.println(metodoPagamento.getIBAN() + " ");
+  					} else {
+  						out.println(metodoPagamento.getNumCarta() + " ");
+  					}
+  					
+  					out.println(metodoPagamento.getVia() + " " + metodoPagamento.getCivico());
+  					out.println(metodoPagamento.getCitta() + "," + metodoPagamento.getProvincia() + " " + metodoPagamento.getCAP());
+  					out.println(metodoPagamento.getNazione()); %>
+  			</p>
+  			<% if(metodoPagamento.getPreferito().equalsIgnoreCase("si")) { %>
+						<h4>Metodo di pagamento predefinito</h4>
+					<%}%>
+  			</div>
+  			<% } %>
+  			
+  			<h4>I tuoi ordini</h4>
+  		<% List<OrdineBean> ordini = (List<OrdineBean>) request.getSession().getAttribute("ordini"); 
+  		Iterator<OrdineBean> iterOrdini = ordini.iterator();
+  		OrdineBean ordine = new OrdineBean(); 
+  		while (iterOrdini.hasNext()){
+  			ordine = iterOrdini.next();%>
+  		
+  		<div class="info">
+  		<h4>Ordine <% out.println(ordine.getNumOrdineProgressivo()); %></h4>
+  		<p>
+  			<% out.println(ordine.getCostoTotale()); %>
+  			<a href="#">Vedi dettagli</a>
+  		</p>
+  		</div>
+  		<%}%>
   </div>
   
 	<jsp:include page="./footer.jsp" />

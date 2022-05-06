@@ -8,12 +8,14 @@ public class ComposizioneOrdineBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private int ordine;
+	private String cliente;
 	private String prodotto;
 	private int quantitaProdotto;
 	private BigDecimal costoUnitario;
 	
 	public ComposizioneOrdineBean() {
 		this.prodotto = "null";
+		this.setCliente("null");
 		this.ordine = -1;
 		this.quantitaProdotto = -1;
 	}
@@ -55,6 +57,14 @@ public class ComposizioneOrdineBean implements Serializable {
 	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(String cliente) {
+		this.cliente = cliente;
 	}
 	
 	

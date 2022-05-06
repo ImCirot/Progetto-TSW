@@ -90,8 +90,7 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("admin", false);
 			}
 			
-			RequestDispatcher view = request.getRequestDispatcher("./userPersonalArea.jsp");
-			view.forward(request, response);
+			response.sendRedirect("login?utente=" + username);
 		} else {
 			request.getSession().setAttribute("logged", (Boolean) false);
 			request.getSession().setAttribute("utente", username);
