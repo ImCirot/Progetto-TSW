@@ -2,40 +2,42 @@ package model;
 
 import java.io.Serializable;
 
-public class IndirizzoBean implements Serializable {
+public class MetodoDiPagamentoBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private int numIndirizzoProgressivo;
+	private int numPagamentoProgressivo;
 	private String utente;
 	private String via;
 	private String citta;
 	private String CAP;
 	private String civico;
 	private String provincia;
-	private String scala;
-	private String interno;
+	private String tipo;
+	private String IBAN;
+	private String numCarta;
 	private String preferito;
 	
-	public IndirizzoBean() {
-		this.numIndirizzoProgressivo = -1;
+	public MetodoDiPagamentoBean() {
+		this.numPagamentoProgressivo = -1;
 		this.utente = "null";
 		this.via = "null";
 		this.citta = "null";
 		this.CAP = "null";
 		this.civico = "null";
 		this.provincia = "null";
-		this.scala = "null";
-		this.interno = "null";
+		this.tipo = "null";
+		this.IBAN = "null";
+		this.numCarta = "null";
 		this.preferito = "null";
 	}
 
-	public int getNumIndirizzoProgressivo() {
-		return numIndirizzoProgressivo;
+	public int getNumPagamentoProgressivo() {
+		return numPagamentoProgressivo;
 	}
 
-	public void setNumIndirizzoProgressivo(int numIndirizzoProgressivo) {
-		this.numIndirizzoProgressivo = numIndirizzoProgressivo;
+	public void setNumPagamentoProgressivo(int numPagamentoProgressivo) {
+		this.numPagamentoProgressivo = numPagamentoProgressivo;
 	}
 
 	public String getUtente() {
@@ -77,7 +79,8 @@ public class IndirizzoBean implements Serializable {
 	public void setCivico(String civico) {
 		this.civico = civico;
 	}
-
+	
+	
 	public String getProvincia() {
 		return provincia;
 	}
@@ -86,20 +89,28 @@ public class IndirizzoBean implements Serializable {
 		this.provincia = provincia;
 	}
 
-	public String getScala() {
-		return scala;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setScala(String scala) {
-		this.scala = scala;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
-	public String getInterno() {
-		return interno;
+	public String getIBAN() {
+		return IBAN;
 	}
 
-	public void setInterno(String interno) {
-		this.interno = interno;
+	public void setIBAN(String iBAN) {
+		IBAN = iBAN;
+	}
+
+	public String getNumCarta() {
+		return numCarta;
+	}
+
+	public void setNumCarta(String numCarta) {
+		this.numCarta = numCarta;
 	}
 
 	public String getPreferito() {
