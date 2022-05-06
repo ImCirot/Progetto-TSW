@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8">
     <title>Snackz</title>
-    <link rel="stylesheet" href="./Css/style.css">
+    <link rel="stylesheet" href="./Css/HeaderFooterCss.css">
   </head>
   <body>
     <footer>

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Snackz</title>
+<link rel="stylesheet" href="./Css/mainpage.css">
 </head>
 <body>
   <jsp:include page="./header.jsp" />
@@ -34,15 +35,19 @@
   				dettagli = iterDettagli.next();
   				if(prodotto.getCodiceSeriale().equals(dettagli.getProdotto())) break;
   			}%>
-
+			
+				
   			<div class="prodotto">
-  				<a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>">
+  				<a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>">	
   				<img src="<% out.println(dettagli.getImmagine()); %>" alt="prodotto">
   				</a>
   				<h4><% out.println(prodotto.getNome()); %></h4>
   				<p class="prezzo"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
+  				<input type="hidden" name="prodotto" value="<% out.println(prodotto.getCodiceSeriale()); %>">
+  				<input type="hidden" value="1" name="quantita">
+  				<button type="submit">Acquista</button>
   			</div>
-
+  			
   		<%} %>
   		
   </div>

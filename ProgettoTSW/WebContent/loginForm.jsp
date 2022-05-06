@@ -25,7 +25,6 @@
   	<% String error = (String) request.getSession().getAttribute("error");
   		if(error != null) {%>
   		<p class="error"><%out.println(error);%></p>
-  		
   		<%
   		request.getSession().removeAttribute("error");
   		}%>

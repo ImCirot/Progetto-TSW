@@ -4,7 +4,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./Css/style.css">
+    <link rel="stylesheet" href="./Css/HeaderFooterCss.css">
     <title>Snackz</title>
   </head>
   <body>
