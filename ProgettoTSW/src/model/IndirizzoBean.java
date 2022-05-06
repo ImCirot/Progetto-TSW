@@ -13,9 +13,11 @@ public class IndirizzoBean implements Serializable {
 	private String CAP;
 	private String civico;
 	private String provincia;
+	private String nazione;
 	private String scala;
 	private String interno;
 	private String preferito;
+	
 	
 	public IndirizzoBean() {
 		this.numIndirizzoProgressivo = -1;
@@ -112,6 +114,14 @@ public class IndirizzoBean implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getNazione() {
+		return nazione;
+	}
+
+	public void setNazione(String nazione) {
+		this.nazione = nazione;
 	}
 	
 	

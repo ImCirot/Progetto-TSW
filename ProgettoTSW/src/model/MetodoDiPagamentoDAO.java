@@ -17,7 +17,7 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 		PreparedStatement statement = null;
 		
 		String query = "INSERT INTO " + MetodoDiPagamentoDAO.TABLE_NAME + 
-					" (numPagamentoProgessivo,utente,via,citta,CAP,civico,provincia,tipo,IBAN,numCarta,preferito) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+					" (numPagamentoProgessivo,utente,via,citta,CAP,civico,provincia,nazione,tipo,IBAN,numCarta,preferito) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -30,10 +30,11 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 			statement.setString(5, bean.getCAP());
 			statement.setString(6, bean.getCivico());
 			statement.setString(7, bean.getProvincia());
-			statement.setString(8, bean.getTipo());
-			statement.setString(9, bean.getIBAN());
-			statement.setString(10, bean.getNumCarta());
-			statement.setString(11, bean.getPreferito());
+			statement.setString(8, bean.getNazione());
+			statement.setString(9, bean.getTipo());
+			statement.setString(10, bean.getIBAN());
+			statement.setString(11, bean.getNumCarta());
+			statement.setString(12, bean.getPreferito());
 			
 			statement.executeUpdate();
 			
@@ -114,6 +115,7 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 				pagamento.setCAP(result.getString("CAP"));
 				pagamento.setCivico(result.getString("civico"));
 				pagamento.setProvincia(result.getString("provincia"));
+				pagamento.setNazione(result.getString("nazione"));
 				pagamento.setTipo(result.getString("tipo"));
 				pagamento.setIBAN(result.getString("IBAN"));
 				pagamento.setNumCarta(result.getString("numCarta"));
@@ -162,6 +164,7 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 				pagamento.setCAP(result.getString("CAP"));
 				pagamento.setCivico(result.getString("civico"));
 				pagamento.setProvincia(result.getString("provincia"));
+				pagamento.setNazione(result.getString("nazione"));
 				pagamento.setTipo(result.getString("tipo"));
 				pagamento.setIBAN(result.getString("IBAN"));
 				pagamento.setNumCarta(result.getString("numCarta"));
@@ -190,7 +193,7 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 		
 		String query = "UPDATE " + MetodoDiPagamentoDAO.TABLE_NAME + " SET "
 				+ " via = ?, citta = ?, CAP = ?, civico = ?, "
-				+ "provincia = ?, tipo = ?, IBAN = ?, numCarta = ?, preferito = ? WHERE numPagamentoProgressivo = ? AND utente = ?;";
+				+ "provincia = ?, nazione = ?, tipo = ?, IBAN = ?, numCarta = ?, preferito = ? WHERE numPagamentoProgressivo = ? AND utente = ?;";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -201,12 +204,13 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 			statement.setString(3, bean.getCAP());
 			statement.setString(4, bean.getCivico());
 			statement.setString(5, bean.getProvincia());
-			statement.setString(6, bean.getTipo());
-			statement.setString(7, bean.getIBAN());
-			statement.setString(8, bean.getNumCarta());
-			statement.setString(9, bean.getPreferito());
-			statement.setInt(10, bean.getNumPagamentoProgressivo());
-			statement.setString(11, bean.getUtente());
+			statement.setString(6, bean.getNazione());
+			statement.setString(7, bean.getTipo());
+			statement.setString(8, bean.getIBAN());
+			statement.setString(9, bean.getNumCarta());
+			statement.setString(10, bean.getPreferito());
+			statement.setInt(11, bean.getNumPagamentoProgressivo());
+			statement.setString(12, bean.getUtente());
 			
 			
 			result = statement.executeUpdate();
@@ -224,4 +228,55 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 		
 		return result != 0;
 	}
+
+	@Override
+	public synchronized List<MetodoDiPagamentoBean> doRetrieveAllByKey(String key) throws SQLException {
+		Connection con = null;
+		PreparedStatement statement = null;
+		
+		List<MetodoDiPagamentoBean> metodiPagamento = new ArrayList<>();
+		
+		String query = "SELECT * FROM " + MetodoDiPagamentoDAO.TABLE_NAME + " WHERE utente = ?;";
+		
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			
+			statement.setString(1, key);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				MetodoDiPagamentoBean pagamento = new MetodoDiPagamentoBean();
+				
+				pagamento.setNumPagamentoProgressivo(result.getInt("numIndirizzoProgessivo"));
+				pagamento.setUtente(result.getString("utente"));
+				pagamento.setVia(result.getString("via"));
+				pagamento.setCitta(result.getString("citta"));
+				pagamento.setCAP(result.getString("CAP"));
+				pagamento.setCivico(result.getString("civico"));
+				pagamento.setProvincia(result.getString("provincia"));
+				pagamento.setNazione(result.getString("nazione"));
+				pagamento.setTipo(result.getString("tipo"));
+				pagamento.setIBAN(result.getString("IBAN"));
+				pagamento.setNumCarta(result.getString("numCarta"));
+				pagamento.setPreferito(result.getString("preferito"));
+				
+				metodiPagamento.add(pagamento);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+		return metodiPagamento;
+	}
+	
+	
 }

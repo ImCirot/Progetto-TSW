@@ -17,7 +17,7 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 		PreparedStatement statement = null;
 		
 		String query = "INSERT INTO " + IndirizzoDAO.TABLE_NAME + 
-					" (numIndirizzoProgessivo,utente,via,citta,CAP,civico,provincia,scala,interno,preferito) VALUES (?,?,?,?,?,?,?,?,?,?);";
+					" (numIndirizzoProgessivo,utente,via,citta,CAP,civico,provincia,nazione,scala,interno,preferito) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -30,9 +30,10 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 			statement.setString(5, bean.getCAP());
 			statement.setString(6, bean.getCivico());
 			statement.setString(7, bean.getProvincia());
-			statement.setString(8, bean.getScala());
-			statement.setString(9, bean.getInterno());
-			statement.setString(10, bean.getPreferito());
+			statement.setString(8, bean.getNazione());
+			statement.setString(9, bean.getScala());
+			statement.setString(10, bean.getInterno());
+			statement.setString(11, bean.getPreferito());
 			
 			statement.executeUpdate();
 			
@@ -113,6 +114,7 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 				indirizzo.setCAP(result.getString("CAP"));
 				indirizzo.setCivico(result.getString("civico"));
 				indirizzo.setProvincia(result.getString("provincia"));
+				indirizzo.setNazione(result.getString("nazione"));
 				indirizzo.setScala(result.getString("scala"));
 				indirizzo.setInterno(result.getString("interno"));
 				indirizzo.setPreferito(result.getString("preferito"));
@@ -160,6 +162,7 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 				indirizzo.setCAP(result.getString("CAP"));
 				indirizzo.setCivico(result.getString("civico"));
 				indirizzo.setProvincia(result.getString("provincia"));
+				indirizzo.setNazione(result.getString("nazione"));
 				indirizzo.setScala(result.getString("scala"));
 				indirizzo.setInterno(result.getString("interno"));
 				indirizzo.setPreferito(result.getString("preferito"));
@@ -187,7 +190,7 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 		
 		String query = "UPDATE " + IndirizzoDAO.TABLE_NAME + " SET "
 				+ " via = ?, citta = ?, CAP = ?, civico = ?, "
-				+ "provincia = ?, scala = ?, interno = ?, preferito = ? WHERE numIndirizzoProgessivo = ? AND utente = ?;";
+				+ "provincia = ?, nazione = ?, scala = ?, interno = ?, preferito = ? WHERE numIndirizzoProgessivo = ? AND utente = ?;";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -198,11 +201,12 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 			statement.setString(3, bean.getCAP());
 			statement.setString(4, bean.getCivico());
 			statement.setString(5, bean.getProvincia());
-			statement.setString(6, bean.getScala());
-			statement.setString(7, bean.getInterno());
-			statement.setString(8, bean.getPreferito());
-			statement.setInt(9, bean.getNumIndirizzoProgressivo());
-			statement.setString(10, bean.getUtente());
+			statement.setString(6, bean.getNazione());
+			statement.setString(7, bean.getScala());
+			statement.setString(8, bean.getInterno());
+			statement.setString(9, bean.getPreferito());
+			statement.setInt(10, bean.getNumIndirizzoProgressivo());
+			statement.setString(11, bean.getUtente());
 			
 			result = statement.executeUpdate();
 			
@@ -220,4 +224,52 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 		return result != 0;
 	}
 
+	@Override
+	public synchronized List<IndirizzoBean> doRetrieveAllByKey(String key) throws SQLException {
+		Connection con = null;
+		PreparedStatement statement = null;
+		
+		List<IndirizzoBean> indirizzi = new ArrayList<>();
+		
+		String query = "SELECT * FROM " + IndirizzoDAO.TABLE_NAME + " WHERE utente = ?;";
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			
+			statement.setString(1, key);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				IndirizzoBean indirizzo = new IndirizzoBean();
+				
+				indirizzo.setNumIndirizzoProgressivo(result.getInt("numIndirizzoProgessivo"));
+				indirizzo.setUtente(result.getString("utente"));
+				indirizzo.setVia(result.getString("via"));
+				indirizzo.setCitta(result.getString("citta"));
+				indirizzo.setCAP(result.getString("CAP"));
+				indirizzo.setCivico(result.getString("civico"));
+				indirizzo.setProvincia(result.getString("provincia"));
+				indirizzo.setNazione(result.getString("nazione"));
+				indirizzo.setScala(result.getString("scala"));
+				indirizzo.setInterno(result.getString("interno"));
+				indirizzo.setPreferito(result.getString("preferito"));
+				
+				indirizzi.add(indirizzo);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+		return indirizzi;
+	}
+
+	
 }

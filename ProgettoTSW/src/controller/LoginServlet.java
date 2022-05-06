@@ -2,8 +2,11 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Base64.Encoder;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.IndirizzoBean;
+import model.IndirizzoDAO;
+import model.MetodoDiPagamentoBean;
+import model.MetodoDiPagamentoDAO;
+import model.OrdineBean;
+import model.OrdineDAO;
 import model.UtenteBean;
 import model.UtenteDAO;
 
@@ -34,8 +43,31 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String utente = request.getParameter("utente");
+		List<IndirizzoBean> indirizzi = new ArrayList<>();
+		List<MetodoDiPagamentoBean> metodiPagamento = new ArrayList<>();
+		List<OrdineBean> ordini = new ArrayList<>();
+		
+		IndirizzoDAO dbIndirizzo = new IndirizzoDAO();
+		MetodoDiPagamentoDAO dbPagamento = new MetodoDiPagamentoDAO();
+		OrdineDAO dbOrdine = new OrdineDAO();
+		
+		try {
+			indirizzi = dbIndirizzo.doRetrieveAllByKey(utente);
+			metodiPagamento = dbPagamento.doRetrieveAllByKey(utente);
+			ordini = dbOrdine.doRetrieveAllByKey(utente);
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		request.getSession().setAttribute("indirizzi", indirizzi);
+		request.getSession().setAttribute("metodiPagamento", metodiPagamento);
+		request.getSession().setAttribute("ordini", ordini);
+		
+		RequestDispatcher view = request.getRequestDispatcher("./userPersonalArea.jsp");
+		view.forward(request, response);
 	}
 
 	/**
@@ -62,6 +94,7 @@ public class LoginServlet extends HttpServlet {
 			view.forward(request, response);
 		} else {
 			request.getSession().setAttribute("logged", (Boolean) false);
+			request.getSession().setAttribute("utente", username);
 			request.getSession().setAttribute("error", "Username e/o password invalidi.");
 			response.sendRedirect("./loginForm.jsp");
 		}

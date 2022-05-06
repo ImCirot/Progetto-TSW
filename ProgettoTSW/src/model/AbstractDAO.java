@@ -39,5 +39,11 @@ public abstract class AbstractDAO<T> implements ModelDAO<T> {
 	public synchronized boolean doUpdate(T bean) throws SQLException {
 		throw new UnsupportedOperationException("Operazione non supportata da questo DAO");
 	}
+
+	@Override
+	public synchronized List<T> doRetrieveAllByKey(String key) throws SQLException {
+		throw new UnsupportedOperationException("Operazione non supportata da questo DAO");
+	}
+	
 	
 }

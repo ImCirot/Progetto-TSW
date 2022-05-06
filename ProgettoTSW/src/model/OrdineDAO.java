@@ -17,7 +17,7 @@ public class OrdineDAO extends AbstractDAO<OrdineBean> {
 		PreparedStatement statement = null;
 		
 		String query = "INSERT INTO " + OrdineDAO.TABLE_NAME + 
-					" (numOrdineProgressivo,cliente,tipoPagamento,IBAN,numCarta,citta,CAP,via,civico,provincia,dataAcquisto,costoTotale) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
+					" (numOrdineProgressivo,cliente,tipoPagamento,IBAN,numCarta,citta,CAP,via,civico,provincia,nazione,dataAcquisto,costoTotale) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -33,8 +33,9 @@ public class OrdineDAO extends AbstractDAO<OrdineBean> {
 			statement.setString(8, bean.getVia());
 			statement.setString(9, bean.getCivico());
 			statement.setString(10, bean.getProvincia());
-			statement.setString(11, bean.getDataAcquisto());
-			statement.setBigDecimal(12, bean.getCostoTotale());
+			statement.setString(11, bean.getNazione());
+			statement.setString(12, bean.getDataAcquisto());
+			statement.setBigDecimal(13, bean.getCostoTotale());
 			statement.executeUpdate();
 			
 			con.commit();
@@ -103,6 +104,7 @@ public class OrdineDAO extends AbstractDAO<OrdineBean> {
 				ordine.setVia(result.getString("via"));
 				ordine.setCivico(result.getString("civico"));
 				ordine.setProvincia(result.getString("provincia"));
+				ordine.setNazione(result.getString("nazione"));
 				ordine.setDataAcquisto(result.getString("dataAcquisto"));
 				ordine.setCostoTotale(result.getBigDecimal("costoTotale"));
 			}
@@ -145,6 +147,17 @@ public class OrdineDAO extends AbstractDAO<OrdineBean> {
 				
 				ordine.setNumOrdineProgressivo(result.getInt("numOrdineProgressivo"));
 				ordine.setCliente(result.getString("cliente"));
+				ordine.setTipoPagamento(result.getString("tipoPagamento"));
+				ordine.setIBAN(result.getString("IBAN"));
+				ordine.setNumCarta(result.getString("numCarta"));
+				ordine.setCitta(result.getString("citta"));
+				ordine.setCAP(result.getString("CAP"));
+				ordine.setVia(result.getString("via"));
+				ordine.setCivico(result.getString("civico"));
+				ordine.setProvincia(result.getString("provincia"));
+				ordine.setNazione(result.getString("nazione"));
+				ordine.setDataAcquisto(result.getString("dataAcquisto"));
+				ordine.setCostoTotale(result.getBigDecimal("costoTotale"));
 				
 				ordini.add(ordine);
 			}
@@ -169,7 +182,7 @@ public class OrdineDAO extends AbstractDAO<OrdineBean> {
 		
 		String query = "UPDATE " + OrdineDAO.TABLE_NAME + " SET "
 				+ "numOrdineProgressivo = ?, cliente = ?, tipoPagamento = ?, IBAN = ?, numCarta = ?, citta = ?,"
-				+ " CAP = ?, via = ?, civico = ?, provincia = ?, dataAcquisto = ?, costoTotale = ? WHERE numOrdineProgressivo = ?;";
+				+ " CAP = ?, via = ?, civico = ?, provincia = ?, nazione = ?, dataAcquisto = ?, costoTotale = ? WHERE numOrdineProgressivo = ?;";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -185,8 +198,9 @@ public class OrdineDAO extends AbstractDAO<OrdineBean> {
 			statement.setString(8, bean.getVia());
 			statement.setString(9, bean.getCivico());
 			statement.setString(10, bean.getProvincia());
-			statement.setString(11, bean.getDataAcquisto());
-			statement.setBigDecimal(12, bean.getCostoTotale());
+			statement.setString(11, bean.getNazione());
+			statement.setString(12, bean.getDataAcquisto());
+			statement.setBigDecimal(13, bean.getCostoTotale());
 			
 			result = statement.executeUpdate();
 			

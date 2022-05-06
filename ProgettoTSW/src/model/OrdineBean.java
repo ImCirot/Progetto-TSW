@@ -16,6 +16,7 @@ public class OrdineBean implements Serializable {
 	private String via;
 	private String civico;
 	private String provincia;
+	private String nazione;
 	private String dataAcquisto;
 	private BigDecimal costoTotale;
 	
@@ -30,6 +31,7 @@ public class OrdineBean implements Serializable {
 		this.via = "null";
 		this.civico = "null";
 		this.provincia = "null";
+		this.setNazione("null");
 		this.dataAcquisto = "null";
 		
 		
@@ -109,6 +111,14 @@ public class OrdineBean implements Serializable {
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getNazione() {
+		return nazione;
+	}
+
+	public void setNazione(String nazione) {
+		this.nazione = nazione;
 	}
 	
 	

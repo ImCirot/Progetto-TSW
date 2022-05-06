@@ -13,6 +13,7 @@ public class MetodoDiPagamentoBean implements Serializable {
 	private String CAP;
 	private String civico;
 	private String provincia;
+	private String nazione;
 	private String tipo;
 	private String IBAN;
 	private String numCarta;
@@ -26,6 +27,7 @@ public class MetodoDiPagamentoBean implements Serializable {
 		this.CAP = "null";
 		this.civico = "null";
 		this.provincia = "null";
+		this.nazione = "null";
 		this.tipo = "null";
 		this.IBAN = "null";
 		this.numCarta = "null";
@@ -123,6 +125,14 @@ public class MetodoDiPagamentoBean implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public String getNazione() {
+		return nazione;
+	}
+
+	public void setNazione(String nazione) {
+		this.nazione = nazione;
 	}
 	
 	

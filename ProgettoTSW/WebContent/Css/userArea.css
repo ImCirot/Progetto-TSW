@@ -27,10 +27,22 @@
 	color: red;
 }
 
-.prodottoDettagli form {
-	padding: 50px;
+.info-catalogo{
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content:  flex-start;
+  flex-wrap: wrap;
+  padding: 100px;
+  gap: 30px 40px;
 }
 
+.info{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 150px;
+  text-align: center;
+  padding: 20px;
+}
 
 *,
 *:before,

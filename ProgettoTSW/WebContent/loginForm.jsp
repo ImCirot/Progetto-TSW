@@ -11,7 +11,9 @@
 	<jsp:include page="./header.jsp" />
 	<% Boolean logged = (Boolean) request.getSession().getAttribute("logged");
 		if(logged != null && logged) {
-			response.sendRedirect("./userPersonalArea.jsp");
+			String utente = (String) request.getSession().getAttribute("utente");
+			String redirect = "login?utente=" + utente;
+			response.sendRedirect(redirect);
 		}%>
   <div class="login">
     <h1>Accedi all'area personale:</h1>
