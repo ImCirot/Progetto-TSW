@@ -11,11 +11,6 @@
   width: 30%;
 }
 
-.prodottoDettagli img:hover{
-	cursor: pointer;
-	opacity: 0.7;
-}
-
 .descrizione p {
 	padding: 20px;
 }

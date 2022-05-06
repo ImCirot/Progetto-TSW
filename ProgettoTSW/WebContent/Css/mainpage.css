@@ -13,11 +13,11 @@
   max-width: 250px;
   text-align: center;
   padding: 20px;
+  
 }
 .prodotto:hover{
-	animation: myAnim 1s ease 0s 1 normal forwards;
+	animation: hoverproduct 0.5s ease 0s normal forwards;
 }
-
 
 .prodotto img {
   max-width: 80%;
@@ -38,11 +38,13 @@ prodotto h4 {
 	color: white;
 	font-size: 16px;
 	width: 80%;
+	border-radius: 10px;
+    box-shadow:  20px 20px 60px lightgrey,
+             -20px -20px 60px white;
 }
 
 .prodotto button:hover{
-	opacity: 0.7;
-	cursor: pointer;
+	animation: myAnim 1s ease 0s 1 normal forwards;
 }
 
 *,
@@ -81,3 +83,16 @@ prodotto h4 {
 		transform: scale3d(1, 1, 1);
 	}
 }
+
+@keyframes hoverproduct {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
