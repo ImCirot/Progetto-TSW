@@ -32,17 +32,17 @@
   		IndirizzoBean indirizzo = new IndirizzoBean(); %>
   		
   		<% while(iterIndirizzi.hasNext()){
-  			indirizzo = iterIndirizzi.next();%>
-  			i += 1;
+  			indirizzo = iterIndirizzi.next();
+  			i += 1;%>
   			<div class="info">
   			<h4>Indirizzo <%out.print(i);%></h4>
   			<p>
   				<% out.print(indirizzo.getVia() + " " + indirizzo.getCivico() + " ");
-  					if(indirizzo.getScala() != "null") {
+  					if(indirizzo.getScala() != null) {
   						out.print(indirizzo.getScala() + " ");
   					}
   					
-  					if(indirizzo.getInterno() != "null") {
+  					if(indirizzo.getInterno() != null) {
   						out.print(indirizzo.getInterno() + "  ");
   					}
   					
@@ -68,14 +68,14 @@
   		MetodoDiPagamentoBean metodoPagamento = new MetodoDiPagamentoBean(); %>
   		
   		<% while(iterMetodi.hasNext()){
-  			metodoPagamento = iterMetodi.next();%>
-  			i += 1;
+  			metodoPagamento = iterMetodi.next();
+  			i += 1;%>
   			<div class="info">
   			<h4>Metodo di pagamento <%out.print(i);%></h4>
   			<p>
   				<% 
   					out.println(metodoPagamento.getTipo());
-  					if(metodoPagamento.getIBAN() != "null") {
+  					if(metodoPagamento.getIBAN() != null) {
   						out.println(metodoPagamento.getIBAN() + " ");
   					} else {
   						out.println(metodoPagamento.getNumCarta() + " ");

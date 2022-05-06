@@ -27,7 +27,7 @@
 	color: red;
 }
 
-.info-catalogo{
+.container-info{
   display: flex;
   width: 100%;
   height: auto;
@@ -39,7 +39,7 @@
 
 .info{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 150px;
+  max-width: 250px;
   text-align: center;
   padding: 20px;
 }

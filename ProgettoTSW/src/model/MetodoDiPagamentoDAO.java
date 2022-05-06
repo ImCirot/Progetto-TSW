@@ -17,7 +17,7 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 		PreparedStatement statement = null;
 		
 		String query = "INSERT INTO " + MetodoDiPagamentoDAO.TABLE_NAME + 
-					" (numPagamentoProgessivo,utente,via,citta,CAP,civico,provincia,nazione,tipo,IBAN,numCarta,preferito) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
+					" (numPagamentoProgressivo,utente,via,citta,CAP,civico,provincia,nazione,tipo,IBAN,numCarta,preferito) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -108,7 +108,7 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
-				pagamento.setNumPagamentoProgressivo(result.getInt("numIndirizzoProgessivo"));
+				pagamento.setNumPagamentoProgressivo(result.getInt("numPagamentoProgressivo"));
 				pagamento.setUtente(result.getString("utente"));
 				pagamento.setVia(result.getString("via"));
 				pagamento.setCitta(result.getString("citta"));
@@ -157,7 +157,7 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 			while(result.next()) {
 				MetodoDiPagamentoBean pagamento = new MetodoDiPagamentoBean();
 				
-				pagamento.setNumPagamentoProgressivo(result.getInt("numIndirizzoProgessivo"));
+				pagamento.setNumPagamentoProgressivo(result.getInt("numPagamentoProgressivo"));
 				pagamento.setUtente(result.getString("utente"));
 				pagamento.setVia(result.getString("via"));
 				pagamento.setCitta(result.getString("citta"));
@@ -250,7 +250,7 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 			while(result.next()) {
 				MetodoDiPagamentoBean pagamento = new MetodoDiPagamentoBean();
 				
-				pagamento.setNumPagamentoProgressivo(result.getInt("numIndirizzoProgessivo"));
+				pagamento.setNumPagamentoProgressivo(result.getInt("numPagamentoProgressivo"));
 				pagamento.setUtente(result.getString("utente"));
 				pagamento.setVia(result.getString("via"));
 				pagamento.setCitta(result.getString("citta"));

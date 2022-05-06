@@ -226,12 +226,7 @@ public class OrdineDAO extends AbstractDAO<OrdineBean> {
 		
 		List<OrdineBean> ordini = new ArrayList<>();
 		
-		String query = "SELECT * FROM " + OrdineDAO.TABLE_NAME + " WHERE numOrdineProgressivo = ?";
-		
-//		if(checkOrder(order)) {
-//			query += " ORDER BY" + order;
-//		}
-//		se ne parla dopo TODO
+		String query = "SELECT * FROM " + OrdineDAO.TABLE_NAME + " WHERE cliente = ?";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
