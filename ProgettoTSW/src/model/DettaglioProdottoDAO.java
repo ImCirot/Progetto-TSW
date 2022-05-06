@@ -223,7 +223,7 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 			statement = con.prepareStatement(query);
 			
 			statement.setString(1, bean.getTipo());
-			statement.setDouble(2, bean.getCostoUnitario().doubleValue());
+			statement.setBigDecimal(2, bean.getCostoUnitario());
 			statement.setInt(3, bean.getIVA());
 			statement.setInt(4, bean.getQuantita());
 			statement.setString(5, bean.getOrigine());
