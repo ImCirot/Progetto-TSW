@@ -75,7 +75,7 @@
   			<p>
   				<% 
   					out.println(metodoPagamento.getTipo());
-  					if(metodoPagamento.getIBAN() != null) {
+  					if(metodoPagamento.getIBAN() != "null") {
   						out.println(metodoPagamento.getIBAN() + " ");
   					} else {
   						out.println(metodoPagamento.getNumCarta() + " ");
