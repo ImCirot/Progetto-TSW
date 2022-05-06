@@ -14,7 +14,7 @@
   	Boolean admin = (boolean) request.getSession().getAttribute("admin");
 		if((admin != null) && admin) {
 	%>
-		<div class="prodotto">
+		<div class="prodotto"> <!--  ciao -->
 			<a href="gestisciProdotti">
 			<img src="https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/plus.png" alt="aggiungiProdotto">
 			</a>
