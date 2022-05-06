@@ -1,0 +1,59 @@
+.prodottoDettagli{
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: space-evenly flex-start;
+  flex-wrap: wrap;
+  padding: 50px;
+}
+
+.prodottoDettagli img {
+  width: 30%;
+}
+
+.prodottoDettagli img:hover{
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+.descrizione p {
+	padding: 20px;
+}
+
+.descrizione .prezzo {
+	font-size: 24px;
+}
+
+.descrizione {
+  max-width: 50%;
+  padding: 20px;
+}
+
+.descrizione input[type=number] {
+	margin-left: 20px;
+	width: 5em;
+}
+
+.descrizione button {
+	padding: 10px;
+	margin-left: 20px;
+	border: none;
+	background-color: #9932CC;
+	color: white;
+	font-size: 16px;
+}
+
+.descrizione button:hover{
+	cursor: pointer;
+	opacity: 0.7;
+}
+
+
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}

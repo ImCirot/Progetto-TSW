@@ -1,0 +1,55 @@
+.container-catalogo{
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content:  flex-start;
+  flex-wrap: wrap;
+  padding: 100px;
+  gap: 30px 40px;
+}
+
+.prodotto{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 250px;
+  text-align: center;
+  padding: 20px;
+}
+
+.prodotto img:hover{
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.prodotto img {
+  max-width: 80%;
+}
+
+prodotto h4 {
+  text-align: left;
+}
+
+.prezzo {
+  font-size: 16px;
+}
+
+.prodotto button {
+	padding: 10px;
+	border: none;
+	background-color: #9932CC;
+	color: white;
+	font-size: 16px;
+	width: 80%;
+}
+
+.prodotto button:hover{
+	opacity: 0.7;
+	cursor: pointer;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}

@@ -1,0 +1,125 @@
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+}
+
+.header{
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  background: linear-gradient(0deg, rgba(0,0,255,.1), rgba(0,0,255, 0.2)),
+  url('../Images/backgroundImage.png');
+  background-size: 40%;
+  position:relative;
+}
+
+.header_filter{
+  background: white;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+.logo{
+  position: relative;
+  z-index: 1;
+}
+
+.logo img{
+  height: 100%;
+  width: 100%;
+}
+
+.navbar{
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  background: #9932CC;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.icons{
+  position: inherit;
+  width: 16px;
+  height: 16px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu ul li{
+  display: inline-block;
+}
+
+.menu ul li a{
+  padding: 15px;
+  display: block;
+  color: white;
+}
+
+.menu ul li a:hover{
+  background: #B23AEE;
+  color: white;
+}
+
+/* navbar caalogo */
+.catalogo ul li{
+  display: inline-block;
+}
+
+.catalogo ul li a{
+  padding: 15px;
+  display: block;
+  color: white;
+}
+
+.catalogo ul li a:hover{
+  background: #B23AEE;
+}
+
+footer{
+  background-color: #9932CC;
+  height: auto;
+  padding: 20px;
+  width: 100%;
+}
+
+address {
+  text-align: center;
+  color: white;
+  font-size: 12px;
+  font-style: normal;
+  padding: 5px;
+}
+
+.socialLogo{
+  display: inline;
+  margin: 5px;
+  position: inherit;
+  width: 32px;
+  height: 32px;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}

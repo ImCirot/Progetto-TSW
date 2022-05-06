@@ -1,0 +1,12 @@
+.dati p{
+  padding: 50px;
+}
+
+.login {
+  padding: 50px;
+}
+
+.dati input[type=submit] {
+	margin-bottom: 20px;
+	margin-left: 50px;
+}
