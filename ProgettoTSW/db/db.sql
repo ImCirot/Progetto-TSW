@@ -139,7 +139,7 @@ CREATE TABLE `indirizzo` (
 
 LOCK TABLES `indirizzo` WRITE;
 /*!40000 ALTER TABLE `indirizzo` DISABLE KEYS */;
-INSERT INTO `indirizzo` VALUES (1,'LMiranda','Via Giacomo Leopardi','San Giuseppe Vesuviano','80047','69','Napoli','Italia',NULL,NULL,'si'),(2,'LMiranda','Via Franco Civetta','Nola','80035','17','Napoli','Italia',NULL,NULL,'no'),(3,'ANappi','Via Rione ','Tær Annunziæt','80058','32','Napoli','Italia','A','S','si'),(4,'GBasile','Via San Simone','Nola','80035','289','Napoli','Italia',NULL,NULL,'si'),(5,'CTroiano','Via Trieste','Portico di Caserta','81050','45','Caserta','Italia',NULL,NULL,'si');
+INSERT INTO `indirizzo` VALUES (1,'LMiranda','Via Giacomo Leopardi','San Giuseppe Vesuviano','80047','69','Napoli','Italia',NULL,NULL,'si'),(2,'LMiranda','Via Franco Civetta','Nola','80035','17','Napoli','Italia',NULL,NULL,'no'),(3,'ANappi','Via Rione ','Torre Annunziata','80058','32','Napoli','Italia','A','S','si'),(4,'GBasile','Via San Simone','Nola','80035','289','Napoli','Italia',NULL,NULL,'si'),(5,'CTroiano','Via Trieste','Portico di Caserta','81050','45','Caserta','Italia',NULL,NULL,'si');
 /*!40000 ALTER TABLE `indirizzo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +175,7 @@ CREATE TABLE `metododipagamento` (
 
 LOCK TABLES `metododipagamento` WRITE;
 /*!40000 ALTER TABLE `metododipagamento` DISABLE KEYS */;
-INSERT INTO `metododipagamento` VALUES (1,'LMiranda','Via Giacomo Leopardi','San Giuseppe Vesuviano','80047','69','Napoli','Italia','IBAN','IT22T0300203280284125425667',NULL,'no'),(2,'LMiranda','Via Franco Civetta','Nola','80035','17','Napoli','Italia','carta',NULL,'5111538754725418','si'),(3,'ANappi','Via Rione ','Tær Annunziæt','80058','32','Napoli','Italia','carta',NULL,'5109337062062083','si'),(4,'GBasile','Via San Simone','Nola','80035','289','Napoli','Italia','IBAN','IT84G0300203280397435493853',NULL,'si'),(5,'CTroiano','Via Trieste','Portico di Caserta','81050','45','Caserta','Italia','IBAN','IT14U0300203280955173519725',NULL,'si');
+INSERT INTO `metododipagamento` VALUES (1,'LMiranda','Via Giacomo Leopardi','San Giuseppe Vesuviano','80047','69','Napoli','Italia','IBAN','IT22T0300203280284125425667',NULL,'no'),(2,'LMiranda','Via Franco Civetta','Nola','80035','17','Napoli','Italia','carta',NULL,'5111538754725418','si'),(3,'ANappi','Via Rione ','Torre Annunziata','80058','32','Napoli','Italia','carta',NULL,'5109337062062083','si'),(4,'GBasile','Via San Simone','Nola','80035','289','Napoli','Italia','IBAN','IT84G0300203280397435493853',NULL,'si'),(5,'CTroiano','Via Trieste','Portico di Caserta','81050','45','Caserta','Italia','IBAN','IT14U0300203280955173519725',NULL,'si');
 /*!40000 ALTER TABLE `metododipagamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,7 +212,7 @@ CREATE TABLE `ordine` (
 
 LOCK TABLES `ordine` WRITE;
 /*!40000 ALTER TABLE `ordine` DISABLE KEYS */;
-INSERT INTO `ordine` VALUES (1,'LMiranda','carta',NULL,'5111538754725418','San Giuseppe Vesuviano','80047','Via Franco Civetta','17','Napoli','Italia','2022-02-22',9.98),(2,'ANappi','carta',NULL,'5109337062062083','Tær Annunziæt','80058','Via Rione ','32','Napoli','Italia','2022-02-11',8),(3,'GBasile','IBAN','IT84G0300203280397435493853',NULL,'Nola','80035','Via San Simone','289','Napoli','Italia','2022-03-04',16.48);
+INSERT INTO `ordine` VALUES (1,'LMiranda','carta',NULL,'5111538754725418','San Giuseppe Vesuviano','80047','Via Franco Civetta','17','Napoli','Italia','2022-02-22',9.98),(2,'ANappi','carta',NULL,'5109337062062083','Torre Annunziata','80058','Via Rione ','32','Napoli','Italia','2022-02-11',8),(3,'GBasile','IBAN','IT84G0300203280397435493853',NULL,'Nola','80035','Via San Simone','289','Napoli','Italia','2022-03-04',16.48);
 /*!40000 ALTER TABLE `ordine` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,4 +304,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-06 16:12:20
+-- Dump completed on 2022-05-06 16:22:48
