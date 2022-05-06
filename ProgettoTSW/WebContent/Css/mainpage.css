@@ -45,6 +45,7 @@ prodotto h4 {
 
 .prodotto button:hover{
 	animation: myAnim 1s ease 0s 1 normal forwards;
+	cursor: pointer;
 }
 
 *,
@@ -54,6 +55,7 @@ prodotto h4 {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
 }
+
 @keyframes myAnim {
 	0% {
 		transform: scale3d(1, 1, 1);
