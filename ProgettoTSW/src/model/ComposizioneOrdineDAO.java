@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 
-	private static final String TABLE_NAME = "composizioneOrdine";
+	private static final String TABLE_NAME = "composizioneordine";
 	
 	@Override
 	public synchronized void doSave(ComposizioneOrdineBean bean) throws SQLException {

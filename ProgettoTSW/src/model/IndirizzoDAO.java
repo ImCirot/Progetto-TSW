@@ -17,7 +17,7 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 		PreparedStatement statement = null;
 		
 		String query = "INSERT INTO " + IndirizzoDAO.TABLE_NAME + 
-					" (numIndirizzoProgessivo,utente,via,citta,CAP,civico,provincia,nazione,scala,interno,preferito) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+					" (numIndirizzoProgressivo,utente,via,citta,CAP,civico,provincia,nazione,scala,interno,preferito) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -60,7 +60,7 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 		Connection con = null;
 		PreparedStatement statement = null;
 		int result = 0;
-		String query = "DELETE FROM " + IndirizzoDAO.TABLE_NAME + " WHERE numIndirizzoProgessivo = ? AND utente = ?";
+		String query = "DELETE FROM " + IndirizzoDAO.TABLE_NAME + " WHERE numIndirizzoProgressivo = ? AND utente = ?";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -96,7 +96,7 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 		PreparedStatement statement = null;
 		IndirizzoBean indirizzo = new IndirizzoBean();
 		
-		String query = "SELECT * FROM " + IndirizzoDAO.TABLE_NAME + " WHERE numIndirizzoProgessivo = ? AND utente = ?";
+		String query = "SELECT * FROM " + IndirizzoDAO.TABLE_NAME + " WHERE numIndirizzoProgressivo = ? AND utente = ?";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -107,7 +107,7 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
-				indirizzo.setNumIndirizzoProgressivo(result.getInt("numIndirizzoProgessivo"));
+				indirizzo.setNumIndirizzoProgressivo(result.getInt("numIndirizzoProgressivo"));
 				indirizzo.setUtente(result.getString("utente"));
 				indirizzo.setVia(result.getString("via"));
 				indirizzo.setCitta(result.getString("citta"));
@@ -155,7 +155,7 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 			while(result.next()) {
 				IndirizzoBean indirizzo = new IndirizzoBean();
 				
-				indirizzo.setNumIndirizzoProgressivo(result.getInt("numIndirizzoProgessivo"));
+				indirizzo.setNumIndirizzoProgressivo(result.getInt("numIndirizzoProgressivo"));
 				indirizzo.setUtente(result.getString("utente"));
 				indirizzo.setVia(result.getString("via"));
 				indirizzo.setCitta(result.getString("citta"));
@@ -190,7 +190,7 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 		
 		String query = "UPDATE " + IndirizzoDAO.TABLE_NAME + " SET "
 				+ " via = ?, citta = ?, CAP = ?, civico = ?, "
-				+ "provincia = ?, nazione = ?, scala = ?, interno = ?, preferito = ? WHERE numIndirizzoProgessivo = ? AND utente = ?;";
+				+ "provincia = ?, nazione = ?, scala = ?, interno = ?, preferito = ? WHERE numIndirizzoProgressivo = ? AND utente = ?;";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -244,7 +244,7 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 			while(result.next()) {
 				IndirizzoBean indirizzo = new IndirizzoBean();
 				
-				indirizzo.setNumIndirizzoProgressivo(result.getInt("numIndirizzoProgessivo"));
+				indirizzo.setNumIndirizzoProgressivo(result.getInt("numIndirizzoProgressivo"));
 				indirizzo.setUtente(result.getString("utente"));
 				indirizzo.setVia(result.getString("via"));
 				indirizzo.setCitta(result.getString("citta"));
