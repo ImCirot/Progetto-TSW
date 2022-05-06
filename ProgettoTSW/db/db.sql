@@ -29,8 +29,8 @@ CREATE TABLE `appartenenza` (
   `sottocategoria` varchar(50) NOT NULL,
   PRIMARY KEY (`prodotto`,`sottocategoria`),
   KEY `appartenenza_sottocategoria__fkasda` (`sottocategoria`),
-  CONSTRAINT `appartenenza_prodotto_codiceSeriale_fk` FOREIGN KEY (`prodotto`) REFERENCES `prodotto` (`codiceSeriale`),
-  CONSTRAINT `appartenenza_sottocategoria__fkasda` FOREIGN KEY (`sottocategoria`) REFERENCES `sottocategoria` (`nome`)
+  CONSTRAINT `appartenenza_prodotto_codiceSeriale_fk` FOREIGN KEY (`prodotto`) REFERENCES `prodotto` (`codiceSeriale`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `appartenenza_sottocategoria__fkasda` FOREIGN KEY (`sottocategoria`) REFERENCES `sottocategoria` (`nome`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -58,7 +58,7 @@ CREATE TABLE `composizioneOrdine` (
   `costoUnitario` decimal(4,2) NOT NULL,
   PRIMARY KEY (`ordine`,`prodotto`),
   KEY `composizioneOrdine_prodotto_codiceSeriale_fk` (`prodotto`),
-  CONSTRAINT `composizioneOrdine_ordine_numOrdineProgessivo_fk` FOREIGN KEY (`ordine`) REFERENCES `ordine` (`numOrdineProgessivo`),
+  CONSTRAINT `composizioneOrdine_ordine_numOrdineProgessivo_fk` FOREIGN KEY (`ordine`) REFERENCES `ordine` (`numOrdineProgressivo`),
   CONSTRAINT `composizioneOrdine_prodotto_codiceSeriale_fk` FOREIGN KEY (`prodotto`) REFERENCES `prodotto` (`codiceSeriale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -114,17 +114,18 @@ DROP TABLE IF EXISTS `indirizzo`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `indirizzo` (
-  `numIndirizzoProgessivo` int NOT NULL AUTO_INCREMENT,
+  `numIndirizzoProgressivo` int NOT NULL AUTO_INCREMENT,
   `utente` varchar(50) NOT NULL,
   `via` varchar(50) NOT NULL,
   `citta` varchar(50) NOT NULL,
   `CAP` varchar(10) NOT NULL,
   `civico` varchar(10) NOT NULL,
   `provincia` varchar(10) NOT NULL,
+  `nazione` varchar(25) NOT NULL,
   `scala` varchar(5) DEFAULT NULL,
   `interno` varchar(20) DEFAULT NULL,
   `preferito` enum('si','no') NOT NULL,
-  PRIMARY KEY (`numIndirizzoProgessivo`,`utente`),
+  PRIMARY KEY (`numIndirizzoProgressivo`,`utente`),
   KEY `indirizzo_utente_username_fk` (`utente`),
   CONSTRAINT `indirizzo_utente_username_fk` FOREIGN KEY (`utente`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -147,17 +148,19 @@ DROP TABLE IF EXISTS `metodoDiPagamento`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `metodoDiPagamento` (
-  `numPagamentoProgessivo` int NOT NULL AUTO_INCREMENT,
+  `numPagamentoProgressivo` int NOT NULL AUTO_INCREMENT,
   `utente` varchar(50) NOT NULL,
   `via` varchar(50) NOT NULL,
   `citta` varchar(50) NOT NULL,
   `CAP` varchar(10) NOT NULL,
   `civico` varchar(10) NOT NULL,
+  `provincia` varchar(10) NOT NULL,
+  `nazione` varchar(25) NOT NULL,
   `tipo` enum('carta','IBAN') NOT NULL,
   `IBAN` char(27) DEFAULT NULL,
   `numCarta` varchar(19) DEFAULT NULL,
   `preferito` enum('si','no') NOT NULL,
-  PRIMARY KEY (`numPagamentoProgessivo`,`utente`),
+  PRIMARY KEY (`numPagamentoProgressivo`,`utente`),
   KEY `metodoDiPagamento_utente_username_fk` (`utente`),
   CONSTRAINT `metodoDiPagamento_utente_username_fk` FOREIGN KEY (`utente`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -180,7 +183,7 @@ DROP TABLE IF EXISTS `ordine`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `ordine` (
-  `numOrdineProgessivo` int NOT NULL AUTO_INCREMENT,
+  `numOrdineProgressivo` int NOT NULL AUTO_INCREMENT,
   `cliente` varchar(50) NOT NULL,
   `tipoPagamento` enum('carta','IBAN') NOT NULL,
   `IBAN` char(27) DEFAULT NULL,
@@ -190,9 +193,10 @@ CREATE TABLE `ordine` (
   `via` varchar(50) NOT NULL,
   `civico` varchar(10) DEFAULT NULL,
   `provincia` varchar(10) NOT NULL,
+  `nazione` varchar(25) NOT NULL,
   `dataAcquisto` date NOT NULL,
   `costoTotale` double NOT NULL,
-  PRIMARY KEY (`numOrdineProgessivo`,`cliente`),
+  PRIMARY KEY (`numOrdineProgressivo`,`cliente`),
   KEY `ordine_utente_username_fk` (`cliente`),
   CONSTRAINT `ordine_utente_username_fk` FOREIGN KEY (`cliente`) REFERENCES `utente` (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -295,4 +299,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-06 13:41:06
+-- Dump completed on 2022-05-06 15:32:50
