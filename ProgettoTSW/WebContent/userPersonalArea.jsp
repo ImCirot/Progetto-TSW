@@ -31,10 +31,6 @@
   		int i = 0;
   		IndirizzoBean indirizzo = new IndirizzoBean(); %>
   		
-  		<div class="info">
-  			<a href="#">Aggiungi un indirizzo di consegna</a>
-  		</div>
-  		
   		<% while(iterIndirizzi.hasNext()){
   			indirizzo = iterIndirizzi.next();%>
   			i += 1;
@@ -58,17 +54,18 @@
   						<h4>Indirizzo predefinito</h4>
   					<%}%>
   			</div>
-  		<%}%>
+  			<%}%>
+  			
+  		<div class="info">
+  			<a href="#">Aggiungi un indirizzo di consegna</a>
+  		</div>
+  			
   		
   		<h4>I tuoi metodi di pagamento</h4>
   		<% List<MetodoDiPagamentoBean> metodiPagamento = (List<MetodoDiPagamentoBean>) request.getSession().getAttribute("metodiPagamento"); 
   		Iterator<MetodoDiPagamentoBean> iterMetodi = metodiPagamento.iterator();
   		i = 0;
   		MetodoDiPagamentoBean metodoPagamento = new MetodoDiPagamentoBean(); %>
-  		
-  		<div class="info">
-  			<a href="#">Aggiungi un metodo di pagamento</a>
-  		</div>
   		
   		<% while(iterMetodi.hasNext()){
   			metodoPagamento = iterMetodi.next();%>
@@ -93,6 +90,10 @@
 					<%}%>
   			</div>
   			<% } %>
+  			
+  		<div class="info">
+  			<a href="#">Aggiungi un metodo di pagamento</a>
+  		</div>
   			
   			<h4>I tuoi ordini</h4>
   		<% List<OrdineBean> ordini = (List<OrdineBean>) request.getSession().getAttribute("ordini"); 
