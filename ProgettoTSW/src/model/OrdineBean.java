@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class OrdineBean implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -16,6 +17,7 @@ public class OrdineBean implements Serializable {
 	private String civico;
 	private String provincia;
 	private String dataAcquisto;
+	private BigDecimal costoTotale;
 	
 	public OrdineBean() {
 		this.numOrdineProgressivo = -1;
@@ -29,7 +31,8 @@ public class OrdineBean implements Serializable {
 		this.civico = "null";
 		this.provincia = "null";
 		this.dataAcquisto = "null";
-		this.costoTotale = "null";
+		
+		
 	}
 	
 	public int getNumOrdineProgressivo() {
@@ -98,15 +101,15 @@ public class OrdineBean implements Serializable {
 	public void setDataAcquisto(String dataAcquisto) {
 		this.dataAcquisto = dataAcquisto;
 	}
-	public String getCostoTotale() {
+	public BigDecimal getCostoTotale() {
 		return costoTotale;
 	}
-	public void setCostoTotale(String costoTotale) {
+	public void setCostoTotale(BigDecimal costoTotale) {
 		this.costoTotale = costoTotale;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	private String costoTotale;
+	
 	
 }
