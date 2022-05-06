@@ -32,18 +32,35 @@
   width: 100%;
   height: auto;
   justify-content:  flex-start;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-direction: column;
   padding: 100px;
   gap: 30px 40px;
+  
+}
+.container-info-interno{
+	display:flex;
+	width: 100%;
+	height: auto;
+  	justify-content:  flex-start;
+  	flex-wrap: nowrap;
+  	padding:30px;
 }
 
 .info{
+	
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 250px;
+  height:auto;
   text-align: center;
   padding: 20px;
+  border-radius:10px;
+  margin:auto 15px;
 }
-
+.info:hover{
+	background: lightgrey;
+	
+}
 *,
 *:before,
 *:after {
