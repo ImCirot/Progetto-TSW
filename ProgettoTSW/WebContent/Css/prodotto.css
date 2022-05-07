@@ -35,11 +35,9 @@
 	background-color: #9932CC;
 	color: white;
 	font-size: 16px;
-	width: 30%;
+	width: 40%;
 	margin-left: 15px;
 	border-radius: 10px;
-    box-shadow:  20px 20px 60px lightgrey,
-             -20px -20px 60px white;
 }
 
 .descrizione button:hover{

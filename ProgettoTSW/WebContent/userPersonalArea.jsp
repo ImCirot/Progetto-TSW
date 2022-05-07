@@ -20,7 +20,7 @@
     </p>
     <br />
     <form action="LogOutServlet" method="get">
-		<input type="submit" value="logout" />
+		<button type="submit">Logout</button>
 	</form>
   </div>
   

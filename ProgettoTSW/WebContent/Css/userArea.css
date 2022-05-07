@@ -48,19 +48,34 @@
 }
 
 .info{
-	
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 250px;
-  height:auto;
+  max-width: 350px;
+  height: auto;
   text-align: center;
   padding: 20px;
   border-radius:10px;
   margin:auto 15px;
 }
+
+button {
+  padding: 10px;
+  margin-left: 20px;
+  border: none;
+  background-color: #9932CC;
+  color: white;
+  font-size: 16px;
+  width: auto;
+  border-radius: 10px;
+}
+
+button:hover{
+	cursor: pointer;
+}
+
 .info:hover{
 	background: lightgrey;
-	
 }
+
 *,
 *:before,
 *:after {
