@@ -36,15 +36,16 @@ public class CarrelloServlet extends HttpServlet {
 		
 		Map<String,Integer> carrello = new HashMap<>();
 		
-		if(request.getSession().getAttribute("carrello") == null) {
+		if(request.getSession().getAttribute("carrello") != null) {
 			carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
-		}
-		
-		if(carrello.containsKey(prodotto)) {
-			quantitaPresente = carrello.get(prodotto);
-			carrello.put(prodotto,quantita + quantitaPresente);
+			if(carrello.containsKey(prodotto)) {
+				quantitaPresente = carrello.get(prodotto);
+				carrello.put(prodotto,quantita + quantitaPresente);
+			} else {
+				carrello.put(prodotto,quantita);
+			}
 		} else {
-			carrello.put(prodotto,quantita);
+			carrello.put(prodotto, quantita);
 		}
 		
 		request.getSession().setAttribute("carrello", carrello);

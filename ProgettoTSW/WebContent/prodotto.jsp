@@ -25,9 +25,12 @@
       	<button type="submit">Aggiungi al carrello</button>
       	
       	<% String aggiunto = (String) request.getSession().getAttribute("aggiunto");
+      	request.getSession().removeAttribute("aggiunto");
       	
       		if(aggiunto != null){ %>
-      		<p><% out.println(aggiunto); %></p>	
+      		<p>
+      		<%out.println(aggiunto);%>
+      		</p>	
       		<%}%>
     </div>
   </div>
