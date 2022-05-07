@@ -14,7 +14,7 @@
 		DettaglioProdottoBean dettagli = (DettaglioProdottoBean) request.getAttribute("dettagliProdotto");
 	%>
 	<jsp:include page="./header.jsp" />
-<form action="aggCarrello" method="get">
+<form action="Carrello" method="get">
   <div class="prodottoDettagli">
     <img src="<%out.println(dettagli.getImmagine());%>" alt="immagineProdotto">
     <div class="descrizione">
@@ -23,7 +23,12 @@
       	<input type="hidden" name="prodotto" value="<% out.print(prodotto.getCodiceSeriale());%>">
       	<input type="number" name="quantita" min="1" max="<% out.print(dettagli.getQuantita());%>" value="1"><br><br>
       	<button type="submit">Aggiungi al carrello</button>
-     
+      	
+      	<% String aggiunto = (String) request.getSession().getAttribute("aggiunto");
+      	
+      		if(aggiunto != null){ %>
+      		<p><% out.println(aggiunto); %></p>	
+      		<%}%>
     </div>
   </div>
 </form>
