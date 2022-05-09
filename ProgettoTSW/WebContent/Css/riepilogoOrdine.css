@@ -1,0 +1,95 @@
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Bebas Neue', regular;
+  font-size: 17px;
+  text-align: center;
+}
+
+.button-acquista button {
+	padding: 10px;
+	background-color: #9932CC;
+	color: white;
+	font-size: 16px;
+	width: 8%;
+	border-radius: 5px 5px;
+  	margin: 5px auto;
+  	text-align: center;
+}
+
+h4{
+	font-size: 20px;
+}
+
+button:hover{
+	animation: myAnim 1s ease 0s 1 normal forwards;
+	cursor: pointer;
+}
+
+footer p{
+    padding:0;
+    font-size: 0.8em;
+    color: hsla(0, 50%, 100%, 0.35);
+    margin: 1em 0;
+    font-size: 1rem;
+}
+footer ul{
+    list-style: none;
+    display: flex;
+    margin: 1em 0; 
+}
+footer ul li a{
+    padding: 1em; 
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.904);
+    transition: 100ms;
+}
+footer ul li a:hover{
+    color: var(--primary);
+}
+
+footer{
+    width: 100%;
+    background: #180041;
+    color: #fff; 
+    display: grid;
+    place-items: center;
+    padding: 2em; 
+    font-size: 1.2rem;
+}
+
+.sticky-footer{
+    position: sticky;
+    top: 100%;
+}
+
+@keyframes myAnim {
+	0% {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(0.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, 0.95, 1);
+	}
+
+	100% {
+		transform: scale3d(1, 1, 1);
+	}
+}
