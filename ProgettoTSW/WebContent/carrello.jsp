@@ -76,11 +76,12 @@
 				<div class="totale-interno">
 						<h2>Costo Totale Ordine</h2>
 							<p>
-							<% out.println(costoTot); %> &euro;
+							<% 
+							out.println(String.format("%.2f", costoTot));%> &euro;
 							</p>
 
 				<p>Prezzo totale<br>
-					<%out.println(costoTot);%> &euro;
+					<%out.println(String.format("%.2f", costoTot));%> &euro;
 				</p>
 				<form action="ordine" method="get">
 					<input type="hidden" name="costoTot" value="<%out.print(costoTot);%>">
