@@ -56,20 +56,18 @@
 				          <p> <% out.print(dettagli.getCostoUnitario()); %></p>
 				        </div>
 				        <div class="info">
-				        <input type="number" placeholder="Quantità" value="<% out.print(quantita); %>">
-				        </div>
-				        <div class="info">
-
-					    <form action="Carrello" method="get"> 
+				         <form action="Carrello" method="get"> 
 							<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
 							<input type="hidden" name="mode" value="update">
-							<button type="button" name="Aggiorna">Aggiorna</button>
+							<input type="number" placeholder="Quantità" name="quantita" value="<% out.print(quantita); %>">
+							<button type="submit" name="Aggiorna">Aggiorna</button>
 						</form>
-						
+				        </div>
+				        <div class="info">
 						<form action="Carrello" method="get">
 							<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
 							<input type="hidden" name="mode" value="remove">
-							<button type="button" name="Rimuovi">Rimuovi</button>
+							<button type="submit" name="Rimuovi">Rimuovi</button>
 						</form>
 				    </div>
 				</div>
@@ -88,16 +86,21 @@
 					<input type="hidden" name="costoTot" value="<%out.print(costoTot);%>">
 					<button type="submit">Procedi all'acquisto</button>
 				</form>
+				<form action="Carrello" method="get">
+					<input type="hidden" name="mode" value="reset">
+					<button type="submit">Pulisci carrello</button>
+				</form>
 					</div>
 				</div>
 			</div>
 			<%} else {%>
 			<p>Carrello vuoto! Aggiungi prima qualche prodotto!</p>
 			<%}%>
-	<footer class="sticky-footer">
-	<a href="https://it-it.facebook.com/" target="_blank" class="links"><img alt="fb-logo" src="./Images/facebook-icon.png" class="socialLogo" /></a>
-      <a href="https://www.instagram.com/" target="_blank" class="links"><img src="./Images/instagram-icon.png" alt="insta-logo" class="socialLogo" /></a>
-        <p> © Snackz &copy; 2022. All rights reserved.</p>
-    </footer>
+		<jsp:include page="./footer.jsp" />
+<!-- 	<footer class="sticky-footer"> -->
+<!-- 	<a href="https://it-it.facebook.com/" target="_blank" class="links"><img alt="fb-logo" src="./Images/facebook-icon.png" class="socialLogo" /></a> -->
+<!--       <a href="https://www.instagram.com/" target="_blank" class="links"><img src="./Images/instagram-icon.png" alt="insta-logo" class="socialLogo" /></a> -->
+<!--         <p> © Snackz &copy; 2022. All rights reserved.</p> -->
+<!--     </footer> -->
 </body>
 </html>

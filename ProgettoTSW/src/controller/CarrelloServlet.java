@@ -77,12 +77,19 @@ public class CarrelloServlet extends HttpServlet {
 			
 			if(quantita == 0) {
 				carrello.remove(prodotto); 
+				
+				
+				
 			} else {
 			carrello.put(prodotto, quantita);
 			}
 			
+			if(carrello.isEmpty()) {
+				request.getSession().removeAttribute("carrello");
+			} else {
 			request.getSession().setAttribute("carrello", carrello);
-			redirectPath = "carrello.jsp";
+			}
+			redirectPath = "./carrello.jsp";
 		} else if(mode.equalsIgnoreCase("remove")) {
 			carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
 			carrello.remove(prodotto);
@@ -91,7 +98,10 @@ public class CarrelloServlet extends HttpServlet {
 				request.getSession().removeAttribute("carrello");
 			}
 			
-			redirectPath = "carrello.jsp";
+			redirectPath = "./carrello.jsp";
+		} else if(mode.equalsIgnoreCase("reset")) {
+			request.getSession().removeAttribute("carrello");
+			redirectPath = "./carrello.jsp";
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(redirectPath);

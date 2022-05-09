@@ -1,9 +1,13 @@
 package controller;
 
 import java.io.IOException;
+import java.io.Writer;
 import java.math.BigDecimal;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,12 +16,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.ComposizioneOrdineBean;
+import model.ComposizioneOrdineDAO;
+import model.DettaglioProdottoBean;
+import model.DettaglioProdottoDAO;
 import model.IndirizzoBean;
 import model.IndirizzoDAO;
 import model.MetodoDiPagamentoBean;
 import model.MetodoDiPagamentoDAO;
 import model.OrdineBean;
 import model.OrdineDAO;
+import model.ProdottoBean;
+import model.ProdottoDAO;
 
 /**
  * Servlet implementation class ScegliInfoAcquistoServlet
@@ -94,11 +104,30 @@ public class OrdineServlet extends HttpServlet {
 			ordine.setProvincia(indirizzo.getProvincia());
 			ordine.setNazione(indirizzo.getNazione());
 			ordine.setDataAcquisto(LocalDate.now().toString());
-			
-//			response.getOutputStream().println("indirizzo " + indirizzoID + "\nmetodo " + metodoDiPagamentoID + "\n" + ordine.getCliente() + " " + ordine.getCostoTotale().toPlainString() + " " + ordine.getTipoPagamento()
-//					+ " " + ordine.getIBAN() + " " + ordine.getNumCarta() + " " + ordine.getCitta() + " " + ordine.getCAP() + " " + ordine.getVia()
-//					+ " " + ordine.getCivico() + " " + ordine.getProvincia() + " " + ordine.getNazione() + " " + ordine.getDataAcquisto());
+
 			dbOrdini.doSave(ordine);
+			
+			Map<String,Integer> carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
+			String key;
+			Iterator<String> keyIter = carrello.keySet().iterator();
+			ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
+			ComposizioneOrdineDAO dbComposizioni = new ComposizioneOrdineDAO();
+			DettaglioProdottoDAO dbDettagli = new DettaglioProdottoDAO();
+			Writer out = response.getWriter();
+			
+			while(keyIter.hasNext()) {
+				key = keyIter.next();
+				DettaglioProdottoBean prodotto = new DettaglioProdottoBean();
+				prodotto = dbDettagli.doRetrieveByKey(key);
+				List<OrdineBean> listaOrdini = dbOrdini.doRetrieveAllByKey(utente);
+				composizione.setOrdine(listaOrdini.get(listaOrdini.size()-1).getNumOrdineProgressivo());
+				composizione.setCliente(utente);
+				composizione.setProdotto(key);
+				composizione.setQuantitaProdotto(carrello.get(key).intValue());
+				composizione.setCostoUnitario(prodotto.getCostoUnitario());
+				
+				dbComposizioni.doSave(composizione);
+			}
 			
 			request.getSession().removeAttribute("carrello");
 			redirectPath = "./acquisto.jsp";

@@ -17,7 +17,7 @@ public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 		PreparedStatement statement = null;
 		
 		String query = "INSERT INTO " + ComposizioneOrdineDAO.TABLE_NAME + 
-					" (ordine,cliente,prodotto,quantitaProdotto,costoUnitario VALUES (?,?,?,?,?);";
+					" (ordine,cliente,prodotto,quantitaProdotto,costoUnitario) VALUES (?,?,?,?,?);";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
