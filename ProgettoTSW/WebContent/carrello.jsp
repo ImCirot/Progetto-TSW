@@ -80,7 +80,7 @@
 							</p>
 
 				<p>Prezzo totale<br>
-					<% out.println(costoTot);%>
+					<%out.println(costoTot);%> &euro;
 				</p>
 				<form action="ordine" method="get">
 					<input type="hidden" name="costoTot" value="<%out.print(costoTot);%>">

@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Snackz</title>
-<link rel="stylesheet" href="./Css/userArea.css">
+<link rel="stylesheet" href="./Css/login.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap%27">
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
@@ -15,6 +16,7 @@
 			String redirect = "login?utente=" + utente;
 			response.sendRedirect(redirect);
 		}%>
+		
   <div class="login">
     <h1>Accedi all'area personale:</h1>
   	<form action="login" method="post" id="login">
@@ -22,8 +24,10 @@
   		<input type="text" id="username" name="username" /><br /><br />
   		<label for="password">Password: </label><br />
   		<input type="password" name="password" id="password" /><br /><br />
-  		<input type="submit" value="Login" />
+  		<button type="submit" value="Login">Login</button>
   	</form>
+  	
+  	
   	<% String error = (String) request.getSession().getAttribute("error");
   		if(error != null) {%>
   		<p class="error"><%out.println(error);%></p>
@@ -33,7 +37,7 @@
   </div>
 	<br />
 		
-		<jsp:include page="./footer.jsp" />
+	<jsp:include page="./footer.jsp" />
 <!-- 		<footer class="sticky-footer"> -->
 <!-- 	<a href="https://it-it.facebook.com/" target="_blank" class="links"><img alt="fb-logo" src="./Images/facebook-icon.png" class="socialLogo" /></a> -->
 <!--       <a href="https://www.instagram.com/" target="_blank" class="links"><img src="./Images/instagram-icon.png" alt="insta-logo" class="socialLogo" /></a> -->
