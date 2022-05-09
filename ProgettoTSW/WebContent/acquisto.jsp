@@ -7,14 +7,8 @@
 <title>Snackz</title>
 </head>
 <body>
-	<% boolean logged = (boolean) request.getSession().getAttribute("logged"); 
-		if(!logged){
-			request.setAttribute("error", "Devi essere loggato per acquistare!");
-			response.sendRedirect("./loginForm.jsp");
-		}
-	%>
-	
 	<jsp:include page="./header.jsp" />
+	<p>Acquisto effettuato</p>
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>
