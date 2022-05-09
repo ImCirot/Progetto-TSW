@@ -6,6 +6,14 @@
   padding: 50px;
 }
 
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Bebas Neue', regular;
+  text-align: center;
+}
+
 .dati input[type=submit] {
 	margin-bottom: 20px;
 	margin-left: 50px;
