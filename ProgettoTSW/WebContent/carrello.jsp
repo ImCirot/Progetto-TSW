@@ -4,10 +4,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="./Css/carrello.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap%27">
 <title>Snackz</title>
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
+	
+	<div class="cart-container">
+	<h1>Carrello</h1>
 		<% Map<String,Integer> carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
 		if(carrello != null){
 			Iterator<String> iterKeys = carrello.keySet().iterator();
@@ -39,32 +44,49 @@
 				
 				costoTot += dettagli.getCostoUnitario().doubleValue() * quantita;
 				%>
-				<h4>Prodotto</h4>
-				<p>
-					<% out.println(prodotto.getCodiceSeriale()); 
-						out.println(dettagli.getCostoUnitario());
-					%>
-				</p>
-				<form action="Carrello" method="get"> 
-					<input type="number" name="quantita" value="<%out.print(quantita);%>">
-					<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
-					<input type="hidden" name="mode" value="update">
-					<button type="submit">Aggiorna</button>
-				</form>
-				<form action="Carrello" method="get">
-					<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
-					<input type="hidden" name="mode" value="remove">
-					<button type="submit">Rimuovi</button>
-				</form>
-				<br><br><br>
+				  
+				     <div class="cart-container-interno">
+				        <div class="info">
+				        <img src="<% out.print(dettagli.getImmagine()); %>" alt="ciao">
+				        </div>
+				        <div class="info">
+				        <p><% out.print(prodotto.getNome()); %></p>
+				        </div>
+				        <div class="info">
+				          <p> <% out.print(dettagli.getCostoUnitario()); %></p>
+				        </div>
+				        <div class="info">
+				        <input type="number" placeholder="Quantità" value="<% out.print(quantita); %>">
+				        </div>
+				        <div class="info">
+
+					    <form action="Carrello" method="get"> 
+							<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
+							<input type="hidden" name="mode" value="update">
+							<button type="button" name="Aggiorna">Aggiorna</button>
+						</form>
+						
+						<form action="Carrello" method="get">
+							<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
+							<input type="hidden" name="mode" value="remove">
+							<button type="button" name="Rimuovi">Rimuovi</button>
+						</form>
+				    </div>
+				</div>
 			<%}%>
-				<p>Prezzo totale<br>
-					<% out.println(costoTot);%>
-				</p>
-				<form action="Carrello" method="post">
+			<div class="totale">
+				<div class="totale-interno">
+						<h2>Costo Totale Ordine</h2>
+							<p>
+							<% out.println(costoTot); %> &euro;
+							</p>
+							<form action="Carrello" method="post">
 					<input type="hidden" name="costoTot" value="<%out.print(costoTot);%>">
 					<button type="submit">Procedi all'acquisto</button>
 				</form>
+					</div>
+				</div>
+			</div>
 			<%} else {%>
 			<p>Carrello vuoto! Aggiungi prima qualche prodotto!</p>
 			<%}%>

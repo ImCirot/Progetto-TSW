@@ -1,0 +1,113 @@
+body{margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Bebas Neue', regular;
+}
+
+h1{
+  margin-left: 7%;
+}
+
+.cart-container{
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-container-interno{
+  width: 95%;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.info{
+  font-size: 18px;
+  max-width: 300px;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+img{
+  width: 104px;
+}
+
+button:hover{
+	animation: myAnim 1s ease 0s 1 normal forwards;
+	cursor: pointer;
+}
+
+
+
+.info button {
+	padding: 5px;
+	border: none;
+	background-color: #9932CC;
+	color: white;
+	font-size: 16px;
+	width: 100%;
+	border-radius: 5px;
+  	margin: 5px auto;
+}
+
+input [type=number] {
+	
+}
+
+.totale{
+	display: flex;
+	justify-content: flex-end;
+}
+
+.totale-interno{
+	margin: 20px;
+	padding: 20px;
+	font-size: 18px;
+}
+
+.totale-interno button{
+	padding: 10px;
+	border: none;
+	background-color: #9932CC;
+	color: white;
+	font-size: 16px;
+	width: 100%;
+	border-radius: 10px;
+  	margin: 5px auto;
+}
+
+@keyframes myAnim {
+	0% {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(0.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, 0.95, 1);
+	}
+
+	100% {
+		transform: scale3d(1, 1, 1);
+	}
+}
