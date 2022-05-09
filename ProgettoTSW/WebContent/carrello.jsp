@@ -90,6 +90,10 @@
 			<%} else {%>
 			<p>Carrello vuoto! Aggiungi prima qualche prodotto!</p>
 			<%}%>
-	<jsp:include page="./footer.jsp" />
+	<footer class="sticky-footer">
+	<a href="https://it-it.facebook.com/" target="_blank" class="links"><img alt="fb-logo" src="./Images/facebook-icon.png" class="socialLogo" /></a>
+      <a href="https://www.instagram.com/" target="_blank" class="links"><img src="./Images/instagram-icon.png" alt="insta-logo" class="socialLogo" /></a>
+        <p> © Snackz &copy; 2022. All rights reserved.</p>
+    </footer>
 </body>
 </html>
