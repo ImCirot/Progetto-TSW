@@ -82,6 +82,7 @@ public class LoginServlet extends HttpServlet {
 		if(user != null) {
 			request.getSession().setAttribute("nome", user.getNome());
 			request.getSession().setAttribute("cognome", user.getCognome());
+			request.getSession().setAttribute("utente", username);
 			request.getSession().setAttribute("logged", (Boolean) true);
 			
 			if(user.isAdmin()) {
@@ -93,7 +94,6 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("login?utente=" + username);
 		} else {
 			request.getSession().setAttribute("logged", (Boolean) false);
-			request.getSession().setAttribute("utente", username);
 			request.getSession().setAttribute("error", "Username e/o password invalidi.");
 			response.sendRedirect("./loginForm.jsp");
 		}

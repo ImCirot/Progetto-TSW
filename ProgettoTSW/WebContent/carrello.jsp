@@ -13,8 +13,9 @@
 			Iterator<String> iterKeys = carrello.keySet().iterator();
 			List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
 			List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");
+			Double costoTot = 0.0;
 			
-			Integer quantita;
+			Integer quantita = 0;
 			ProdottoBean prodotto = new ProdottoBean();
 			DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
 			Iterator<ProdottoBean> iterProdotti;
@@ -34,17 +35,37 @@
 				while(iterDettagli.hasNext()){
 					dettagli = iterDettagli.next();
 					if(dettagli.getProdotto().equals(key)) break;
-				}%>
+				}
+				
+				costoTot += dettagli.getCostoUnitario().doubleValue() * quantita;
+				%>
 				<h4>Prodotto</h4>
 				<p>
 					<% out.println(prodotto.getCodiceSeriale()); 
-						out.println(quantita);
 						out.println(dettagli.getCostoUnitario());
 					%>
 				</p>
+				<form action="Carrello" method="get"> 
+					<input type="number" name="quantita" value="<%out.print(quantita);%>">
+					<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
+					<input type="hidden" name="mode" value="update">
+					<button type="submit">Aggiorna</button>
+				</form>
+				<form action="Carrello" method="get">
+					<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
+					<input type="hidden" name="mode" value="remove">
+					<button type="submit">Rimuovi</button>
+				</form>
 				<br><br><br>
-			<%}
-			} else {%>
+			<%}%>
+				<p>Prezzo totale<br>
+					<% out.println(costoTot);%>
+				</p>
+				<form action="Carrello" method="post">
+					<input type="hidden" name="costoTot" value="<%out.print(costoTot);%>">
+					<button type="submit">Procedi all'acquisto</button>
+				</form>
+			<%} else {%>
 			<p>Carrello vuoto! Aggiungi prima qualche prodotto!</p>
 			<%}%>
 	<jsp:include page="./footer.jsp" />

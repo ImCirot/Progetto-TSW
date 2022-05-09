@@ -44,6 +44,7 @@
   				<h4><% out.println(prodotto.getNome()); %></h4>
   				<p class="prezzo"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
   				<form action="Carrello" method="get">
+  					<input type="hidden" name="mode" value="add">
   					<input type="hidden" name="prodotto" value="<% out.print(prodotto.getCodiceSeriale()); %>">
   					<input type="hidden" value="1" name="quantita">
   					<button type="submit">Acquista</button>

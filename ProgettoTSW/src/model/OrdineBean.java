@@ -31,7 +31,7 @@ public class OrdineBean implements Serializable {
 		this.via = "null";
 		this.civico = "null";
 		this.provincia = "null";
-		this.setNazione("null");
+		this.nazione = "null";
 		this.dataAcquisto = "null";
 		
 		

@@ -120,7 +120,7 @@
   		<h4>Ordine <% out.println(ordine.getNumOrdineProgressivo()); %></h4>
   		<p>
   			<% out.println(ordine.getCostoTotale()); %>
-  			<a href="#">Vedi dettagli</a>
+  			<a href="gestisciOrdine?ordine=<%out.println(ordine);%>">Vedi dettagli</a>
   		</p>
   		</div>
   		</div>
