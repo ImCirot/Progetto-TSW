@@ -102,45 +102,6 @@ public class CarrelloServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String indirizzo = request.getParameter("indirizzo");
-		String metodoDiPagamento = request.getParameter("metodoDiPagamento");
-		String utente = (String) request.getSession().getAttribute("utente");
-		double costoTot = Double.parseDouble(request.getParameter("costoTot"));
 		
-		IndirizzoDAO dbIndirizzi = new IndirizzoDAO();
-		MetodoDiPagamentoDAO dbMetodiDiPagamento = new MetodoDiPagamentoDAO();
-		OrdineDAO dbOrdini = new OrdineDAO();
-		
-		try {
-			IndirizzoBean datiIndirizzo = dbIndirizzi.doRetrieveByKey(indirizzo, utente);
-			MetodoDiPagamentoBean datiMetodoDiPagamento = dbMetodiDiPagamento.doRetrieveByKey(metodoDiPagamento, utente);
-			
-			OrdineBean ordine = new OrdineBean();
-			
-			ordine.setCliente(utente);
-			ordine.setCostoTotale(BigDecimal.valueOf(costoTot));
-			ordine.setTipoPagamento(datiMetodoDiPagamento.getTipo());
-			
-			if(datiMetodoDiPagamento.getTipo().equals("IBAN")) {
-				ordine.setIBAN(datiMetodoDiPagamento.getIBAN());
-			} else {
-				ordine.setNumCarta(datiMetodoDiPagamento.getNumCarta());
-			}
-			
-			ordine.setCitta(datiIndirizzo.getCitta());
-			ordine.setCAP(datiIndirizzo.getCitta());
-			ordine.setVia(datiIndirizzo.getVia());
-			ordine.setCivico(datiIndirizzo.getCivico());
-			ordine.setProvincia(datiIndirizzo.getProvincia());
-			ordine.setNazione(datiIndirizzo.getNazione());
-			ordine.setDataAcquisto(LocalDate.now().toString());
-			
-			dbOrdini.doSave(ordine);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		response.sendRedirect("./acquisto.jsp");
 	}
 }

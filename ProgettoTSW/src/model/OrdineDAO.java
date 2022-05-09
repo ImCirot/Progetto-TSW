@@ -17,25 +17,24 @@ public class OrdineDAO extends AbstractDAO<OrdineBean> {
 		PreparedStatement statement = null;
 		
 		String query = "INSERT INTO " + OrdineDAO.TABLE_NAME + 
-					" (numOrdineProgressivo,cliente,tipoPagamento,IBAN,numCarta,citta,CAP,via,civico,provincia,nazione,dataAcquisto,costoTotale) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);";
+					" (cliente,tipoPagamento,IBAN,numCarta,citta,CAP,via,civico,provincia,nazione,dataAcquisto,costoTotale) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			
-			statement.setInt(1, bean.getNumOrdineProgressivo());
-			statement.setString(2, bean.getCliente());
-			statement.setString(3, bean.getTipoPagamento());
-			statement.setString(4, bean.getIBAN());
-			statement.setString(5, bean.getNumCarta());
-			statement.setString(6, bean.getCitta());
-			statement.setString(7, bean.getCAP());
-			statement.setString(8, bean.getVia());
-			statement.setString(9, bean.getCivico());
-			statement.setString(10, bean.getProvincia());
-			statement.setString(11, bean.getNazione());
-			statement.setString(12, bean.getDataAcquisto());
-			statement.setBigDecimal(13, bean.getCostoTotale());
+			statement.setString(1, bean.getCliente());
+			statement.setString(2, bean.getTipoPagamento());
+			statement.setString(3, bean.getIBAN());
+			statement.setString(4, bean.getNumCarta());
+			statement.setString(5, bean.getCitta());
+			statement.setString(6, bean.getCAP());
+			statement.setString(7, bean.getVia());
+			statement.setString(8, bean.getCivico());
+			statement.setString(9, bean.getProvincia());
+			statement.setString(10, bean.getNazione());
+			statement.setString(11, bean.getDataAcquisto());
+			statement.setBigDecimal(12, bean.getCostoTotale());
 			statement.executeUpdate();
 			
 			con.commit();

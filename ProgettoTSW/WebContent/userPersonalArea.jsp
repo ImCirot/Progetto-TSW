@@ -115,16 +115,15 @@
   		OrdineBean ordine = new OrdineBean(); 
   		while (iterOrdini.hasNext()){
   			ordine = iterOrdini.next();%>
-  		
   		<div class="info">
   		<h4>Ordine <% out.println(ordine.getNumOrdineProgressivo()); %></h4>
   		<p>
-  			<% out.println(ordine.getCostoTotale()); %>
+  			<% out.println(ordine.getCostoTotale()); %><br><br>
   			<a href="gestisciOrdine?ordine=<%out.println(ordine);%>">Vedi dettagli</a>
   		</p>
   		</div>
-  		</div>
   		<%}%>
+  		</div>
   </div>
 	<jsp:include page="./footer.jsp" />
 </body>

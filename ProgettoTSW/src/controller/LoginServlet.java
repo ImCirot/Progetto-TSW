@@ -82,7 +82,7 @@ public class LoginServlet extends HttpServlet {
 		if(user != null) {
 			request.getSession().setAttribute("nome", user.getNome());
 			request.getSession().setAttribute("cognome", user.getCognome());
-			request.getSession().setAttribute("utente", username);
+			request.getSession().setAttribute("utente", user.getUsername());
 			request.getSession().setAttribute("logged", (Boolean) true);
 			
 			if(user.isAdmin()) {
