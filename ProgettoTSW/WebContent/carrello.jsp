@@ -74,20 +74,17 @@
 				    </div>
 				</div>
 			<%}%>
-<<<<<<< Updated upstream
 			<div class="totale">
 				<div class="totale-interno">
 						<h2>Costo Totale Ordine</h2>
 							<p>
 							<% out.println(costoTot); %> &euro;
 							</p>
-							<form action="Carrello" method="post">
-=======
+
 				<p>Prezzo totale<br>
 					<% out.println(costoTot);%>
 				</p>
 				<form action="ordine" method="get">
->>>>>>> Stashed changes
 					<input type="hidden" name="costoTot" value="<%out.print(costoTot);%>">
 					<button type="submit">Procedi all'acquisto</button>
 				</form>
