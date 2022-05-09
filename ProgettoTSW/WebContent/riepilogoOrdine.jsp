@@ -4,6 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="./Css/riepilogoOrdine.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap%27">
 <title>Snackz</title>
 </head>
 <body>
@@ -75,7 +77,11 @@
 		<a href="#">Aggiungi metodo di pagamento</a>
 		</fieldset>
 		<br><br>
-		<button type="submit">Acquista</button>
+		
+		<div class="button-acquista">
+			<button type="submit">Acquista</button>
+		</div>
+		
 		<br><br>
 		</form>
 	<jsp:include page="./footer.jsp" />
