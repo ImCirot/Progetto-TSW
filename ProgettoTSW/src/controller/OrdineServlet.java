@@ -113,7 +113,6 @@ public class OrdineServlet extends HttpServlet {
 			ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
 			ComposizioneOrdineDAO dbComposizioni = new ComposizioneOrdineDAO();
 			DettaglioProdottoDAO dbDettagli = new DettaglioProdottoDAO();
-			Writer out = response.getWriter();
 			
 			while(keyIter.hasNext()) {
 				key = keyIter.next();
@@ -124,9 +123,11 @@ public class OrdineServlet extends HttpServlet {
 				composizione.setCliente(utente);
 				composizione.setProdotto(key);
 				composizione.setQuantitaProdotto(carrello.get(key).intValue());
+				prodotto.setQuantita(prodotto.getQuantita() - carrello.get(key).intValue());
 				composizione.setCostoUnitario(prodotto.getCostoUnitario());
 				
 				dbComposizioni.doSave(composizione);
+				dbDettagli.doUpdate(prodotto);
 			}
 			
 			request.getSession().removeAttribute("carrello");
@@ -135,7 +136,6 @@ public class OrdineServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		
 		RequestDispatcher view = request.getRequestDispatcher(redirectPath);
 		view.forward(request, response);
