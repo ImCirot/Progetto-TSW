@@ -13,7 +13,7 @@
       <div class="header_filter">
       </div>
       <div class="logo">
-        <img src="./Images/logopreciso.png" alt="logo">
+       
       </div>
     </div>
     <div class="navbar">
