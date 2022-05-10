@@ -153,4 +153,39 @@ public class UtenteDAO extends AbstractDAO<UtenteBean> {
 		
 		return users;
 	}
+
+	public synchronized boolean doUpdate(UtenteBean bean, String key) throws SQLException {
+		Connection con = null;
+		PreparedStatement statement = null;
+		int result = 0;
+		
+		String query = "UPDATE " + UtenteDAO.TABLE_NAME + " SET username = ?, password = ?, email = ?, nome = ?, cognome = ?, sesso = ? "
+				+ "WHERE username = ?;";
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			
+			statement.setString(1, bean.getUsername());
+			statement.setString(2, bean.getPassword());
+			statement.setString(3, bean.getEmail());
+			statement.setString(4, bean.getNome());
+			statement.setString(5, bean.getCognome());
+			statement.setString(6, bean.getSesso());
+			statement.setString(7, key);
+			
+			result = statement.executeUpdate();
+			
+			con.commit();
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		return result != 0;
+	}
 }

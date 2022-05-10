@@ -9,18 +9,21 @@
 <body>
 	<jsp:include page="./header.jsp" />
 	<% String target = (String) request.getAttribute("target"); 
+		String error = (String) request.getSession().getAttribute("error");
 		if (target.equals("utente")) {
 			UtenteBean utente = (UtenteBean) request.getAttribute("utente");
-			Decoder decoder = Base64.getDecoder();
+			Decoder decoder = Base64.getDecoder();	
+			String decodedPwd = new String(decoder.decode(utente.getPassword()));
 		%>
 			<form action="modificaInfo" method="post">
 				<input type="hidden" name="utente" value="<% out.print(utente.getUsername());%>">
+				<input type="hidden" name="target" value="utente">
  				<label for="username">Username</label><br>
  				<input type="text" name="username" value="<% out.print(utente.getUsername());%>"><br><br>
  				<label for="password">Password</label><br>
- 				<input type="password" name="password" value="<% out.print(decoder.decode(utente.getPassword()).toString());%>"><br><br>
+ 				<input type="password" name="password" value="<% out.print(decodedPwd);%>"><br><br>
  				<label for="passwordCheck">Ripeti password</label><br>
- 				<input type="password" name="passwordCheck" value="<% out.print(decoder.decode(utente.getPassword()).toString());%>"><br><br>
+ 				<input type="password" name="passwordCheck" value="<% out.print(decodedPwd);%>"><br><br>
  				<label for="email">Email</label><br>
 				<input type="text" name="email" value="<%out.print(utente.getEmail());%>"><br><br>
 				<label for="nome">Nome</label><br>
@@ -45,28 +48,32 @@
 				</select><br><br>
 				<button type="submit">Modifica dati</button>
 			</form>
+			<% if(error != null) { %>
+				<p> <% out.println(error); %> </p>
+			<% request.getSession().removeAttribute("error"); }%>
 		<% } else if (target.equals("indirizzo")) {
 			IndirizzoBean indirizzo = (IndirizzoBean) request.getAttribute("indirizzo");%>
 			<form action="modificaInfo" method="post">
 				<input type="hidden" name="indirizzoID" value="<%out.print(indirizzo.getNumIndirizzoProgressivo());%>">
 				<input type="hidden" name="utente" value="<%out.print(indirizzo.getUtente());%>">
-				<label for="via">Via</label>
-				<input type="text" name="via" value="<%out.print(indirizzo.getVia());%>">
-				<label for="citta">Citta</label>
-				<input type="text" name="citta" value="<% out.print(indirizzo.getCitta());%>">
-				<label for="CAP">CAP</label>
-				<input type="text" name="CAP" value="<% out.print(indirizzo.getCAP()); %>">
-				<label for="civico">Civico</label>
-				<input type="text" name="civico" value="<% out.print(indirizzo.getCivico()); %>">
-				<label for="provincia">Provincia</label>
-				<input type="text" name="provincia" value="<% out.print(indirizzo.getProvincia()); %>">
-				<label for="nazione">Nazione</label>
-				<input type="text" name="nazione" value="<% out.print(indirizzo.getNazione()); %>">
-				<label for="scala">Scala</label>
-				<input type="text" name="scala" value="<% out.print(indirizzo.getScala()); %>">
-				<label for="interno">Interno</label>
-				<input type="text" name="interno" value="<% out.print(indirizzo.getInterno()); %>">
-				<label for="preferito">Preferito</label>
+				<input type="hidden" name="target" value="indirizzo">
+				<label for="via">Via</label><br>
+				<input type="text" name="via" value="<%out.print(indirizzo.getVia());%>"><br><br>
+				<label for="citta">Citta</label><br>
+				<input type="text" name="citta" value="<% out.print(indirizzo.getCitta());%>"><br><br>
+				<label for="CAP">CAP</label><br>
+				<input type="text" name="CAP" value="<% out.print(indirizzo.getCAP()); %>"><br><br>
+				<label for="civico">Civico</label><br>
+				<input type="text" name="civico" value="<% out.print(indirizzo.getCivico()); %>"><br><br>
+				<label for="provincia">Provincia</label><br>
+				<input type="text" name="provincia" value="<% out.print(indirizzo.getProvincia()); %>"><br><br>
+				<label for="nazione">Nazione</label><br>
+				<input type="text" name="nazione" value="<% out.print(indirizzo.getNazione()); %>"><br><br>
+				<label for="scala">Scala</label><br>
+				<input type="text" name="scala" value="<% out.print(indirizzo.getScala()); %>"><br><br>
+				<label for="interno">Interno</label><br>
+				<input type="text" name="interno" value="<% out.print(indirizzo.getInterno()); %>"><br><br>
+				<label for="preferito">Preferito</label><br>
 				<select name="preferito">
 					<% if(indirizzo.getPreferito().equalsIgnoreCase("si")){ %>
 						<option value="si" selected>Si</option>
@@ -75,33 +82,37 @@
 						<option value="si">Si</option>
 						<option value="no" selected>No</option>
 					<% } %>
-				</select>
+				</select><br><br>
 				<button type="submit">Modifica dati</button>
 			</form>	
+			<% if(error != null) { %>
+				<p> <% out.println(error); %> </p>
+			<% request.getSession().removeAttribute("error"); }%>
 		<% } else if (target.equals("metodoPagamento")) {
 			MetodoDiPagamentoBean metodoPagamento = (MetodoDiPagamentoBean) request.getAttribute("metodoPagamento");%>
 			<form action="modificaInfo" method="post">
 				<input type="hidden" name="metodoPagamentoID" value="<%out.print(metodoPagamento.getNumPagamentoProgressivo());%>">
 				<input type="hidden" name="utente" value="<%out.print(metodoPagamento.getUtente());%>">
-				<label for="via">Via</label>
-				<input type="text" name="via" value="<%out.print(metodoPagamento.getVia());%>">
-				<label for="citta">Citta</label>
-				<input type="text" name="citta" value="<% out.print(metodoPagamento.getCitta());%>">
-				<label for="CAP">CAP</label>
-				<input type="text" name="CAP" value="<% out.print(metodoPagamento.getCAP()); %>">
-				<label for="civico">Civico</label>
-				<input type="text" name="civico" value="<% out.print(metodoPagamento.getCivico()); %>">
-				<label for="provincia">Provincia</label>
-				<input type="text" name="provincia" value="<% out.print(metodoPagamento.getProvincia()); %>">
-				<label for="nazione">Nazione</label>
-				<input type="text" name="nazione" value="<% out.print(metodoPagamento.getNazione()); %>">
-				<label for="tipo">Tipo</label>
-				<input type="text" name="tipo" value="<% out.print(metodoPagamento.getTipo()); %>">
-				<label for="IBAN">IBAN</label>
-				<input type="text" name="IBAN" value="<% out.print(metodoPagamento.getIBAN()); %>">
-				<label for="numCarta">Numero carta</label>
-				<input type="text" name="numCarta" value="<% out.print(metodoPagamento.getNumCarta()); %>">
-				<label for="preferito">Preferito</label>
+				<input type="hidden" name="target" value="metodoPagamento">
+				<label for="via">Via</label><br>
+				<input type="text" name="via" value="<%out.print(metodoPagamento.getVia());%>"><br><br>
+				<label for="citta">Citta</label><br>
+				<input type="text" name="citta" value="<% out.print(metodoPagamento.getCitta());%>"><br><br>
+				<label for="CAP">CAP</label><br>
+				<input type="text" name="CAP" value="<% out.print(metodoPagamento.getCAP()); %>"><br><br>
+				<label for="civico">Civico</label><br>
+				<input type="text" name="civico" value="<% out.print(metodoPagamento.getCivico()); %>"><br><br>
+				<label for="provincia">Provincia</label><br>
+				<input type="text" name="provincia" value="<% out.print(metodoPagamento.getProvincia()); %>"><br><br>
+				<label for="nazione">Nazione</label><br>
+				<input type="text" name="nazione" value="<% out.print(metodoPagamento.getNazione()); %>"><br><br>
+				<label for="tipo">Tipo</label><br>
+				<input type="text" name="tipo" value="<% out.print(metodoPagamento.getTipo()); %>"><br><br>
+				<label for="IBAN">IBAN</label><br>
+				<input type="text" name="IBAN" value="<% out.print(metodoPagamento.getIBAN()); %>"><br><br>
+				<label for="numCarta">Numero carta</label><br>
+				<input type="text" name="numCarta" value="<% out.print(metodoPagamento.getNumCarta()); %>"><br><br>
+				<label for="preferito">Preferito</label><br>
 				<select name="preferito">
 					<% if(metodoPagamento.getPreferito().equalsIgnoreCase("si")){ %>
 						<option value="si" selected>Si</option>
@@ -110,9 +121,12 @@
 						<option value="si">Si</option>
 						<option value="no" selected>No</option>
 					<% } %>
-				</select>
+				</select><br><br>
 				<button type="submit">Modifica dati</button>
 			</form>	
+			<% if(error != null) { %>
+				<p> <% out.println(error); %> </p>
+			<% request.getSession().removeAttribute("error"); }%>
 		<% } %>
 	<jsp:include page="./footer.jsp" />
 </body>
