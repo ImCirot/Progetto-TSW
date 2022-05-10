@@ -18,6 +18,7 @@
 			<form action="modificaInfo" method="post">
 				<input type="hidden" name="utente" value="<% out.print(utente.getUsername());%>">
 				<input type="hidden" name="target" value="utente">
+				<input type="hidden" name="mode" value="update">
  				<label for="username">Username</label><br>
  				<input type="text" name="username" value="<% out.print(utente.getUsername());%>"><br><br>
  				<label for="password">Password</label><br>
@@ -57,6 +58,7 @@
 				<input type="hidden" name="indirizzoID" value="<%out.print(indirizzo.getNumIndirizzoProgressivo());%>">
 				<input type="hidden" name="utente" value="<%out.print(indirizzo.getUtente());%>">
 				<input type="hidden" name="target" value="indirizzo">
+				<input type="hidden" name="mode" value="update">
 				<label for="via">Via</label><br>
 				<input type="text" name="via" value="<%out.print(indirizzo.getVia());%>"><br><br>
 				<label for="citta">Citta</label><br>
@@ -94,6 +96,7 @@
 				<input type="hidden" name="metodoPagamentoID" value="<%out.print(metodoPagamento.getNumPagamentoProgressivo());%>">
 				<input type="hidden" name="utente" value="<%out.print(metodoPagamento.getUtente());%>">
 				<input type="hidden" name="target" value="metodoPagamento">
+				<input type="hidden" name="mode" value="update">
 				<label for="via">Via</label><br>
 				<input type="text" name="via" value="<%out.print(metodoPagamento.getVia());%>"><br><br>
 				<label for="citta">Citta</label><br>

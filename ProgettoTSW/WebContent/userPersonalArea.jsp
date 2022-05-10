@@ -18,6 +18,10 @@
 	<h1>
     Ciao <% out.println(request.getSession().getAttribute("nome") + " " + request.getSession().getAttribute("cognome")); %>
     </h1>
+    <% String message = (String) request.getSession().getAttribute("message");
+    	if(message != null) {%>
+    		<p><% out.println(message); %></p>
+    	<% request.getSession().removeAttribute("message"); } %>
 	<div class="dati">
    	
     <form action="LogOutServlet" method="get">
