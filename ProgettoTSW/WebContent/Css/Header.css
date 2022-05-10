@@ -13,7 +13,7 @@ a{
   width: 100%;
   padding: 30px;
   background-image: url("../Images/backgroundImage.png");
-  background-size:cover;
+  background-size:60%;
 	
   position:relative;
 }
