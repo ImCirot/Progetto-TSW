@@ -23,6 +23,12 @@
     <form action="LogOutServlet" method="get">
 		<button type="submit">Logout</button>
 	</form>
+	<form action="modificaInfo" method="get">
+		<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
+		<input type="hidden" name="mode" value="update">
+		<input type="hidden" name="target" value="utente">
+		<button type="submit">Modifica informazioni personali</button>
+	</form>
   </div>
   
   <div class="container-info">
@@ -60,12 +66,24 @@
   			<% if(indirizzo.getPreferito().equalsIgnoreCase("si")) { %>
   						<h4>Indirizzo predefinito</h4>
   					<%}%>
+  			<form action="modificaInfo" method="get">
+  				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
+  				<input type="hidden" value="<% out.print(indirizzo.getNumIndirizzoProgressivo());%>" name="indirizzoID">
+				<input type="hidden" name="mode" value="update">
+				<input type="hidden" name="target" value="indirizzo">
+				<button type="submit">Modifica</button>
+  			</form>
   			</div>
   			<%}%>
   		
   		
   		<div class="info">
-  			<a href="#">Aggiungi un indirizzo di consegna</a>
+  			<form action="modificaInfo" method="get">
+  				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
+  				<input type="hidden" name="mode" value="add">
+  				<input type="hidden" name="target" value="indirizzo">
+  				<button type="submit">Aggiungi nuovo indirizzo</button>
+  			</form>
   		</div>
   		</div>
   		<div class="container-info-interno">
@@ -100,11 +118,23 @@
   			<% if(metodoPagamento.getPreferito().equalsIgnoreCase("si")) { %>
 						<h4>Metodo di pagamento predefinito</h4>
 					<%}%>
+			<form action="modificaInfo" method="get">
+  				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
+  				<input type="hidden" value="<% out.print(metodoPagamento.getNumPagamentoProgressivo());%>" name="metodoPagamentoID">
+				<input type="hidden" name="mode" value="update">
+				<input type="hidden" name="target" value="metodoPagamento">
+				<button type="submit">Modifica</button>
+  			</form>
   			</div>
   			<% } %>
   			
   		<div class="info">
-  			<a href="#">Aggiungi un metodo di pagamento</a>
+  			<form action="modificaInfo" method="get">
+  				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
+  				<input type="hidden" name="mode" value="add">
+  				<input type="hidden" name="target" value="metodoPagamento">
+  				<button type="submit">Aggiungi nuovo metodo di pagamento</button>
+  			</form>
   		</div>
   		</div>
   		<div class="container-info-interno">
@@ -120,8 +150,11 @@
   		<h4>Ordine <% out.println(ordine.getNumOrdineProgressivo()); %></h4>
   		<p>
   			<% out.println(ordine.getCostoTotale()); %><br><br>
-  			<a href="gestisciOrdine?ordine=<%out.print(ordine.getNumOrdineProgressivo());%>">Vedi dettagli</a>
   		</p>
+  			<form action="gestisciOrdine" method="get">
+  				<input type="hidden" name="ordine" value="<%out.print(ordine.getNumOrdineProgressivo());%>">
+  				<button type="submit">Vedi dettagli</button>
+  			</form>
   		</div>
   		<%}%>
   		</div>

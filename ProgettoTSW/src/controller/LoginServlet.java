@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Base64.Encoder;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
