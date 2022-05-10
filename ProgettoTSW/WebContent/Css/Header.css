@@ -78,10 +78,12 @@ a{
 }
 
 .menu ul li a{
-  padding: 15px;
+  padding: 20px;
   display: block;
   color: white;
+  margin:auto;
 }
+
 
 .menu ul li a:hover{
   background: #B23AEE;
@@ -94,9 +96,10 @@ a{
 }
 
 .catalogo ul li a{
-  padding: 15px;
+  padding: 20px;
   display: block;
   color: white;
+  font-size: 18px;
 }
 
 .catalogo ul li a:hover{
