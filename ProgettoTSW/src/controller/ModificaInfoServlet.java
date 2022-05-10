@@ -291,6 +291,7 @@ public class ModificaInfoServlet extends HttpServlet {
 				String nazione = request.getParameter("nazione"); 
 				String tipo = request.getParameter("tipo");
 				String IBAN = request.getParameter("IBAN");
+				IBAN = IBAN.strip();
 				String numCarta = request.getParameter("numCarta");
 				String preferito = request.getParameter("preferito");
 				
@@ -323,7 +324,7 @@ public class ModificaInfoServlet extends HttpServlet {
 					
 					if(tipo.equalsIgnoreCase("carta")) {
 						if(!numCarta.equalsIgnoreCase("null")) {
-							metodoPagamento.setTipo(tipo);
+							metodoPagamento.setTipo("carta");
 							metodoPagamento.setNumCarta(numCarta);
 							metodoPagamento.setIBAN("null");
 						}
@@ -331,7 +332,7 @@ public class ModificaInfoServlet extends HttpServlet {
 					
 					if(tipo.equalsIgnoreCase("IBAN")) {
 						if(!IBAN.equalsIgnoreCase("null")) {
-							metodoPagamento.setTipo(tipo);
+							metodoPagamento.setTipo("IBAN");
 							metodoPagamento.setNumCarta("null");
 							metodoPagamento.setIBAN(IBAN);
 						}
@@ -425,7 +426,6 @@ public class ModificaInfoServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
 			}
 		} else if (mode.equalsIgnoreCase("add")) {
 			if(target.equals("indirizzo")) {
@@ -434,6 +434,7 @@ public class ModificaInfoServlet extends HttpServlet {
 				
 			}
 		}
+		
 		
 		response.sendRedirect(path);
 	}

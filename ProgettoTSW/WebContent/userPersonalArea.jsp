@@ -154,7 +154,7 @@
   		<div class="info">
   		<h3>Ordine <% out.println(ordine.getNumOrdineProgressivo()); %></h3>
   		<p>
-  			<% out.println(ordine.getCostoTotale()); %><br><br>
+  			<% out.println(ordine.getCostoTotale()); %> &euro;<br><br>
   		</p>
   			<form action="gestisciOrdine" method="get">
   				<input type="hidden" name="ordine" value="<%out.print(ordine.getNumOrdineProgressivo());%>">

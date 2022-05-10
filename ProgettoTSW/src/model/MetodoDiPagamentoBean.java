@@ -104,7 +104,7 @@ public class MetodoDiPagamentoBean implements Serializable {
 	}
 
 	public void setIBAN(String IBAN) {
-		IBAN = IBAN;
+		this.IBAN = IBAN;
 	}
 
 	public String getNumCarta() {
