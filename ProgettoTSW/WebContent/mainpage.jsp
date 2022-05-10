@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Snackz</title>
 <link rel="stylesheet" href="./Css/mainpage.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap%27">
 </head>
 <body>
   <jsp:include page="./header.jsp" />

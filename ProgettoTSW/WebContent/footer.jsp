@@ -4,16 +4,26 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="./Css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Snackz</title>
-    <link rel="stylesheet" href="./Css/HeaderFooterCss.css">
+
   </head>
   <body>
-    <footer>
-      <a href="https://it-it.facebook.com/" target="_blank" class="links"><img alt="fb-logo" src="./Images/facebook-icon.png" class="socialLogo" /></a>
-      <a href="https://www.instagram.com/" target="_blank" class="links"><img src="./Images/instagram-icon.png" alt="insta-logo" class="socialLogo" /></a>
-      <address class="address">
-        <p>Snackz &copy; 2022. All rights reserved.</p>
-      </address>
-    </footer>
+    <footer class="sticky-footer">
+       <!-- <h2>Footer Stick to the Bottom</h2> -->
+       <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+
+       </ul>
+       <div class="container-icon">
+         <a href="#" class="fa fa-facebook"></a>
+         <a href="#" class="fa fa-twitter"></a>
+       </div>
+       
+       <p> Snackz © 2022. All rights reserved.</p>
+   </footer>
   </body>
 </html>

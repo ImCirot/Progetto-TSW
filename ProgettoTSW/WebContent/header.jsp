@@ -4,7 +4,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="./Css/HeaderFooterCss.css">
+    <link rel="stylesheet" href="./Css/Header.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap%27">
     <title>Snackz</title>
   </head>
   <body>

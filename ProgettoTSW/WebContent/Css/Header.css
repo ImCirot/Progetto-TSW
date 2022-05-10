@@ -2,6 +2,7 @@ body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  min-height: 100vh;
 }
 
 a{
@@ -93,33 +94,5 @@ a{
   background: #B23AEE;
 }
 
-footer{
-  background-color: #9932CC;
-  height: auto;
-  padding: 20px;
-  width: 100%;
-}
 
-address {
-  text-align: center;
-  color: white;
-  font-size: 12px;
-  font-style: normal;
-  padding: 5px;
-}
 
-.socialLogo{
-  display: inline;
-  margin: 5px;
-  position: inherit;
-  width: 32px;
-  height: 32px;
-}
-
-*,
-*:before,
-*:after {
-  -webkit-box-sizing: border-box;
-     -moz-box-sizing: border-box;
-          box-sizing: border-box;
-}
