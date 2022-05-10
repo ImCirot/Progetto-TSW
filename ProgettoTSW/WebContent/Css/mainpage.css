@@ -15,14 +15,17 @@ body{
   flex-wrap: wrap;
   padding: 100px;
   gap: 30px 40px;
+
 }
 
 .prodotto{
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   max-width: 250px;
   text-align: center;
   padding: 20px;
-  
+  background: white;
+  border: 1px solid lightgrey;
+  border-radius:10px;
 }
 .prodotto:hover{
 	animation: hoverproduct 0.5s ease 0s normal forwards;

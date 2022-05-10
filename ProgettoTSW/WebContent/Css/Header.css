@@ -14,9 +14,9 @@ a{
   padding: 30px;
   display: flex;
   justify-content: space-between;
-  background: linear-gradient(0deg, rgba(0,0,255,.1), rgba(0,0,255, 0.2)),
-  url('../Images/backgroundImage.png');
-  background-size: 40%;
+  background: url("../Images/backgroundImage.png");
+  background-size:contain;
+	
   position:relative;
 }
 
@@ -32,13 +32,13 @@ a{
 }
 
 .logo{
+	
   position: relative;
   z-index: 1;
 }
 
 .logo img{
-  height: 100%;
-  width: 100%;
+  width:350px;
 }
 
 .navbar{
