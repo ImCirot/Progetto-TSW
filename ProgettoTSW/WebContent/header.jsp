@@ -12,9 +12,11 @@
     <div class="header">
       <div class="header_filter">
       </div>
+      <a href="catalogo">
       <div class="logo">
-       
+       	
       </div>
+      </a>
     </div>
     <div class="navbar">
       <div class="catalogo">

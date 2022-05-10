@@ -12,10 +12,8 @@ a{
 .header{
   width: 100%;
   padding: 30px;
-  display: flex;
-  justify-content: space-between;
   background-image: url("../Images/backgroundImage.png");
-  background-size:contain;
+  background-size:cover;
 	
   position:relative;
 }
