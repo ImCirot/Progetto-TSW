@@ -206,8 +206,14 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 			statement.setString(5, bean.getProvincia());
 			statement.setString(6, bean.getNazione());
 			statement.setString(7, bean.getTipo());
-			statement.setString(8, bean.getIBAN());
-			statement.setString(9, bean.getNumCarta());
+			if(bean.getTipo().equalsIgnoreCase("IBAN")) {
+				statement.setString(8, bean.getIBAN());
+				statement.setNull(9, java.sql.Types.NULL);
+			} else {
+				statement.setNull(8, java.sql.Types.NULL);
+				statement.setString(9, bean.getNumCarta());
+			}
+			
 			statement.setString(10, bean.getPreferito());
 			statement.setInt(11, bean.getNumPagamentoProgressivo());
 			statement.setString(12, bean.getUtente());
