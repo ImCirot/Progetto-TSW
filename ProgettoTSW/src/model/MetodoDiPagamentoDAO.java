@@ -17,24 +17,23 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 		PreparedStatement statement = null;
 		
 		String query = "INSERT INTO " + MetodoDiPagamentoDAO.TABLE_NAME + 
-					" (numPagamentoProgressivo,utente,via,citta,CAP,civico,provincia,nazione,tipo,IBAN,numCarta,preferito) VALUES (?,?,?,?,?,?,?,?,?,?,?,?);";
+					" (utente,via,citta,CAP,civico,provincia,nazione,tipo,IBAN,numCarta,preferito) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			
-			statement.setInt(1, bean.getNumPagamentoProgressivo());
-			statement.setString(2, bean.getUtente());
-			statement.setString(3, bean.getVia());
-			statement.setString(4, bean.getCitta());
-			statement.setString(5, bean.getCAP());
-			statement.setString(6, bean.getCivico());
-			statement.setString(7, bean.getProvincia());
-			statement.setString(8, bean.getNazione());
-			statement.setString(9, bean.getTipo());
-			statement.setString(10, bean.getIBAN());
-			statement.setString(11, bean.getNumCarta());
-			statement.setString(12, bean.getPreferito());
+			statement.setString(1, bean.getUtente());
+			statement.setString(2, bean.getVia());
+			statement.setString(3, bean.getCitta());
+			statement.setString(4, bean.getCAP());
+			statement.setString(5, bean.getCivico());
+			statement.setString(6, bean.getProvincia());
+			statement.setString(7, bean.getNazione());
+			statement.setString(8, bean.getTipo());
+			statement.setString(9, bean.getIBAN());
+			statement.setString(10, bean.getNumCarta());
+			statement.setString(11, bean.getPreferito());
 			
 			statement.executeUpdate();
 			
@@ -71,7 +70,7 @@ public class MetodoDiPagamentoDAO extends AbstractDAO<MetodoDiPagamentoBean>{
 			
 			result = statement.executeUpdate();
 			
-			//con.commit(); // togliere commento se vuoi cancellare davvero dal db ad ogni delete
+			con.commit(); // togliere commento se vuoi cancellare davvero dal db ad ogni delete
 		} finally {
 			try {
 				if(statement != null) {

@@ -70,8 +70,8 @@ public class MetodoDiPagamentoBean implements Serializable {
 		return CAP;
 	}
 
-	public void setCAP(String cAP) {
-		CAP = cAP;
+	public void setCAP(String CAP) {
+		this.CAP = CAP;
 	}
 
 	public String getCivico() {

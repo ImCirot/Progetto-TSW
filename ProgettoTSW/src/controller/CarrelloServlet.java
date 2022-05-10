@@ -68,9 +68,12 @@ public class CarrelloServlet extends HttpServlet {
 			}
 			
 			request.getSession().setAttribute("carrello", carrello);
-			request.getSession().setAttribute("aggiunto", "Aggiunto al carrello!");
-			redirectPath = "SelectProdottoServlet?prodotto=" + prodotto;
-			
+			if(request.getParameter("catalogo") != null) {
+				redirectPath = "catalogo";
+			} else {
+				request.getSession().setAttribute("aggiunto", "Aggiunto al carrello!");
+				redirectPath = "SelectProdottoServlet?prodotto=" + prodotto;
+			}
 		} else if(mode.equalsIgnoreCase("update")) {
 			quantita = Integer.parseInt(request.getParameter("quantita"));
 			carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");

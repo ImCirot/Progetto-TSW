@@ -110,7 +110,15 @@
 				<label for="nazione">Nazione</label><br>
 				<input type="text" name="nazione" value="<% out.print(metodoPagamento.getNazione()); %>"><br><br>
 				<label for="tipo">Tipo</label><br>
-				<input type="text" name="tipo" value="<% out.print(metodoPagamento.getTipo()); %>"><br><br>
+				<select name="tipo">
+					<% if(metodoPagamento.getTipo().equals("IBAN")) { %>
+					<option value="IBAN" selected>IBAN</option>
+					<option value="carta">Carta</option>
+					<% } else { %>
+					<option value="IBAN">IBAN</option>
+					<option value="carta" selected>Carta</option>
+					<% } %>
+				</select><br><br>
 				<label for="IBAN">IBAN</label><br>
 				<input type="text" name="IBAN" value="<% out.print(metodoPagamento.getIBAN()); %>"><br><br>
 				<label for="numCarta">Numero carta</label><br>

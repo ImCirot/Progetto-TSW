@@ -35,7 +35,6 @@ public class ModificaInfoServlet extends HttpServlet {
      */
     public ModificaInfoServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -55,7 +54,6 @@ public class ModificaInfoServlet extends HttpServlet {
 				 try {
 					utente = dbUtenti.doRetrieveByKey(username);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -71,7 +69,6 @@ public class ModificaInfoServlet extends HttpServlet {
 				try {
 					indirizzo = dbIndirizzi.doRetrieveByKey(indirizzoID, username);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -86,7 +83,6 @@ public class ModificaInfoServlet extends HttpServlet {
 				try {
 					metodoPagamento = dbMetodiPagamento.doRetrieveByKey(metodoPagamentoID, username);
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -95,10 +91,14 @@ public class ModificaInfoServlet extends HttpServlet {
 				pathRedirect = "./modificaInfoForm.jsp";
 			}
 		} else if (mode.equals("add")) {
+			String utente = request.getParameter("utente");
+			request.setAttribute("utente", utente);
 			if(target.equals("indirizzo")) {
-				
+				request.setAttribute("target", "indirizzo");
+				pathRedirect = "./aggiungiInfoForm.jsp";
 			} else if (target.equals("metodoPagamento")) {
-				
+				request.setAttribute("target", "metodoPagamento");
+				pathRedirect = "./aggiungiInfoForm.jsp";
 			}
 		}
 		
@@ -174,7 +174,6 @@ public class ModificaInfoServlet extends HttpServlet {
 							path = "login?mode=getInfo&utente=" + newUsername;
 						}
 					} catch (SQLException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				} else  {
@@ -273,7 +272,6 @@ public class ModificaInfoServlet extends HttpServlet {
 						path = "login?mode=getInfo&utente=" + indirizzo.getUtente();
 					}
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -291,7 +289,6 @@ public class ModificaInfoServlet extends HttpServlet {
 				String nazione = request.getParameter("nazione"); 
 				String tipo = request.getParameter("tipo");
 				String IBAN = request.getParameter("IBAN");
-				IBAN = IBAN.strip();
 				String numCarta = request.getParameter("numCarta");
 				String preferito = request.getParameter("preferito");
 				
@@ -337,56 +334,7 @@ public class ModificaInfoServlet extends HttpServlet {
 							metodoPagamento.setIBAN(IBAN);
 						}
 					}
-					
-//					if(metodoPagamento.getTipo().equals("IBAN")) {
-//						if(!IBAN.equalsIgnoreCase("null")) {
-//							metodoPagamento.setIBAN(IBAN);
-//							metodoPagamento.setNumCarta(null);
-//						} else {
-//							request.getSession().setAttribute("error", "Aggiornamento non effettuato mannacc!");
-//							path = "modificaInfo?mode=update&target=indirizzo&utente=" + metodoPagamento.getUtente();
-//						}
-//					} else if(metodoPagamento.getTipo().equals("carta")) {
-//						if(!numCarta.equals("null")) {
-//							metodoPagamento.setNumCarta(numCarta);
-//							metodoPagamento.setIBAN(null);
-//						}
-//					}
-//					if(!metodoPagamento.getTipo().equalsIgnoreCase(tipo)) {
-//						metodoPagamento.setTipo(tipo);
-//						
-//						if(metodoPagamento.getTipo().equalsIgnoreCase("IBAN")) {
-//							if(!IBAN.equalsIgnoreCase("null")) {
-//								metodoPagamento.setIBAN(IBAN);
-//								metodoPagamento.setNumCarta(null);
-//							} else {
-//								request.getSession().setAttribute("error", "Aggiornamento non effettuato mannacc!");
-//								path = "modificaInfo?mode=update&target=indirizzo&utente=" + metodoPagamento.getUtente();
-//							}
-//						} else if (metodoPagamento.getTipo().equalsIgnoreCase("carta")) {
-//							if(!numCarta.equalsIgnoreCase("null")) {
-//								metodoPagamento.setNumCarta(numCarta);
-//								metodoPagamento.setIBAN(null);
-//							} else {
-//								request.getSession().setAttribute("error", "Aggiornamento non effettuato suca !");
-//								path = "modificaInfo?mode=update&target=indirizzo&utente=" + metodoPagamento.getUtente();
-//							}
-//						}
-//					} else {
-//						if(metodoPagamento.getTipo().equalsIgnoreCase("IBAN") && !IBAN.equalsIgnoreCase("null")) {
-//							if(!metodoPagamento.getIBAN().equalsIgnoreCase(IBAN)) {
-//								metodoPagamento.setIBAN(IBAN);
-//							}
-//						} else if(metodoPagamento.getTipo().equalsIgnoreCase("carta") && !numCarta.equalsIgnoreCase("null")) {
-//							if(!metodoPagamento.getNumCarta().equalsIgnoreCase(numCarta)) {
-//								metodoPagamento.setNumCarta(numCarta);
-//							}
-//						} else {
-//							request.getSession().setAttribute("error", "Aggiornamento non effettuato questo!");
-//							path = "modificaInfo?mode=update&target=indirizzo&utente=" + metodoPagamento.getUtente();
-//						}
-//					}
-					
+						
 					if(!metodoPagamento.getPreferito().equalsIgnoreCase(preferito)) {
 						List<MetodoDiPagamentoBean> listaMetodiPagamento = new ArrayList<>();
 						listaMetodiPagamento = dbMetodiPagamento.doRetrieveAllByKey(utente);
@@ -407,7 +355,7 @@ public class ModificaInfoServlet extends HttpServlet {
 							metodoPagamento.setPreferito(preferito);
 							
 							if(!dbMetodiPagamento.doUpdate(metodoPreferito)) {
-								request.getSession().setAttribute("error", "Aggiornamento non effettuato ooo!");
+								request.getSession().setAttribute("error", "Aggiornamento non effettuato!");
 								path = "modificaInfo?mode=update&target=indirizzo&utente=" + metodoPagamento.getUtente();
 							}
 						} else {
@@ -416,28 +364,198 @@ public class ModificaInfoServlet extends HttpServlet {
 					}
 					
 					if (!dbMetodiPagamento.doUpdate(metodoPagamento)) {
-						request.getSession().setAttribute("error", "Aggiornamento non effettuato gugugu!");
+						request.getSession().setAttribute("error", "Aggiornamento non effettuato!");
 						path = "modificaInfo?mode=update&target=metodoPagamento&utente=" + metodoPagamento.getUtente();
 					} else {
 						request.getSession().setAttribute("message", "Aggiornato con successo!");
 						path = "login?mode=getInfo&utente=" + metodoPagamento.getUtente();
 					}	
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		} else if (mode.equalsIgnoreCase("add")) {
+			String utente = request.getParameter("utente");
 			if(target.equals("indirizzo")) {
+				IndirizzoBean indirizzo = new IndirizzoBean();
+				IndirizzoDAO dbIndirizzo = new IndirizzoDAO();
 				
+				String via = request.getParameter("via");
+				String citta = request.getParameter("citta");
+				String CAP = request.getParameter("CAP");
+				String civico = request.getParameter("civico");
+				String provincia = request.getParameter("provincia");
+				String nazione = request.getParameter("nazione");
+				String scala = request.getParameter("scala");
+				String interno = request.getParameter("interno");
+				String preferito = request.getParameter("preferito");
+				
+				indirizzo.setUtente(utente);
+				indirizzo.setVia(via);
+				indirizzo.setCitta(citta);
+				indirizzo.setCAP(CAP);
+				indirizzo.setCivico(civico);
+				indirizzo.setProvincia(provincia);
+				indirizzo.setNazione(nazione);
+				
+				if(scala != null) {
+					indirizzo.setScala(scala);
+				}
+				
+				if(interno != null) {
+					indirizzo.setInterno(interno);
+				}
+				
+				if(preferito.equals("si")) {
+					List<IndirizzoBean> listaIndirizzi;
+					try {
+						listaIndirizzi = dbIndirizzo.doRetrieveAllByKey(utente);
+						IndirizzoBean indirizzoPreferito = new IndirizzoBean();
+						
+						if(!listaIndirizzi.isEmpty()) {
+							Iterator<IndirizzoBean> iterIndirizzi = listaIndirizzi.iterator();
+							while(iterIndirizzi.hasNext()) {
+								indirizzoPreferito = iterIndirizzi.next();
+								
+								if(indirizzoPreferito.getPreferito().equalsIgnoreCase("si")) {
+									indirizzoPreferito.setPreferito("no");
+									if(!dbIndirizzo.doUpdate(indirizzoPreferito)) {
+										request.getSession().setAttribute("error", "Aggiunta non effettuata!");
+										path = "modificaInfo?mode=add&target=indirizzo&utente=" + utente;
+									}
+									break;
+								}
+							}
+							indirizzo.setPreferito("si");
+						} else {
+							indirizzo.setPreferito("si");
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				} else {
+					indirizzo.setPreferito("no");
+				}
+				try {
+					dbIndirizzo.doSave(indirizzo);
+					request.getSession().setAttribute("message", "Aggiunto nuovo indirizzo con successo!");
+					path = "login?mode=getInfo&utente=" + utente;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			} else if (target.equals("metodoPagamento")) {
+				MetodoDiPagamentoBean metodoPagamento = new MetodoDiPagamentoBean();
+				MetodoDiPagamentoDAO dbMetodiPagamento = new MetodoDiPagamentoDAO();
 				
+				String via = request.getParameter("via");
+				String citta = request.getParameter("citta");
+				String CAP = request.getParameter("CAP");
+				String civico = request.getParameter("civico");
+				String provincia = request.getParameter("provincia");
+				String nazione = request.getParameter("nazione");
+				String tipo = request.getParameter("tipo");
+				String IBAN = request.getParameter("IBAN");
+				String numCarta = request.getParameter("numCarta");
+				String preferito = request.getParameter("preferito");
+				
+				metodoPagamento.setUtente(utente);
+				metodoPagamento.setVia(via);
+				metodoPagamento.setCitta(citta);
+				metodoPagamento.setCAP(CAP);
+				metodoPagamento.setCivico(civico);
+				metodoPagamento.setProvincia(provincia);
+				metodoPagamento.setNazione(nazione);
+				metodoPagamento.setTipo(tipo);
+				
+				if (tipo.equals("IBAN")) {
+					if (IBAN != null) {
+						metodoPagamento.setIBAN(IBAN);
+					} else {
+						request.getSession().setAttribute("error", "Aggiunta non effettuata!");
+						path = "modificaInfo?mode=add&target=indirizzo&utente=" + utente;
+					}
+				} else if (tipo.equals("carta")) {
+					if (numCarta != null) {
+						metodoPagamento.setNumCarta(numCarta);
+					} else {
+						request.getSession().setAttribute("error", "Aggiunta non effettuata!");
+						path = "modificaInfo?mode=add&target=indirizzo&utente=" + utente;
+					}
+				}
+				
+				if (preferito.equals("si")) {
+					try {
+						List<MetodoDiPagamentoBean> listaMetodiPagamento = dbMetodiPagamento.doRetrieveAllByKey(utente);
+						MetodoDiPagamentoBean metodoPreferito = new MetodoDiPagamentoBean();
+						
+						if(!listaMetodiPagamento.isEmpty()) {
+							Iterator<MetodoDiPagamentoBean> iterMetodi = listaMetodiPagamento.iterator();
+							while(iterMetodi.hasNext()) {
+								metodoPreferito = iterMetodi.next();
+								
+								if(metodoPreferito.getPreferito().equals("si")) {
+									metodoPreferito.setPreferito("no");
+									if(!dbMetodiPagamento.doUpdate(metodoPreferito)) {
+										request.getSession().setAttribute("error", "Aggiunta non effettuata!");
+										path = "modificaInfo?mode=add&target=metodoPagamento&utente=" + utente;
+									}
+									break;
+								}
+							}
+							
+							metodoPagamento.setPreferito("si");
+						} else {
+							metodoPagamento.setPreferito("si");
+						}
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+				} else {
+					metodoPagamento.setPreferito("no");
+				}
+				try {
+					dbMetodiPagamento.doSave(metodoPagamento);
+					request.getSession().setAttribute("message", "Aggiunto nuovo metodo di pamento con successo!");
+					path = "login?mode=getInfo&utente=" + utente;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		} else if (mode.equals("delete")) {
+			String utente = request.getParameter("utente");
+			if(target.equals("indirizzo")) {
+				String indirizzoID= request.getParameter("indirizzoID");
+				IndirizzoDAO dbIndirizzi = new IndirizzoDAO();
+				
+				try {
+					if(!dbIndirizzi.doDelete(indirizzoID,utente)) {
+						request.getSession().setAttribute("message", "Indirizzo non rimosso!");
+						path = "login?mode=getInfo&utente=" + utente;
+					} else {
+						request.getSession().setAttribute("message", "Indirizzo rimosso correttamente!");
+						path = "login?mode=getInfo&utente=" + utente;
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			} else if (target.equals("metodoPagamento")) {
+				String metodoPagamentoID = request.getParameter("metodoPagamentoID");
+				MetodoDiPagamentoDAO dbMetodiPagamento = new MetodoDiPagamentoDAO();
+				
+				try {
+					if(!dbMetodiPagamento.doDelete(metodoPagamentoID, utente)) {
+						request.getSession().setAttribute("message", "Metodo di pagamento non rimosso!");
+						path = "login?mode=getInfo&utente=" + utente;
+					} else {
+						request.getSession().setAttribute("message", "Metodo di pagamento rimosso correttamente!");
+						path = "login?mode=getInfo&utente=" + utente;
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
-		
-		
 		response.sendRedirect(path);
+		}
 	}
-	
-	
-}
+

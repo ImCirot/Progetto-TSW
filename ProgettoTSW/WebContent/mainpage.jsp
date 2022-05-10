@@ -48,6 +48,7 @@
   					<input type="hidden" name="mode" value="add">
   					<input type="hidden" name="prodotto" value="<% out.print(prodotto.getCodiceSeriale()); %>">
   					<input type="hidden" value="1" name="quantita">
+  					<input type="hidden" value="catalogo" name="catalogo">
   					<button type="submit">Acquista</button>
   				</form>
   			</div>

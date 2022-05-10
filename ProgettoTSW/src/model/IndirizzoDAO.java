@@ -17,23 +17,22 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 		PreparedStatement statement = null;
 		
 		String query = "INSERT INTO " + IndirizzoDAO.TABLE_NAME + 
-					" (numIndirizzoProgressivo,utente,via,citta,CAP,civico,provincia,nazione,scala,interno,preferito) VALUES (?,?,?,?,?,?,?,?,?,?,?);";
+					" (utente,via,citta,CAP,civico,provincia,nazione,scala,interno,preferito) VALUES (?,?,?,?,?,?,?,?,?,?);";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			
-			statement.setInt(1, bean.getNumIndirizzoProgressivo());
-			statement.setString(2, bean.getUtente());
-			statement.setString(3, bean.getVia());
-			statement.setString(4, bean.getCitta());
-			statement.setString(5, bean.getCAP());
-			statement.setString(6, bean.getCivico());
-			statement.setString(7, bean.getProvincia());
-			statement.setString(8, bean.getNazione());
-			statement.setString(9, bean.getScala());
-			statement.setString(10, bean.getInterno());
-			statement.setString(11, bean.getPreferito());
+			statement.setString(1, bean.getUtente());
+			statement.setString(2, bean.getVia());
+			statement.setString(3, bean.getCitta());
+			statement.setString(4, bean.getCAP());
+			statement.setString(5, bean.getCivico());
+			statement.setString(6, bean.getProvincia());
+			statement.setString(7, bean.getNazione());
+			statement.setString(8, bean.getScala());
+			statement.setString(9, bean.getInterno());
+			statement.setString(10, bean.getPreferito());
 			
 			statement.executeUpdate();
 			
@@ -70,7 +69,7 @@ public class IndirizzoDAO extends AbstractDAO<IndirizzoBean> {
 			
 			result = statement.executeUpdate();
 			
-			//con.commit(); // togliere commento se vuoi cancellare davvero dal db ad ogni delete
+			con.commit(); // togliere commento se vuoi cancellare davvero dal db ad ogni delete
 		} finally {
 			try {
 				if(statement != null) {

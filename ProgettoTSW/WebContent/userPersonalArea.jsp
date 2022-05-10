@@ -78,6 +78,13 @@
 				<input type="hidden" name="target" value="indirizzo">
 				<button type="submit">Modifica</button>
   			</form>
+  			<form action="modificaInfo" method="post">
+  				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
+  				<input type="hidden" value="<% out.print(indirizzo.getNumIndirizzoProgressivo());%>" name="indirizzoID">
+				<input type="hidden" name="mode" value="delete">
+				<input type="hidden" name="target" value="indirizzo">
+				<button type="submit">Elimina</button>
+  			</form>
   			</div>
   			<%}%>
   		
@@ -129,6 +136,13 @@
 				<input type="hidden" name="mode" value="update">
 				<input type="hidden" name="target" value="metodoPagamento">
 				<button type="submit">Modifica</button>
+  			</form>
+  			<form action="modificaInfo" method="post">
+  				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
+  				<input type="hidden" value="<% out.print(metodoPagamento.getNumPagamentoProgressivo());%>" name="metodoPagamentoID">
+				<input type="hidden" name="mode" value="delete">
+				<input type="hidden" name="target" value="metodoPagamento">
+				<button type="submit">Elimina</button>
   			</form>
   			</div>
   			<% } %>
