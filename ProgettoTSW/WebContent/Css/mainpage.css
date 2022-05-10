@@ -27,6 +27,7 @@ body{
   border: 1px solid lightgrey;
   border-radius:10px;
 }
+
 .prodotto:hover{
 	animation: hoverproduct 0.5s ease 0s normal forwards;
 }
