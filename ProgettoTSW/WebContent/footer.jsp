@@ -13,9 +13,9 @@
     <footer class="sticky-footer">
        <!-- <h2>Footer Stick to the Bottom</h2> -->
        <ul>
-          <li><a href="#">Home</a></li>
+          <li><a href="#">Chi siamo</a></li>
           <li><a href="#">Services</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="#">Contatti</a></li>
 
        </ul>
        <div class="container-icon">

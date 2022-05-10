@@ -14,7 +14,6 @@ a{
   padding: 30px;
   background-image: url("../Images/backgroundImage.png");
   background-size:60%;
-	
   position:relative;
 }
 
@@ -30,11 +29,9 @@ a{
 }
 
 .logo{
-	 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
   	width:400px;
   	height:150px;
-  	
-  	
   	border: 1px solid lightgrey;
   	border-radius:35px;
   	position: relative;
