@@ -12,9 +12,13 @@
 	<jsp:include page="./header.jsp" />
 	<h1>Carrello</h1>
 	<div class="cart-container">
-	
+		
 		<% Map<String,Integer> carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
-		if(carrello != null){
+		if(carrello == null){%>
+			<div class="carrello-vuoto">
+				<p>Carrello vuoto!</p>
+			</div>
+			<%}else{ 
 			Iterator<String> iterKeys = carrello.keySet().iterator();
 			List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
 			List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");
@@ -93,13 +97,9 @@
 				</form>
 					</div>
 				</div>
+				<%} %>
 			</div>
-			<%} else {%>
-			<div class="carrello-vuoto">
-			<p>Carrello vuoto!</p>
-			</div >
-			<%}%>
+		
 		<jsp:include page="./footer.jsp" />
-
 </body>
 </html>
