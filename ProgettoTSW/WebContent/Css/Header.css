@@ -30,12 +30,12 @@ a{
 
 .logo{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
-  	width:400px;
-  	height:150px;
+  	width:250px;
+  	height:100px;
   	border: 1px solid lightgrey;
-  	border-radius:35px;
+  	border-radius:12px;
   	position: relative;
-  	 background-image: url("../Images/logopreciso.png");
+  	background-image: url("../Images/logopreciso.png");
   	background-size:cover;
   	background-position: center center;
   	background-repeat: no-repeat;
@@ -75,7 +75,7 @@ a{
 }
 
 .menu ul li a{
-  padding: 20px;
+  padding: 12px;
   display: block;
   color: white;
   margin:auto;
@@ -93,7 +93,7 @@ a{
 }
 
 .catalogo ul li a{
-  padding: 20px;
+  padding: 12px;
   display: block;
   color: white;
   font-size: 18px;
