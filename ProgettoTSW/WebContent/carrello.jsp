@@ -10,9 +10,9 @@
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
-	
-	<div class="cart-container">
 	<h1>Carrello</h1>
+	<div class="cart-container">
+	
 		<% Map<String,Integer> carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
 		if(carrello != null){
 			Iterator<String> iterKeys = carrello.keySet().iterator();
@@ -95,9 +95,9 @@
 				</div>
 			</div>
 			<%} else {%>
-			<div>
-			<p>Carrello vuoto! Aggiungi prima qualche prodotto!</p>
-			</div class="carrello-vuoto">
+			<div class="carrello-vuoto">
+			<p>Carrello vuoto!</p>
+			</div >
 			<%}%>
 		<jsp:include page="./footer.jsp" />
 

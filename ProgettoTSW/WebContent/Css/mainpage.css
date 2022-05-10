@@ -1,3 +1,12 @@
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Bebas Neue', regular;
+  min-height: 100vh;
+}
+
+
 .container-catalogo{
   display: flex;
   width: 100%;
