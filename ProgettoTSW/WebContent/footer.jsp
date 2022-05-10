@@ -11,15 +11,15 @@
   </head>
   <body>
     <footer class="sticky-footer">
-       <!-- <h2>Footer Stick to the Bottom</h2> -->
        <ul>
-          <li><a href="#">Chi siamo</a></li>
+          <li><a href="#">Chi Siamo</a></li>
           <li><a href="#">Services</a></li>
           <li><a href="#">Contatti</a></li>
-
        </ul>
+       
        <div class="container-icon">
          <a href="#" class="fa fa-facebook"></a>
+         <a href="#" class="fa fa-instagram"></a>
          <a href="#" class="fa fa-twitter"></a>
        </div>
        

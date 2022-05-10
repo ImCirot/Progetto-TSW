@@ -5,6 +5,13 @@ body{
   min-height: 100vh;
 }
 
+.container-icon{
+	right: 1em;
+	position: absolute;
+	bottom: 1em;
+	
+}
+
 footer p{
     padding:0;
     font-size: 0.8em;
@@ -12,17 +19,21 @@ footer p{
     margin: 1em 0;
     font-size: 1rem;
 }
+
 footer ul{
     list-style: none;
     display: flex;
     margin: 1em 0;
 }
+
 footer ul li a{
-    padding: 1em;
+    padding: 2em;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.904);
+    margin: auto 1px;
     transition: 100ms;
 }
+
 footer ul li a:hover{
     color: var(--primary);
 }
@@ -35,17 +46,17 @@ footer{
     place-items: center;
     padding: 2em;
     font-size: 1.2rem;
+    position: relative;
 }
 
-.fa {
-  padding: 20px;
+.fa{
+	margin: 2px;
+  padding: 15px;
   font-size: 30px;
-  width: 70px;
+  width: 50px;
   text-align: center;
   text-decoration: none;
-  margin: 5px 2px;
-  border-radius: 50%;
-	
+  border-radius: 30%;
 }
 
 .fa:hover {
@@ -56,8 +67,13 @@ footer{
   background: #3B5998;
   color: white;
 }
+
 .fa-twitter {
   background: #55ACEE;
+  color: white;
+}
+.fa-instagram {
+  background: #ff0080;
   color: white;
 }
 /* Sticky Footer Styling */
