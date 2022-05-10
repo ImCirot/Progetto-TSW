@@ -43,59 +43,108 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String utente = request.getParameter("utente");
-		List<IndirizzoBean> indirizzi = new ArrayList<>();
-		List<MetodoDiPagamentoBean> metodiPagamento = new ArrayList<>();
-		List<OrdineBean> ordini = new ArrayList<>();
+		String mode = request.getParameter("mode");
 		
-		IndirizzoDAO dbIndirizzo = new IndirizzoDAO();
-		MetodoDiPagamentoDAO dbPagamento = new MetodoDiPagamentoDAO();
-		OrdineDAO dbOrdine = new OrdineDAO();
-		
-		try {
-			indirizzi = dbIndirizzo.doRetrieveAllByKey(utente);
-			metodiPagamento = dbPagamento.doRetrieveAllByKey(utente);
-			ordini = dbOrdine.doRetrieveAllByKey(utente);
+		if(mode.equalsIgnoreCase("getInfo")) {
+			String utente = request.getParameter("utente");
+			List<IndirizzoBean> indirizzi = new ArrayList<>();
+			List<MetodoDiPagamentoBean> metodiPagamento = new ArrayList<>();
+			List<OrdineBean> ordini = new ArrayList<>();
 			
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			IndirizzoDAO dbIndirizzo = new IndirizzoDAO();
+			MetodoDiPagamentoDAO dbPagamento = new MetodoDiPagamentoDAO();
+			OrdineDAO dbOrdine = new OrdineDAO();
+			
+			try {
+				indirizzi = dbIndirizzo.doRetrieveAllByKey(utente);
+				metodiPagamento = dbPagamento.doRetrieveAllByKey(utente);
+				ordini = dbOrdine.doRetrieveAllByKey(utente);
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.getSession().setAttribute("indirizzi", indirizzi);
+			request.getSession().setAttribute("metodiPagamento", metodiPagamento);
+			request.getSession().setAttribute("ordini", ordini);
+			
+			RequestDispatcher view = request.getRequestDispatcher("./userPersonalArea.jsp");
+			view.forward(request, response);
+		} else if(mode.equalsIgnoreCase("register")) {
+			response.sendRedirect("./registerForm.jsp");
 		}
-		
-		request.getSession().setAttribute("indirizzi", indirizzi);
-		request.getSession().setAttribute("metodiPagamento", metodiPagamento);
-		request.getSession().setAttribute("ordini", ordini);
-		
-		RequestDispatcher view = request.getRequestDispatcher("./userPersonalArea.jsp");
-		view.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		Encoder encoder = Base64.getEncoder();
-		String password64 = encoder.encodeToString(request.getParameter("password").getBytes());
-		UtenteBean user = checkLogin(username, password64);
+		String mode = request.getParameter("mode");
 		
-		if(user != null) {
-			request.getSession().setAttribute("nome", user.getNome());
-			request.getSession().setAttribute("cognome", user.getCognome());
-			request.getSession().setAttribute("utente", user.getUsername());
-			request.getSession().setAttribute("logged", (Boolean) true);
+		if(mode.equalsIgnoreCase("login")) {
+			String username = request.getParameter("username");
+			Encoder encoder = Base64.getEncoder();
+			String password64 = encoder.encodeToString(request.getParameter("password").getBytes());
+			UtenteBean user = checkLogin(username, password64);
 			
-			if(user.isAdmin()) {
-				request.getSession().setAttribute("admin", true);
+			if(user != null) {
+				request.getSession().setAttribute("nome", user.getNome());
+				request.getSession().setAttribute("cognome", user.getCognome());
+				request.getSession().setAttribute("utente", user.getUsername());
+				request.getSession().setAttribute("logged", (Boolean) true);
+				
+				if(user.isAdmin()) {
+					request.getSession().setAttribute("admin", true);
+				} else {
+					request.getSession().setAttribute("admin", false);
+				}
+				
+				response.sendRedirect("login?utente=" + username +"&mode=getInfo");
 			} else {
-				request.getSession().setAttribute("admin", false);
+				request.getSession().setAttribute("logged", (Boolean) false);
+				request.getSession().setAttribute("error", "Username e/o password invalidi.");
+				response.sendRedirect("./loginForm.jsp");
+			}
+		} else if(mode.equalsIgnoreCase("register")) {
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			String passwordCheck = request.getParameter("passwordCheck");
+			String email = request.getParameter("email");
+			String nome = request.getParameter("nome");
+			String cognome = request.getParameter("cognome");
+			String sesso = request.getParameter("sesso");
+			Encoder encoder = Base64.getEncoder();
+			String pwd64 = null;
+			String pwdchk64 = null;
+			
+			pwd64 = encoder.encodeToString(password.getBytes());
+			pwdchk64 = encoder.encodeToString(passwordCheck.getBytes());
+			
+			if(pwd64.equals(pwdchk64)) {
+				UtenteBean utente = new UtenteBean();
+				UtenteDAO dbUtenti = new UtenteDAO();
+				
+				utente.setUsername(username);
+				utente.setPassword(pwd64);
+				utente.setEmail(email);
+				utente.setNome(nome);
+				utente.setCognome(cognome);
+				utente.setSesso(sesso);
+				utente.setAdmin(false);
+				
+				try {
+					dbUtenti.doSave(utente);
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				request.getSession().setAttribute("result", "Registrato con successo!");
+			} else {
+				request.getSession().setAttribute("error", "Registrazione non completata. Riprovare.");
 			}
 			
-			response.sendRedirect("login?utente=" + username);
-		} else {
-			request.getSession().setAttribute("logged", (Boolean) false);
-			request.getSession().setAttribute("error", "Username e/o password invalidi.");
-			response.sendRedirect("./loginForm.jsp");
+			RequestDispatcher view = request.getRequestDispatcher("./loginForm.jsp");
+			view.forward(request, response);
 		}
 	}
 	
