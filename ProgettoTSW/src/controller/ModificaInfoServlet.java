@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.IndirizzoBean;
+import model.IndirizzoDAO;
 import model.UtenteBean;
 import model.UtenteDAO;
 
@@ -54,7 +56,20 @@ public class ModificaInfoServlet extends HttpServlet {
 				pathRedirect = "./modificaInfoForm.jsp";
 				
 			} else if (target.equals("indirizzo")) {
+				String indirizzoID = request.getParameter("indirizzoID");
+				IndirizzoDAO dbIndirizzi = new IndirizzoDAO();
+				IndirizzoBean indirizzo = new IndirizzoBean();
 				
+				try {
+					indirizzo = dbIndirizzi.doRetrieveByKey(indirizzoID, username);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				request.setAttribute("indirizzo", indirizzo);
+				request.setAttribute("target", "indirizzo");
+				pathRedirect = "./modificaInfoForm.jsp";
 			} else if (target.equals("metodoPagamento")) {
 				
 			}
