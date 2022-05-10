@@ -8,14 +8,26 @@ body{
 h1{
   margin-left: 7%;
 }
-
 .cart-container{
   width: 100%;
   height: auto;
   display: flex;
   flex-direction: column;
 }
-
+.info input:focus {
+	 box-shadow: 0 0 5px rgba(141, 57, 197, 1);
+	 border: 1px solid rgba(141, 57, 197, 1);
+}
+.info input{
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0px 3px 3px;
+  margin: 5px 1px 3px 0px;
+  border: 1px solid lightgrey;
+}
 .cart-container-interno{
   width: 95%;
   height: auto;

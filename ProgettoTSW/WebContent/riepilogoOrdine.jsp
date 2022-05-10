@@ -16,11 +16,14 @@
 		Iterator<IndirizzoBean> iterIndirizzi = listaIndirizzi.iterator(); 
 		IndirizzoBean indirizzo = new IndirizzoBean();
 		MetodoDiPagamentoBean metodPagamento = new MetodoDiPagamentoBean();%>
-		
+		<div class="container">
 		<form action="ordine" method="post">
 		<input type="hidden" name="costoTot" value="<% out.print(request.getAttribute("costoTot"));%>">
-		<h4>Scegli indirizzo di spedizione</h4><br>
-		<fieldset>
+		
+		
+		
+			<div class="container-interno">
+			<h4>Scegli indirizzo di spedizione</h4><br>
 		<%	while(iterIndirizzi.hasNext()){
 			indirizzo = iterIndirizzi.next();
 			if(indirizzo.getPreferito().equals("si")){ %>
@@ -48,10 +51,11 @@
 			<% } %>
 		<%}%>
 		<a href="#">Aggiungi indirizzo</a>
-		</fieldset>
+		</div>
 		
+		
+		<div class="container-interno">
 		<h4>Scegli un metodo di pagamento</h4>
-		<fieldset>
 		<% while(iterMetodiPagamento.hasNext()){
 			metodPagamento = iterMetodiPagamento.next();
 			if(metodPagamento.getPreferito().equals("si")){%>
@@ -75,15 +79,17 @@
 		<% }
 		} %>
 		<a href="#">Aggiungi metodo di pagamento</a>
-		</fieldset>
-		<br><br>
-		
+		</div>
 		<div class="button-acquista">
 			<button type="submit">Acquista</button>
 		</div>
+		</form>
+		</div>
+		
 		
 		<br><br>
-		</form>
+		
+		
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>

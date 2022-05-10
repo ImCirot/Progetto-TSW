@@ -11,17 +11,35 @@ body{
 	padding: 10px;
 	background-color: #9932CC;
 	color: white;
+	border:none;
 	font-size: 16px;
-	width: 8%;
-	border-radius: 5px 5px;
+	width: 6%;
+	border-radius: 5px;
   	margin: 5px auto;
-  	text-align: center;
 }
 
 h4{
 	font-size: 20px;
 }
 
+.container-interno{
+  border-radius: 10px;
+  width:50%;
+  margin: 20px auto;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+}
+.container-interno a{
+	padding: 6px;
+	background-color: #9932CC;
+	color: white;
+	border:none;
+	font-size: 18px;
+	width: 100%;
+	border-radius: 8px;
+  	margin: 10px auto;
+  	
+}
 button:hover{
 	animation: myAnim 1s ease 0s 1 normal forwards;
 	cursor: pointer;

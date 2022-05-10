@@ -1,5 +1,6 @@
 .dati p{
   padding: 50px;
+  
 }
 
 .login {
@@ -44,7 +45,7 @@ body{
   flex-direction: column;
   padding: 100px;
   gap: 30px 40px;
-  
+  font-size:18px;
 }
 .container-info-interno{
 	display:flex;

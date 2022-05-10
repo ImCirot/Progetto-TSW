@@ -15,14 +15,15 @@
 		}
 	%>
 	<jsp:include page="./header.jsp" />
-	<div class="dati">
-    <p>
+	<h1>
     Ciao <% out.println(request.getSession().getAttribute("nome") + " " + request.getSession().getAttribute("cognome")); %>
-    </p>
-    <br />
+    </h1>
+	<div class="dati">
+   	
     <form action="LogOutServlet" method="get">
 		<button type="submit">Logout</button>
 	</form>
+	<br>
 	<form action="modificaInfo" method="get">
 		<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
 		<input type="hidden" name="mode" value="update">
@@ -34,7 +35,7 @@
   <div class="container-info">
   	<div class="container-info-interno">
   		<div class="info">
-  			<h4>I tuoi indirizzi di spedizione</h4>
+  			<h3>I tuoi indirizzi di spedizione</h3>
   		</div>
   	<% List<IndirizzoBean> indirizzi = (List<IndirizzoBean>) request.getSession().getAttribute("indirizzi"); 
   		Iterator<IndirizzoBean> iterIndirizzi = indirizzi.iterator();
@@ -46,7 +47,7 @@
   			i += 1;%>
   			
   			<div class="info">
-  			<h4>Indirizzo <%out.print(i);%></h4>
+  			<h3>Indirizzo <%out.print(i);%></h3>
   
   			<p>
   				<% out.print(indirizzo.getVia() + " " + indirizzo.getCivico() + " ");
@@ -88,7 +89,7 @@
   		</div>
   		<div class="container-info-interno">
   		<div class="info">
-  			<h4>I tuoi metodi di pagamento</h4>
+  			<h3>I tuoi metodi di pagamento</h3>
   		</div>
   		<% List<MetodoDiPagamentoBean> metodiPagamento = (List<MetodoDiPagamentoBean>) request.getSession().getAttribute("metodiPagamento"); 
   		Iterator<MetodoDiPagamentoBean> iterMetodi = metodiPagamento.iterator();
@@ -99,7 +100,7 @@
   			metodoPagamento = iterMetodi.next();
   			i += 1;%>
   			<div class="info">
-  			<h4>Metodo di pagamento <%out.print(i);%></h4>
+  			<h3>Metodo di pagamento <%out.print(i);%></h3>
   			<p>
   				<% 
   					out.println(metodoPagamento.getTipo());
@@ -139,7 +140,7 @@
   		</div>
   		<div class="container-info-interno">
   			<div class="info">
-  			<h4>I tuoi ordini</h4>
+  			<h3>I tuoi ordini</h3>
   		</div>
   		<% List<OrdineBean> ordini = (List<OrdineBean>) request.getSession().getAttribute("ordini"); 
   		Iterator<OrdineBean> iterOrdini = ordini.iterator();
@@ -147,7 +148,7 @@
   		while (iterOrdini.hasNext()){
   			ordine = iterOrdini.next();%>
   		<div class="info">
-  		<h4>Ordine <% out.println(ordine.getNumOrdineProgressivo()); %></h4>
+  		<h3>Ordine <% out.println(ordine.getNumOrdineProgressivo()); %></h3>
   		<p>
   			<% out.println(ordine.getCostoTotale()); %><br><br>
   		</p>
