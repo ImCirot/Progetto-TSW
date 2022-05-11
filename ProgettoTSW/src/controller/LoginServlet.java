@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Base64.Encoder;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -80,6 +81,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mode = request.getParameter("mode");
+		String path = null;
 		
 		if(mode.equalsIgnoreCase("login")) {
 			String username = request.getParameter("username");
@@ -99,11 +101,11 @@ public class LoginServlet extends HttpServlet {
 					request.getSession().setAttribute("admin", false);
 				}
 				
-				response.sendRedirect("login?utente=" + username +"&mode=getInfo");
+				path = "login?utente=" + username +"&mode=getInfo";
 			} else {
 				request.getSession().setAttribute("logged", (Boolean) false);
 				request.getSession().setAttribute("error", "Username e/o password invalidi.");
-				response.sendRedirect("./loginForm.jsp");
+				path = "./loginForm.jsp";
 			}
 		} else if(mode.equalsIgnoreCase("register")) {
 			String username = request.getParameter("username");
@@ -120,29 +122,47 @@ public class LoginServlet extends HttpServlet {
 			pwd64 = encoder.encodeToString(password.getBytes());
 			pwdchk64 = encoder.encodeToString(passwordCheck.getBytes());
 			
-			if(pwd64.equals(pwdchk64)) {
-				UtenteBean utente = new UtenteBean();
-				UtenteDAO dbUtenti = new UtenteDAO();
-				
-				utente.setUsername(username);
-				utente.setPassword(pwd64);
-				utente.setEmail(email);
-				utente.setNome(nome);
-				utente.setCognome(cognome);
-				utente.setSesso(sesso);
-				utente.setAdmin(false);
-				
-				try {
-					dbUtenti.doSave(utente);
-				} catch (SQLException e) {
-					e.printStackTrace();
+			try {
+				if(pwd64.equals(pwdchk64)) {
+					UtenteBean utente = new UtenteBean();
+					UtenteDAO dbUtenti = new UtenteDAO();
+					UtenteBean utenteRicercato = new UtenteBean();
+					boolean flag = false;
+					List<UtenteBean> listaUtenti = dbUtenti.doRetrieveAll(username);
+					Iterator<UtenteBean> iterUtenti = listaUtenti.iterator();
+					
+					utente.setUsername(username);
+					utente.setPassword(pwd64);
+					
+					while(iterUtenti.hasNext()) {
+						utenteRicercato = iterUtenti.next();
+						if(!utenteRicercato.getUsername().equalsIgnoreCase(utente.getUsername())) {
+							if(utenteRicercato.getEmail().equalsIgnoreCase(email)) {
+								flag = true;
+								break;
+							}
+						}
+					}
+					
+					utente.setEmail(email);
+					utente.setNome(nome);
+					utente.setCognome(cognome);
+					utente.setSesso(sesso);
+					utente.setAdmin(false);
+					
+					if(!flag) {
+						dbUtenti.doSave(utente);
+						request.getSession().setAttribute("result", "Registrato con successo!");
+					} else {
+						request.getSession().setAttribute("error", "Registrazione non completata. Riprovare.");
+					}
 				}
-				request.getSession().setAttribute("result", "Registrato con successo!");
-			} else {
-				request.getSession().setAttribute("error", "Registrazione non completata. Riprovare.");
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
+			path = "./loginForm.jsp";
 			
-			RequestDispatcher view = request.getRequestDispatcher("./loginForm.jsp");
+			RequestDispatcher view = request.getRequestDispatcher(path);
 			view.forward(request, response);
 		}
 	}
