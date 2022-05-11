@@ -113,6 +113,7 @@ public class ModificaInfoServlet extends HttpServlet {
 		String path = null;
 		String target = request.getParameter("target");
 		String mode = request.getParameter("mode");
+		boolean flag = false;
 		
 		if(mode.equalsIgnoreCase("update")) {
 			if(target.equalsIgnoreCase("utente")) {
@@ -149,6 +150,19 @@ public class ModificaInfoServlet extends HttpServlet {
 						}
 						
 						if(!utente.getEmail().equalsIgnoreCase(email)) {
+							List<UtenteBean> listaUtenti = dbUtente.doRetrieveAll(username);
+							Iterator<UtenteBean> iterUtenti = listaUtenti.iterator();
+							UtenteBean utenteRicercato = new UtenteBean();
+							while(iterUtenti.hasNext()) {
+								utenteRicercato = iterUtenti.next();
+								
+								if(!utente.getUsername().equalsIgnoreCase(utenteRicercato.getUsername())) {
+									if(utenteRicercato.getEmail().equalsIgnoreCase(email)) {
+										flag = true;
+										break;
+									}
+								}
+							}
 							utente.setEmail(email);
 						}
 						
@@ -166,12 +180,17 @@ public class ModificaInfoServlet extends HttpServlet {
 							utente.setSesso(sesso);
 						}
 						
-						if(!dbUtente.doUpdate(utente,username)) {
-							request.getSession().setAttribute("error", "Aggiornamento non effettuato!");
-							path = "modificaInfo?mode=update&target=utente&utente=" + username;
+						if(!flag) {
+							if(!dbUtente.doUpdate(utente,username)) {
+								request.getSession().setAttribute("error", "Aggiornamento non effettuato!");
+								path = "modificaInfo?mode=update&target=utente&utente=" + username;
+							} else {
+								request.getSession().setAttribute("message", "Aggiornato con successo!");
+								path = "login?mode=getInfo&utente=" + newUsername;
+							}
 						} else {
-							request.getSession().setAttribute("message", "Aggiornato con successo!");
-							path = "login?mode=getInfo&utente=" + newUsername;
+							request.getSession().setAttribute("error", "Impossibile usare l'email scelta. Riprova.");
+							path = "./modificaInfo?mode=update&target=utente&utente=" + username;
 						}
 					} catch (SQLException e) {
 						e.printStackTrace();
