@@ -101,11 +101,11 @@ public class LoginServlet extends HttpServlet {
 					request.getSession().setAttribute("admin", false);
 				}
 				
-				path = "login?utente=" + username +"&mode=getInfo";
+				response.sendRedirect("login?utente=" + username + "&mode=getInfo");
 			} else {
 				request.getSession().setAttribute("logged", (Boolean) false);
 				request.getSession().setAttribute("error", "Username e/o password invalidi.");
-				path = "./loginForm.jsp";
+				response.sendRedirect("./loginForm.jsp");
 			}
 		} else if(mode.equalsIgnoreCase("register")) {
 			String username = request.getParameter("username");
