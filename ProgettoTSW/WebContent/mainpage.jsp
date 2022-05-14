@@ -17,7 +17,7 @@
 	%>
 		<div class="prodotto">
 			<a href="gestisciProdotti">
-			<img src="https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/plus.png" alt="aggiungiProdotto">
+			<img src="https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/plus.png?token=GHSAT0AAAAAABUGAVJ4X2FFN5AUKAG6ZQSSYT7INOA" alt="aggiungiProdotto">
 			</a>
 			<h4>Gestisci prodotti</h4>
 		</div>
