@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fattura</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="./Css/fattura.css" />
+    <link rel="stylesheet" href="./Css/fattura.css" >
     <script src="./JS/fattura.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
 
@@ -156,6 +156,10 @@
                                         </tbody>
                                     </table>
                                 </div>
+<<<<<<< HEAD
+=======
+                               
+>>>>>>> branch 'main' of https://github.com/ImCirot/Progetto-TSW.git
                         </div>
                     </div>
                     <div class="card-footer"> <span class="text-muted">Snackz &copy; 2022</span> </div>
