@@ -63,6 +63,7 @@
 			</p>
 			</div>
 		</div>
+		<script type="text/javascript" src="./Js/fatturapdf.js"></script>
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>

@@ -13,6 +13,8 @@
 		if(!logged){
 			response.sendRedirect("./loginForm.jsp");
 		}
+		
+		boolean admin = (boolean) request.getSession().getAttribute("admin");
 	%>
 	<jsp:include page="./header.jsp" />
 	<h1>
@@ -22,6 +24,7 @@
     	if(message != null) {%>
     		<p><% out.println(message); %></p>
     	<% request.getSession().removeAttribute("message"); } %>
+    <% if (!admin) {%>
 	<div class="dati">
    	
     <form action="LogOutServlet" method="get">
@@ -178,6 +181,32 @@
   		<%}%>
   		</div>
   </div>
+  <% } else { %>
+  		<div class="container-info-interno">
+  			<div class="info">
+  			<h3>Storico ordini utenti</h3>
+  		</div>
+  		<% List<OrdineBean> ordini = (List<OrdineBean>) request.getSession().getAttribute("ordini"); 
+  		Iterator<OrdineBean> iterOrdini = ordini.iterator();
+  		OrdineBean ordine = new OrdineBean(); 
+  		while (iterOrdini.hasNext()){
+  			ordine = iterOrdini.next();%>
+  		<div class="info">
+  		<h3>Ordine <% out.println(ordine.getNumOrdineProgressivo()); %></h3><hr>
+  		<p>
+  			<% 
+  			out.print(ordine.getCliente()); %> <hr>
+  			<% out.print(ordine.getDataAcquisto()); %><hr>
+  			<% out.print(ordine.getCostoTotale()); %> &euro;<hr><br>
+  		</p>
+  			<form action="gestisciOrdine" method="get">
+  				<input type="hidden" name="ordine" value="<%out.print(ordine.getNumOrdineProgressivo());%>">
+  				<button type="submit">Vedi dettagli</button>
+  			</form>
+  		</div>
+  		<%}%>
+  		</div>
+  <% } %>
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>

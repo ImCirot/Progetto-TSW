@@ -47,6 +47,7 @@ public class LoginServlet extends HttpServlet {
 		
 		if(mode.equalsIgnoreCase("getInfo")) {
 			String utente = request.getParameter("utente");
+			boolean admin = (boolean) request.getSession().getAttribute("admin");
 			List<IndirizzoBean> indirizzi = new ArrayList<>();
 			List<MetodoDiPagamentoBean> metodiPagamento = new ArrayList<>();
 			List<OrdineBean> ordini = new ArrayList<>();
@@ -55,22 +56,36 @@ public class LoginServlet extends HttpServlet {
 			MetodoDiPagamentoDAO dbPagamento = new MetodoDiPagamentoDAO();
 			OrdineDAO dbOrdine = new OrdineDAO();
 			
-			try {
-				indirizzi = dbIndirizzo.doRetrieveAllByKey(utente);
-				metodiPagamento = dbPagamento.doRetrieveAllByKey(utente);
-				ordini = dbOrdine.doRetrieveAllByKey(utente);
+			if(!admin) {
+				try {
+					indirizzi = dbIndirizzo.doRetrieveAllByKey(utente);
+					metodiPagamento = dbPagamento.doRetrieveAllByKey(utente);
+					ordini = dbOrdine.doRetrieveAllByKey(utente);
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				request.getSession().setAttribute("indirizzi", indirizzi);
+				request.getSession().setAttribute("metodiPagamento", metodiPagamento);
+				request.getSession().setAttribute("ordini", ordini);
+				
+				RequestDispatcher view = request.getRequestDispatcher("./userPersonalArea.jsp");
+				view.forward(request, response);
+			} else {
+				try {
+					ordini = dbOrdine.doRetrieveAll(utente);
+					
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				request.getSession().setAttribute("ordini", ordini);
+				
+				RequestDispatcher view = request.getRequestDispatcher("./userPersonalArea.jsp");
+				view.forward(request, response);
 			}
-			
-			request.getSession().setAttribute("indirizzi", indirizzi);
-			request.getSession().setAttribute("metodiPagamento", metodiPagamento);
-			request.getSession().setAttribute("ordini", ordini);
-			
-			RequestDispatcher view = request.getRequestDispatcher("./userPersonalArea.jsp");
-			view.forward(request, response);
 		} else if(mode.equalsIgnoreCase("register")) {
 			response.sendRedirect("./registerForm.jsp");
 		}
