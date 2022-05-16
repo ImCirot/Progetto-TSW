@@ -1,5 +1,7 @@
+<%@page import="java.math.BigDecimal"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" import="model.*" import="java.util.List" import="java.util.Iterator" import="java.math.RoundingMode"
+	import="java.text.DecimalFormat"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Fattura</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="./Css/fattura.css" >
     <script src="./JS/fattura.js"></script>
@@ -16,6 +18,15 @@
 </head>
 
 <body>
+	<% OrdineBean ordine = (OrdineBean) request.getAttribute("ordine");
+	UtenteBean cliente = (UtenteBean) request.getAttribute("cliente");
+	List<ComposizioneOrdineBean> listaComposizioneOrdine = (List<ComposizioneOrdineBean>) request.getAttribute("listaComposizioneOrdine");
+	MetodoDiPagamentoBean metodoPagamento = (MetodoDiPagamentoBean) request.getAttribute("metodoPagamento");
+	IndirizzoBean indirizzo = (IndirizzoBean) request.getAttribute("indirizzo");
+	Double totNetto = 0.0;
+	Double costoNetto;
+	DecimalFormat df = new DecimalFormat("0.00");
+	%>
     <div class="container d-flex justify-content-center mt-50 mb-50">
         <div class="row">
             <div class="col-md-12 text-right mb-3">
@@ -24,7 +35,7 @@
             <div class="col-md-12">
                 <div class="card" id="invoice">
                     <div class="card-header bg-transparent header-elements-inline">
-                        <h6 class="card-title text-primary">Sale invoice</h6>
+                        <h6 class="card-title text-primary">Fattura</h6>
                     </div>
                     <div class="card-body">
                         <div class="row">
@@ -32,143 +43,138 @@
                                 <div class="mb-4 pull-left">
 
                                     <ul class="list list-unstyled mb-0 text-left">
-                                        <li>2269 Six Sigma</li>
-                                        <li>New york city</li>
-                                        <li>+1 474 44737 47 </li>
+                                        <li>Via Roma, 10</li>
+                                        <li>Fisciano (SA), Italia</li>
+                                        <li>089-1234765</li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="mb-4 ">
                                     <div class="text-sm-right">
-                                        <h4 class="invoice-color mb-2 mt-md-2">Invoice #BBB1243</h4>
+                                        <h4 class="invoice-color mb-2 mt-md-2">Fattura #<% out.println(ordine.getNumOrdineProgressivo()); %></h4>
                                         <ul class="list list-unstyled mb-0">
-                                            <li>Date: <span class="font-weight-semibold">March 15, 2020</span></li>
-                                            <li>Due date: <span class="font-weight-semibold">March 30, 2020</span></li>
+                                            <li>Data: <span class="font-weight-semibold"><% out.println(ordine.getDataAcquisto()); %></span></li>
                                         </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="d-md-flex flex-md-wrap">
-                            <div class="mb-4 mb-md-2 text-left"> <span class="text-muted">Invoice To:</span>
+                            <div class="mb-4 mb-md-2 text-left"> <span class="text-muted">Cliente:</span>
                                 <ul class="list list-unstyled mb-0">
                                     <li>
-                                        <h5 class="my-2">Tibco Turang</h5>
+                                        <h5 class="my-2"><% out.println(cliente.getNome() + " " + cliente.getCognome()); %></h5>
                                     </li>
-                                    <li><span class="font-weight-semibold">Samantha Mutual funds Ltd</span></li>
-                                    <li>Gurung Street</li>
-                                    <li>23 BB Lane</li>
-                                    <li>Hong kong</li>
-                                    <li>234 456 5678</li>
-                                    <li><a href="#" data-abc="true">tibco@samantha.com</a></li>
+                                    <li><span class="font-weight-semibold"><% out.println(ordine.getVia() + ", " + ordine.getCivico()); %></span></li>
+                                    <li><% out.println(ordine.getCitta() + ", " + ordine.getCAP()); %></li>
+                                    <li><% out.println(ordine.getProvincia()); %></li>
+                                    <li><% out.println(ordine.getNazione()); %></li>
+                                    <li><a href="#" data-abc="true"><% out.print(cliente.getEmail()); %></a></li>
                                 </ul>
                             </div>
-                            <div class="mb-2 ml-auto"> <span class="text-muted">Payment Details:</span>
+                            <div class="mb-2 ml-auto"> <span class="text-muted">Dettagli pagamento:</span>
                                 <div class="d-flex flex-wrap wmin-md-400">
                                     <ul class="list list-unstyled mb-0 text-left">
-                                        <li>
-                                            <h5 class="my-2">Total Due:</h5>
-                                        </li>
-                                        <li>Bank name:</li>
-                                        <li>Country:</li>
-                                        <li>City:</li>
-                                        <li>Address:</li>
+                                    	<li>Tipo pagamento:</li>
+                                    <% if(ordine.getTipoPagamento().equals("carta")) { %>
+                                        <li>Num. carta:</li>
+                                    <% } else  {%>
                                         <li>IBAN:</li>
-                                        <li>SWIFT code:</li>
+                                    <% } %>
                                     </ul>
                                     <ul class="list list-unstyled text-right mb-0 ml-auto">
-                                        <li>
-                                            <h5 class="font-weight-semibold my-2">$1,090</h5>
-                                        </li>
-                                        <li><span class="font-weight-semibold">Hong Kong Bank</span></li>
-                                        <li>Hong Kong</li>
-                                        <li>Thurnung street, 21</li>
-                                        <li>New standard</li>
-                                        <li><span class="font-weight-semibold">98574959485</span></li>
-                                        <li><span class="font-weight-semibold">BHDHD98273BER</span></li>
+                                        <% if(ordine.getTipoPagamento().equals("carta")) { %>
+                                        <li>Carta</li>
+                                        <li><% out.println(ordine.getNumCarta()); %></li>
+                                    <% } else  {%>
+                                    	<li>IBAN</li>
+                                        <li><% out.println(ordine.getIBAN()); %></li>
+                                    <% } %>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="table-responsive">
                         <table class="table table-lg">
                             <thead>
                                 <tr>
-                                    <th>Description</th>
-                                    <th>Rate</th>
-                                    <th>Hours</th>
-                                    <th>Total</th>
+                                	<th>Codice Seriale</th>
+                                    <th>Nome prodotto</th>
+                                    <th>Quantita</th>
+                                    <th>Totale netto</th>
+                                    <th>IVA</th>
+                                    <th>Totale</th>
                                 </tr>
                             </thead>
+                            <% Iterator<ComposizioneOrdineBean> iterComposizione = listaComposizioneOrdine.iterator();
+                    			ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
+                    			List<ProdottoBean> listaProdotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
+                    			List<DettaglioProdottoBean> listaDettagli = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");
+                    			Iterator<DettaglioProdottoBean> iterDettagli = null;
+                    			Iterator<ProdottoBean> iterProdotto = null;
+                    			ProdottoBean prodotto = new ProdottoBean();
+                    			DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
+                    		%>
                             <tbody>
+                            <% while(iterComposizione.hasNext()){
+                            	composizione = iterComposizione.next();	
+                            	iterProdotto = listaProdotti.iterator();
+                            	while(iterProdotto.hasNext()){
+                            		prodotto = iterProdotto.next();
+                            		if(prodotto.getCodiceSeriale().equals(composizione.getProdotto())) break;
+                            	}
+                            	
+                            	iterDettagli = listaDettagli.iterator();
+                            	while(iterDettagli.hasNext()){
+                            		dettagli = iterDettagli.next();
+                            		if(dettagli.getProdotto().equals(prodotto.getCodiceSeriale())) break;
+                            	}
+                            	
+                            	costoNetto = ((composizione.getCostoUnitario().doubleValue() * composizione.getQuantitaProdotto()) * 100) / (100 + dettagli.getIVA());
+                            	totNetto += costoNetto;
+                            	%>
                                 <tr>
-                                    <td>
-                                        <h6 class="mb-0">Arts and design template</h6> <span class="text-muted">in
-                                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                                            pariatur.Duis aute irure dolor in reprehenderit</span>
-                                    </td>
-                                    <td>$120</td>
-                                    <td>180</td>
-                                    <td><span class="font-weight-semibold">$300</span></td>
+                                    <td><% out.println(composizione.getProdotto()); %></td>
+                                    <td><% out.println(prodotto.getNome()); %></td>
+                                    <td><% out.println(composizione.getQuantitaProdotto()); %></td>
+                                    <td><% out.println(df.format(costoNetto)); %> &euro;</td>
+                                    <td><% out.println(dettagli.getIVA()); %></td>
+                                    <td><span class="font-weight-semibold"><% out.println(df.format(composizione.getQuantitaProdotto() * composizione.getCostoUnitario().doubleValue())); %> &euro;</span></td>
                                 </tr>
-                                <tr>
-                                    <td>
-                                        <h6 class="mb-0">Template for desnging the arts</h6> <span class="text-muted">Lorem
-                                            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
-                                    </td>
-                                    <td>$140</td>
-                                    <td>100</td>
-                                    <td><span class="font-weight-semibold">$240</span></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h6 class="mb-0">Technical support international</h6> <span class="text-muted">Lorem
-                                            ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</span>
-                                    </td>
-                                    <td>$250</td>
-                                    <td>$250</td>
-                                    <td><span class="font-weight-semibold">$500</span></td>
-                                </tr>
+                                <% } %>
                             </tbody>
                         </table>
                     </div>
                     <div class="card-body">
                         <div class="d-md-flex flex-md-wrap">
                             <div class="pt-2 mb-3 wmin-md-400 ml-auto">
-                                <h6 class="mb-3 text-left">Total due</h6>
+                                <h6 class="mb-3 text-left">Importo</h6>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <tbody>
-                                            <tr>
-                                                <th class="text-left">Subtotal:</th>
-                                                <td class="text-right">$1,090</td>
+                                        	<tr>
+                                                <th class="text-left">Totale netto:</th>
+                                                <td class="text-right"><% out.println(df.format(totNetto)); %> &euro;</td>
                                             </tr>
                                             <tr>
-                                                <th class="text-left">Tax: <span class="font-weight-normal">(25%)</span></th>
-                                                <td class="text-right">$27</td>
-                                            </tr>
-                                            <tr>
-                                                <th class="text-left">Total:</th>
+                                                <th class="text-left">Totale:</th>
                                                 <td class="text-right text-primary">
-                                                    <h5 class="font-weight-semibold">$1,160</h5>
+                                                    <h5 class="font-weight-semibold"><% out.println(ordine.getCostoTotale()); %> &euro;</h5>
                                                 </td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                               
                         </div>
                     </div>
-                    <div class="card-footer"> <span class="text-muted">Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                            fugiat nulla pariatur.Duis aute irure dolor in reprehenderit</span> </div>
+                    <div class="card-footer"> <span class="text-muted">Snackz &copy; 2022</span> </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </body>
 

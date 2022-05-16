@@ -175,6 +175,7 @@
   		</p>
   			<form action="gestisciOrdine" method="get">
   				<input type="hidden" name="ordine" value="<%out.print(ordine.getNumOrdineProgressivo());%>">
+  				<input type="hidden" name="cliente" value="<% out.print(ordine.getCliente()); %>">
   				<button type="submit">Vedi dettagli</button>
   			</form>
   		</div>
@@ -182,6 +183,13 @@
   		</div>
   </div>
   <% } else { %>
+	  <div class="dati">
+	   	
+	    <form action="LogOutServlet" method="get">
+			<button type="submit">Logout</button>
+		</form>
+		<br>
+	  </div>
   		<div class="container-info-interno">
   			<div class="info">
   			<h3>Storico ordini utenti</h3>
@@ -201,6 +209,7 @@
   		</p>
   			<form action="gestisciOrdine" method="get">
   				<input type="hidden" name="ordine" value="<%out.print(ordine.getNumOrdineProgressivo());%>">
+  				<input type="hidden" name="cliente" value="<% out.print(ordine.getCliente()); %>">
   				<button type="submit">Vedi dettagli</button>
   			</form>
   		</div>

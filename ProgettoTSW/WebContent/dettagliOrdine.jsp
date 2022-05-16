@@ -63,7 +63,11 @@
 			</p>
 			</div>
 		</div>
-		<script type="text/javascript" src="./Js/fatturapdf.js"></script>
+		<form action="fattura" method="post">
+		<input type="hidden" name="ordine" value="<% out.print(ordine.getNumOrdineProgressivo()); %>">
+		<input type="hidden" name="cliente" value="<% out.print(ordine.getCliente()); %>">
+		<button type="submit">Genera fattura</button>
+		</form>
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>
