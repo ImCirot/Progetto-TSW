@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="./Css/fattura.css" />
+    <link rel="stylesheet" href="./Css/fattura.css" >
     <script src="./JS/fattura.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
 
@@ -158,9 +158,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="text-right mt-3"> <button type="button" class="btn btn-primary"><b><i class="fa fa-paper-plane-o mr-1"></i></b>
-                                        Send invoice</button> </div>
-                            </div>
+                               
                         </div>
                     </div>
                     <div class="card-footer"> <span class="text-muted">Lorem ipsum dolor sit amet, consectetur
