@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="./Css/header.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet"> 
     <title>Snackz</title>
   </head>
@@ -15,6 +15,8 @@
       <div class="header_filter">
       </div>
       <a href="catalogo">
+       <div class="logo">
+      </div>
       </a>
     </div>
     <div class="navbar">
