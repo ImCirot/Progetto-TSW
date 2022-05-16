@@ -156,7 +156,7 @@ public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 		Connection con = null;
 		PreparedStatement statement = null;
 		List<ComposizioneOrdineBean> composizioni = new ArrayList<>();
-		ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
+		ComposizioneOrdineBean composizione = null;
 		
 		String query = "SELECT * FROM " + ComposizioneOrdineDAO.TABLE_NAME + " WHERE ordine = ?";
 		
@@ -168,6 +168,7 @@ public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 			ResultSet result = statement.executeQuery();
 				
 			while(result.next()) {
+				composizione = new ComposizioneOrdineBean();
 				composizione.setOrdine(result.getInt("ordine"));
 				composizione.setCliente(result.getString("cliente"));
 				composizione.setProdotto(result.getString("prodotto"));

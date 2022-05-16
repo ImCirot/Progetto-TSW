@@ -182,6 +182,13 @@
   		</div>
   </div>
   <% } else { %>
+	  <div class="dati">
+	   	
+	    <form action="LogOutServlet" method="get">
+			<button type="submit">Logout</button>
+		</form>
+		<br>
+	  </div>
   		<div class="container-info-interno">
   			<div class="info">
   			<h3>Storico ordini utenti</h3>
