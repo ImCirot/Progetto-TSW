@@ -1,5 +1,7 @@
+<%@page import="java.math.BigDecimal"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="model.*" import="java.util.List" import="java.util.Iterator"%>
+    pageEncoding="ISO-8859-1" import="model.*" import="java.util.List" import="java.util.Iterator" import="java.math.RoundingMode"
+	import="java.text.DecimalFormat"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,6 +23,9 @@
 	List<ComposizioneOrdineBean> listaComposizioneOrdine = (List<ComposizioneOrdineBean>) request.getAttribute("listaComposizioneOrdine");
 	MetodoDiPagamentoBean metodoPagamento = (MetodoDiPagamentoBean) request.getAttribute("metodoPagamento");
 	IndirizzoBean indirizzo = (IndirizzoBean) request.getAttribute("indirizzo");
+	Double totNetto = 0.0;
+	Double costoNetto;
+	DecimalFormat df = new DecimalFormat("0.00");
 	%>
     <div class="container d-flex justify-content-center mt-50 mb-50">
         <div class="row">
@@ -99,7 +104,7 @@
                                 	<th>Codice Seriale</th>
                                     <th>Nome prodotto</th>
                                     <th>Quantita</th>
-                                    <th>Costo unitario</th>
+                                    <th>Totale netto</th>
                                     <th>IVA</th>
                                     <th>Totale</th>
                                 </tr>
@@ -127,14 +132,17 @@
                             		dettagli = iterDettagli.next();
                             		if(dettagli.getProdotto().equals(prodotto.getCodiceSeriale())) break;
                             	}
+                            	
+                            	costoNetto = ((composizione.getCostoUnitario().doubleValue() * composizione.getQuantitaProdotto()) * 100) / (100 + dettagli.getIVA());
+                            	totNetto += costoNetto;
                             	%>
                                 <tr>
                                     <td><% out.println(composizione.getProdotto()); %></td>
                                     <td><% out.println(prodotto.getNome()); %></td>
                                     <td><% out.println(composizione.getQuantitaProdotto()); %></td>
-                                    <td><% out.println(dettagli.getCostoUnitario()); %> &euro;</td>
+                                    <td><% out.println(df.format(costoNetto)); %> &euro;</td>
                                     <td><% out.println(dettagli.getIVA()); %></td>
-                                    <td><span class="font-weight-semibold"><% out.println(ordine.getCostoTotale()); %> &euro;</span></td>
+                                    <td><span class="font-weight-semibold"><% out.println(df.format(composizione.getQuantitaProdotto() * composizione.getCostoUnitario().doubleValue())); %> &euro;</span></td>
                                 </tr>
                                 <% } %>
                             </tbody>
@@ -143,10 +151,14 @@
                     <div class="card-body">
                         <div class="d-md-flex flex-md-wrap">
                             <div class="pt-2 mb-3 wmin-md-400 ml-auto">
-                                <h6 class="mb-3 text-left">Importo totale</h6>
+                                <h6 class="mb-3 text-left">Importo</h6>
                                 <div class="table-responsive">
                                     <table class="table">
                                         <tbody>
+                                        	<tr>
+                                                <th class="text-left">Totale netto:</th>
+                                                <td class="text-right"><% out.println(df.format(totNetto)); %> &euro;</td>
+                                            </tr>
                                             <tr>
                                                 <th class="text-left">Totale:</th>
                                                 <td class="text-right text-primary">
@@ -156,10 +168,6 @@
                                         </tbody>
                                     </table>
                                 </div>
-<<<<<<< HEAD
-=======
-                               
->>>>>>> branch 'main' of https://github.com/ImCirot/Progetto-TSW.git
                         </div>
                     </div>
                     <div class="card-footer"> <span class="text-muted">Snackz &copy; 2022</span> </div>

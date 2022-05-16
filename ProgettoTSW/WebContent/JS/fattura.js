@@ -6,12 +6,8 @@ window.onload = function () {
             console.log(window);
             var opt = {
                 margin: 1,
-                filename: 'myfile.pdf',
-<<<<<<< HEAD
+                filename: 'fattura.pdf',
                 image: { type: 'pdf', quality: 1 },
-=======
-                image: { type: 'jpeg', quality: 0.98 },
->>>>>>> branch 'main' of https://github.com/ImCirot/Progetto-TSW.git
                 html2canvas: { scale: 2 },
                 jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
             };

@@ -175,6 +175,7 @@
   		</p>
   			<form action="gestisciOrdine" method="get">
   				<input type="hidden" name="ordine" value="<%out.print(ordine.getNumOrdineProgressivo());%>">
+  				<input type="hidden" name="cliente" value="<% out.print(ordine.getCliente()); %>">
   				<button type="submit">Vedi dettagli</button>
   			</form>
   		</div>
@@ -208,6 +209,7 @@
   		</p>
   			<form action="gestisciOrdine" method="get">
   				<input type="hidden" name="ordine" value="<%out.print(ordine.getNumOrdineProgressivo());%>">
+  				<input type="hidden" name="cliente" value="<% out.print(ordine.getCliente()); %>">
   				<button type="submit">Vedi dettagli</button>
   			</form>
   		</div>

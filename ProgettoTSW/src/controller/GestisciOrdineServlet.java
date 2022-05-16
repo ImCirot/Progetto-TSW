@@ -36,13 +36,14 @@ public class GestisciOrdineServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String ordineID = request.getParameter("ordine");
+		String cliente = request.getParameter("cliente");
 		OrdineBean ordine = new OrdineBean();
 		OrdineDAO dbOrdini = new OrdineDAO();
 		List<ComposizioneOrdineBean> composizioneOrdine = null;
 		ComposizioneOrdineDAO dbComposizioni = new ComposizioneOrdineDAO();
 		
 		try {
-			ordine = dbOrdini.doRetrieveByKey(ordineID, (String) request.getSession().getAttribute("utente"));
+			ordine = dbOrdini.doRetrieveByKey(ordineID, cliente);
 			composizioneOrdine = dbComposizioni.doRetrieveAllByKey(ordineID);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
