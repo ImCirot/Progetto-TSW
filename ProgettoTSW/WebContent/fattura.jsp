@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="./Css/fattura.css" >
     <script src="./JS/fattura.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
 </head>
 
 <body>

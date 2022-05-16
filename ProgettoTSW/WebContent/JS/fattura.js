@@ -1,4 +1,4 @@
-window.onload = function () {
+/*window.onload = function () {
     document.getElementById("download")
         .addEventListener("click", () => {
             const invoice = this.document.getElementById("invoice");
@@ -13,4 +13,16 @@ window.onload = function () {
             };
             html2pdf().from(invoice).set(opt).save();
         })
-}
+}*/
+
+
+
+var button = document.getElementById("download");
+button.addEventListener("click", function () {
+    var doc = new jsPDF("p", "mm", [300, 300]);
+    var makePDF = document.querySelector("#invoice");
+
+    // fromHTML Method
+    doc.fromHTML(makePDF);
+    doc.save("output.pdf");
+});
