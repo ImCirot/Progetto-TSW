@@ -151,12 +151,15 @@
   			<% } %>
   			
   		<div class="info">
+  			<img alt="ciao" src="./Images/metodo_pagamento.png">
+  			
   			<form action="modificaInfo" method="get">
   				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
   				<input type="hidden" name="mode" value="add">
   				<input type="hidden" name="target" value="metodoPagamento">
   				<button type="submit">Aggiungi nuovo metodo di pagamento</button>
   			</form>
+  			
   		</div>
   		</div>
   		<div class="container-info-interno">

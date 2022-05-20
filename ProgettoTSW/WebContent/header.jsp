@@ -14,10 +14,11 @@
     <div class="header">
       <div class="header_filter">
       </div>
-      <a href="catalogo">
+      
        <div class="logo">
-      </div>
-      </a>
+       		<img alt="" src="./Images/logopreciso.png">
+      	</div>
+      
     </div>
     <div class="navbar">
       <div class="catalogo">

@@ -53,33 +53,68 @@ body{
 	width: 100%;
 	height: auto;
   	justify-content:  flex-start;
-  	flex-wrap: nowrap;
+  	flex-wrap: wrap;
   	padding:30px;
 }
 
 .info{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 350px;
+
   height: auto;
   text-align: center;
   padding: 20px;
   border-radius:10px;
   margin:auto 15px;
 }
-
+.info img{
+	max-width:100%;
+	
+}
 button {
-  padding: 10px;
-  margin: 5px;
-  border: none;
-  background-color: #9932CC;
-  color: white;
-  font-size: 16px;
-  width: auto;
-  border-radius: 10px;
+	margin:5px auto;
+	padding: 10px;
+	border: none;
+	background-color: #9932CC;
+	color: white;
+	font-size: 16px;
+	min-width: 100px;
+	border-radius: 10px;
 }
 
-button:hover{
+ button:hover{
+	animation: myAnim 1s ease 0s 1 normal forwards;
 	cursor: pointer;
+}
+
+@keyframes myAnim {
+	0% {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(0.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, 0.95, 1);
+	}
+
+	100% {
+		transform: scale3d(1, 1, 1);
+	}
 }
 
 .info:hover{

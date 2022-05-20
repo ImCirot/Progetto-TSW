@@ -27,26 +27,32 @@ a{
   bottom: 0;
   left: 0;
   z-index: 0;
-  opacity: 0.5;
+  opacity: 0.45;
 }
 
-.logo{
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
-  	width:250px;
-  	height:100px;
-  	border: 1px solid lightgrey;
-  	border-radius:12px;
-  	position: relative;
-  	background-image: url("../Images/logopreciso.png");
-  	background-size:cover;
-  	background-position: center center;
-  	background-repeat: no-repeat;
-  	z-index: 1;
+/* .logo{ */
+/* 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3); */
+/*   	width:250px; */
+/*   	height:100px; */
+/*   	border: 1px solid lightgrey; */
+/*   	border-radius:12px; */
+/*   	position: relative; */
+/*   	background-image: url("../Images/logopreciso.png"); */
+/*   	background-size:cover; */
+/*   	background-position: center center; */
+/*   	background-repeat: no-repeat; */
+/*   	z-index: 1; */
   	
+/* } */
+.logo{
+	position:relative;
+	width:300px;
+	height:100px;
 }
-
 .logo img{
-  width:350px;
+  width: 100%;
+  height:100%;
+  
 }
 
 .navbar{
