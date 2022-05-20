@@ -44,7 +44,7 @@ body{
   flex-wrap: nowrap;
   flex-direction: column;
   padding: 100px;
-  gap: 30px 40px;
+  
   font-size:18px;
 }
 
@@ -55,7 +55,7 @@ body{
   	justify-content:  flex-start;
   	flex-wrap: wrap;
   	padding:30px;
-  	
+  	gap: 30px 40px;
 }
 
 .info{
