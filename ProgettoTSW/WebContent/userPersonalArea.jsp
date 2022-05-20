@@ -42,7 +42,7 @@
   <div class="container-info">
   	<div class="container-info-interno">
   		<div class="info">
-  			<h3>I tuoi indirizzi di spedizione</h3>
+  			<div class="prova"><h3>I tuoi indirizzi di spedizione</h3></div>
   		</div>
   	<% List<IndirizzoBean> indirizzi = (List<IndirizzoBean>) request.getSession().getAttribute("indirizzi"); 
   		Iterator<IndirizzoBean> iterIndirizzi = indirizzi.iterator();
@@ -54,6 +54,7 @@
   			i += 1;%>
   			
   			<div class="info">
+  			
   			<h3>Indirizzo <%out.print(i);%></h3>
   
   			<p>
@@ -93,17 +94,19 @@
   		
   		
   		<div class="info">
+  			<div class="prova">
   			<form action="modificaInfo" method="get">
   				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
   				<input type="hidden" name="mode" value="add">
   				<input type="hidden" name="target" value="indirizzo">
   				<button type="submit">Aggiungi nuovo indirizzo</button>
   			</form>
+  			</div>
   		</div>
   		</div>
   		<div class="container-info-interno">
   		<div class="info">
-  			<h3>I tuoi metodi di pagamento</h3>
+  			<div class="prova"><h3>I tuoi metodi di pagamento</h3></div>
   		</div>
   		<% List<MetodoDiPagamentoBean> metodiPagamento = (List<MetodoDiPagamentoBean>) request.getSession().getAttribute("metodiPagamento"); 
   		Iterator<MetodoDiPagamentoBean> iterMetodi = metodiPagamento.iterator();
@@ -151,7 +154,10 @@
   			<% } %>
   			
   		<div class="info">
+  		<div class="prova">
+  			<a >
   			<img alt="ciao" src="./Images/metodo_pagamento.png">
+  			</a>
   			
   			<form action="modificaInfo" method="get">
   				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
@@ -159,12 +165,12 @@
   				<input type="hidden" name="target" value="metodoPagamento">
   				<button type="submit">Aggiungi nuovo metodo di pagamento</button>
   			</form>
-  			
+  			</div>
   		</div>
   		</div>
   		<div class="container-info-interno">
   			<div class="info">
-  			<h3>I tuoi ordini</h3>
+  			<div class="prova"><h3>I tuoi ordini</h3></div>
   		</div>
   		<% List<OrdineBean> ordini = (List<OrdineBean>) request.getSession().getAttribute("ordini"); 
   		Iterator<OrdineBean> iterOrdini = ordini.iterator();
