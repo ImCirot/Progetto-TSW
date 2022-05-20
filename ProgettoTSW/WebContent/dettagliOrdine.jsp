@@ -23,22 +23,33 @@
 		<h3>Cliente: <% out.println(ordine.getCliente()); %></h3>
 		</div>
 		<div class="container-tabella">
-		<table border="1">
-		<tr>
-			<th>Codice Seriale</th>
-			<th>Quantità</th>
-			<th>Costo Unitario</th>
-		</tr>
-		<% while(iterComposizione.hasNext()){
-			singolaComposizione = iterComposizione.next();
-		%>
-		<tr>
-			<td><% out.println(singolaComposizione.getProdotto());%></td>
-			<td><% out.println(singolaComposizione.getQuantitaProdotto()); %></td>
-			<td><% out.println(singolaComposizione.getCostoUnitario()); %></td>
-		</tr>
-		<% } %>
-		</table>
+			<table class="table">
+			     <thead>
+			     	<tr>
+			     	 <th>Nome prodotto</th>
+			     	 <th>Quantita</th>
+			     	 <th>Prezzo</th>
+			     	 <th>Immagine</th>
+			     	 
+			     	</tr>
+			     </thead>
+			     	<% while(iterComposizione.hasNext()){
+						singolaComposizione = iterComposizione.next();
+					%>
+			     <tbody>
+			     
+			     	  <tr>
+			     	  	  <td data-label="Nome prodotto"><% out.println(singolaComposizione.getProdotto());%></td>
+			     	  	  <td data-label="Quantita"><% out.println(singolaComposizione.getQuantitaProdotto()); %></td>
+			     	  	  <td data-label="Prezzo"><% out.println(singolaComposizione.getCostoUnitario()); %></td>
+			     	  	  <td data-label="Immagine"><img style="width:100px" src="./Images/prova.png"></td>
+			     	  	  
+			     	  </tr>
+			
+			     	  
+			     </tbody>
+			     <% } %>
+   			</table>
 		</div>
 		
 		<div class="container-info">
@@ -63,11 +74,15 @@
 			</p>
 			</div>
 		</div>
-		<form action="fattura" method="post">
-		<input type="hidden" name="ordine" value="<% out.print(ordine.getNumOrdineProgressivo()); %>">
-		<input type="hidden" name="cliente" value="<% out.print(ordine.getCliente()); %>">
-		<button type="submit">Genera fattura</button>
-		</form>
+		<div class="genera">
+			<form action="fattura" method="post">
+				<input type="hidden" name="ordine" value="<% out.print(ordine.getNumOrdineProgressivo()); %>">
+				<input type="hidden" name="cliente" value="<% out.print(ordine.getCliente()); %>">
+				<button type="submit">Genera fattura</button>
+			</form>
+		</div>
+		   
+			
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>
