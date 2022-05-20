@@ -10,11 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Fattura</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="./Css/fattura.css" >
-    <script src="./JS/fattura.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+  	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Css/fattura.css" />
+    <link rel="stylesheet" href="./Css/printFattura.css" media="print"/>
 </head>
 
 <body>
@@ -30,7 +28,7 @@
     <div class="container d-flex justify-content-center mt-50 mb-50">
         <div class="row">
             <div class="col-md-12 text-right mb-3">
-                <button class="btn btn-primary" id="download"> download pdf</button>
+                <button class="btn btn-primary" id="download" onclick="window.print(); return false;" > Download pdf</button>
             </div>
             <div class="col-md-12">
                 <div class="card" id="invoice">
@@ -176,6 +174,6 @@
         </div>
     </div>
     </div>
+ 
 </body>
-
 </html>
