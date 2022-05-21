@@ -14,7 +14,7 @@ a{
 .header{
   width: 100%;
   padding: 30px;
-  background-image: url("../Images/backgroundImage.png");
+  background-image: url("./Images/backgroundImage.png");
   background-size:contain;
   position:relative;
   display:flex;

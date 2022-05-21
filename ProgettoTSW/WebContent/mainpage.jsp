@@ -37,13 +37,19 @@
   				if(prodotto.getCodiceSeriale().equals(dettagli.getProdotto())) break;
   			}%>
 			
-				
-  			<div class="prodotto">
+		<div class="prodotto">
+				<div class="posizione">
   				<a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>">	
   				<img src="<% out.println(dettagli.getImmagine()); %>" alt="prodotto">
   				</a>
+  				</div>
+  				<div class="posizione">
   				<h4><% out.println(prodotto.getNome()); %></h4>
+  				</div>
+  				<div class="posizione">
   				<p class="prezzo"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
+  				</div>
+  				<div class="posizione">
   				<form action="Carrello" method="get">
   					<input type="hidden" name="mode" value="add">
   					<input type="hidden" name="prodotto" value="<% out.print(prodotto.getCodiceSeriale()); %>">
@@ -51,9 +57,11 @@
   					<input type="hidden" value="catalogo" name="catalogo">
   					<button type="submit">Acquista</button>
   				</form>
+  				</div>
   			</div>
   			
   		<%} %>
+ 
   		
   </div>
   <jsp:include page="./footer.jsp" />

@@ -40,30 +40,32 @@ h1{
 
 .info{
   font-size: 18px;
-  max-width: 300px;
+  max-width: 400px;
+  min-width:200px;
   padding: 15px;
   text-align: center;
-  border-radius: 10px;
+  
+  position:relative;
 }
 
 img{
   width: 104px;
 }
 
-button:hover{
+#aggiorna:hover{
 	animation: myAnim 1s ease 0s 1 normal forwards;
 	cursor: pointer;
 }
 
-.info button {
+.info #aggiorna {
 	padding: 5px;
 	border: none;
 	background-color: #9932CC;
 	color: white;
 	font-size: 16px;
-	width: 100%;
 	border-radius: 5px;
-  	margin: 5px auto;
+  	margin: 5% auto;
+  	display:block;
 }
 
 
@@ -87,7 +89,7 @@ button:hover{
 	width:50%;
 	font-size:25px;
 }
-.totale-interno button{
+.totale-interno #aggiorna{
 	padding: 10px;
 	border: none;
 	background-color: #9932CC;
@@ -127,3 +129,70 @@ button:hover{
 		transform: scale3d(1, 1, 1);
 	}
 }
+
+
+
+.noselect {
+ width: 150px;
+ height: 50px;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ background: red;
+ border: none;
+ border-radius: 5px;
+ box-shadow: 1px 1px 3px rgba(0,0,0,0.15);
+ background: #e62222;
+}
+
+.noselect, .noselect span {
+ transition: 200ms;
+}
+
+.noselect .text {
+ transform: translateX(35px);
+ color: white;
+ font-weight: bold;
+}
+
+.noselect .icon {
+ position: absolute;
+ border-left: 1px solid #c41b1b;
+ transform: translateX(110px);
+ height: 40px;
+ width: 40px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.noselect svg {
+ width: 15px;
+ fill: #eee;
+}
+
+.noselect:hover {
+ background: #ff3636;
+}
+
+.noselect:hover .text {
+ color: transparent;
+}
+
+.noselect:hover .icon {
+ width: 150px;
+ border-left: none;
+ transform: translateX(0);
+}
+
+.noselect:focus {
+ outline: none;
+}
+
+.noselect:active .icon svg {
+ transform: scale(0.8);
+}
+
+
+
+

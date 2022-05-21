@@ -25,6 +25,9 @@ body{
   background: white;
   border: 1px solid lightgrey;
   border-radius:10px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 .prodotto:hover{
@@ -39,6 +42,10 @@ prodotto h4 {
   text-align: left;
 }
 
+
+
+
+
 .prezzo {
   font-size: 16px;
 }
@@ -49,7 +56,7 @@ prodotto h4 {
 	background-color: #9932CC;
 	color: white;
 	font-size: 16px;
-	width: 80%;
+	
 	border-radius: 10px;
 }
 
@@ -105,3 +112,11 @@ prodotto h4 {
         transform: scale(1.1);
     }
 }
+
+
+
+
+
+
+
+
