@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="./Css/modificaForm.css">
 <title>Snackz</title>
 </head>
 <body>
@@ -15,6 +16,7 @@
 			Decoder decoder = Base64.getDecoder();	
 			String decodedPwd = new String(decoder.decode(utente.getPassword()));
 		%>
+		<div class="modifica">
 			<form action="modificaInfo" method="post">
 				<input type="hidden" name="utente" value="<% out.print(utente.getUsername());%>">
 				<input type="hidden" name="target" value="utente">
@@ -52,8 +54,10 @@
 			<% if(error != null) { %>
 				<p> <% out.println(error); %> </p>
 			<% request.getSession().removeAttribute("error"); }%>
+			</div>
 		<% } else if (target.equals("indirizzo")) {
 			IndirizzoBean indirizzo = (IndirizzoBean) request.getAttribute("indirizzo");%>
+			<div class="modifica">
 			<form action="modificaInfo" method="post">
 				<input type="hidden" name="indirizzoID" value="<%out.print(indirizzo.getNumIndirizzoProgressivo());%>">
 				<input type="hidden" name="utente" value="<%out.print(indirizzo.getUtente());%>">
@@ -90,8 +94,10 @@
 			<% if(error != null) { %>
 				<p> <% out.println(error); %> </p>
 			<% request.getSession().removeAttribute("error"); }%>
+			</div>
 		<% } else if (target.equals("metodoPagamento")) {
 			MetodoDiPagamentoBean metodoPagamento = (MetodoDiPagamentoBean) request.getAttribute("metodoPagamento");%>
+			<div class="modifica">
 			<form action="modificaInfo" method="post">
 				<input type="hidden" name="metodoPagamentoID" value="<%out.print(metodoPagamento.getNumPagamentoProgressivo());%>">
 				<input type="hidden" name="utente" value="<%out.print(metodoPagamento.getUtente());%>">
@@ -135,10 +141,13 @@
 				</select><br><br>
 				<button type="submit">Modifica dati</button>
 			</form>	
+			
 			<% if(error != null) { %>
-				<p> <% out.println(error); %> </p>
+				<p> <% out.println(error); %> 
+				</p>
 			<% request.getSession().removeAttribute("error"); }%>
 		<% } %>
+		</div>
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>
