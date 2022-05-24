@@ -4,6 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="./Css/modificaForm.css">
 <title>Snackz</title>
 </head>
 <body>
@@ -18,6 +19,7 @@
 		<% request.getSession().removeAttribute("error");
 		}
 		if (target.equals("indirizzo")) {%>
+		<div class="modifica">
 			<form action="modificaInfo" method="post">
 				<input type="hidden" name="utente" value="<%out.print(utente);%>">
 				<input type="hidden" name="target" value="indirizzo">
@@ -45,7 +47,9 @@
 				</select><br><br>
 				<button type="submit">Aggiungi indirizzo</button>
 			</form>
+			</div>
 		<% } else if (target.equals("metodoPagamento")) {%>
+		<div class="modifica">
 			<form action="modificaInfo" method="post">
 				<input type="hidden" name="utente" value="<%out.print(utente);%>">
 				<input type="hidden" name="target" value="metodoPagamento">
@@ -79,6 +83,7 @@
 				<button type="submit">Aggiungi metodo di pagamento</button>
 			</form>
 		<% } %>
+		</div>
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>
