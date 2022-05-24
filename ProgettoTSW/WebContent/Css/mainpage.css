@@ -30,6 +30,7 @@ body{
   align-items:center;
   position: relative;
   overflow: hidden;
+  justify-content:space-around;
 }
 
 .prodotto:hover{

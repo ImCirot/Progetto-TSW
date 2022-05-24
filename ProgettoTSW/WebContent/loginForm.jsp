@@ -22,11 +22,13 @@
     <h1>Accedi all'area personale</h1>
   	<form action="login" method="post" id="login">
   		<input type="hidden" name="mode" value="login">
-  		<label for="username"> </label>
-		
-  		<input placeholder="Username" type="text" class="input" required="">
-  		<label for="password"> </label><br />
-  		<input placeholder="Username" type="text" class="input" required=""><br /><br />
+  		<br />
+
+  		<input placeholder="Username" type="text" id="username" name="username" class="input" required="">
+  		<br />
+  		<input placeholder="Username" type="password" name="password" id="password" class="input" required="">
+  	
+  		<br /> 
   		<button type="submit" class="learn-more">
 			  <span class="circle" aria-hidden="true">
 			  <span class="icon arrow"></span>
