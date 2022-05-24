@@ -13,16 +13,78 @@ body{
   font-family: 'Montserrat', sans-serif;
 }
 
-.login button {
-	padding: 10px;
-	background-color: #9932CC;
-	color: white;
-	border:none;
-	font-size: 16px;
-	min-width: 130px;
-	border-radius: 5px;
-  	margin: 5px auto;
+
+/* From uiverse.io by @satyamchaudharydev */
+button {
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
 }
+
+button {
+  --primary-color: #111;
+  --hovered-color: #c84747;
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  font-size: 20px;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+button p {
+  margin: 0;
+  position: relative;
+  font-size: 20px;
+  color: var(--primary-color)
+}
+
+button::after {
+  position: absolute;
+  content: "";
+  width: 0;
+  left: 0;
+  bottom: -7px;
+  background: var(--hovered-color);
+  height: 2px;
+  transition: 0.3s ease-out;
+}
+
+button p::before {
+  position: absolute;
+/*   box-sizing: border-box; */
+  content: "Subscribe";
+  width: 0%;
+  inset: 0;
+  color: var(--hovered-color);
+  overflow: hidden;
+  transition: 0.3s ease-out;
+}
+
+button:hover::after {
+  width: 100%;
+}
+
+button:hover p::before {
+  width: 100%;
+}
+
+button:hover svg {
+  transform: translateX(4px);
+  color: var(--hovered-color)
+}
+
+button svg {
+  color: var(--primary-color);
+  transition: 0.2s;
+  position: relative;
+  width: 15px;
+  transition-delay: 0.2s;
+}
+
+
+
 input[type=text]:focus, input[type=password]:focus {
 	 box-shadow: 0 0 5px rgba(141, 57, 197, 1);
 	 border: 1px solid rgba(141, 57, 197, 1);
@@ -37,39 +99,8 @@ input[type=text], input[type=password]{
   margin: 5px 1px 3px 0px;
   border: 1px solid lightgrey;
 }
-button:hover{
-	animation: myAnim 1s ease 0s 1 normal forwards;
-	cursor: pointer;
-}
 
 
 
-@keyframes myAnim {
-	0% {
-		transform: scale3d(1, 1, 1);
-	}
 
-	30% {
-		transform: scale3d(1.25, 0.75, 1);
-	}
 
-	40% {
-		transform: scale3d(0.75, 1.25, 1);
-	}
-
-	50% {
-		transform: scale3d(1.15, 0.85, 1);
-	}
-
-	65% {
-		transform: scale3d(0.95, 1.05, 1);
-	}
-
-	75% {
-		transform: scale3d(1.05, 0.95, 1);
-	}
-
-	100% {
-		transform: scale3d(1, 1, 1);
-	}
-}
