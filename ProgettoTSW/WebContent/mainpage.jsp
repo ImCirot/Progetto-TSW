@@ -7,10 +7,15 @@
 <title>Snackz</title>
 <link rel="stylesheet" href="./Css/mainpage.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap%27">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
   <jsp:include page="./header.jsp" />
   <div class="container-catalogo">
+
   	<% 
   	Boolean admin = (boolean) request.getSession().getAttribute("admin");
 		if((admin != null) && admin) {
@@ -27,9 +32,9 @@
   		Iterator<ProdottoBean> iterProdotto = prodotti.iterator();
   		Iterator<DettaglioProdottoBean> iterDettagli;
   		ProdottoBean prodotto = new ProdottoBean();
-  		DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
-
-  		while(iterProdotto.hasNext()){
+  		DettaglioProdottoBean dettagli = new DettaglioProdottoBean(); %>
+		
+  		<% while(iterProdotto.hasNext()){
   			prodotto = iterProdotto.next();
   			iterDettagli = dettagliProdotti.iterator();
   			while(iterDettagli.hasNext()){
@@ -44,7 +49,7 @@
   				</a>
   				</div>
   				<div class="posizione">
-  				<h4><% out.println(prodotto.getNome()); %></h4>
+  				<h2><% out.println(prodotto.getNome()); %></h2>
   				</div>
   				<div class="posizione">
   				<p class="prezzo"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
@@ -55,15 +60,26 @@
   					<input type="hidden" name="prodotto" value="<% out.print(prodotto.getCodiceSeriale()); %>">
   					<input type="hidden" value="1" name="quantita">
   					<input type="hidden" value="catalogo" name="catalogo">
-  					<button type="submit">Acquista</button>
+  					<button class="addToCart" type="submit">Acquista</button>
   				</form>
   				</div>
-  			</div>
-  			
-  		<%} %>
- 
+  				 <div class="inside">
+    				<div class="icon"><i class="material-icons">info_outline</i></div>
+    				<div class="contents">
+      					<p><% out.println(prodotto.getDescrizioneBreve());%></p>
+    				</div>
+  					</div>
+  			</div>	
+  		<% } %>
+  		</div>
   		
-  </div>
-  <jsp:include page="./footer.jsp" />
+<script>
+   for (var clickButton of
+   document.getElementsByClassName("addToCart"))
+   clickButton.addEventListener("click", addedToCart);
+   function addedToCart() {
+      alert("Aggiunto al carrello!");
+   }
+</script>
 </body>
 </html>
