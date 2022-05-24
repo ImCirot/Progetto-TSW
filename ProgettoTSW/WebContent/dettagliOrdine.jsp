@@ -50,7 +50,7 @@
 			     	  <tr>
 			     	  	  <td data-label="Nome prodotto"><% out.println(singolaComposizione.getProdotto());%></td>
 			     	  	  <td data-label="Quantita"><% out.println(singolaComposizione.getQuantitaProdotto()); %></td>
-			     	  	  <td data-label="Prezzo"><% out.println(singolaComposizione.getCostoUnitario()); %></td>
+			     	  	  <td data-label="Prezzo"><% out.println(singolaComposizione.getCostoUnitario()); %> &euro;</td>
 			     	  	  <td data-label="Immagine"><img style="width:100px" src=" <% out.print(dettaglio.getImmagine()); %>"></td>
 			     	  	  
 			     	  </tr>
