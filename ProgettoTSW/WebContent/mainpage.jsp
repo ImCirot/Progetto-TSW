@@ -10,6 +10,8 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!-- <script src="./JS/addedToCart.js"></script> -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
@@ -56,11 +58,11 @@
   				</div>
   				<div class="posizione">
   				<form action="Carrello" method="get">
-  					<input type="hidden" name="mode" value="add">
-  					<input type="hidden" name="prodotto" value="<% out.print(prodotto.getCodiceSeriale()); %>">
-  					<input type="hidden" value="1" name="quantita">
-  					<input type="hidden" value="catalogo" name="catalogo">
-  					<button class="addToCart" type="submit">Acquista</button>
+  					<input type="hidden" id="mode" name="mode" value="add">
+  					<input type="hidden" id="prodotto" name="prodotto" value="<% out.print(prodotto.getCodiceSeriale()); %>">
+  					<input type="hidden" id="quantita" value="1" name="quantita">
+  					<input type="hidden" id="catalogo" value="catalogo" name="catalogo">
+  					<button id="addToCart<% out.print(prodotto.getCodiceSeriale());%>" type="submit">Acquista</button>
   				</form>
   				</div>
   				 <div class="inside">
@@ -69,17 +71,10 @@
       					<p><% out.println(prodotto.getDescrizioneBreve());%></p>
     				</div>
   					</div>
+  				<p id="added">Aggiunto al carrello!</p>
   			</div>	
   		<% } %>
   		</div>
-  		
-<script>
-   for (var clickButton of
-   document.getElementsByClassName("addToCart"))
-   clickButton.addEventListener("click", addedToCart);
-   function addedToCart() {
-      alert("Aggiunto al carrello!");
-   }
-</script>
+
 </body>
 </html>
