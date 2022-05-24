@@ -65,11 +65,6 @@
   					<input type="hidden" id="quantita" value="1" name="quantita">
   					<input type="hidden" id="catalogo" value="catalogo" name="catalogo">
   					<button id="addToCart<% out.print(prodotto.getCodiceSeriale());%>" type="submit">Acquista</button>
-  					<input type="hidden" name="mode" value="add">
-  					<input type="hidden" name="prodotto" value="<% out.print(prodotto.getCodiceSeriale()); %>">
-  					<input type="hidden" value="1" name="quantita">
-  					<input type="hidden" value="catalogo" name="catalogo">
-					<button class="addToCart" type="submit">Acquista</button>
   				</form>
   				</div>
   				 <div class="inside">
