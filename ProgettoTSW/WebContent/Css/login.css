@@ -105,24 +105,50 @@ button:hover .button-text {
 }
 
 
-input[type=text]:focus, input[type=password]:focus {
-	 box-shadow: 0 0 5px rgba(141, 57, 197, 1);
-	 border: 1px solid rgba(141, 57, 197, 1);
-}
-input[type=text], input[type=password]{
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  -ms-transition: all 0.30s ease-in-out;
-  -o-transition: all 0.30s ease-in-out;
-  outline: none;
-  padding: 3px 0px 3px 3px;
-  margin: 5px 1px 3px 0px;
-  border: 1px solid lightgrey;
- height: 30px;
-    width: 250px;
+/* input[type=text]:focus, input[type=password]:focus { */
+/* 	 box-shadow: 0 0 5px rgba(141, 57, 197, 1); */
+/* 	 border: 1px solid rgba(141, 57, 197, 1); */
+/* } */
+/* input[type=text], input[type=password]{ */
+/*   -webkit-transition: all 0.30s ease-in-out; */
+/*   -moz-transition: all 0.30s ease-in-out; */
+/*   -ms-transition: all 0.30s ease-in-out; */
+/*   -o-transition: all 0.30s ease-in-out; */
+/*   outline: none; */
+/*   padding: 3px 0px 3px 3px; */
+/*   margin: 5px 1px 3px 0px; */
+/*   border: 1px solid lightgrey; */
+/*  height: 30px; */
+/*     width: 250px; */
+/* } */
+
+.input {
+ line-height: 28px;
+ border: 2px solid transparent;
+ border-bottom-color: #777;
+ padding: .2rem 0;
+ outline: none;
+ background-color: transparent;
+ color: #0d0c22;
+ transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+ margin: 20px auto;
 }
 
+.input:focus, input:hover {
+ outline: none;
+ padding: .2rem 1rem;
+ border-radius: 1rem;
+ border-color: #8d39c5;
+}
 
+.input::placeholder {
+ color: #777;
+}
+
+.input:focus::placeholder {
+ opacity: 0;
+ transition: opacity .3s;
+}
 
 
 

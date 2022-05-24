@@ -19,14 +19,14 @@
 		}%>
 		
   <div class="login">
-    <h1>Accedi all'area personale:</h1>
+    <h1>Accedi all'area personale</h1>
   	<form action="login" method="post" id="login">
   		<input type="hidden" name="mode" value="login">
-  		<label for="username">Username: </label><br />
-  		<input type="text" id="username" name="username" /><br /><br />
-  		<label for="password">Password: </label><br />
-  		<input type="password" name="password" id="password" /><br /><br />
-  		
+  		<label for="username"> </label>
+		
+  		<input placeholder="Username" type="text" class="input" required="">
+  		<label for="password"> </label><br />
+  		<input placeholder="Username" type="text" class="input" required=""><br /><br />
   		<button type="submit" class="learn-more">
 			  <span class="circle" aria-hidden="true">
 			  <span class="icon arrow"></span>
