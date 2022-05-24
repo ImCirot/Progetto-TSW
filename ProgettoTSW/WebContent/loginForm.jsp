@@ -26,7 +26,13 @@
   		<input type="text" id="username" name="username" /><br /><br />
   		<label for="password">Password: </label><br />
   		<input type="password" name="password" id="password" /><br /><br />
-  		<button type="submit">Login</button>
+  		
+  		<button type="submit" class="learn-more">
+			  <span class="circle" aria-hidden="true">
+			  <span class="icon arrow"></span>
+			  </span>
+			  <span class="button-text">Login</span>
+		</button>
   	</form>
   	<br>
   	<form action="login" method="get">

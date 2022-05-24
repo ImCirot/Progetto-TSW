@@ -64,7 +64,7 @@
 							<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
 							<input type="hidden" name="mode" value="update">
 							<input type="number" placeholder="Quantità" name="quantita" value="<% out.print(quantita); %>">
-							<button id="aggiorna" type="submit" name="Aggiorna">Aggiorna</button>
+							<button class="noselect2"><span class="text">Aggiorna</span><span class="icon"> <img id="checkbox" src="./Images/checkbox.png" alt=""></span></button>
 						</form>
 				        </div>
 				        <div class="info">
@@ -85,9 +85,7 @@
 							out.println(String.format("%.2f", costoTot));%> &euro;
 							</p>
 
-				<p>Prezzo totale<br>
-					<%out.println(String.format("%.2f", costoTot));%> &euro;
-				</p>
+				
 				<form action="ordine" method="get">
 					<input type="hidden" name="costoTot" value="<%out.print(costoTot);%>">
 					<button id="aggiorna" type="submit">Procedi all'acquisto</button>

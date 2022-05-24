@@ -13,6 +13,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <!-- <script src="./JS/addedToCart.js"></script> -->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
   <jsp:include page="./header.jsp" />
@@ -63,6 +65,11 @@
   					<input type="hidden" id="quantita" value="1" name="quantita">
   					<input type="hidden" id="catalogo" value="catalogo" name="catalogo">
   					<button id="addToCart<% out.print(prodotto.getCodiceSeriale());%>" type="submit">Acquista</button>
+  					<input type="hidden" name="mode" value="add">
+  					<input type="hidden" name="prodotto" value="<% out.print(prodotto.getCodiceSeriale()); %>">
+  					<input type="hidden" value="1" name="quantita">
+  					<input type="hidden" value="catalogo" name="catalogo">
+					<button class="addToCart" type="submit">Acquista</button>
   				</form>
   				</div>
   				 <div class="inside">
@@ -75,6 +82,5 @@
   			</div>	
   		<% } %>
   		</div>
-
 </body>
 </html>
