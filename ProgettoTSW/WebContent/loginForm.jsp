@@ -27,11 +27,11 @@
   		<label for="password">Password: </label><br />
   		<input type="password" name="password" id="password" /><br /><br />
   		
-  		<button type="submit">
-    		<p>Subscribe</p>
-    			<svg stroke-width="4" stroke="currentColor" viewBox="0 0 24 24" fill="none" class="h-6 w-6" xmlns="http://www.w3.org/2000/svg">
-        		<path d="M14 5l7 7m0 0l-7 7m7-7H3" stroke-linejoin="round" stroke-linecap="round"></path>
-    			</svg>
+  		<button type="submit" class="learn-more">
+			  <span class="circle" aria-hidden="true">
+			  <span class="icon arrow"></span>
+			  </span>
+			  <span class="button-text">Login</span>
 		</button>
   	</form>
   	<br>
