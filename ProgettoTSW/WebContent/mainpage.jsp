@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
   <jsp:include page="./header.jsp" />
@@ -60,7 +62,8 @@
   					<input type="hidden" name="prodotto" value="<% out.print(prodotto.getCodiceSeriale()); %>">
   					<input type="hidden" value="1" name="quantita">
   					<input type="hidden" value="catalogo" name="catalogo">
-  					<button class="addToCart" type="submit">Acquista</button>
+					<button class="addToCart" type="submit">Acquista</button>
+						 
   				</form>
   				</div>
   				 <div class="inside">
@@ -73,13 +76,6 @@
   		<% } %>
   		</div>
   		
-<script>
-   for (var clickButton of
-   document.getElementsByClassName("addToCart"))
-   clickButton.addEventListener("click", addedToCart);
-   function addedToCart() {
-      alert("Aggiunto al carrello!");
-   }
-</script>
+
 </body>
 </html>
