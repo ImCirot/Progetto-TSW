@@ -15,7 +15,11 @@
 	<% OrdineBean ordine = (OrdineBean) request.getAttribute("ordine");
 		List<ComposizioneOrdineBean> composizioneOrdine = (List<ComposizioneOrdineBean>) request.getAttribute("composizione");
 		Iterator<ComposizioneOrdineBean> iterComposizione = composizioneOrdine.iterator();
-		ComposizioneOrdineBean singolaComposizione = new ComposizioneOrdineBean();%>
+		ComposizioneOrdineBean singolaComposizione = new ComposizioneOrdineBean();
+		List<DettaglioProdottoBean> listaDettagli = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");
+		Iterator<DettaglioProdottoBean> iterDettagli = null;
+		DettaglioProdottoBean dettaglio = new DettaglioProdottoBean();
+		%>
 		
 		
 		<div class="container-ordine">
@@ -35,6 +39,11 @@
 			     </thead>
 			     	<% while(iterComposizione.hasNext()){
 						singolaComposizione = iterComposizione.next();
+						iterDettagli = listaDettagli.iterator();
+						while(iterDettagli.hasNext()){
+							dettaglio = iterDettagli.next();
+							if(dettaglio.getProdotto().equals(singolaComposizione.getProdotto())) break;
+						}
 					%>
 			     <tbody>
 			     
@@ -42,7 +51,7 @@
 			     	  	  <td data-label="Nome prodotto"><% out.println(singolaComposizione.getProdotto());%></td>
 			     	  	  <td data-label="Quantita"><% out.println(singolaComposizione.getQuantitaProdotto()); %></td>
 			     	  	  <td data-label="Prezzo"><% out.println(singolaComposizione.getCostoUnitario()); %></td>
-			     	  	  <td data-label="Immagine"><img style="width:100px" src="./Images/prova.png"></td>
+			     	  	  <td data-label="Immagine"><img style="width:100px" src=" <% out.print(dettaglio.getImmagine()); %>"></td>
 			     	  	  
 			     	  </tr>
 			
