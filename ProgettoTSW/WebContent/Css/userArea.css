@@ -1,7 +1,4 @@
-.dati p{
-  padding: 50px;
-  
-}
+
 
 .login {
   padding: 50px;
@@ -20,21 +17,7 @@ body{
 	margin-left: 50px;
 }
 
-.gestisciProdotti table {
-	margin: 50px;
-}
 
-.aggiungiProdotto form {
-	margin: 50px;
-}
-
-.aggiungiProdotto h3 {
-	margin: 50px;
-}
-
-.login p {
-	color: red;
-}
 
 .container-info{
   display: flex;
@@ -44,7 +27,6 @@ body{
   flex-wrap: nowrap;
   flex-direction: column;
   padding: 100px;
-  
   font-size:18px;
 }
 
@@ -72,7 +54,6 @@ body{
   position: relative;
 }
 .prova{
-  
   position: absolute;
   top: 50%;
   left: 50%;
@@ -85,50 +66,9 @@ body{
 	max-width:100%;
 	
 }
-button {
-	margin:5px auto;
-	padding: 10px;
-	border: none;
-	background-color: #9932CC;
-	color: white;
-	font-size: 16px;
-	min-width: 100px;
-	border-radius: 10px;
-}
 
- button:hover{
-	animation: myAnim 1s ease 0s 1 normal forwards;
-	cursor: pointer;
-}
-
-@keyframes myAnim {
-	0% {
-		transform: scale3d(1, 1, 1);
-	}
-
-	30% {
-		transform: scale3d(1.25, 0.75, 1);
-	}
-
-	40% {
-		transform: scale3d(0.75, 1.25, 1);
-	}
-
-	50% {
-		transform: scale3d(1.15, 0.85, 1);
-	}
-
-	65% {
-		transform: scale3d(0.95, 1.05, 1);
-	}
-
-	75% {
-		transform: scale3d(1.05, 0.95, 1);
-	}
-
-	100% {
-		transform: scale3d(1, 1, 1);
-	}
+#aggiungi{
+	font-size:8px;
 }
 
 .info:hover{
@@ -141,4 +81,63 @@ button {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+
+
+.cta {
+ position: relative;
+ margin: auto;
+ padding: 12px 18px;
+ transition: all 0.2s ease;
+ border: none;
+ background: none;
+}
+
+.cta:before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ display: block;
+ border-radius: 50px;
+ background: #b1dae7;
+ width: 45px;
+ height: 45px;
+ transition: all 0.3s ease;
+}
+
+.cta span {
+ position: relative;
+ font-family: "Ubuntu", sans-serif;
+ font-size: 18px;
+ font-weight: 700;
+ letter-spacing: 0.05em;
+ color: #234567;
+}
+
+.cta svg {
+ position: relative;
+ top: 0;
+ margin-left: 10px;
+ fill: none;
+ stroke-linecap: round;
+ stroke-linejoin: round;
+ stroke: #234567;
+ stroke-width: 2;
+ transform: translateX(-5px);
+ transition: all 0.3s ease;
+}
+
+.cta:hover:before {
+ width: 100%;
+ background: #b1dae7;
+}
+
+.cta:hover svg {
+ transform: translateX(0);
+}
+
+.cta:active {
+ transform: scale(0.95);
 }

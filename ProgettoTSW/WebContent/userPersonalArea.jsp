@@ -35,7 +35,14 @@
 		<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
 		<input type="hidden" name="mode" value="update">
 		<input type="hidden" name="target" value="utente">
-		<button type="submit">Modifica informazioni personali</button>
+		
+		<button class="cta">
+			  <span>Modifica informazioni</span>
+			  <svg viewBox="0 0 13 10" height="10px" width="15px">
+			    <path d="M1,5 L11,5"></path>
+			    <polyline points="8 1 12 5 8 9"></polyline>
+			  </svg>
+		</button>
 	</form>
   </div>
   
@@ -80,7 +87,13 @@
   				<input type="hidden" value="<% out.print(indirizzo.getNumIndirizzoProgressivo());%>" name="indirizzoID">
 				<input type="hidden" name="mode" value="update">
 				<input type="hidden" name="target" value="indirizzo">
-				<button type="submit">Modifica</button>
+				<button class="cta">
+					  <span>Modifica</span>
+					  <svg viewBox="0 0 13 10" height="10px" width="15px">
+					    <path d="M1,5 L11,5"></path>
+					    <polyline points="8 1 12 5 8 9"></polyline>
+					  </svg>
+				</button>
   			</form>
   			<form action="modificaInfo" method="post">
   				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
@@ -99,7 +112,13 @@
   				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
   				<input type="hidden" name="mode" value="add">
   				<input type="hidden" name="target" value="indirizzo">
-  				<button type="submit">Aggiungi nuovo indirizzo</button>
+  				<button class="cta">
+					  <span id="aggiugni" >Aggiungi</span>
+					  <svg viewBox="0 0 13 10" height="10px" width="15px">
+					    <path d="M1,5 L11,5"></path>
+					    <polyline points="8 1 12 5 8 9"></polyline>
+					  </svg>
+				</button>
   			</form>
   			</div>
   		</div>
@@ -141,7 +160,14 @@
   				<input type="hidden" value="<% out.print(metodoPagamento.getNumPagamentoProgressivo());%>" name="metodoPagamentoID">
 				<input type="hidden" name="mode" value="update">
 				<input type="hidden" name="target" value="metodoPagamento">
-				<button type="submit">Modifica</button>
+				<button class="cta">
+					  <span>Modifica</span>
+					  <svg viewBox="0 0 13 10" height="10px" width="15px">
+					    <path d="M1,5 L11,5"></path>
+					    <polyline points="8 1 12 5 8 9"></polyline>
+					  </svg>
+				</button>
+				
   			</form>
   			<form action="modificaInfo" method="post">
   				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
@@ -155,15 +181,21 @@
   			
   		<div class="info">
   		<div class="prova">
-  			<a >
-  			<img alt="ciao" src="./Images/metodo_pagamento.png">
-  			</a>
+  			
+  				<img alt="ciao" src="./Images/metodo_pagamento.png">
+  			
   			
   			<form action="modificaInfo" method="get">
   				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
   				<input type="hidden" name="mode" value="add">
   				<input type="hidden" name="target" value="metodoPagamento">
-  				<button type="submit">Aggiungi nuovo metodo di pagamento</button>
+  				<button class="cta">
+					  <span id="aggiugni">Aggiungi</span>
+					  <svg viewBox="0 0 13 10" height="10px" width="15px">
+					    <path d="M1,5 L11,5"></path>
+					    <polyline points="8 1 12 5 8 9"></polyline>
+					  </svg>
+				</button>
   			</form>
   			</div>
   		</div>
@@ -185,7 +217,13 @@
   			<form action="gestisciOrdine" method="get">
   				<input type="hidden" name="ordine" value="<%out.print(ordine.getNumOrdineProgressivo());%>">
   				<input type="hidden" name="cliente" value="<% out.print(ordine.getCliente()); %>">
-  				<button type="submit">Vedi dettagli</button>
+  				<button class="cta">
+					  <span>Vedi dettagli</span>
+					  <svg viewBox="0 0 13 10" height="10px" width="15px">
+					    <path d="M1,5 L11,5"></path>
+					    <polyline points="8 1 12 5 8 9"></polyline>
+					  </svg>
+				</button>
   			</form>
   		</div>
   		<%}%>
@@ -219,7 +257,13 @@
   			<form action="gestisciOrdine" method="get">
   				<input type="hidden" name="ordine" value="<%out.print(ordine.getNumOrdineProgressivo());%>">
   				<input type="hidden" name="cliente" value="<% out.print(ordine.getCliente()); %>">
-  				<button type="submit">Vedi dettagli</button>
+  				<button class="cta">
+					  <span>Vedi dettagli</span>
+					  <svg viewBox="0 0 13 10" height="10px" width="15px">
+					    <path d="M1,5 L11,5"></path>
+					    <polyline points="8 1 12 5 8 9"></polyline>
+					  </svg>
+				</button>
   			</form>
   		</div>
   		<%}%>
