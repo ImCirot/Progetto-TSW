@@ -210,8 +210,6 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 				
 				prodottiTrovati.add(prodotto);
 			}
-			
-			con.commit();
 		} finally {
 			try {
 				if(statement != null) {

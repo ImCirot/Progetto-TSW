@@ -49,7 +49,7 @@ public class SearchServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		if(prodottiTrovati == null) {
+		if(prodottiTrovati.isEmpty()) {
 			out.append("Nessun prodotto"); 
 		} else {
 			Iterator<ProdottoBean> iterProdotti = prodottiTrovati.iterator();

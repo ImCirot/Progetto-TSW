@@ -1,6 +1,6 @@
 function showSearch() {
 	$("#search-zone").toggle("slide",{direction: "right"},500);
-	$("#search-bar").html("");
+	$("#search-bar").val("");
 	$("#search-result").html("");
 }
 
