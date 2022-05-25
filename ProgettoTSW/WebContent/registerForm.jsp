@@ -71,24 +71,6 @@
 					  </span>
 					  <span class="button-text">Registrati</span>
 				</button>
-				
-<!-- 			<label for="password">Password</label><br> -->
-<!-- 			<input type="password" name="password" placeholder="password"><br><br> -->
-<!-- 			<label for="passwordCheck">Ripeti password</label><br> -->
-<!-- 			<input type="password" name="passwordCheck" placeholder="ripeti password"><br><br> -->
-<!-- 			<label for="email">Email</label><br> -->
-<!-- 			<input type="text" name="email" placeholder="email"><br><br> -->
-<!-- 			<label for="nome">Nome</label><br> -->
-<!-- 			<input type="text" name="nome" placeholder="nome"><br><br> -->
-<!-- 			<label for="cognome">Cognome</label><br> -->
-<!-- 			<input type="text" name="cognome" placeholder="cognome"><br><br> -->
-<!-- 			<label for="sesso">Sesso</label><br> -->
-<!-- 			<select name="sesso"> -->
-<!-- 				<option value="M">M</option> -->
-<!-- 				<option value="F">F</option> -->
-<!-- 				<option value="X">Altro</option> -->
-<!-- 			</select><br><br> -->
-<!-- 			<button type="submit">Registrati</button> -->
 		</form>
 	</div>
 	
