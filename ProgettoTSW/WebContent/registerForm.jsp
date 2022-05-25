@@ -13,68 +13,60 @@
 	<div class="container">
 		<form action="login" method="post">
 				
-<!-- 			<input type="hidden" name="mode" value="register"> -->
+ 			<input type="hidden" name="mode" value="register">
 <!-- 			<label for="username">Username</label><br> -->
 <!-- 			<input type="text" name="username" placeholder="username"><br><br> -->
 			<div class= "group">
 				<input required="" type="text" class="input" name="username">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
-				  <label>Username</label>
+				  <label class="label-registrazione">Username</label>
 			</div>  
 			
 				<div class="group">
 				  <input required="" type="text" class="input" name="email">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
-				  <label>E-mail</label>
+				  <label class="label-registrazione">E-mail</label>
 				</div>  
 				
 				<div class="group">
 				  <input required="" type="password" class="input" name="password">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
-				  <label>Password</label>
+				  <label class="label-registrazione">Password</label>
 				</div>  
 				
 				<div class="group">
 				  <input required="" type="password" class="input" name="passwordCheck">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
-				  <label>Ripeti Password</label>
+				  <label class="label-registrazione">Ripeti Password</label>
 				</div>
 				
 				<div class="group">
 				  <input required="" type="text" class="input" name="nome">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
-				  <label>Nome</label>
+				  <label class="label-registrazione">Nome</label>
 				</div>
 				
 				<div class="group">
 				  <input required="" type="text" class="input" name="cognome">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
-				  <label>Cognome</label>
+				  <label class="label-registrazione">Cognome</label>
 				</div>
 				
-<!-- 				<label for="sesso">Sesso</label> -->
-<!-- 					<select name="sesso"> -->
-<!-- 						<option value="M">M</option> -->
-<!-- 						<option value="F">F</option> -->
-<!-- 						<option value="X">Altro</option> -->
-<!-- 					</select><br><br> -->
-					
-							<span class="dropdown-el">
-							    <input type="radio" name="sortType" value="Relevance" checked="checked" id="sort-relevance"><label for="sort-relevance">Relevance</label>
-							    <input type="radio" name="sortType" value="Popularity" id="sort-best"><label for="sort-best">Product Popularity</label>
-							    <input type="radio" name="sortType" value="PriceIncreasing" id="sort-low"><label for="sort-low">Price Low to High</label>
-							    <input type="radio" name="sortType" value="PriceDecreasing" id="sort-high"><label for="sort-high">Price High to Low</label>
-							    <input type="radio" name="sortType" value="ProductBrand" id="sort-brand"><label for="sort-brand">Product Brand</label>
-							    <input type="radio" name="sortType" value="ProductName" id="sort-name"><label for="sort-name">Product Name</label>
+					<label>Sesso</label>
+					<br>
+							<span class="dropdown-el"> 
+								    <input type="radio" name="sesso" value="M" id="sort-best" checked><label for="sort-best">Uomo</label>
+								    <input type="radio" name="sesso" value="F" id="sort-low"><label for="sort-low">Donna</label>
+								    <input type="radio" name="sesso" value="X" id="sort-low2"><label for="sort-low2">Altro</label>
   							</span>
 					
-					
+					<br><br>
 					
 					
 				<button type="submit" class="learn-more">
