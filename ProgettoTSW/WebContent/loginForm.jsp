@@ -23,7 +23,6 @@
   	  
       <div class="container-login">
         <h1>Accedi all'area personale</h1>
-        <div class="center-login">
           <form action="login" method="post" id="login">
             <input type="hidden" name="mode" value="login">
             
@@ -54,7 +53,7 @@
           <br>
           <br>
           
-          <div class="registrazione">
+          <div >
           <form action="login" method="get">
             <input type="hidden" name="mode" value="register">
             <button class="registrati" type="submit">Registrati</button>
@@ -77,7 +76,7 @@
   		<p><% out.println(result); %></p>
   		<% request.getSession().removeAttribute("result"); }%>
   </div>
-</div>
+
 </div>
 </body>
 </html>

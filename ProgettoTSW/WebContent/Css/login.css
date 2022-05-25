@@ -215,34 +215,17 @@ button:hover .button-text {
 
 
 .container-login{
-  min-width: 300px;
-  min-height: 300px;
+  min-width: 500px;
+  min-height: 500px;
   margin: 50px auto;
   border-radius: 70px;
   background: white;
   padding: 50px;
   box-shadow: 4px 3px 22px 11px rgba(189,158,222,0.9);
-}
-
-
-
-
-
-
-
-
-/* From uiverse.io */
-
-.center-login{
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 }
 
-.registrazione{
-  position: absolute;
-  bottom: 0;
-  left: 22%;
-}
 
