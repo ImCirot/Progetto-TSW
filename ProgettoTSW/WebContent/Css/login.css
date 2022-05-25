@@ -1,10 +1,34 @@
+
+
+.login{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('../Images/backgroundImage.png');
+  background-size: 100%;
+
+}
+
+
+.container-login{
+  min-width: 300px;
+  min-height: 300px;
+  margin: 50px auto;
+  border-radius: 70px;
+  background: white;
+  padding: 50px;
+  box-shadow: 4px 3px 22px 11px rgba(189,158,222,0.9);
+}
+
+
+
+
 .dati p{
   padding: 50px;
 }
 
-.login {
-  padding: 50px;
-}
+
 
 body{
   margin: 0;
@@ -27,7 +51,7 @@ button {
  padding: 0;
  font-size: inherit;
  font-family: inherit;
- 
+
 }
 
 button.learn-more {
@@ -121,7 +145,13 @@ button:hover .button-text {
 /*  height: 30px; */
 /*     width: 250px; */
 /* } */
+.center-login{
+  position: relative;
+  display: flex;
 
+  flex-direction: column;
+  align-items: center;
+}
 .input {
  line-height: 28px;
  border: 2px solid transparent;
@@ -132,6 +162,13 @@ button:hover .button-text {
  color: #0d0c22;
  transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
  margin: 20px auto;
+}
+
+
+.registrazione{
+  position: absolute;
+  bottom: 0;
+  left: 25%;
 }
 
 .input:focus, input:hover {
@@ -149,6 +186,3 @@ button:hover .button-text {
  opacity: 0;
  transition: opacity .3s;
 }
-
-
-

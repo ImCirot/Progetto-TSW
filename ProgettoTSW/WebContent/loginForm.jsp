@@ -10,7 +10,7 @@
 
 </head>
 <body>
-	<jsp:include page="./header.jsp" />
+	
 	<% Boolean logged = (Boolean) request.getSession().getAttribute("logged");
 		if(logged != null && logged) {
 			String utente = (String) request.getSession().getAttribute("utente");
@@ -19,29 +19,64 @@
 		}%>
 		
   <div class="login">
-    <h1>Accedi all'area personale</h1>
-  	<form action="login" method="post" id="login">
-  		<input type="hidden" name="mode" value="login">
-  		<br />
+<!--     <h1>Accedi all'area personale</h1> -->
+<!--   	<form action="login" method="post" id="login"> -->
+<!--   		<input type="hidden" name="mode" value="login"> -->
+<!--   		<br /> -->
 
-  		<input placeholder="Username" type="text" id="username" name="username" class="input" required="">
-  		<br />
-  		<input placeholder="Password" type="password" name="password" id="password" class="input" required="">
+<!--   		<input placeholder="Username" type="text" id="username" name="username" class="input" required=""> -->
+<!--   		<br /> -->
+<!--   		<input placeholder="Password" type="password" name="password" id="password" class="input" required=""> -->
   	
-  		<br /> 
-  		<button type="submit" class="learn-more">
-			  <span class="circle" aria-hidden="true">
-			  <span class="icon arrow"></span>
-			  </span>
-			  <span class="button-text">Login</span>
-		</button>
-  	</form>
-  	<br>
-  	<form action="login" method="get">
-  		<input type="hidden" name="mode" value="register">
-  		<button type="submit">Registrati</button>
-  	</form>
-  	
+<!--   		<br />  -->
+<!--   		<button type="submit" class="learn-more"> -->
+<!-- 			  <span class="circle" aria-hidden="true"> -->
+<!-- 			  <span class="icon arrow"></span> -->
+<!-- 			  </span> -->
+<!-- 			  <span class="button-text">Login</span> -->
+<!-- 		</button> -->
+<!--   	</form> -->
+<!--   	<br> -->
+<!--   	<form action="login" method="get"> -->
+<!--   		<input type="hidden" name="mode" value="register"> -->
+<!--   		<button type="submit">Registrati</button> -->
+<!--   	</form> -->
+  	  <div class="container">
+      <div class="container-login">
+        <h1>Accedi all'area personale</h1>
+        <div class="center-login">
+          <form action="login" method="post" id="login">
+
+
+
+            <input type="hidden" name="mode" value="login">
+            <br />
+
+            <input placeholder="Username" type="text" id="username" name="username" class="input" required="">
+            <br />
+            <input placeholder="Password" type="password" name="password" id="password" class="input" required="">
+
+            <br />
+            <button type="submit" class="learn-more">
+              <span class="circle" aria-hidden="true">
+              <span class="icon arrow"></span>
+              </span>
+              <span class="button-text">Login</span>
+          </button>
+          </form>
+
+          <br>
+          <br>
+          <br>
+          <div class="registrazione">
+          <form action="login" method="get">
+            <input type="hidden" name="mode" value="register">
+            <button type="submit">Registrati</button>
+          </form>
+          </div>
+          </div>
+      </div>
+    </div>
   	
   	<% String error = (String) request.getSession().getAttribute("error");
   		String result = (String) request.getSession().getAttribute("result");
@@ -52,6 +87,6 @@
   		<p><% out.println(result); %></p>
   		<% request.getSession().removeAttribute("result"); }%>
   </div>
-	<jsp:include page="./footer.jsp" /> 
+
 </body>
 </html>
