@@ -58,12 +58,24 @@
 				  <label>Cognome</label>
 				</div>
 				
-				<label for="sesso">Sesso</label>
-					<select name="sesso">
-						<option value="M">M</option>
-						<option value="F">F</option>
-						<option value="X">Altro</option>
-					</select><br><br>
+<!-- 				<label for="sesso">Sesso</label> -->
+<!-- 					<select name="sesso"> -->
+<!-- 						<option value="M">M</option> -->
+<!-- 						<option value="F">F</option> -->
+<!-- 						<option value="X">Altro</option> -->
+<!-- 					</select><br><br> -->
+					
+							<span class="dropdown-el">
+							    <input type="radio" name="sortType" value="Relevance" checked="checked" id="sort-relevance"><label for="sort-relevance">Relevance</label>
+							    <input type="radio" name="sortType" value="Popularity" id="sort-best"><label for="sort-best">Product Popularity</label>
+							    <input type="radio" name="sortType" value="PriceIncreasing" id="sort-low"><label for="sort-low">Price Low to High</label>
+							    <input type="radio" name="sortType" value="PriceDecreasing" id="sort-high"><label for="sort-high">Price High to Low</label>
+							    <input type="radio" name="sortType" value="ProductBrand" id="sort-brand"><label for="sort-brand">Product Brand</label>
+							    <input type="radio" name="sortType" value="ProductName" id="sort-name"><label for="sort-name">Product Name</label>
+  							</span>
+					
+					
+					
 					
 				<button type="submit" class="learn-more">
 					  <span class="circle" aria-hidden="true">
@@ -75,5 +87,17 @@
 	</div>
 	
 	<jsp:include page="./footer.jsp" />
+	
+	<script>
+	$('.dropdown-el').click(function(e) {
+		  e.preventDefault();
+		  e.stopPropagation();
+		  $(this).toggleClass('expanded');
+		  $('#'+$(e.target).attr('for')).prop('checked',true);
+		});
+		$(document).click(function() {
+		  $('.dropdown-el').removeClass('expanded');
+		});
+	</script>
 </body>	
 </html>
