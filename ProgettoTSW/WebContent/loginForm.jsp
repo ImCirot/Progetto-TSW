@@ -28,7 +28,7 @@
             <input type="hidden" name="mode" value="login">
             
 			<div class= "group">
-				<input required="" type="text" class="input" name="username">
+				<input required type="text" class="input" name="username">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
 				  <label class="label-registrazione">Username</label>
@@ -36,7 +36,7 @@
             
             
             <div class= "group">
-				<input required="" type="password" class="input" name="password">
+				<input required type="password" class="input" name="password">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
 				  <label class="label-registrazione">Password</label>
@@ -77,6 +77,7 @@
   		<p><% out.println(result); %></p>
   		<% request.getSession().removeAttribute("result"); }%>
   </div>
-	
+</div>
+</div>
 </body>
 </html>
