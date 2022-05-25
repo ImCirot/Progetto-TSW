@@ -1,14 +1,18 @@
 function showSearch() {
 	$("#search-zone").toggle("slide",{direction: "right"},500);
 	$("#search-bar").val("");
-	$("#search-result").html("");
+	$("#search-product-result").html("");
+	$("#search-type-result").html("");
+	$("#search-brand-result").html("");
 }
 
 $(document).ready(function() {
 	$("#search-bar").keyup(function(){
 		var search = $("#search-bar").val();
 			if(search == "") {
-				$("#search-result").html("nessun prodotto");
+				$("#search-product-result").html("");
+				$("#search-type-result").html("");
+				$("#search-brand-result").html("");
 			} else {
 				$.ajax({
 					type: "GET",
@@ -16,10 +20,37 @@ $(document).ready(function() {
 					data: {
 						search: search,
 						target: "search-bar",
+						type: "product",
 					},
 					dataType: "html",
 					success: function(data) {
-						$("#search-result").html(data);
+						$("#search-product-result").html(data).show();
+					},
+				});
+				$.ajax({
+					type: "GET",
+					url: "search",
+					data: {
+						search: search,
+						target: "search-bar",
+						type: "type",
+					},
+					dataType: "html",
+					success: function(data) {
+						$("#search-type-result").html(data).show();
+					},
+				});
+				$.ajax({
+					type: "GET",
+					url: "search",
+					data: {
+						search: search,
+						target: "search-bar",
+						type: "brand",
+					},
+					dataType: "html",
+					success: function(data) {
+						$("#search-brand-result").html(data).show();
 					},
 				});
 		}

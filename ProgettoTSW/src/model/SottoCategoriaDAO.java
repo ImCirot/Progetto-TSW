@@ -136,4 +136,36 @@ public class SottoCategoriaDAO extends AbstractDAO<SottoCategoriaBean> {
 		return sottocategorie;
 	}
 
+	public synchronized List<SottoCategoriaBean> searchBy(String search) throws SQLException{
+		List<SottoCategoriaBean> listaSottoCategorie = new ArrayList<>();
+		SottoCategoriaBean sottoCategoria = new SottoCategoriaBean();
+		Connection con = null;
+		PreparedStatement statement = null;
+		
+		String query = "SELECT " + SottoCategoriaDAO.TABLE_NAME + ".* FROM " + SottoCategoriaDAO.TABLE_NAME + " WHERE nome LIKE '%" + search + "%';";
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				sottoCategoria = new SottoCategoriaBean();
+				
+				sottoCategoria.setNome(result.getString("nome"));
+				
+				listaSottoCategorie.add(sottoCategoria);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}	
+		return listaSottoCategorie;
+	}
 }

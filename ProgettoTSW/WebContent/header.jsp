@@ -38,7 +38,11 @@
           <li>
           	<div id="search-zone">
           	<input type="text" id="search-bar" name="search" placeholder="Cerca prodotto">
-          	<div id="search-result"></div>
+          	<div id="search-result">
+	          	<div id="search-type-result"></div>
+	          	<div id="search-product-result"></div>
+	          	<div id="search-brand-result"></div>
+          	</div>
           	</div>
           </li>
           <li><a href="#" onclick="showSearch()"><img src="./Images/search-icon.png" alt="search" class="icons"/></a></li>

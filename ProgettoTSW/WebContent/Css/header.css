@@ -125,7 +125,16 @@ a{
 #search-result {
   position: absolute;
   width: 100%;
+  height: auto;
+  max-height: 40vh;
+  overflow: scroll;
   opacity: 0.9;
   background: #9932CC;
+}
+
+
+.type {
+	padding: 5px;
+	display: none;
 }
 
