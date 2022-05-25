@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*" import="model.*"%>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -11,6 +11,7 @@
     <title>Snackz</title>
   </head>
   <body>
+  <script src="./JS/searchFunctions.js"></script>
     <div class="header">
       <div class="header_filter">
       </div>
@@ -31,7 +32,13 @@
       </div>
       <div class="menu">
         <ul>
-          <li><a href="#"><img src="./Images/search-icon.png" alt="search" class="icons" /></a></li>
+          <li>
+          	<div id="search-zone">
+          	<input type="text" id="search-bar" name="search" placeholder="Cerca prodotto">
+          	<div id="search-result"></div>
+          	</div>
+          </li>
+          <li><a href="#" onclick="showSearch()"><img src="./Images/search-icon.png" alt="search" class="icons"/></a></li>
           <li><a href="carrello.jsp"><img src="./Images/shopping-cart.png" alt="cart" class="icons" /></a></li>
           <li><a href="./loginForm.jsp"><img src="./Images/user.png" alt="user" class="icons" /></a></li>
         </ul>

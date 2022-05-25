@@ -184,4 +184,43 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 		
 		return result != 0;
 	}
+	
+	public synchronized List<ProdottoBean> searchBy(String search) throws SQLException {
+		List<ProdottoBean> prodottiTrovati = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement statement = null;
+		
+		String query = "SELECT " + ProdottoDAO.TABLE_NAME + ".* FROM " + ProdottoDAO.TABLE_NAME + " WHERE nome LIKE '%" + search + "%' OR marca LIKE '%" 
+				+ search + "%';";
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				ProdottoBean prodotto = new ProdottoBean();
+				
+				prodotto.setCodiceSeriale(result.getString("codiceSeriale"));
+				prodotto.setNome(result.getString("nome"));
+				prodotto.setMarca(result.getString("marca"));
+				prodotto.setDescrizioneBreve(result.getString("descrizioneBreve"));
+				prodotto.setEdLimitata(result.getBoolean("edLimitata"));
+				
+				prodottiTrovati.add(prodotto);
+			}
+			
+			con.commit();
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}	
+		return prodottiTrovati;
+	}
 }

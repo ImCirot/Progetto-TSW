@@ -11,6 +11,10 @@ a{
   text-decoration: none;
 }
 
+.result {
+	text-color: white;
+}
+
 .header{
   width: 100%;
   padding: 30px;
@@ -114,5 +118,11 @@ a{
   background: #B23AEE;
 }
 
+#search-zone {
+	display: none;
+}
 
+#search-result {
+	position: relative;
+}
 
