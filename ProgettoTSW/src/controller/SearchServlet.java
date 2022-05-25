@@ -72,6 +72,7 @@ public class SearchServlet extends HttpServlet {
 				}
 			} else if(type.equals("type")) {
 				List<SottoCategoriaBean> listaSottoCategorie = new ArrayList<>();
+				List<String> sottoCategoriePresenti = new ArrayList<>();
 				SottoCategoriaBean sottoCategoria = new SottoCategoriaBean();
 				SottoCategoriaDAO dbSottoCategorie = new SottoCategoriaDAO();
 				
@@ -91,10 +92,14 @@ public class SearchServlet extends HttpServlet {
 					
 					while(iterSottoCat.hasNext()) {
 						sottoCategoria = iterSottoCat.next();
-						out.write("<a class=\"result\" href=\"#\">" + sottoCategoria.getNome() + "</a>");
+						if(!sottoCategoriePresenti.contains(sottoCategoria.getNome())) {
+							sottoCategoriePresenti.add(sottoCategoria.getNome());
+							out.write("<a class=\"result\" href=\"#\">" + sottoCategoria.getNome() + "</a>");
+						}
 					}
 				}
 			} else if(type.equals("brand")) {
+				List<String> marchePresenti = new ArrayList<>();
 				try {
 					prodottiTrovati = dbProdotti.searchBy(search);
 				} catch (SQLException e) {
@@ -111,7 +116,10 @@ public class SearchServlet extends HttpServlet {
 					
 					while(iterProdotti.hasNext()) {
 						prodotto = iterProdotti.next();
-						out.write("<a class=\"result\" href=\"#\">" + prodotto.getMarca() + "</a>");
+						if(!marchePresenti.contains(prodotto.getMarca())) {
+							marchePresenti.add(prodotto.getMarca());
+							out.write("<a class=\"result\" href=\"#\">" + prodotto.getMarca() + "</a>");
+						}
 					}
 							
 				}

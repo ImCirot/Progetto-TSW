@@ -11,8 +11,11 @@ a{
   text-decoration: none;
 }
 
-.result {
-	text-color: white;
+.result{
+	color: black;
+	display: block;
+	padding: 12px;
+	margin: auto;
 }
 
 .header{
@@ -53,6 +56,7 @@ a{
 .logo{
 	position:relative;
 }
+
 }
 .logo img{
 	width: 100%;
@@ -89,7 +93,7 @@ a{
   display: inline-block;
 }
 
-.menu ul li a{
+.menu ul li .links{
   padding: 12px;
   display: block;
   color: white;
@@ -97,7 +101,7 @@ a{
 }
 
 
-.menu ul li a:hover{
+.menu ul li .links:hover{
   background: #B23AEE;
   color: white;
 }
@@ -107,14 +111,14 @@ a{
   display: inline-block;
 }
 
-.catalogo ul li a{
+.catalogo ul li .links{
   padding: 12px;
   display: block;
   color: white;
   font-size: 18px;
 }
 
-.catalogo ul li a:hover{
+.catalogo ul li .links:hover{
   background: #B23AEE;
 }
 
@@ -122,14 +126,21 @@ a{
 	display: none;
 }
 
+#search-zone a:hover{
+  opacity: 0.8;
+  background: #9932CC;
+}
+
 #search-result {
   position: absolute;
-  width: 100%;
+  width: 20%;
+  min-width: 35vh;
+  max-width: 35vh;
   height: auto;
   max-height: 40vh;
   overflow: scroll;
-  opacity: 0.9;
-  background: #9932CC;
+  background: white;
+  margin: 1px #9932CC solid;
 }
 
 
