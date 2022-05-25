@@ -11,7 +11,7 @@ body{
   justify-content: center;
   align-items: center;
   background: url('../Images/backgroundImage.png');
-  background-size: 100%;
+  background-size: cover;
 }
 
 

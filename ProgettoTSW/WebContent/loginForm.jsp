@@ -58,11 +58,13 @@
           <form action="login" method="get">
             <input type="hidden" name="mode" value="register">
             <button class="registrati" type="submit">Registrati</button>
+             
+          <a id="home" href="catalogo"><i class="fa fa-home" style="font-size:24px"></i></a>
           </form>
           
-          </div>
-          <a id="home" href="catalogo"><i class="fa fa-home" style="font-size:24px"></i></a>
-          </div>
+          
+         
+          
       </div>
     
   	
