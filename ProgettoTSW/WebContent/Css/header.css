@@ -123,6 +123,9 @@ a{
 }
 
 #search-result {
-	position: relative;
+  position: absolute;
+  width: 100%;
+  opacity: 0.9;
+  background: #9932CC;
 }
 

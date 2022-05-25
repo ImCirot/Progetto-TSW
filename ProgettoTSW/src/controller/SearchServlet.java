@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,27 +40,48 @@ public class SearchServlet extends HttpServlet {
 		ProdottoDAO dbProdotti = new ProdottoDAO();
 		ProdottoBean prodotto = new ProdottoBean();
 		String search = request.getParameter("search");
-		response.setContentType("text/html");
-		Writer out = response.getWriter();
+		String target = request.getParameter("target");
 		
-		try {
-			prodottiTrovati = dbProdotti.searchBy(search);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-		if(prodottiTrovati.isEmpty()) {
-			out.append("Nessun prodotto"); 
-		} else {
-			Iterator<ProdottoBean> iterProdotti = prodottiTrovati.iterator();
+		if(target.equals("search-bar")) {
+			response.setContentType("text/html");
+			Writer out = response.getWriter();
+			try {
+				prodottiTrovati = dbProdotti.searchBy(search);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
-			while(iterProdotti.hasNext()) {
-				prodotto = iterProdotti.next();
-				out.append("<a class=\"result\" href=\"SelectProdottoServlet?prodotto=" + prodotto.getCodiceSeriale() + "\">" + prodotto.getNome() + " " +  prodotto.getMarca() + "</a>");
+			if(prodottiTrovati.isEmpty()) {
+				out.append("Nessun prodotto"); 
+			} else {
+				Iterator<ProdottoBean> iterProdotti = prodottiTrovati.iterator();
+				
+				while(iterProdotti.hasNext()) {
+					prodotto = iterProdotti.next();
+					out.append("<a class=\"result\" href=\"SelectProdottoServlet?prodotto=" + prodotto.getCodiceSeriale() + "\">" + prodotto.getNome() + " " +  prodotto.getMarca() + "</a>");
+				}
+			}
+		} else if(target.equals("search-enter")) {
+				try {
+					prodottiTrovati = dbProdotti.searchBy(search);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				if(prodottiTrovati.isEmpty()) {
+					request.setAttribute("empty", true);
+				} else {
+					request.setAttribute("empty", false);
+					request.setAttribute("prodottiTrovati", prodottiTrovati);
+				}
+				
+				RequestDispatcher view = request.getRequestDispatcher("./searchProduct.jsp");
+				view.forward(request, response);
 			}
 		}
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
