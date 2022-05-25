@@ -5,12 +5,17 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="./Css/registerForm.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <title>Snackz</title>
 </head>
 <body>	
-	<jsp:include page="./header.jsp" />
 	
+	
+	<div class="login">
+		
 	<div class="container">
+	<h1>Welcome to my life</h1>
+		<div class="center-login">
 		<form action="login" method="post">
 				
  			<input type="hidden" name="mode" value="register">
@@ -74,13 +79,15 @@
 					  <span class="button-text">Registrati</span>
 				</button>
 		</form>
+		</div>
+		</div>
 	</div>
 	
-	<jsp:include page="./footer.jsp" />
+	
 	
 	<script>
-	$('.dropdown-el').click(function(e) {
-		  e.preventDefault();
+		$('.dropdown-el').click(function(e) {
+		  	e.preventDefault();
 		  e.stopPropagation();
 		  $(this).toggleClass('expanded');
 		  $('#'+$(e.target).attr('for')).prop('checked',true);

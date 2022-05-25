@@ -19,7 +19,7 @@
 		}%>
 		
   <div class="login">
-  	  <div class="container">
+  	  
       <div class="container-login">
         <h1>Accedi all'area personale</h1>
         <div class="center-login">
@@ -61,7 +61,7 @@
           </div>
           </div>
       </div>
-    </div>
+    
   	
   	<% String error = (String) request.getSession().getAttribute("error");
   		String result = (String) request.getSession().getAttribute("result");

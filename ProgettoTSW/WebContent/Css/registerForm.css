@@ -1,5 +1,35 @@
+body{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.login{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('../Images/backgroundImage.png');
+  background-size: 100%;
+}
+
+
 .container{
-	margin: 20px 20px;
+  min-width: 300px;
+  min-height: 300px;
+  margin: 10px auto;
+  border-radius: 70px;
+  background: white;
+  padding: 50px;
+  box-shadow: 4px 3px 22px 11px rgba(189,158,222,0.9);
+}
+
+
+.center-login{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .group {
@@ -44,7 +74,7 @@
 .bar {
  position: relative;
  display: block;
- width: 200px;
+ width: 215px;
 }
 
 .bar:before, .bar:after {
