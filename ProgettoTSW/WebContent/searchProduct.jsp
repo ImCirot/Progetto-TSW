@@ -14,10 +14,14 @@
 </head>
 <body>
   <jsp:include page="./header.jsp" />
+ 	 <% 
+  	Boolean empty = (boolean) request.getSession().getAttribute("empty");
+  	if(empty){%>
+  		<h1>Nessun prodotto trovato!</h1>
+  	<% } else { %>
+  	<h3>Risultati della ricerca "<%out.print(request.getSession().getAttribute("search"));%>"</h3>
   <div class="container-catalogo">
-
-  	<% 
-  	Boolean admin = (boolean) request.getSession().getAttribute("admin");
+  	<% Boolean admin = (boolean) request.getSession().getAttribute("admin");
 		if((admin != null) && admin) {
 	%>
 		<div class="prodotto">
@@ -27,9 +31,9 @@
 			<h4>Gestisci prodotti</h4>
 		</div>
 	<% }
-  	List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
+  	List<ProdottoBean> prodottiTrovati = (List<ProdottoBean>) request.getSession().getAttribute("prodottiTrovati");
   		List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");
-  		Iterator<ProdottoBean> iterProdotto = prodotti.iterator();
+  		Iterator<ProdottoBean> iterProdotto = prodottiTrovati.iterator();
   		Iterator<DettaglioProdottoBean> iterDettagli;
   		ProdottoBean prodotto = new ProdottoBean();
   		DettaglioProdottoBean dettagli = new DettaglioProdottoBean(); %>
@@ -73,5 +77,6 @@
   			</div>	
   		<% } %>
   		</div>
+  		<% } %>
 </body>
 </html>
