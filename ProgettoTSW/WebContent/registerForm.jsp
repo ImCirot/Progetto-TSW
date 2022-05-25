@@ -4,8 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="./Css/registerForm.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <title>Snackz</title>
 </head>
 <body>	
@@ -78,8 +80,11 @@
 					  </span>
 					  <span class="button-text">Registrati</span>
 				</button>
+				
 		</form>
+		
 		</div>
+		
 		</div>
 	</div>
 	

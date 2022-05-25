@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Snackz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="./Css/login.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -56,9 +57,11 @@
           <div class="registrazione">
           <form action="login" method="get">
             <input type="hidden" name="mode" value="register">
-            <button type="submit">Registrati</button>
+            <button class="registrati" type="submit">Registrati</button>
           </form>
+          
           </div>
+          <a id="home" href="catalogo"><i class="fa fa-home" style="font-size:24px"></i></a>
           </div>
       </div>
     
