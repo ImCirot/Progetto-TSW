@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.ProdottoBean;
 import model.ProdottoDAO;
+import model.SottoCategoriaBean;
+import model.SottoCategoriaDAO;
 
 /**
  * Servlet implementation class SearchServlet
@@ -40,27 +42,86 @@ public class SearchServlet extends HttpServlet {
 		ProdottoDAO dbProdotti = new ProdottoDAO();
 		ProdottoBean prodotto = new ProdottoBean();
 		String search = request.getParameter("search");
+		String type = request.getParameter("type");
 		String target = request.getParameter("target");
 		
 		
 		if(target.equals("search-bar")) {
 			response.setContentType("text/html");
 			Writer out = response.getWriter();
-			try {
-				prodottiTrovati = dbProdotti.searchBy(search);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			if(prodottiTrovati.isEmpty()) {
-				out.append("Nessun prodotto"); 
-			} else {
-				Iterator<ProdottoBean> iterProdotti = prodottiTrovati.iterator();
+			if(type.equals("product")) {
+				try {
+					prodottiTrovati = dbProdotti.searchBy(search);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
-				while(iterProdotti.hasNext()) {
-					prodotto = iterProdotti.next();
-					out.append("<a class=\"result\" href=\"SelectProdottoServlet?prodotto=" + prodotto.getCodiceSeriale() + "\">" + prodotto.getNome() + " " +  prodotto.getMarca() + "</a>");
+				out.write("<h3>Prodotti</h3>");
+				if(prodottiTrovati.isEmpty()) {
+					out.append("Nessun prodotto trovato"); 
+				} else {
+					Iterator<ProdottoBean> iterProdotti = prodottiTrovati.iterator();
+					
+					
+					while(iterProdotti.hasNext()) {
+						prodotto = iterProdotti.next();
+						out.write("<a class=\"result\" href=\"SelectProdottoServlet?prodotto=" + prodotto.getCodiceSeriale() + "\">" + prodotto.getNome() + "</a>");
+					}
+							
+				}
+			} else if(type.equals("type")) {
+				List<SottoCategoriaBean> listaSottoCategorie = new ArrayList<>();
+				List<String> sottoCategoriePresenti = new ArrayList<>();
+				SottoCategoriaBean sottoCategoria = new SottoCategoriaBean();
+				SottoCategoriaDAO dbSottoCategorie = new SottoCategoriaDAO();
+				
+				try {
+					listaSottoCategorie = dbSottoCategorie.searchBy(search);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				out.write("<h3>Categoria</h3>");
+				if(listaSottoCategorie.isEmpty()) {
+					out.append("Nessuna categoria trovata");
+				} else {
+					Iterator<SottoCategoriaBean> iterSottoCat = listaSottoCategorie.iterator();
+					
+					
+					while(iterSottoCat.hasNext()) {
+						sottoCategoria = iterSottoCat.next();
+						if(!sottoCategoriePresenti.contains(sottoCategoria.getNome())) {
+							sottoCategoriePresenti.add(sottoCategoria.getNome());
+							out.write("<a class=\"result\" href=\"#\">" + sottoCategoria.getNome() + "</a>");
+						}
+					}
+				}
+			} else if(type.equals("brand")) {
+				List<String> marchePresenti = new ArrayList<>();
+				try {
+					prodottiTrovati = dbProdotti.searchBy(search);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				out.write("<h3>Marca</h3>");
+				if(prodottiTrovati.isEmpty()) {
+					out.append("Nessuna marca trovata"); 
+				} else {
+					Iterator<ProdottoBean> iterProdotti = prodottiTrovati.iterator();
+					
+					
+					while(iterProdotti.hasNext()) {
+						prodotto = iterProdotti.next();
+						if(!marchePresenti.contains(prodotto.getMarca())) {
+							marchePresenti.add(prodotto.getMarca());
+							out.write("<a class=\"result\" href=\"#\">" + prodotto.getMarca() + "</a>");
+						}
+					}
+							
 				}
 			}
 		} else if(target.equals("search-enter")) {
