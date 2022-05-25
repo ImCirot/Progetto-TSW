@@ -26,7 +26,7 @@
 
   		<input placeholder="Username" type="text" id="username" name="username" class="input" required="">
   		<br />
-  		<input placeholder="Username" type="password" name="password" id="password" class="input" required="">
+  		<input placeholder="Password" type="password" name="password" id="password" class="input" required="">
   	
   		<br /> 
   		<button type="submit" class="learn-more">
