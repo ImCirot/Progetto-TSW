@@ -72,14 +72,18 @@ public class SearchServlet extends HttpServlet {
 				}
 				
 				if(prodottiTrovati.isEmpty()) {
-					request.setAttribute("empty", true);
+					request.getSession().setAttribute("empty", true);
+					request.getSession().setAttribute("search", search);
+					response.getWriter().print("./searchProduct.jsp");
+				} else if(prodottiTrovati.size() == 1) {
+					prodotto = prodottiTrovati.get(0);
+					response.getWriter().print("SelectProdottoServlet?prodotto=" + prodotto.getCodiceSeriale());
 				} else {
-					request.setAttribute("empty", false);
-					request.setAttribute("prodottiTrovati", prodottiTrovati);
+					request.getSession().setAttribute("empty", false);
+					request.getSession().setAttribute("search", search);
+					request.getSession().setAttribute("prodottiTrovati", prodottiTrovati);
+					response.getWriter().print("./searchProduct.jsp");
 				}
-				
-				RequestDispatcher view = request.getRequestDispatcher("./searchProduct.jsp");
-				view.forward(request, response);
 			}
 		}
 
