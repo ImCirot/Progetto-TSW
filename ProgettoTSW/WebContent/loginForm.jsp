@@ -24,11 +24,8 @@
         <h1>Accedi all'area personale</h1>
         <div class="center-login">
           <form action="login" method="post" id="login">
-
-
-
             <input type="hidden" name="mode" value="login">
-            <br />
+            
 			<div class= "group">
 				<input required="" type="text" class="input" name="username">
 				  <span class="highlight"></span>
@@ -36,7 +33,7 @@
 				  <label class="label-registrazione">Username</label>
 			</div>  
             
-            <br />
+            
             <div class= "group">
 				<input required="" type="password" class="input" name="password">
 				  <span class="highlight"></span>
@@ -44,18 +41,18 @@
 				  <label class="label-registrazione">Password</label>
 			</div> 
           
-            <br />
+           
             <button type="submit" class="learn-more">
               <span class="circle" aria-hidden="true">
               <span class="icon arrow"></span>
               </span>
               <span class="button-text">Login</span>
-          </button>
+          	</button>
           </form>
 
           <br>
           <br>
-          <br>
+          
           <div class="registrazione">
           <form action="login" method="get">
             <input type="hidden" name="mode" value="register">
