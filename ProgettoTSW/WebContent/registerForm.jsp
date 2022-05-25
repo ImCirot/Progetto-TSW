@@ -14,8 +14,6 @@
 		<form action="login" method="post">
 				
  			<input type="hidden" name="mode" value="register">
-<!-- 			<label for="username">Username</label><br> -->
-<!-- 			<input type="text" name="username" placeholder="username"><br><br> -->
 			<div class= "group">
 				<input required="" type="text" class="input" name="username">
 				  <span class="highlight"></span>

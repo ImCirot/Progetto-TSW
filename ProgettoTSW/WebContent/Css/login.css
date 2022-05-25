@@ -1,35 +1,3 @@
-
-
-.login{
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: url('../Images/backgroundImage.png');
-  background-size: 100%;
-
-}
-
-
-.container-login{
-  min-width: 300px;
-  min-height: 300px;
-  margin: 50px auto;
-  border-radius: 70px;
-  background: white;
-  padding: 50px;
-  box-shadow: 4px 3px 22px 11px rgba(189,158,222,0.9);
-}
-
-
-
-
-.dati p{
-  padding: 50px;
-}
-
-
-
 body{
   margin: 0;
   padding: 0;
@@ -37,8 +5,100 @@ body{
   font-family: 'Montserrat', sans-serif;
 }
 
+.group {
+ position: relative;
+ margin: 30px auto;
+}
 
-/* From uiverse.io */
+.input {
+ font-size: 16px;
+ padding: 10px 10px 10px 5px;
+ display: block;
+ width: 200px;
+ border: none;
+ border-bottom: 1px solid #515151;
+ background: transparent;
+}
+
+.input:focus {
+ outline: none;
+}
+
+.label-registrazione {
+ 
+ color: #999;
+ font-size: 16px;
+ font-weight: normal;
+ position: absolute;
+ pointer-events: none;
+ left: 5px;
+ top: 10px;
+ transition: 0.2s ease all;
+ -moz-transition: 0.2s ease all;
+ -webkit-transition: 0.2s ease all;
+}
+
+.input:focus ~ label, .input:valid ~ label {
+ top: -20px;
+ font-size: 14px;
+ color: #5264AE;
+}
+
+.bar {
+ position: relative;
+ display: block;
+ width: 200px;
+}
+
+.bar:before, .bar:after {
+ content: '';
+ height: 2px;
+ width: 0;
+ bottom: 1px;
+ position: absolute;
+ background: #5264AE;
+ transition: 0.2s ease all;
+ -moz-transition: 0.2s ease all;
+ -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+ left: 50%;
+}
+
+.bar:after {
+ right: 50%;
+}
+
+.input:focus ~ .bar:before, .input:focus ~ .bar:after {
+ width: 50%;
+}
+
+.highlight {
+ position: absolute;
+ height: 60%;
+ width: 100px;
+ top: 25%;
+ left: 0;
+ pointer-events: none;
+ opacity: 0.5;
+}
+
+.input:focus ~ .highlight {
+ animation: inputHighlighter 0.3s ease;
+}
+
+@keyframes inputHighlighter {
+ from {
+  background: #5264AE;
+ }
+
+ to {
+  width: 0;
+  background: transparent;
+ }
+}
+
 button {
  position: relative;
  display: inline-block;
@@ -51,7 +111,7 @@ button {
  padding: 0;
  font-size: inherit;
  font-family: inherit;
-
+ 
 }
 
 button.learn-more {
@@ -66,7 +126,7 @@ button.learn-more .circle {
  margin: 0;
  width: 3rem;
  height: 3rem;
- background: #8d39c5;
+ background: #0E1EBB;
  border-radius: 1.625rem;
 }
 
@@ -129,60 +189,47 @@ button:hover .button-text {
 }
 
 
-/* input[type=text]:focus, input[type=password]:focus { */
-/* 	 box-shadow: 0 0 5px rgba(141, 57, 197, 1); */
-/* 	 border: 1px solid rgba(141, 57, 197, 1); */
-/* } */
-/* input[type=text], input[type=password]{ */
-/*   -webkit-transition: all 0.30s ease-in-out; */
-/*   -moz-transition: all 0.30s ease-in-out; */
-/*   -ms-transition: all 0.30s ease-in-out; */
-/*   -o-transition: all 0.30s ease-in-out; */
-/*   outline: none; */
-/*   padding: 3px 0px 3px 3px; */
-/*   margin: 5px 1px 3px 0px; */
-/*   border: 1px solid lightgrey; */
-/*  height: 30px; */
-/*     width: 250px; */
-/* } */
+
+.login{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('../Images/backgroundImage.png');
+  background-size: 100%;
+
+}
+
+
+.container-login{
+  min-width: 300px;
+  min-height: 300px;
+  margin: 50px auto;
+  border-radius: 70px;
+  background: white;
+  padding: 50px;
+  box-shadow: 4px 3px 22px 11px rgba(189,158,222,0.9);
+}
+
+
+
+
+
+
+
+
+/* From uiverse.io */
+
 .center-login{
   position: relative;
   display: flex;
-
   flex-direction: column;
   align-items: center;
 }
-.input {
- line-height: 28px;
- border: 2px solid transparent;
- border-bottom-color: #777;
- padding: .2rem 0;
- outline: none;
- background-color: transparent;
- color: #0d0c22;
- transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
- margin: 20px auto;
-}
-
 
 .registrazione{
   position: absolute;
   bottom: 0;
-  left: 25%;
+  left: 22%;
 }
 
-.input:focus, input:hover {
- outline: none;
- padding: .2rem 1rem;
- border-radius: 1rem;
- border-color: #8d39c5;
-}
-
-.input::placeholder {
- color: #777;
-}
-
-.input:focus::placeholder {
- opacity: 0;
- transition: opacity .3s;
-}

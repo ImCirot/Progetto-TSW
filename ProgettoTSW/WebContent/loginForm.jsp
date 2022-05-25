@@ -19,28 +19,6 @@
 		}%>
 		
   <div class="login">
-<!--     <h1>Accedi all'area personale</h1> -->
-<!--   	<form action="login" method="post" id="login"> -->
-<!--   		<input type="hidden" name="mode" value="login"> -->
-<!--   		<br /> -->
-
-<!--   		<input placeholder="Username" type="text" id="username" name="username" class="input" required=""> -->
-<!--   		<br /> -->
-<!--   		<input placeholder="Password" type="password" name="password" id="password" class="input" required=""> -->
-  	
-<!--   		<br />  -->
-<!--   		<button type="submit" class="learn-more"> -->
-<!-- 			  <span class="circle" aria-hidden="true"> -->
-<!-- 			  <span class="icon arrow"></span> -->
-<!-- 			  </span> -->
-<!-- 			  <span class="button-text">Login</span> -->
-<!-- 		</button> -->
-<!--   	</form> -->
-<!--   	<br> -->
-<!--   	<form action="login" method="get"> -->
-<!--   		<input type="hidden" name="mode" value="register"> -->
-<!--   		<button type="submit">Registrati</button> -->
-<!--   	</form> -->
   	  <div class="container">
       <div class="container-login">
         <h1>Accedi all'area personale</h1>
@@ -51,11 +29,21 @@
 
             <input type="hidden" name="mode" value="login">
             <br />
-
-            <input placeholder="Username" type="text" id="username" name="username" class="input" required="">
+			<div class= "group">
+				<input required="" type="text" class="input" name="username">
+				  <span class="highlight"></span>
+				  <span class="bar"></span>
+				  <label class="label-registrazione">Username</label>
+			</div>  
+            
             <br />
-            <input placeholder="Password" type="password" name="password" id="password" class="input" required="">
-
+            <div class= "group">
+				<input required="" type="password" class="input" name="password">
+				  <span class="highlight"></span>
+				  <span class="bar"></span>
+				  <label class="label-registrazione">Password</label>
+			</div> 
+          
             <br />
             <button type="submit" class="learn-more">
               <span class="circle" aria-hidden="true">
@@ -87,6 +75,6 @@
   		<p><% out.println(result); %></p>
   		<% request.getSession().removeAttribute("result"); }%>
   </div>
-
+	
 </body>
 </html>
