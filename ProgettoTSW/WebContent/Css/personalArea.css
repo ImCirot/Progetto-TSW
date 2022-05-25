@@ -1,0 +1,48 @@
+
+
+
+.container{
+  display: flex;
+  margin: 2% 5%;
+  gap:2%;
+}
+
+
+.titolo{
+  width: 30%;
+  height: 10%;
+  padding: 10px;
+  margin: 2% 7%;
+
+}
+
+.card{
+  width: 33.33%;
+
+
+  min-width: 200px;
+  min-height: 150px;
+  padding: 10px;
+  display: flex;
+  border: 2px solid lightgrey;
+  border-radius: 10px;
+
+}
+
+.card:hover { cursor: pointer;}
+
+img{
+  width: 100%;
+}
+.img{
+  text-align: center;
+  margin: 5%;
+  padding: 2%;
+  width: 20%;
+  min-width: 60px;
+
+}
+.card-description{
+  width: 80%;
+  margin: 5%;
+}
