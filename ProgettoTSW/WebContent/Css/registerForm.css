@@ -16,21 +16,21 @@ body{
 
 
 .container{
-  min-width: 300px;
-  min-height: 300px;
+  min-width: 30%;
+  min-height: 50%;
   margin: 10px auto;
   border-radius: 70px;
   background: white;
   padding: 50px;
   box-shadow: 4px 3px 22px 11px rgba(189,158,222,0.9);
-}
-
-
-.center-login{
-  display: flex;
+   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-evenly;
 }
+
+
+
 
 .group {
  position: relative;

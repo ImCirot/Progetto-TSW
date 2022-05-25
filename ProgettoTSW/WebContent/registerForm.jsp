@@ -17,7 +17,7 @@
 		
 	<div class="container">
 	<h1>Welcome to my life</h1>
-		<div class="center-login">
+		
 		<form action="login" method="post">
 				
  			<input type="hidden" name="mode" value="register">
@@ -83,7 +83,7 @@
 				
 		</form>
 		
-		</div>
+		
 		
 		</div>
 	</div>

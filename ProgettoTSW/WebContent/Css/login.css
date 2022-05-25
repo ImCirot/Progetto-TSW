@@ -215,8 +215,8 @@ button:hover .button-text {
 
 
 .container-login{
-  min-width: 500px;
-  min-height: 500px;
+  min-width: 30%;
+  min-height: 50%;
   margin: 50px auto;
   border-radius: 70px;
   background: white;

@@ -47,6 +47,7 @@ body{
   min-height:550px;
   display:flex;
   flex-direction:column;
+  justify-content: space-evenly;
   align-items:center;
   padding: 20px;
   border-radius:10px;
