@@ -14,6 +14,7 @@
 </head>
 <body>
   <jsp:include page="./header.jsp" />
+  <script src="./JS/addedToCart.js"></script>
   <div class="container-catalogo">
 
   	<% 
@@ -55,13 +56,7 @@
   				<p class="prezzo"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
   				</div>
   				<div class="posizione">
-  				<form action="Carrello" method="get">
-  					<input type="hidden" id="mode" name="mode" value="add">
-  					<input type="hidden" id="prodotto" name="prodotto" value="<% out.print(prodotto.getCodiceSeriale()); %>">
-  					<input type="hidden" id="quantita" value="1" name="quantita">
-  					<input type="hidden" id="catalogo" value="catalogo" name="catalogo">
-  					<button id="addToCart<% out.print(prodotto.getCodiceSeriale());%>" type="submit">Acquista</button>
-  				</form>
+  					<button type="submit" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">Acquista</button>
   				</div>
   				 <div class="inside">
     				<div class="icon"><i class="material-icons">info_outline</i></div>
@@ -69,7 +64,7 @@
       					<p><% out.println(prodotto.getDescrizioneBreve());%></p>
     				</div>
   					</div>
-  				<p id="added">Aggiunto al carrello!</p>
+  				<p id="added<% out.print(prodotto.getCodiceSeriale());%>" class="addMessage">Aggiunto al carrello!</p>
   			</div>	
   		<% } %>
   		</div>

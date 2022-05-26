@@ -64,7 +64,7 @@ prodotto h4 {
 	cursor: pointer;
 }
 
-#added {
+.addMessage {
 	display: none;
 }
 
