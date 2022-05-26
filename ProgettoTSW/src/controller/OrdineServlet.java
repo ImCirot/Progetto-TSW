@@ -87,6 +87,13 @@ public class OrdineServlet extends HttpServlet {
 		try {
 			indirizzo = dbIndirizzi.doRetrieveByKey(indirizzoID, utente);
 			metodoDiPagamento = dbMetodi.doRetrieveByKey(metodoDiPagamentoID, utente);
+			
+			if(indirizzo == null || metodoDiPagamento == null) {
+				if(request.getSession().getAttribute("logged") == null) {
+					request.getSession().setAttribute("error", "Devi aggiungere un indirizzo/metodo di pagamento per poter acquistare!");
+					redirectPath = "./userPersonalArea.jsp";
+				}
+			}
 			ordine.setCliente(utente);
 			ordine.setCostoTotale(BigDecimal.valueOf(costoTot));
 			ordine.setTipoPagamento(metodoDiPagamento.getTipo());
