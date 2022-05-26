@@ -16,7 +16,7 @@
 	<div class="login">
 		
 	<div class="container">
-	<h1>Welcome to my life</h1>
+	<h1>Registrazione</h1>
 		
 		<form action="login" method="post">
 				
