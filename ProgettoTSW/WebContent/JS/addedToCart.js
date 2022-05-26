@@ -1,6 +1,4 @@
-function added(){
-	$("#added").slideUp();
-}
+
 
 function addToCart(prodotto) {
 	let formData = {
@@ -17,7 +15,8 @@ function addToCart(prodotto) {
 		dataType: "html",
 	}).done(function(data) {
 		$("#added" + prodotto).slideDown();
-		console.log(prodotto);
-		window.setTimeout(added, "2000");
+		window.setTimeout(function() {
+			$("#added" + prodotto).slideUp();
+		}, "2000");
 	});
 }
