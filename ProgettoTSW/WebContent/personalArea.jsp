@@ -24,10 +24,9 @@
       <h1>Bentornato <% out.println(request.getSession().getAttribute("nome")); %></h1>
     </div>
      <% if (!admin) { %>
-     <div class="container-grande">
-    <div class="container">
+     <div class="section">
 		
-		<div class="card">
+		<div class="grid-card">
           <div class="img">
             <img src="./Images/sicurezza.png" alt="ciao">
           </div>
@@ -37,7 +36,7 @@
           </div>
         </div>
 		
-        <div class="card">
+        <div class="grid-card">
           <div class="img">
             <img src="./Images/ordini.png" alt="ciao">
           </div>
@@ -47,7 +46,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="grid-card">
           <div class="img">
             <img src="./Images/indirizzi.png" alt="ciao">
           </div>
@@ -57,7 +56,7 @@
           </div>
         </div>
 
-        <div class="card">
+        <div class="grid-card">
           <div class="img">
             <img src="./Images/pagamenti.png" alt="ciao">
           </div>
@@ -67,7 +66,7 @@
           </div>
         </div>
 
-    </div>
+    
     </div>
 	<% } else { %>
 		 <div class="container-grande">
@@ -119,7 +118,7 @@
    
 	
     <script type="text/javascript">
-      $(".card").click(function(){
+      $(".grid-card").click(function(){
         window.location=$(this).find("a").attr("href");
         return false;
       });
