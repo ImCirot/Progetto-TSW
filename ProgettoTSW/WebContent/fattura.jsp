@@ -9,14 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Fattura</title>
-  	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="./Css/fattura.css" />
-    <link rel="stylesheet" href="./Css/printFattura.css" media="print"/>
-</head>
-
-<body>
-	<% OrdineBean ordine = (OrdineBean) request.getAttribute("ordine");
+    <% OrdineBean ordine = (OrdineBean) request.getAttribute("ordine");
 	UtenteBean cliente = (UtenteBean) request.getAttribute("cliente");
 	List<ComposizioneOrdineBean> listaComposizioneOrdine = (List<ComposizioneOrdineBean>) request.getAttribute("listaComposizioneOrdine");
 	MetodoDiPagamentoBean metodoPagamento = (MetodoDiPagamentoBean) request.getAttribute("metodoPagamento");
@@ -25,6 +18,13 @@
 	Double costoNetto;
 	DecimalFormat df = new DecimalFormat("0.00");
 	%>
+    <title>Fattura #<% out.print(ordine.getNumOrdineProgressivo()); %></title>
+  	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="./Css/fattura.css" />
+    <link rel="stylesheet" href="./Css/printFattura.css" media="print"/>
+</head>
+
+<body>
     <div class="container d-flex justify-content-center mt-50 mb-50">
         <div class="row">
             <div class="col-md-12 text-right mb-3">
@@ -161,6 +161,10 @@
                                         	<tr>
                                                 <th class="text-left">Totale netto:</th>
                                                 <td class="text-right"><% out.println(df.format(totNetto)); %> &euro;</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="text-left">IVA:</th>
+                                                <td class="text-right"><% out.println(df.format(ordine.getCostoTotale().doubleValue() - totNetto)); %> &euro;</td>
                                             </tr>
                                             <tr>
                                                 <th class="text-left">Totale:</th>
