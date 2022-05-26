@@ -69,7 +69,7 @@ public class OrdineServlet extends HttpServlet {
 		String redirectPath = null;
 		
 		if(request.getSession().getAttribute("logged") == null) {
-			request.getSession().setAttribute("error", "Devi essere loggato per poter acquistare!");
+			request.getSession().setAttribute("error", "Devi accedere per poter acquistare!");
 			redirectPath = "./loginForm.jsp";
 		}
 		
