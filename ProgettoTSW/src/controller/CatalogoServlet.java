@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -40,20 +41,64 @@ public class CatalogoServlet extends HttpServlet {
 		DettaglioProdottoDAO dbDettagli = new DettaglioProdottoDAO();
 		List<ProdottoBean> prodotti = new ArrayList<>();
 		List<DettaglioProdottoBean> dettagliProdotti = new ArrayList<>();
+		DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
+		String filter = request.getParameter("filter");
 		
-		try {
-			prodotti = dbProdotti.doRetrieveAll("codiceSeriale");
-			dettagliProdotti = dbDettagli.doRetrieveAll("tipo");
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(filter != null) {
+			if(filter.equals("snack") || filter.equals("drink")) {
+				try {
+					dettagliProdotti = dbDettagli.filterBy(filter);
+					Iterator<DettaglioProdottoBean> iterDettagliProdotti = dettagliProdotti.iterator();
+					
+					while(iterDettagliProdotti.hasNext()) {
+						dettagli = iterDettagliProdotti.next();
+						ProdottoBean prodotto = new ProdottoBean();
+						
+						prodotto = dbProdotti.doRetrieveByKey(dettagli.getProdotto());
+						
+						prodotti.add(prodotto);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block				request.getSession().setAttribute("prodotti", prodotti);
+					request.getSession().setAttribute("dettagliProdotti", dettagliProdotti);
+					if (request.getSession().getAttribute("admin") == null) {
+						request.getSession().setAttribute("admin",false);
+					}
+					e.printStackTrace();
+				}
+			} else {
+				ProdottoBean prodotto = new ProdottoBean();
+				try {
+					prodotti = dbProdotti.filterBy("si");
+					Iterator<ProdottoBean> iterProdottiTrovati = prodotti.iterator();
+					
+					while(iterProdottiTrovati.hasNext()) {
+						prodotto = iterProdottiTrovati.next();
+						
+						dettagli = dbDettagli.doRetrieveByKey(prodotto.getCodiceSeriale());
+						
+						dettagliProdotti.add(dettagli);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		} else {
+			try {
+				prodotti = dbProdotti.doRetrieveAll("codiceSeriale");
+				dettagliProdotti = dbDettagli.doRetrieveAll("tipo");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		request.getSession().setAttribute("prodotti", prodotti);
 		request.getSession().setAttribute("dettagliProdotti", dettagliProdotti);
 		if (request.getSession().getAttribute("admin") == null) {
 			request.getSession().setAttribute("admin",false);
-		}
+		}	
 		
 		RequestDispatcher view = request.getRequestDispatcher("./mainpage.jsp");
 		view.forward(request, response);

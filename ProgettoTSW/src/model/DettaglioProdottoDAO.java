@@ -249,4 +249,46 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 		return result != 0;
 	}
 	
+	public synchronized List<DettaglioProdottoBean> filterBy(String filter) throws SQLException {
+		List<DettaglioProdottoBean> listaDettagliProdottiFiltrati = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement statement = null;
+		
+		String query = "SELECT * FROM " + DettaglioProdottoDAO.TABLE_NAME + " WHERE tipo = ?";
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			statement.setString(1, filter);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				DettaglioProdottoBean dettaglioProdotto = new DettaglioProdottoBean();
+				
+				dettaglioProdotto.setTipo(result.getString("tipo"));
+				dettaglioProdotto.setProdotto(result.getString("prodotto"));
+				dettaglioProdotto.setCostoUnitario(result.getBigDecimal("costoUnitario"));
+				dettaglioProdotto.setIVA(Integer.parseInt(result.getString("IVA")));
+				dettaglioProdotto.setQuantita(Integer.parseInt(result.getString("quantita")));
+				dettaglioProdotto.setOrigine(result.getString("origine"));
+				dettaglioProdotto.setScadenza(result.getString("scadenza"));
+				dettaglioProdotto.setPeso(result.getString("peso"));
+				dettaglioProdotto.setVolume(result.getString("volume"));
+				dettaglioProdotto.setImmagine(result.getString("immagine"));
+				
+				listaDettagliProdottiFiltrati.add(dettaglioProdotto);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+		return listaDettagliProdottiFiltrati;
+	}
 }

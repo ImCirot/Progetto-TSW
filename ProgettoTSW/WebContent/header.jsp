@@ -29,9 +29,9 @@
       <div class="catalogo">
         <ul>
           <li><a class="links" href="catalogo">Home</a></li>
-          <li><a class="links" href="#">Caramelle</a></li>
-          <li><a class="links" href="#">Snack</a></li>
-          <li><a class="links" href="#">Bibite</a></li>
+          <li><a class="links" href="catalogo?filter=edLimitata">Ed. Limitata</a></li>
+          <li><a class="links" href="catalogo?filter=snack">Snack</a></li>
+          <li><a class="links" href="catalogo?filter=drink">Bibite</a></li>
         </ul>
       </div>
       <div class="menu">

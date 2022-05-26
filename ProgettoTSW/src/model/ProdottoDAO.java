@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mysql.cj.x.protobuf.MysqlxPrepare.Prepare;
+
 public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 	
 	private static final String TABLE_NAME = "prodotto";
@@ -190,12 +192,13 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 		Connection con = null;
 		PreparedStatement statement = null;
 		
-		String query = "SELECT " + ProdottoDAO.TABLE_NAME + ".* FROM " + ProdottoDAO.TABLE_NAME + " WHERE nome LIKE '%" + search + "%' OR marca LIKE '%" 
-				+ search + "%';";
+		String query = "SELECT " + ProdottoDAO.TABLE_NAME + ".* FROM " + ProdottoDAO.TABLE_NAME + " WHERE nome LIKE '%?%' OR marca LIKE '%?%';";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
+			statement.setString(1, search);
+			statement.setString(2, search);
 			
 			ResultSet result = statement.executeQuery();
 			
@@ -220,5 +223,42 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 			}
 		}	
 		return prodottiTrovati;
+	}
+	
+	public synchronized List<ProdottoBean> filterBy(String filter) throws SQLException{
+		List<ProdottoBean> listaProdotti = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement statement = null;
+		
+		String query = "SELECT * FROM " + ProdottoDAO.TABLE_NAME + " WHERE edLimitata = ?";
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			statement.setBoolean(1, true);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				ProdottoBean prodotto = new ProdottoBean();
+				
+				prodotto.setCodiceSeriale(result.getString("codiceSeriale"));
+				prodotto.setNome(result.getString("nome"));
+				prodotto.setMarca(result.getString("marca"));
+				prodotto.setDescrizioneBreve(result.getString("descrizioneBreve"));
+				prodotto.setEdLimitata(result.getBoolean("edLimitata"));
+				
+				listaProdotti.add(prodotto);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}	
+		return listaProdotti;
 	}
 }
