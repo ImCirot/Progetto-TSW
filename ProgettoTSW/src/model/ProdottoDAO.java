@@ -192,13 +192,13 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 		Connection con = null;
 		PreparedStatement statement = null;
 		
-		String query = "SELECT " + ProdottoDAO.TABLE_NAME + ".* FROM " + ProdottoDAO.TABLE_NAME + " WHERE nome LIKE '%?%' OR marca LIKE '%?%';";
+		String query = "SELECT " + ProdottoDAO.TABLE_NAME + ".* FROM " + ProdottoDAO.TABLE_NAME + " WHERE nome LIKE ? OR marca LIKE ?;";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
-			statement.setString(1, search);
-			statement.setString(2, search);
+			statement.setString(1, ("%" + search + "%"));
+			statement.setString(2, ("%" + search + "%"));
 			
 			ResultSet result = statement.executeQuery();
 			
