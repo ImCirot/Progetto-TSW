@@ -91,7 +91,7 @@ public class OrdineServlet extends HttpServlet {
 			if(indirizzo == null || metodoDiPagamento == null) {
 				if(request.getSession().getAttribute("logged") == null) {
 					request.getSession().setAttribute("error", "Devi aggiungere un indirizzo/metodo di pagamento per poter acquistare!");
-					redirectPath = "./userPersonalArea.jsp";
+					redirectPath = "./personalArea.jsp";
 				}
 			}
 			ordine.setCliente(utente);

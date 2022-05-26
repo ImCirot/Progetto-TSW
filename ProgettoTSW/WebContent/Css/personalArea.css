@@ -1,34 +1,68 @@
 
-
+.container-grande{
+	  display: flex;
+ 	  justify-content:center;
+}
 
 .container{
-  height:50vh;
   display: flex;
-  margin: 2% 5%;
-  gap:2%;
+  flex-wrap:wrap;
+  justify-content: space-evenly;
+  gap:30px;
+}
+
+@media(max-width: 700px){
+
+	.container{
+ 
+  display: flex;
+  flex-wrap:wrap;
+ 	justify-content: space-evenly;
+  
+   gap:30px;
+  
+	}
+}
+
+@media(max-width: 900px){
+
+	.container{
+ 
+  	display: flex;
+  	flex-wrap:wrap;
+ 	justify-content: space-evenly;
+
+   	gap:30px;
+  
+	}
 }
 
 
 .titolo{
-  width: 30%;
-  height: 10%;
-  padding: 10px;
-  margin: 2% 7%;
+    
+    padding: 10px;
+    text-align: center;
+    margin: 30px auto;
 
 }
 
 .card{
-  width: 33.33%;
+    width: 300px;
     min-width: 300px;
-    min-height: 200px;
+    min-height:220px;
     padding: 10px;
     display: flex;
     border: 2px solid lightgrey;
     border-radius: 10px;
-    max-height: 30%;
+    
 
 }
-
+.card p{
+	font-size: 1em;
+}
+.card h2{
+	font-size: 1.5em;
+}
 .card:hover { cursor: pointer;}
 
 img{
@@ -45,4 +79,99 @@ img{
 .card-description{
   width: 80%;
   margin: 5%;
+}
+
+
+.wrapper{
+	 padding: 10px;
+    text-align: center;
+    margin: 30px auto;
+}
+button {
+ position: relative;
+ display: inline-block;
+ cursor: pointer;
+ outline: none;
+ border: 0;
+ vertical-align: middle;
+ text-decoration: none;
+ background: transparent;
+ padding: 0;
+ font-size: inherit;
+ font-family: inherit;
+ 
+}
+
+button.learn-more {
+ width: 12rem;
+ height: auto;
+}
+
+button.learn-more .circle {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: relative;
+ display: block;
+ margin: 0;
+ width: 3rem;
+ height: 3rem;
+ background: #524FFF;
+ border-radius: 1.625rem;
+}
+
+button.learn-more .circle .icon {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: absolute;
+ top: 0;
+ bottom: 0;
+ margin: auto;
+ background: #fff;
+}
+
+button.learn-more .circle .icon.arrow {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ left: 0.625rem;
+ width: 1.125rem;
+ height: 0.125rem;
+ background: none;
+}
+
+button.learn-more .circle .icon.arrow::before {
+ position: absolute;
+ content: "";
+ top: -0.29rem;
+ right: 0.0625rem;
+ width: 0.625rem;
+ height: 0.625rem;
+ border-top: 0.125rem solid #fff;
+ border-right: 0.125rem solid #fff;
+ transform: rotate(45deg);
+}
+
+button.learn-more .button-text {
+ transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+ position: absolute;
+ top: 0;
+ left: 0;
+ right: 0;
+ bottom: 0;
+ padding: 0.75rem 0;
+ margin: 0 0 0 1.85rem;
+ color: #282936;
+ font-weight: 700;
+ line-height: 1.6;
+ text-align: center;
+ text-transform: uppercase;
+}
+
+button:hover .circle {
+ width: 100%;
+}
+
+button:hover .circle .icon.arrow {
+ background: #fff;
+ transform: translate(1rem, 0);
+}
+
+button:hover .button-text {
+ color: #fff;
 }

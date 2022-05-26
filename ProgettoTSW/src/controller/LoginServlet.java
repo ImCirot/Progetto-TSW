@@ -71,7 +71,7 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("metodiPagamento", metodiPagamento);
 				request.getSession().setAttribute("ordini", ordini);
 				
-				RequestDispatcher view = request.getRequestDispatcher("./userPersonalArea.jsp");
+				RequestDispatcher view = request.getRequestDispatcher("./personalArea.jsp");
 				view.forward(request, response);
 			} else {
 				try {
@@ -83,7 +83,7 @@ public class LoginServlet extends HttpServlet {
 				}
 				request.getSession().setAttribute("ordini", ordini);
 				
-				RequestDispatcher view = request.getRequestDispatcher("./userPersonalArea.jsp");
+				RequestDispatcher view = request.getRequestDispatcher("./personalArea.jsp");
 				view.forward(request, response);
 			}
 		} else if(mode.equalsIgnoreCase("register")) {
