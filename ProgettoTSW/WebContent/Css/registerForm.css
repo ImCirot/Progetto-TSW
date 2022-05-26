@@ -5,6 +5,15 @@ body{
   font-family: 'Montserrat', sans-serif;
 }
 
+#home{
+	color: black;
+    text-decoration: none;
+    margin: 15px ;
+}
+#home:hover{
+	color: #9932CC;
+}
+
 .login{
   height: 100vh;
   display: flex;

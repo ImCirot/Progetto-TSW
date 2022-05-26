@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="./Css/registerForm.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <title>Snackz</title>
@@ -79,8 +80,11 @@
 					  <span class="icon arrow"></span>
 					  </span>
 					  <span class="button-text">Registrati</span>
+					  
+					  
+					  
 				</button>
-				
+				<a id="home" href="catalogo"><i class="fa fa-home" style="font-size:24px"></i></a>
 		</form>
 		
 		
