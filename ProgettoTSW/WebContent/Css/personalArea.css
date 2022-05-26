@@ -2,6 +2,7 @@
 
 
 .container{
+  height:50vh;
   display: flex;
   margin: 2% 5%;
   gap:2%;
@@ -18,14 +19,13 @@
 
 .card{
   width: 33.33%;
-
-
-  min-width: 200px;
-  min-height: 150px;
-  padding: 10px;
-  display: flex;
-  border: 2px solid lightgrey;
-  border-radius: 10px;
+    min-width: 300px;
+    min-height: 200px;
+    padding: 10px;
+    display: flex;
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+    max-height: 30%;
 
 }
 
