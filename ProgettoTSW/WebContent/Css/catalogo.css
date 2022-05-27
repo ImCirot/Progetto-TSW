@@ -1,6 +1,6 @@
 .section {
   max-width: 1600px;
-  padding: 25px;
+  padding: 35px;
   margin: 40px auto;
   display: grid;
   gap: 3.5em 2em;
@@ -21,6 +21,12 @@
   border-radius: 10px;
 }
 
+.grid-card:hover{
+	box-shadow: 0 4px 8px 0 rgba(153, 50, 204, 0.4);
+	border: 1px solid #9932CC;
+	animation: hoverproduct 0.5s ease 0s normal forwards;
+}
+
 .img{
   width: 150px;
 }
@@ -31,7 +37,7 @@
 
 .section .inside {
   z-index: 1;
-  background: #9932CC;
+  background: #0e1ebb;
   width: 140px;
   height: 140px;
   position: absolute;
@@ -90,6 +96,14 @@
 	text-align: center;
 }
 
+
+.prezzo p{
+	font-weight: bold;
+    font-size: 1.4em;
+    color: mediumseagreen;
+}
+
+
 .material-icons {
     font-family: 'Material Icons';
     font-weight: normal;
@@ -105,3 +119,45 @@
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
   }
+  
+  
+  
+  @keyframes myAnim {
+	0% {
+		transform: scale3d(1, 1, 1);
+	}
+
+	30% {
+		transform: scale3d(1.25, 0.75, 1);
+	}
+
+	40% {
+		transform: scale3d(0.75, 1.25, 1);
+	}
+
+	50% {
+		transform: scale3d(1.15, 0.85, 1);
+	}
+
+	65% {
+		transform: scale3d(0.95, 1.05, 1);
+	}
+
+	75% {
+		transform: scale3d(1.05, 0.95, 1);
+	}
+
+	100% {
+		transform: scale3d(1, 1, 1);
+	}
+}
+
+@keyframes hoverproduct {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}

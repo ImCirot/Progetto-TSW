@@ -5,6 +5,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
 <head>
 	<meta charset="ISO-8859-1">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	
 	<link rel="stylesheet" href="./Css/catalogo.css">
 	<title>Snackz</title>
 </head>
@@ -51,6 +52,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
             <p><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
           </div>
           <div class="acquista">
+          	
             <button type="submit" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">Acquista</button>
           </div>
           <div class="inside">
@@ -71,5 +73,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
       </div>
 	<jsp:include page="./footer.jsp" />
 	<script src="./JS/addedToCart.js"></script>
+	
+	
 </body>
 </html>
