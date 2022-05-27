@@ -5,13 +5,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./Css/header.css">
+     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet"> 
+	<link rel="stylesheet" href="./Css/header.css">
     <title>Snackz</title>
   </head>
   <body>
@@ -46,9 +47,9 @@
           	</div>
           	</div>
           </li>
-          <li><a class="links" href="#" onclick="showSearch()"><img src="./Images/search-icon.png" alt="search" class="icons"/></a></li>
-          <li><a class="links" href="carrello.jsp"><img src="./Images/shopping-cart.png" alt="cart" class="icons" /></a></li>
-          <li><a class="links" href="./loginForm.jsp"><img src="./Images/user.png" alt="user" class="icons" /></a></li>
+          <li><a class="links" href="#" onclick="showSearch()"><span class="material-icons md-36">search</span></a></li>
+          <li><a class="links" href="carrello.jsp"><span class="material-icons md-36">local_grocery_store</span></a></li>
+          <li><a class="links" href="./loginForm.jsp"><span class="material-icons md-36">person</span></a></li>
         </ul>
       </div>
     </div>

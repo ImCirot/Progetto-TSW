@@ -52,8 +52,17 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
             <p><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
           </div>
           <div class="acquista">
-          	
-            <button type="submit" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">Acquista</button>
+          	<button class="addtocart" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">
+				  <div class="pretext">
+				     ADD TO CART
+				  </div>
+				  
+				  <div class="pretext done">
+				    <div class="posttext"> ADDED</div>
+				  </div>
+				  
+				</button>
+<%-- 	            <button type="submit" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">Acquista</button> --%>
           </div>
           <div class="inside">
       				<div class="icon"><i class="material-icons">info_outline</i></div>

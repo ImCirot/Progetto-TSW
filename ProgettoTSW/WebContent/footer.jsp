@@ -15,7 +15,7 @@
         <div class="info_footer">
           <p>Contatti</p>
           <ul>
-            <li>Numero</li>
+            <li>Numero <span class="material-icons md-36">search</span></li>
             <li>Indirizzo</li>
             <li>Email</li>
           </ul>
