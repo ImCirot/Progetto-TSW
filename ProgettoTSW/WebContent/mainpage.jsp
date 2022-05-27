@@ -5,12 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Snackz</title>
-<link rel="stylesheet" href="./Css/mainpage.css">
-
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+	 
+	 <link rel="stylesheet" href="./Css/mainpage.css">
 </head>
 <body>
   <jsp:include page="./header.jsp" />
