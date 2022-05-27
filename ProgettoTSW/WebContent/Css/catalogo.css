@@ -27,6 +27,14 @@
 	animation: hoverproduct 0.5s ease 0s normal forwards;
 }
 
+.cliccabile{
+	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	justify-content: space-between;
+  	border-bottom:1px solid black;
+}
+
 .img{
   width: 150px;
 }

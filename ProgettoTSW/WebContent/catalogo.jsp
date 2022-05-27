@@ -41,6 +41,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
   				if(prodotto.getCodiceSeriale().equals(dettagli.getProdotto())) break;
   			}%>
         <div class="grid-card">
+        <div class="cliccabile">
         <a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>"></a>
           <div class="img">
             <img src="<% out.println(dettagli.getImmagine()); %>" alt="prodotto">
@@ -50,6 +51,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
           </div>
           <div class="prezzo">
             <p><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
+          </div>
           </div>
           <div class="acquista">
           	<button class="addtocart" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">
