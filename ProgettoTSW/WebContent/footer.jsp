@@ -22,6 +22,7 @@
         </div>
         <div class="info_footer">
           <p>Catalogo</p>
+          
           <ul>
             <li>Edizione limitata</li>
             <li>Offerte</li>
