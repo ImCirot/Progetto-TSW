@@ -56,15 +56,14 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
           <div class="acquista">
           	<button class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">
 				  <div class="pretext">
-				     ADD TO CART
+				     Aggiugni al carrello
 				  </div>
 				  
 				  <div class="pretext done" id="done<% out.print(prodotto.getCodiceSeriale()); %>">
-				    <div class="posttext"> ADDED</div>
+				    <div class="posttext"> Aggiunto</div>
 				  </div>
 				  
 				</button>
-<%-- 	            <button type="submit" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">Acquista</button> --%>
           </div>
           <div class="inside">
       				<div class="icon"><i class="material-icons">info_outline</i></div>
@@ -72,7 +71,6 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
         					<p><% out.println(prodotto.getDescrizioneBreve());%></p>
       				</div>
     					</div>
-<%--     	  <p id="added<% out.print(prodotto.getCodiceSeriale());%>" class="addMessage">Aggiunto al carrello!</p> --%>
         </div>
         
         
