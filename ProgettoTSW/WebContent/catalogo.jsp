@@ -56,7 +56,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
           <div class="acquista">
           	<button class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">
 				  <div class="pretext">
-				     Aggiugni al carrello
+				     Acquista
 				  </div>
 				  
 				  <div class="pretext done" id="done<% out.print(prodotto.getCodiceSeriale()); %>">
