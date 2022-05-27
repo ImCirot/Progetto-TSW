@@ -100,7 +100,7 @@ public class CatalogoServlet extends HttpServlet {
 			request.getSession().setAttribute("admin",false);
 		}	
 		
-		RequestDispatcher view = request.getRequestDispatcher("./mainpage.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("./catalogo.jsp");
 		view.forward(request, response);
 	}
 

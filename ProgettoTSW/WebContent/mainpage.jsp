@@ -58,7 +58,7 @@
   				<div class="posizione">
   					<button type="submit" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">Acquista</button>
   				</div>
-  				 <div class="inside">
+  				<div class="inside">
     				<div class="icon"><i class="material-icons">info_outline</i></div>
     				<div class="contents">
       					<p><% out.println(prodotto.getDescrizioneBreve());%></p>
