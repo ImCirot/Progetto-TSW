@@ -32,8 +32,11 @@
   	flex-direction: column;
   	align-items: center;
   	justify-content: space-between;
-  	border-bottom:1px solid black;
-  	margin-bottom:1.5rem;
+}
+
+.acquista{
+	margin-top: 1.5rem;
+	border-top: 1px solid red;
 }
 
 .img{
@@ -163,6 +166,10 @@
 }
 .posttext{
   background:#be2edd;
+}
+
+.cliccabile:hover {
+	cursor: pointer;
 }
 
   

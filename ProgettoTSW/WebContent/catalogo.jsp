@@ -5,7 +5,6 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
 <head>
 	<meta charset="ISO-8859-1">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	
 	<link rel="stylesheet" href="./Css/catalogo.css">
 	<title>Snackz</title>
 </head>
@@ -41,7 +40,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
   				if(prodotto.getCodiceSeriale().equals(dettagli.getProdotto())) break;
   			}%>
         <div class="grid-card">
-        <div class="cliccabile">
+        <div class="cliccabile" onclick="click('<%out.print(prodotto.getCodiceSeriale());%>')">
         <a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>"></a>
           <div class="img">
             <img src="<% out.println(dettagli.getImmagine()); %>" alt="prodotto">
@@ -82,7 +81,11 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
       </div>
 	<jsp:include page="./footer.jsp" />
 	<script src="./JS/addedToCart.js"></script>
-	
-	
+	<script>
+    $(".cliccabile").click(function(){
+        window.location=$(this).find("a").attr("href");
+        return false;
+      });
+	</script>
 </body>
 </html>
