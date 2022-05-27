@@ -23,9 +23,9 @@
         <div class="info_footer">
           <p>Catalogo</p>
           <ul>
-            <li>ed limitata</li>
-            <li>offerte</li>
-            <li>specialita</li>
+            <li>Edizione limitata</li>
+            <li>Offerte</li>
+            <li>Specialita</li>
           </ul>
         </div>
         <div class="info_footer">
