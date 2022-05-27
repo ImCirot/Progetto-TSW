@@ -62,26 +62,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
     	  <p id="added<% out.print(prodotto.getCodiceSeriale());%>" class="addMessage">Aggiunto al carrello!</p>
         </div>
         
-        <div class="grid-card">
-          <div class="img">
-            <img src="./Images/prova.png" alt="">
-          </div>
-          <div class="nome_prodotto">
-            <h2>Dr. Pepper</h2>
-          </div>
-          <div class="prezzo">
-            <p>5</p>
-          </div>
-          <div class="acquista">
-            <button type="button" name="button">Acquista</button>
-          </div>
-          <div class="inside">
-      				<div class="icon"><i class="material-icons">info_outline</i></div>
-      				<div class="contents">
-        					<p></p>
-      				</div>
-    					</div>
-        </div>
+        
         
         
 
