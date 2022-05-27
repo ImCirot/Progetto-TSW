@@ -50,24 +50,24 @@
 				%>
 				  
 				     <div class="cart-container-interno">
-				        <div class="info">
+				        <div class="info-prodotto">
 				        	<img src="<% out.print(dettagli.getImmagine()); %>" alt="ciao">
 				        </div>
-				        <div class="info">
+				        <div class="info-prodotto">
 				        <p><% out.print(prodotto.getNome()); %></p>
 				        </div>
-				        <div class="info">
-				          <p> <% out.print(dettagli.getCostoUnitario()); %></p>
+				        <div class="info-prodotto">
+				          <p> <% out.print(dettagli.getCostoUnitario()); %> &euro;</p>
 				        </div>
-				        <div class="info">
+				        <div class="info-prodotto">
 				         <form action="Carrello" method="get"> 
 							<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
 							<input type="hidden" name="mode" value="update">
 							<input type="number" placeholder="Quantità" name="quantita" value="<% out.print(quantita); %>">
-							<button class="noselect2"><span class="text">Aggiorna</span><span class="icon"> <img id="checkbox" src="./Images/checkbox.png" alt=""></span></button>
+							
 						</form>
 				        </div>
-				        <div class="info">
+				        <div class="info-prodotto">
 						<form action="Carrello" method="get">
 							<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
 							<input type="hidden" name="mode" value="remove">
@@ -88,7 +88,7 @@
 				
 				<form action="ordine" method="get">
 					<input type="hidden" name="costoTot" value="<%out.print(costoTot);%>">
-					<button id="aggiorna" type="submit">Procedi all'acquisto</button>
+					<button class="noselect2"><span class="text">Procedi</span><span class="icon"> <img id="checkbox" src="./Images/checkbox.png" alt=""></span></button>
 				</form>
 				<form action="Carrello" method="get">
 					<input type="hidden" name="mode" value="reset">
