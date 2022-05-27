@@ -7,87 +7,89 @@ body{
   font-size: 13px;
 }
 
+.container-icon{
+	right: 1em;
+	position: absolute;
+	bottom: 1em;
+	
+}
+
+footer p{
+    padding:0;
+    font-size: 0.8em;
+    color: hsla(0, 50%, 100%, 0.35);
+    margin: 1em 0;
+    font-size: 1rem;
+}
+
+footer ul{
+    list-style: none;
+    display: flex;
+    margin: 1em 0;
+}
+
+footer ul li a{
+    padding: 2em;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.904);
+    margin: auto 1px;
+    transition: 100ms;
+}
+
+footer ul li a:hover{
+    color: var(--primary);
+}
+
 footer{
-  margin: 30px 0 0 0;
-  position: sticky;
-  top:100%;
+    width:auto;
+    background: #8d39c5;
+    color: #fff;
+    display: grid;
+    place-items: center;
+    padding: 2em;
+    font-size: 1.2rem;
+    position: relative;
 }
 
-.contenitore{
-  background: #9932CC;
-  max-width: 100%;
-  margin: 0 auto;
-  flex-wrap: wrap;
-  display: flex;
-
-}
-.social-icon{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-.social-icon ul{
-  padding: 0;
-  list-style-type:none;
-}
-.social-icon ul li{
-  display: inline-block;
-}
-.info{
-  margin-top: 2%;
-  min-height: 230px;
-  color: white;
-  width: 33.33%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.info ul{
-  padding: 0;
-  list-style:none;
-
-}
-.info ul li{
-  padding: 2px;
-  font-size: 1.2em;
-  opacity: 0.8;
-}
-.info p{
-  font-size: 1.3em;
-  font-weight: bold;
-}
-
-@media only screen and (max-width: 768px) {
-
-
-
-  .info{
-    width: 100%;
-    max-height: 30%;
-  }
-}
-
-.fa {
-  padding: 10px;
-  width: 35px;
+.fa{
+  margin: 2px;
+  padding: 15px;
+  font-size: 30px;
+  width: 50px;
   text-align: center;
   text-decoration: none;
-  margin: 5px 2px;
-  border-radius: 50%;
+  border-radius: 30%;
 }
+
 .fa:hover {
     opacity: 0.7;
 }
+
 .fa-facebook {
+	
   background: #3B5998;
   color: white;
 }
-.fa-google {
-  background: #dd4b39;
+
+.fa-twitter {
+  background: #55ACEE;
   color: white;
 }
-.fa-linkedin {
-  background: #007bb5;
+.fa-instagram {
+  background: #ff0080;
   color: white;
+}
+/* Sticky Footer Styling */
+
+.sticky-footer{
+    position: sticky;
+    top: 100%;
+}
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
