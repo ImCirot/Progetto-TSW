@@ -52,12 +52,12 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
             <p><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
           </div>
           <div class="acquista">
-          	<button class="addtocart" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">
+          	<button class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">
 				  <div class="pretext">
 				     ADD TO CART
 				  </div>
 				  
-				  <div class="pretext done">
+				  <div class="pretext done" id="done<% out.print(prodotto.getCodiceSeriale()); %>">
 				    <div class="posttext"> ADDED</div>
 				  </div>
 				  
@@ -70,7 +70,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
         					<p><% out.println(prodotto.getDescrizioneBreve());%></p>
       				</div>
     					</div>
-    	  <p id="added<% out.print(prodotto.getCodiceSeriale());%>" class="addMessage">Aggiunto al carrello!</p>
+<%--     	  <p id="added<% out.print(prodotto.getCodiceSeriale());%>" class="addMessage">Aggiunto al carrello!</p> --%>
         </div>
         
         
