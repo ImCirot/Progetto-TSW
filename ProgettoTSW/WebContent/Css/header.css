@@ -173,11 +173,14 @@ a{
 		border-bottom:1px solid white;
 	}
 	.catalogo ul{
-		display:none;
+		overflow:hidden;
+		max-height:0;
+		transition: max-height 0.8s;
 		
 	}
 	.open .catalogo ul{
-	display:block;
+	overflow:visible;
+		max-height: 250px;
 	
 	}
 	.catalogo{
