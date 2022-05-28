@@ -54,7 +54,7 @@ a{
   	
 /* } */
 .logo{
-	position:relative;
+	z-index:100;
 }
 
 
@@ -155,6 +155,14 @@ a{
 
 @media (max-width:700px){
 
+	.logo{
+		margin:0 auto;
+		
+	}
+	.logo img{
+		width:100%;
+	}
+	
 	.navbar{
 		
 		flex-direction:column;
