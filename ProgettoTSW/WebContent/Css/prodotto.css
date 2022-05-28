@@ -1,87 +1,192 @@
-body{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-  min-height: 100vh;
-}
 
-.prodottoDettagli{
+.sezione{
+  width: 65%;
+  margin: 5% auto;
   display: flex;
-  width: 100%;
+}
+
+.img_prodotto{
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.img_prodotto img{
+  width: 80%;
   height: auto;
-  justify-content: space-evenly flex-start;
-  flex-wrap: wrap;
-  padding: 50px;
 }
 
-.prodottoDettagli img {
+
+
+.informazioni_prodotto{
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.nome_prodotto{
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+.descrizione_prodotto{
+  font-size: 1.5em;
+}
+
+.prezzo_prodotto{
+  font-size: 2em;
+}
+
+.info_pagamento{
+  margin-bottom: 6%;
+}
+.info_pagamento ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.info_pagamento ul li{
+  font-size: 0.9em;
+  display: flex;
+    align-items: center;
+}
+
+.info_pagamento_testo{
+  margin-left: 2%;
+}
+
+@media (max-width:800px){
+  .sezione{
+    flex-direction: column;
+  }
+
+  .img_prodotto, .informazioni_prodotto{
+    width: 100%;
+  }
+  .informazioni_prodotto{
+    order: 1;
+  }
+}
+@media (min-width:1200px) and (max-width:1500px){
+  .sezione{
+    width: 90%;
+  }
+	.nome_prodotto, .descrizione_prodotto{
+	font-size:1.3em;
+	}
+
+}
+@media (min-width:900px) and (max-width:1200px){
+
+  .sezione{
+    width: 95%;
+  }
+  .nome_prodotto, .descrizione_prodotto{
+	font-size:1.3em;
+	}
+
+}@media (min-width:800px) and (max-width:900px){
+
+  .sezione{
+    width: 95%;
+  }
+  .nome_prodotto, .descrizione_prodotto{
+	font-size:1.1em;
+	}
+
+}
+
+.acquistare{
+  display: flex;
+  justify-content: space-between;
+}
+
+.input_quantita{
   width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+.input_quantita input{
+  width: 50px;
 }
 
-.descrizione p {
-	padding: 20px;
+.bottone_prodotto{
+  width: 70%;
+  display: flex;
+  justify-content:center;
+  align-items: center;
 }
 
-.descrizione .prezzo {
-	font-size: 24px;
+
+
+
+
+/* bottone */
+.addtocart{
+  display:block;
+  padding:0.5em 1em 0.5em 1em;
+  border-radius:100px;
+  border:none;
+  font-size:1em;
+  position:relative;
+  background:#0652DD;
+  cursor:pointer;
+  height:3em;
+  width:10em;
+  overflow:hidden;
+  transition:transform 0.1s;
+  z-index:1;
+}
+.addtocart:hover{
+  transform:scale(1.1);
+}
+.pretext{
+  color:#fff;
+  background:#0652DD;
+  position:absolute;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family: 'Quicksand', sans-serif;
 }
 
-.descrizione {
-  max-width: 50%;
-  padding: 20px;
+.done{
+  background:#be2edd;
+  position:absolute;
+  width:100%;
+  top:0;
+  left:0;
+  transition:transform 0.3s ease;
+
+  transform:translate(-110%) skew(-40deg);
+}
+.posttext{
+  background:#be2edd;
 }
 
-.descrizione input[type=number] {
-	margin-left: 20px;
-	width: 5em;
-}
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
 
-.descrizione button {
-	padding: 20px;
-	border: none;
-	background-color: #9932CC;
-	color: white;
-	font-size: 16px;
-	width: 40%;
-	margin-left: 15px;
-	border-radius: 10px;
-}
-
-.descrizione button:hover{
-	animation: myAnim 1s ease 0s 1 normal forwards;
-	cursor: pointer;
-}
-
-@keyframes myAnim {
-	0% {
-		transform: scale3d(1, 1, 1);
-	}
-
-	30% {
-		transform: scale3d(1.25, 0.75, 1);
-	}
-
-	40% {
-		transform: scale3d(0.75, 1.25, 1);
-	}
-
-	50% {
-		transform: scale3d(1.15, 0.85, 1);
-	}
-
-	65% {
-		transform: scale3d(0.95, 1.05, 1);
-	}
-
-	75% {
-		transform: scale3d(1.05, 0.95, 1);
-	}
-
-	100% {
-		transform: scale3d(1, 1, 1);
-	}
-}
 
 *,
 *:before,
