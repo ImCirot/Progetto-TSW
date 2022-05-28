@@ -28,7 +28,6 @@ footer{
   background: #9932CC;
   max-width: 100%;
   margin: 0 auto;
-  flex-wrap: wrap;
   display: flex;
 
 }
@@ -72,7 +71,9 @@ footer{
 
 @media only screen and (max-width: 768px) {
 
-
+	.contenitore{
+	flex-direction:column;
+	}
 
   .info_footer{
     width: 100%;
