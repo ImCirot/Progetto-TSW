@@ -59,7 +59,7 @@
 				        <div class="info-prodotto">
 				          <p> <% out.print(dettagli.getCostoUnitario()); %> &euro;</p>
 				        </div>
-				        <div class="info-prodotto">
+				        <div class="info-prodotto" class="flex-el">
 				         <form action="Carrello" method="get"> 
 							<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
 							<input type="hidden" name="mode" value="update">
@@ -67,7 +67,7 @@
 							
 						</form>
 				        </div>
-				        <div class="info-prodotto">
+				        <div class="info-prodotto class="flex-el"">
 						<form action="Carrello" method="get">
 							<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
 							<input type="hidden" name="mode" value="remove">

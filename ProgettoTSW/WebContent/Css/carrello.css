@@ -45,9 +45,8 @@ h1{
 }
 
 .info-prodotto{
-  font-size: 18px;
-  max-width: 200px;
-  min-width:200px;
+  font-size: 1.5em;
+  width:25%;
   padding: 15px;
   text-align: center;
   display:flex;
@@ -108,37 +107,29 @@ h1{
   	margin: 5px auto;
 }
 
-@keyframes myAnim {
-	0% {
-		transform: scale3d(1, 1, 1);
-	}
-
-	30% {
-		transform: scale3d(1.25, 0.75, 1);
-	}
-
-	40% {
-		transform: scale3d(0.75, 1.25, 1);
-	}
-
-	50% {
-		transform: scale3d(1.15, 0.85, 1);
-	}
-
-	65% {
-		transform: scale3d(0.95, 1.05, 1);
-	}
-
-	75% {
-		transform: scale3d(1.05, 0.95, 1);
-	}
-
-	100% {
-		transform: scale3d(1, 1, 1);
+/*
+ media resposnive*/
+@media (max-width:768px){
+	
+	.cart-container-interno{
+	flex-direction:column;
+	justify-content: center;
+	align-items:center;
 	}
 }
+@media (min-width:769px) and (max-width:1100px) {
+	
+	.cart-container-interno{
+	flex-wrap:wrap;
+}
+	.info-prodotto{
+		width: 33.33%;
+	}
+	.flex-el{
+		width: 50%;
+	}
 
-
+}
 
 .noselect {
  width: 150px;
