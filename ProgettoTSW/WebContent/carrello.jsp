@@ -79,21 +79,27 @@
 			<%}%>
 			<div class="totale">
 				<div class="totale-interno">
+				<div id="costo" class="totale-interno-disposizione">
 						<h2>Costo Totale Ordine</h2>
+						</div>
+						<div id="prezzo" class="totale-interno-disposizione">
 							<p>
 							<% 
 							out.println(String.format("%.2f", costoTot));%> &euro;
 							</p>
-
-				
+						</div>
+				<div id="procedi" class="totale-interno-disposizione">
 				<form action="ordine" method="get">
 					<input type="hidden" name="costoTot" value="<%out.print(costoTot);%>">
 					<button class="noselect2"><span class="text">Procedi</span><span class="icon"> <img id="checkbox" src="./Images/checkbox.png" alt=""></span></button>
 				</form>
+				</div>
+				<div id="pulisci" class="totale-interno-disposizione">
 				<form action="Carrello" method="get">
 					<input type="hidden" name="mode" value="reset">
-					<button id="aggiorna" type="submit">Pulisci carrello</button>
+					<button  type="submit">Pulisci carrello</button>
 				</form>
+				</div>
 					</div>
 				</div>
 				<%} %>

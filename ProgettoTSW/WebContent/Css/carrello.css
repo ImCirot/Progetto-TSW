@@ -56,7 +56,7 @@ h1{
 }
 
 .info-prodotto img{
-  width: 104px;
+  width: 150px;
 }
 
 #aggiorna:hover{
@@ -64,16 +64,7 @@ h1{
 	cursor: pointer;
 }
 
-.info-prodotto #aggiorna {
-	padding: 5px;
-	border: none;
-	background-color: #9932CC;
-	color: white;
-	font-size: 16px;
-	border-radius: 5px;
-  	margin: 5% auto;
-  	display:block;
-}
+
 
 
 .totale{
@@ -82,9 +73,13 @@ h1{
 }
 
 .totale-interno{
-	margin: 20px;
-	padding: 20px;
-	font-size: 18px;
+	display: flex;
+    margin: 20px;
+    padding: 20px;
+    font-size: 1.5em;
+    flex-direction: column;
+    align-items: center;
+}
 }
 .carrello-vuoto{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
@@ -96,17 +91,28 @@ h1{
 	width:50%;
 	font-size:25px;
 }
-.totale-interno #aggiorna{
-	padding: 10px;
-	border: none;
-	background-color: #9932CC;
-	color: white;
-	font-size: 16px;
-	width: 100%;
-	border-radius: 10px;
-  	margin: 5px auto;
-}
 
+.totale-interno h2{
+		text-align: center;
+	}
+.totale-interno-disposizione{
+	width: 100%;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+#pulisci{
+	margin-top:10%;
+}
+#pulisci button{
+	border:0;
+	font-size:0.7em;
+}
+#pulisci button:hover{
+	color:#9932CC;
+	cursor:pointer;
+	font-size:0.8em;
+}
 /*
  media resposnive*/
 @media (max-width:768px){
@@ -115,7 +121,15 @@ h1{
 	flex-direction:column;
 	justify-content: center;
 	align-items:center;
+	
 	}
+	
+	.info-prodotto{
+		border-bottom:1px solid lightgrey;
+		width:100%;
+	}
+	
+	
 }
 @media (min-width:769px) and (max-width:1100px) {
 	
