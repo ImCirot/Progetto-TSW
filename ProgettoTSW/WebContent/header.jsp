@@ -35,6 +35,11 @@
           <li><a class="links" href="catalogo?filter=drink">Bibite</a></li>
         </ul>
       </div>
+      <div class="icon nav-icon-5">
+	    <span></span>
+	    <span></span>
+	    <span></span>
+  	  </div>
       <div class="menu">
         <ul>
           <li>
@@ -53,5 +58,12 @@
         </ul>
       </div>
     </div>
+    <script>
+   
+    	document.querySelector('.nav-icon-5').addEventListener("click", function() {
+    		  document.body.classList.toggle('open');
+    		});
+    </script>
   </body>
+ 
 </html>
