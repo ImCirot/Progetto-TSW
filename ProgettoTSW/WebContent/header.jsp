@@ -22,7 +22,7 @@
       </div>
       
        <div class="logo">
-       		<img alt="" src="./Images/logopreciso.png">
+       		<img width="70%" alt="" src="./Images/logopreciso.png">
       	</div>
       
     </div>
