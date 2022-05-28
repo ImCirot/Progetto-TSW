@@ -19,7 +19,7 @@ body{
 
 
 footer{
-  margin: 30px 0 0 0;
+  
   position: sticky;
   top:100%;
 }
@@ -27,7 +27,7 @@ footer{
 .contenitore{
   background: #9932CC;
   max-width: 100%;
-  margin: 0 auto;
+  padding: 3%;
   display: flex;
 
 }
@@ -44,8 +44,8 @@ footer{
   display: inline-block;
 }
 .info_footer{
-  margin-top: 2%;
-  min-height: 230px;
+ 
+ 
   color: white;
   width: 33.33%;
   display: flex;
