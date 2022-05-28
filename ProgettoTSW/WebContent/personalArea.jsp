@@ -28,7 +28,7 @@
 		
 		<div class="grid-card">
           <div class="img">
-            <img src="./Images/sicurezza.png" alt="ciao">
+            <span class="material-icons-personal">build</span>
           </div>
           <div class="card-description">
             <h2>Accesso e impostizioni di sicurezza</h2>
@@ -38,7 +38,7 @@
 		
         <div class="grid-card">
           <div class="img">
-            <img src="./Images/ordini.png" alt="ciao">
+            <span class="material-icons-personal">assignment</span>
           </div>
           <div class="card-description">
             <h2>I miei ordini</h2>
@@ -48,7 +48,7 @@
 
         <div class="grid-card">
           <div class="img">
-            <img src="./Images/indirizzi.png" alt="ciao">
+            <span class="material-icons-personal">location_on</span>
           </div>
           <div class="card-description">
             <h2>I miei indirizzi</h2>
@@ -58,7 +58,7 @@
 
         <div class="grid-card">
           <div class="img">
-            <img src="./Images/pagamenti.png" alt="ciao">
+           <span class="material-icons-personal">credit_card</span>
           </div>
           <div class="card-description">
             <h2>I miei metodi di pagamento</h2>
@@ -69,41 +69,42 @@
     
     </div>
 	<% } else { %>
-		 <div class="container-grande">
-		<div class="container">
-
-        <div class="card">
-          <a href="index.html"></a>
+		 <div class="section">
+		
+		
+		
+        <div class="grid-card">
           <div class="img">
-            <img src="./Images/ordini.png" alt="ciao">
+            <span class="material-icons-personal">assignment</span>
           </div>
           <div class="card-description">
-            <h2>Storico ordini</h2>
-            <p>Controlla gli ordini effettuati sul sito</p>
+            <h2>Gestisci ordini</h2>
+            <p>Controlla gli ordini dei clienti.</p>
           </div>
         </div>
 
-        <div class="card">
+        <div class="grid-card">
           <div class="img">
-            <img src="./Images/indirizzi.png" alt="ciao">
+            <span class="material-icons-personal">location_on</span>
           </div>
           <div class="card-description">
-            <h2>Gestione prodotti</h2>
-            <p>Controlla e/o modifica il catalogo dei prodotti</p>
+            <h2>I miei indirizzi</h2>
+            <p>Controlla e/o modifica i tuoi indirizzi.</p>
           </div>
         </div>
 
-        <div class="card">
+        <div class="grid-card">
           <div class="img">
-            <img src="./Images/sicurezza.png" alt="ciao">
+           <span class="material-icons-personal">credit_card</span>
           </div>
           <div class="card-description">
-            <h2>Accesso e impostizioni di sicurezza</h2>
-            <p>Modifica credenziali: username, password.</p>
+            <h2>I miei metodi di pagamento</h2>
+            <p>Controlla e/o modifica i tuoi metodi di pagamento</p>
           </div>
         </div>
+
+
     </div>
-      </div>
     <% } %>
     <div class="wrapper">
     <form action="LogOutServlet" method="get">

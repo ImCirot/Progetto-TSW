@@ -38,15 +38,13 @@
 }
 .grid-card:hover { cursor: pointer;}
 
-img{
-  width: 100%;
-}
+
 .img{
   text-align: center;
   margin: 5%;
   padding: 2%;
-  width: 20%;
-  min-width: 60px;
+  width: 30%;
+  min-width: 80px;
 
 }
 .card-description{
@@ -148,3 +146,22 @@ button:hover .circle .icon.arrow {
 button:hover .button-text {
  color: #fff;
 }
+
+
+
+.material-icons-personal {
+	color:#524FFF;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 45px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
