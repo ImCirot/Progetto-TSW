@@ -50,9 +50,11 @@
 				%>
 				  
 				     <div class="cart-container-interno">
-				        <div class="info-prodotto">
-				        	<img src="<% out.print(dettagli.getImmagine()); %>" alt="ciao">
-				        </div>
+				        	<div class="info-prodotto"> 
+				        	<a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>"> 	
+				        	<img src="<% out.print(dettagli.getImmagine()); %>" alt="ciao"></a>
+				        	</div>
+				        
 				        <div class="info-prodotto">
 				        <p><% out.print(prodotto.getNome()); %></p>
 				        </div>
@@ -106,5 +108,11 @@
 			</div>
 		
 		<jsp:include page="./footer.jsp" />
+		<script>
+		    $(".cliccabile").click(function(){
+		        window.location=$(this).find("a").attr("href");
+		        return false;
+      });
+	</script>
 </body>
 </html>
