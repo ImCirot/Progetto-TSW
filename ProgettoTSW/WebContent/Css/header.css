@@ -177,11 +177,11 @@ a{
 	.catalogo ul{
 		overflow:hidden;
 		max-height:0;
-		transition: max-height 0.8s;
+		transition: max-height 1.2s;
 		
 	}
 	.open .catalogo ul{
-	overflow:visible;
+	
 		max-height: 250px;
 	
 	}
