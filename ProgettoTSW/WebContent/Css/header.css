@@ -57,7 +57,9 @@ a{
 	z-index:100;
 }
 
-
+.logo:hover{
+	cursor:pointer;
+}
 
 
 .navbar{
@@ -153,7 +155,7 @@ a{
 }
 	
 
-@media (max-width:700px){
+@media (max-width:768px){
 
 	.logo{
 		margin:0 auto;

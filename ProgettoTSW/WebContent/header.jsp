@@ -21,7 +21,9 @@
       <div class="header_filter">
       </div>
       
+       
        <div class="logo">
+       <a href="catalogo"></a>
        		<img width="70%" alt="" src="./Images/logopreciso.png">
       	</div>
       
@@ -63,6 +65,12 @@
     	document.querySelector('.nav-icon-5').addEventListener("click", function() {
     		  document.body.classList.toggle('open');
     		});
+    </script>
+    <script type="text/javascript">
+      $(".logo").click(function(){
+        window.location=$(this).find("a").attr("href");
+        return false;
+      });
     </script>
   </body>
  
