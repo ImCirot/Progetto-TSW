@@ -38,6 +38,7 @@ h1{
   width: 95%;
   display: flex;
   justify-content: space-evenly;
+  align-items:center;
   border-radius: 10px;
   margin: 20px auto;
   padding: 10px;
@@ -135,6 +136,7 @@ h1{
 	
 	.cart-container-interno{
 	flex-wrap:wrap;
+	justify-content:flex-end;
 }
 	.info-prodotto{
 		width: 33.33%;
