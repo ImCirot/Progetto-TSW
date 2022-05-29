@@ -1,6 +1,6 @@
 
 .sezione{
-	border:1px solid red;
+	
  width:80%;
   margin: 2% auto;
   display: flex;
@@ -59,6 +59,7 @@
 
 @media (max-width:800px){
   .sezione{
+  	width:80%;
     flex-direction: column;
   }
 
@@ -70,6 +71,7 @@
   }
 }
 @media (min-width:801px) and (max-width:1200px){
+	
 	.img_prodotto img{
 		width:100%;
 	}
