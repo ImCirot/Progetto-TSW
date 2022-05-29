@@ -38,43 +38,48 @@
 </form>
 -->
 
-  <div class="sezione">
-      <div class="img_prodotto">
+
+    
+    
+    
+    
+    <div class="grid-display">
+      <div class="immagine_prodotto">
         <img src="<%out.println(dettagli.getImmagine());%>" alt="">
       </div>
       <div class="informazioni_prodotto">
-          <div class="nome_prodotto">
-            <h1><% out.println(prodotto.getNome()); %></h1>
-          </div>
-          <div class="descrizione_prodotto">
-            <p><%out.println(prodotto.getDescrizioneBreve());%></p>
-          </div>
-          <div class="prezzo_prodotto">
-            <p><%out.println(dettagli.getCostoUnitario());%>&euro;</p>
-          </div>
-          <div class="info_pagamento">
-            <ul>
-              <li><span class="material-icons md-36">credit_card</span><span class="info_pagamento_testo">Puoi pagare con carta di credito o IBAN</span></li>
-              <li><span class="material-icons md-36">local_shipping</span><span class="info_pagamento_testo">Consegna gratis sopra i 59</span></li>
-              <li><span class="material-icons md-36">lock</span><span class="info_pagamento_testo">Pagamenti sicuri e criptati</span></li>
-            </ul>
-          </div>
-          <div class="acquistare">
-            <div class="input_quantita">
-              <input type="text" name="" value="">
+            <div class="nome_prodotto">
+              <h1><% out.println(prodotto.getNome()); %></h1>
             </div>
+            <div class="descrizione_prodotto">
+              <p><%out.println(prodotto.getDescrizioneBreve());%></p>
+            </div>
+            <div class="prezzo_prodotto">
+              <p><%out.println(dettagli.getCostoUnitario());%> &euro;</p>
+            </div>
+            <div class="info_pagamento">
+              <ul>
+                <li><span class="material-icons md-36">credit_card</span><span class="info_pagamento_testo">Puoi pagare con carta di credito o IBAN</span></li>
+                <li><span class="material-icons md-36">local_shipping</span><span class="info_pagamento_testo">Consegna gratis sopra i 59</span></li>
+                <li><span class="material-icons md-36">lock</span><span class="info_pagamento_testo">Pagamenti sicuri e criptati</span></li>
+              </ul>
+            </div>
+            <div class="acquistare">
+              <div class="input_quantita">
+                <input type="text" name="" value="">
+              </div>
 
-            <div class="bottone_prodotto">
-              <button class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">
-                  <div class="pretext">
-                     Acquista
-                  </div>
-                  <div class="pretext done" id="done<% out.print(prodotto.getCodiceSeriale()); %>">
-                    <div class="posttext"> Aggiunto</div>
-                  </div>
-              </button>
+              <div class="bottone_prodotto">
+                <button class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">
+                    <div class="pretext">
+                       Acquista
+                    </div>
+                    <div class="pretext done" id="done<% out.print(prodotto.getCodiceSeriale()); %>">
+                      <div class="posttext"> Aggiunto</div>
+                    </div>
+                </button>
+              </div>
             </div>
-          </div>
       </div>
     </div>
 

@@ -1,30 +1,34 @@
-
-.sezione{
-	
- width:80%;
+.grid-display{
   margin: 2% auto;
-  display: flex;
+  width: 80%;
+
 }
 
-.img_prodotto{
-  width: 60%;
+.immagine_prodotto img{
+  width: 80%;
+
+}
+.immagine_prodotto {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.img_prodotto img{
-  width: 90%;
-  height: auto;
-}
-
-
-
 .informazioni_prodotto{
-  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
 }
+
+@media (min-width:768px){
+  .grid-display{
+    width: 70%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+  }
+
+
+}
+
 
 .nome_prodotto{
   font-size: 1.5em;
@@ -57,27 +61,7 @@
   margin-left: 2%;
 }
 
-@media (max-width:800px){
-  .sezione{
-  	width:80%;
-    flex-direction: column;
-  }
 
-  .img_prodotto, .informazioni_prodotto{
-    width: 100%;
-  }
-  .informazioni_prodotto{
-    order: 1;
-  }
-}
-@media (min-width:801px) and (max-width:1200px){
-	
-	.img_prodotto img{
-		width:100%;
-	}
-	
-	
-}
 
 .acquistare{
   display: flex;
@@ -152,6 +136,7 @@
 .posttext{
   background:#be2edd;
 }
+
 
 .material-icons {
     font-family: 'Material Icons';
