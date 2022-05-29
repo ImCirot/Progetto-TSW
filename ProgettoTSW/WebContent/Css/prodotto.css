@@ -30,8 +30,8 @@
 }
 
 
-.nome_prodotto{
-  font-size: 1.5em;
+.nome_prodotto h1{
+  font-size: 2.5em;
   font-weight: bolder;
 }
 
