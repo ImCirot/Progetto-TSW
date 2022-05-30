@@ -1,6 +1,6 @@
 <%@page import="java.math.BigDecimal"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="model.*" import="java.util.List" import="java.util.Iterator" import="java.math.RoundingMode"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="model.*" import="java.util.List" import="java.util.Iterator" import="java.math.RoundingMode"
 	import="java.text.DecimalFormat"%>
 <!DOCTYPE html>
 <html lang="en">
