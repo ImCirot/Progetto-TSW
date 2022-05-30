@@ -3,7 +3,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="UTF-8">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="./Css/catalogo.css">
 	<title>Snackz</title>
@@ -71,13 +71,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
       				</div>
     					</div>
         </div>
-        
-        
-        
-        
-
         <% } %>
-
       </div>
 	<jsp:include page="./footer.jsp" />
 	<script src="./JS/addedToCart.js"></script>
