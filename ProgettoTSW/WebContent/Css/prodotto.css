@@ -11,7 +11,7 @@
 .immagine_prodotto {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 }
 .informazioni_prodotto{
   display: flex;

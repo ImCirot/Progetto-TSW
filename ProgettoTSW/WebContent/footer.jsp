@@ -34,8 +34,8 @@
           <div class="social-icon">
             <ul>
               <li><a href="#" class="fa fa-facebook"></a></li>
-              <li><a href="#" class="fa fa-linkedin"></a></a></li>
-              <li><a href="#" class="fa fa-google"></a></a></li>
+              <li><a href="#" class="fa fa-instagram"></a></a></li>
+              <li><a href="#" class="fa fa-twitter"></a></a></li>
             </ul>
           </div>
         </div>
