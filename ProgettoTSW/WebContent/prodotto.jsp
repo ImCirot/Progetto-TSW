@@ -66,11 +66,12 @@
             </div>
             <div class="acquistare">
               <div class="input_quantita">
-                <input type="text" name="" value="">
+<!--                 <input type="text" name="quantita" value="1"> -->
+                <input type="number" id="quantita" name="quantita" min="1" max="<% out.print(dettagli.getQuantita());%>" value="1">
               </div>
 
               <div class="bottone_prodotto">
-                <button class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">
+                <button class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCartN('<% out.print(prodotto.getCodiceSeriale());%>')">
                     <div class="pretext">
                        Acquista
                     </div>
