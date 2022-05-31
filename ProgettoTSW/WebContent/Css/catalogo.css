@@ -116,7 +116,11 @@
 }
 
 
-
+#img-aggiungi{
+	display:flex;
+    justify-content: center;
+    align-items: center;
+}
   
   /* bottoni */
   
@@ -173,7 +177,9 @@
 }
 
   
-  
+  .gestione:hover{
+  cursor:pointer;
+  }
   
   
   @keyframes myAnim {

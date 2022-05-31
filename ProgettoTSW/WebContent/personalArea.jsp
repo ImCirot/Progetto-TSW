@@ -27,7 +27,7 @@
      <% if (!admin) { %>
      <div class="section">
 		
-		<div class="grid-card">
+		<div class="grid-card" id="img-aggiungi">
           <div class="img">
             <span class="material-icons-personal">build</span>
           </div>
@@ -83,26 +83,26 @@
             <p>Controlla gli ordini dei clienti.</p>
           </div>
         </div>
-
-        <div class="grid-card">
+	   <div class="grid-card">
           <div class="img">
-            <span class="material-icons-personal">location_on</span>
+           <span class="material-icons-personal">dashboard</span>
           </div>
           <div class="card-description">
-            <h2>I miei indirizzi</h2>
-            <p>Controlla e/o modifica i tuoi indirizzi.</p>
+            <h2>Gestisci prodotti</h2>
+            <p>Rimuovi, aggiungi, modifica prodotti del catalogo</p>
+          </div>
+        </div>
+        <div class="grid-card">
+          <div class="img">
+            <span class="material-icons-personal">build</span>
+          </div>
+          <div class="card-description">
+            <h2>I miei dati</h2>
+            <p>Controlla e/o modifica i dati admin.</p>
           </div>
         </div>
 
-        <div class="grid-card">
-          <div class="img">
-           <span class="material-icons-personal">credit_card</span>
-          </div>
-          <div class="card-description">
-            <h2>I miei metodi di pagamento</h2>
-            <p>Controlla e/o modifica i tuoi metodi di pagamento</p>
-          </div>
-        </div>
+    
 
 
     </div>
