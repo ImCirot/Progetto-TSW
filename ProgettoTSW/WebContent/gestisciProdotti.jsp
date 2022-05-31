@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="./Css/style.css">
+<link rel="stylesheet" href="./Css/gestisciProdotti.css">
 <title>Snackz</title>
 </head>
 <body>
@@ -14,37 +14,53 @@
 		}
 	%>
 	<jsp:include page="./header.jsp" />
-  <div class="gestisciProdotti">
-    <table class="tableProdotti" border="1">
-    <tr>
-      <th>Codice Seriale</th>
-      <th>Nome</th>
-      <th>Marca</th>
-      <th>Opzioni</th>
-    <% List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
-    	List<DettaglioProdottoBean> dettagliLista = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");
-    	Iterator<ProdottoBean> iter = prodotti.iterator();
-    	Iterator<DettaglioProdottoBean> iterDettagli = dettagliLista.iterator();
-    	ProdottoBean prodotto = new ProdottoBean();
-    	DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
-    	while(iter.hasNext()){
-    		prodotto = iter.next();
-    		while(iterDettagli.hasNext()){
-    			dettagli = iterDettagli.next();
-    			if(prodotto.getCodiceSeriale().equalsIgnoreCase(dettagli.getProdotto())) break;
-    		}
-    %>
-     <tr>
-    	<td><%out.println(prodotto.getCodiceSeriale());%></td>
-      <td><%out.println(prodotto.getNome());%></td>
-      <td><%out.println(prodotto.getMarca());%></td>
-      <td>
-      	<a href="modificaProdotto?mode=modifica&prodotto=<% out.println(prodotto.getCodiceSeriale());%>">Modifica</a><br><br>
-        <a href="modificaProdotto?mode=elimina&prodotto=<% out.println(prodotto.getCodiceSeriale());%>">Elimina</a>
-      </td>
-     </tr>
+	
+	<div class="container-gestione">
+		<div class="container-tabella">
+			<table class="table">
+			     <thead>
+			     	<tr>
+			     	 <th>Codice Seriale</th>
+			     	 <th>Nome</th>
+			     	 <th>Marca</th>
+			     	 <th>Opzione</th>
+			     	 
+			     	</tr>
+			     </thead>
+			     
+			     <% List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
+				    	List<DettaglioProdottoBean> dettagliLista = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");
+				    	Iterator<ProdottoBean> iter = prodotti.iterator();
+				    	Iterator<DettaglioProdottoBean> iterDettagli = dettagliLista.iterator();
+				    	ProdottoBean prodotto = new ProdottoBean();
+				    	DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
+				    	while(iter.hasNext()){
+				    		prodotto = iter.next();
+				    		while(iterDettagli.hasNext()){
+				    			dettagli = iterDettagli.next();
+				    			if(prodotto.getCodiceSeriale().equalsIgnoreCase(dettagli.getProdotto())) break;
+				    		}
+    				%>
+			     <tbody>
+			     
+			     	 <tr>
+			     	  	  <td data-label="Codice Seriale"><% out.println(prodotto.getCodiceSeriale());%></td>
+			     	  	  <td data-label="Nome"><% out.println(prodotto.getNome()); %></td>
+			     	  	  <td data-label="Marca"><% out.println(prodotto.getMarca()); %> &euro;</td>
+			     	  	  <td data-label="Opzione">
+			     	  	  <a href="modificaProdotto?mode=modifica&prodotto=<% out.println(prodotto.getCodiceSeriale());%>">Modifica</a><br><br>
+				          <a href="modificaProdotto?mode=elimina&prodotto=<% out.println(prodotto.getCodiceSeriale());%>">Elimina</a></td>
+     				</tr>
     	<%}%>
-    </table>
+			
+			     	  
+			     </tbody>
+   			</table>
+		</div>
+	</div>
+	
+	
+  		<div class="gestisciProdotti">
     </div>
     <br><br><br><br><br>
     <div class="aggiungiProdotto">
