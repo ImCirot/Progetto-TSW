@@ -62,12 +62,7 @@
 				          <p> <% out.print(dettagli.getCostoUnitario()); %> &euro;</p>
 				        </div>
 				        <div class="info-prodotto" class="flex-el">
-				         <form action="Carrello" method="get"> 
-							<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
-							<input type="hidden" name="mode" value="update">							
-							<input type="number" placeholder="Quantità" name="quantita" value="<% out.print(quantita); %>">
-							<button type="submit">Aggiorna</button>
-						</form>
+							<input type="number" placeholder="Quantità" name="quantita" onchange = "updateCart(this,'<%out.print(prodotto.getCodiceSeriale());%>')" value="<% out.print(quantita); %>">
 				        </div>
 				        <div class="info-prodotto" class="flex-el">
 						<form action="Carrello" method="get">
@@ -85,8 +80,7 @@
 						</div>
 						<div id="prezzo" class="totale-interno-disposizione">
 							<p>
-							<% 
-							out.println(String.format("%.2f", costoTot));%> &euro;
+								&euro;
 							</p>
 						</div>
 				<div id="procedi" class="totale-interno-disposizione">
@@ -107,6 +101,7 @@
 			</div>
 		
 		<jsp:include page="./footer.jsp" />
+		<script src="./JS/updateCart.js"></script>
 		<script>
 		    $(".cliccabile").click(function(){
 		        window.location=$(this).find("a").attr("href");
