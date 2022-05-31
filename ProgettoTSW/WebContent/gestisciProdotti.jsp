@@ -60,9 +60,121 @@
 	</div>
 	
 	
-  		<div class="gestisciProdotti">
-    </div>
     <br><br><br><br><br>
+  	  
+<!--       <div class="aggiungi-container"> -->
+<!--         <h1>Aggiungi prodotti</h1> -->
+<!--           <form action="modificaProdotto" method="get"> -->
+<!--             <input type="hidden" name="mode" value="aggiungi"> -->
+            
+<!-- 			<div class= "group"> -->
+<!-- 				<input required="" type="text" name="codiceSeriale" class="input"> -->
+<!-- 				  <span class="highlight"></span> -->
+<!-- 				  <span class="bar"></span> -->
+<!-- 				  <label class="label-registrazione">Codice Seriale</label> -->
+<!-- 			</div>   -->
+            
+            
+<!--             <div class= "group"> -->
+<!-- 				<input required="" type="text" name="nome" class="input"> -->
+<!-- 				  <span class="highlight"></span> -->
+<!-- 				  <span class="bar"></span> -->
+<!-- 				  <label class="label-registrazione">Nome</label> -->
+<!-- 			</div>  -->
+			
+<!-- 			 <div class= "group"> -->
+<!-- 				<input required="" type="text" name="marca" class="input"> -->
+<!-- 				  <span class="highlight"></span> -->
+<!-- 				  <span class="bar"></span> -->
+<!-- 				  <label class="label-registrazione">Marca</label> -->
+<!-- 			</div> -->
+			
+ <!-- 			 <div class= "group"> -->
+<!-- 				<textarea name="desc" rows="8" cols="80"></textarea> -->
+<!-- 				  <span class="highlight"></span> -->
+<!-- 				  <span class="bar"></span> -->
+<!-- 				  <label class="label-registrazione">Descrizione</label> --> 
+<!-- 			</div> -->
+			
+			
+			
+<!-- 			 <div class= "group"> -->
+<!-- 				<input required="" type="text" name="tipo" class="input"> -->
+<!-- 				  <span class="highlight"></span> -->
+<!-- 				  <span class="bar"></span> -->
+<!-- 				  <label class="label-registrazione">Tipo</label> -->
+<!-- 			</div> -->
+			
+<!-- 			 <div class= "group"> -->
+<!-- 				<input required="" type="text" name="costo" class="input"> -->
+<!-- 				  <span class="highlight"></span> -->
+<!-- 				  <span class="bar"></span> -->
+<!-- 				  <label class="label-registrazione">Costo unitario</label> -->
+<!-- 			</div> -->
+			
+<!-- 			 <div class= "group"> -->
+<!-- 				<input required="" type="text" name="IVA" class="input"> -->
+<!-- 				  <span class="highlight"></span> -->
+<!-- 				  <span class="bar"></span> -->
+<!-- 				  <label class="label-registrazione">IVA</label> -->
+<!-- 			</div> -->
+			
+<!-- 			 <div class= "group"> -->
+<!-- 				<input required="" type="text" name="quantita" class="input"> -->
+<!-- 				  <span class="highlight"></span> -->
+<!-- 				  <span class="bar"></span> -->
+<!-- 				  <label class="label-registrazione">Quantità</label> -->
+<!-- 			</div> -->
+			
+<!-- 			 <div class= "group"> -->
+<!-- 				<input required="" type="text" name="origine" class="input"> -->
+<!-- 				  <span class="highlight"></span> -->
+<!-- 				  <span class="bar"></span> -->
+<!-- 				  <label class="label-registrazione">Origine</label> -->
+<!-- 			</div> -->
+			
+			 
+				
+		
+			
+<!-- 			 <div class= "group"> -->
+<!-- 				<input required="" type="text" name="peso" class="input"> -->
+<!-- 				  <span class="highlight"></span> -->
+<!-- 				  <span class="bar"></span> -->
+<!-- 				  <label class="label-registrazione">Peso (Lascia vuoto e usa volume per i drink)</label> -->
+<!-- 			</div> -->
+			
+<!-- 			 <div class= "group"> -->
+<!-- 				<input required="" type="text" name="volume" class="input"> -->
+<!-- 				  <span class="highlight"></span> -->
+<!-- 				  <span class="bar"></span> -->
+<!-- 				  <label class="label-registrazione">Volume (Lascia vuoto e usa peso per gli snack)</label> -->
+<!-- 			</div> -->
+			
+<!-- 			 <div class= "group"> -->
+<!-- 				<input required="" type="text" name="img" class="input"> -->
+<!-- 				  <span class="highlight"></span> -->
+<!-- 				  <span class="bar"></span> -->
+<!-- 				  <label class="label-registrazione">Immagine (Vai su gdurl, genera link e incollalo qui)</label> -->
+<!-- 			</div> -->
+			
+<!-- 			<label>Sesso</label> -->
+<!-- 					<br> -->
+<!-- 							<span class="dropdown-el" >  -->
+<!-- 								    <input class="drop" type="radio" name="sesso" value="M" id="sort-best" checked><label class="edLimitata" for="sort-best">Uomo</label> -->
+<!-- 								    <input class="drop" type="radio" name="sesso" value="F" id="sort-low"><label class="edLimitata" for="sort-low">Donna</label> -->
+<!--   							</span> -->
+					
+<!-- 					<br><br> -->
+			
+<!-- 			<input type="date" name="scadenza"> -->
+<!-- 				  <span class="highlight"></span> -->
+<!-- 				  <span class="bar"></span> -->
+<!-- 				  <label class="label-registrazione">Scadenza</label> -->
+			
+<!-- 			  <input type="submit" value="Aggiungi Prodotto"> -->
+<!--           </form>  -->
+<!--     </div> -->
     <div class="aggiungiProdotto">
 	    <h3>Aggiungi un prodotto</h3>
 	    <form action="modificaProdotto" method="get">
