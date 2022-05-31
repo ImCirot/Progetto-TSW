@@ -11,7 +11,10 @@ function updateCart(input,prodotto) {
 		data: formData,
 		dataType: "html",
 		success: function(data){
-			console.log("aggiornato");
+			$("#prezzoTot").html(data + "&euro;");
+			$("#totale").html(data);
 		}
 	});
+	
+	
 }

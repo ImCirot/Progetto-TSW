@@ -63,7 +63,8 @@
 				        </div>
 				        <div class="info-prodotto" class="flex-el">
 							<input type="number" placeholder="Quantità" name="quantita" onchange = "updateCart(this,'<%out.print(prodotto.getCodiceSeriale());%>')" value="<% out.print(quantita); %>">
-				        </div>
+							<input type="hidden" id="costoUnitarioTot" value="">
+ 				        </div>
 				        <div class="info-prodotto" class="flex-el">
 						<form action="Carrello" method="get">
 							<input type="hidden" name="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
@@ -79,8 +80,9 @@
 						<h2>Costo Totale Ordine</h2>
 						</div>
 						<div id="prezzo" class="totale-interno-disposizione">
-							<p>
-								&euro;
+							<p id="prezzoTot">
+							<% 
+							out.println(String.format("%.2f", costoTot));%> &euro;
 							</p>
 						</div>
 				<div id="procedi" class="totale-interno-disposizione">
@@ -92,7 +94,7 @@
 				<div id="pulisci" class="totale-interno-disposizione">
 				<form action="Carrello" method="get">
 					<input type="hidden" name="mode" value="reset">
-					<button  type="submit">Pulisci carrello</button>
+					<button  type="submit">Svuota Carrello</button>
 				</form>
 				</div>
 					</div>

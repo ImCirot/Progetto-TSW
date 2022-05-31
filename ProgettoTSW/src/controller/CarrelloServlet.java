@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -107,6 +108,13 @@ public class CarrelloServlet extends HttpServlet {
 			redirectPath = "./carrello.jsp";
 		}
 		
+//		double costoTotale = 0.0;
+//		String key = null;
+//		Iterator<String> iterKeys = carrello.keySet().iterator();
+//		
+//		while(iterKeys.hasNext()) {
+//			key = iterKeys.next();
+//		}
 		RequestDispatcher view = request.getRequestDispatcher(redirectPath);
 		view.forward(request, response);
 	}
