@@ -17,7 +17,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
 	%>
 		<div class="gestione">
 		<a href="gestisciProdotti"></a>
-        <div class="grid-card">
+        <div class="grid-card" id="img-aggiungi">
           <div class="img">
             <img src="https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/plus.png" alt="aggiungiProdotto">
           </div>
