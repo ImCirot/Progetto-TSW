@@ -228,4 +228,10 @@ button:hover .button-text {
   justify-content: space-evenly;
 }
 
+@media (max-width:768px){
+ .container-login{
+  width:60%;
+  font-size:0.8rem;
+ }
+}
 
