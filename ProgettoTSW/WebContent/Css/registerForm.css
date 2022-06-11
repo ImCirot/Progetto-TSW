@@ -315,3 +315,31 @@ button:hover .button-text {
   transform: rotate(-180deg);
   top: 0.55em;
 }
+
+
+
+
+@media (max-width:768px){
+ .container{
+  width:70%;
+  padding:10%;
+  font-size:0.7rem;
+ }
+ .container h1{
+  
+  font-size:1rem;
+ }
+ .input{
+  font-size:0.5rem;
+ }
+}
+
+@media (min-width:769px) and (max-width:1200px){
+ .container{
+  width:50%;
+ 
+ margin:10% auto;
+ }
+ 
+ 
+}

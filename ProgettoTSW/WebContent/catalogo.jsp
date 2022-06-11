@@ -15,15 +15,20 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
   	Boolean admin = (boolean) request.getSession().getAttribute("admin");
 		if((admin != null) && admin) {
 	%>
-        <div class="grid-card">
-        <a id="gestisciProdotto" href="gestisciProdotti"></a>
+		<div class="gestione">
+		<a href="gestisciProdotti"></a>
+        <div class="grid-card" id="img-aggiungi">
           <div class="img">
             <img src="https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/plus.png" alt="aggiungiProdotto">
           </div>
+          
           <div class="nome_prodotto">
             <h2>Gestisci prodotti</h2>
           </div>
+          
         </div>
+        </div>
+        
         <% }
   	List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
   		List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");
@@ -81,5 +86,11 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
         return false;
       });
 	</script>
+	 <script type="text/javascript">
+      $(".gestione").click(function(){
+        window.location=$(this).find("a").attr("href");
+        return false;
+      });
+    </script>
 </body>
 </html>
