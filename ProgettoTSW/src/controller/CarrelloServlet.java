@@ -17,12 +17,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mysql.cj.x.protobuf.MysqlxExpect.Open.Condition.Key;
+
+import model.DettaglioProdottoBean;
+import model.DettaglioProdottoDAO;
 import model.IndirizzoBean;
 import model.IndirizzoDAO;
 import model.MetodoDiPagamentoBean;
 import model.MetodoDiPagamentoDAO;
 import model.OrdineBean;
 import model.OrdineDAO;
+import model.ProdottoBean;
+import model.ProdottoDAO;
 import model.UtenteBean;
 import model.UtenteDAO;
 
@@ -48,9 +54,9 @@ public class CarrelloServlet extends HttpServlet {
 		String prodotto = request.getParameter("prodotto");
 		Integer quantita;
 		String mode = request.getParameter("mode");
-		String redirectPath = null;
-		
 		Integer quantitaPresente;
+		String redirectPath = null;
+		response.setContentType("text/plain");
 		
 		Map<String,Integer> carrello = new HashMap<>();
 		
@@ -75,25 +81,21 @@ public class CarrelloServlet extends HttpServlet {
 				request.getSession().setAttribute("aggiunto", "Aggiunto al carrello!");
 				redirectPath = "SelectProdottoServlet?prodotto=" + prodotto;
 			}
+			
 		} else if(mode.equalsIgnoreCase("update")) {
 			quantita = Integer.parseInt(request.getParameter("quantita"));
 			carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
 			
 			if(quantita == 0) {
-				carrello.remove(prodotto); 
-				
-				
-				
+				carrello.remove(prodotto);
+				if(carrello.isEmpty()) {
+					request.getSession().removeAttribute("carrello");
+				}
+				response.getWriter().print("reload");
 			} else {
 			carrello.put(prodotto, quantita);
-			}
-			
-			if(carrello.isEmpty()) {
-				request.getSession().removeAttribute("carrello");
-			} else {
 			request.getSession().setAttribute("carrello", carrello);
 			}
-			redirectPath = "./carrello.jsp";
 		} else if(mode.equalsIgnoreCase("remove")) {
 			carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
 			carrello.remove(prodotto);
@@ -101,22 +103,36 @@ public class CarrelloServlet extends HttpServlet {
 			if(carrello.isEmpty()) {
 				request.getSession().removeAttribute("carrello");
 			}
-			
-			redirectPath = "./carrello.jsp";
+			RequestDispatcher view = request.getRequestDispatcher("./carrello.jsp");
+			view.forward(request, response);
 		} else if(mode.equalsIgnoreCase("reset")) {
 			request.getSession().removeAttribute("carrello");
-			redirectPath = "./carrello.jsp";
+			RequestDispatcher view = request.getRequestDispatcher("./carrello.jsp");
+			view.forward(request, response);
+		} else if(mode.equalsIgnoreCase("getTotal")) {
+			Double total = 0.0;
+			carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
+			DettaglioProdottoBean dettagliProdotto = new DettaglioProdottoBean();
+			DettaglioProdottoDAO dbDettagliProdotti = new DettaglioProdottoDAO();
+			String key;
+			Iterator<String> iterKeys = carrello.keySet().iterator();
+			
+			while(iterKeys.hasNext()) {
+				key = iterKeys.next();
+				try {
+					dettagliProdotto = dbDettagliProdotti.doRetrieveByKey(key);
+					total += dettagliProdotto.getCostoUnitario().doubleValue() * carrello.get(key);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			response.getWriter().print(String.format("%.2f", total));
 		}
 		
-//		double costoTotale = 0.0;
-//		String key = null;
-//		Iterator<String> iterKeys = carrello.keySet().iterator();
-//		
-//		while(iterKeys.hasNext()) {
-//			key = iterKeys.next();
-//		}
-		RequestDispatcher view = request.getRequestDispatcher(redirectPath);
-		view.forward(request, response);
+//		RequestDispatcher view = request.getRequestDispatcher(redirectPath);
+//		view.forward(request, response);
 	}
 
 	/**
