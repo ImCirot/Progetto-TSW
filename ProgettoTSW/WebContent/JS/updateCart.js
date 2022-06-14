@@ -13,7 +13,7 @@ function updateCart(input,prodotto) {
 		success: function(data){
 			console.log(data);
 			if(data == "reload"){
-				location.reload();
+				location.replace("./carrello.jsp");
 			} else {
 				updatePrice();
 			}
@@ -33,6 +33,7 @@ function updatePrice(){
 			dataType: "html",
 			success: function(data){
 				$("#prezzoTot").html(data + " &euro;");
+				$("#costoTot").value(data);
 			}
 		});
 }
