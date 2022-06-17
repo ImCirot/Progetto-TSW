@@ -32,7 +32,6 @@
 	</form>
 	<br>
 	<form action="modificaInfo" method="get">
-		<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
 		<input type="hidden" name="mode" value="update">
 		<input type="hidden" name="target" value="utente">
 		
@@ -83,7 +82,6 @@
   						<h4>Indirizzo predefinito</h4>
   					<%}%>
   			<form action="modificaInfo" method="get">
-  				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
   				<input type="hidden" value="<% out.print(indirizzo.getNumIndirizzoProgressivo());%>" name="indirizzoID">
 				<input type="hidden" name="mode" value="update">
 				<input type="hidden" name="target" value="indirizzo">

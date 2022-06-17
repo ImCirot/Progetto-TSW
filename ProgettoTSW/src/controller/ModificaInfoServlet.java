@@ -43,7 +43,7 @@ public class ModificaInfoServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mode = request.getParameter("mode");
 		String target = request.getParameter("target");
-		String username = request.getParameter("utente");
+		String username = (String) request.getSession().getAttribute("utente");
 		String pathRedirect = null;
 		
 		if(mode.equals("update")) {

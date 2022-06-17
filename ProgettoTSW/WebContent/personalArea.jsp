@@ -32,9 +32,9 @@
             <span class="material-icons-personal">build</span>
           </div>
           <div class="card-description">
-          	<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" id="utente">
             <h2>Accesso e impostizioni di sicurezza</h2>
             <p>Modifica credenziali: username, password, nome, email.</p>
+            <a href="modificaInfo?mode=update&target=utente"></a>
           </div>
         </div>
 		
@@ -45,6 +45,7 @@
           <div class="card-description">
             <h2>I miei ordini</h2>
             <p>Controlla i tuoi ordini</p>
+            <a href="./userPersonalArea.jsp"></a>
           </div>
         </div>
 
@@ -55,6 +56,7 @@
           <div class="card-description">
             <h2>I miei indirizzi</h2>
             <p>Controlla e/o modifica i tuoi indirizzi</p>
+            <a href="./paginaIndirizzi.jsp"></a>
           </div>
         </div>
 
@@ -65,6 +67,7 @@
           <div class="card-description">
             <h2>I miei metodi di pagamento</h2>
             <p>Controlla e/o modifica i tuoi metodi di pagamento</p>
+            <a href="./paginaPagamenti.jsp"></a>
           </div>
         </div>
 

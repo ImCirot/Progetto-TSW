@@ -46,7 +46,7 @@ public class LoginServlet extends HttpServlet {
 		String mode = request.getParameter("mode");
 		
 		if(mode.equalsIgnoreCase("getInfo")) {
-			String utente = request.getParameter("utente");
+			String utente = (String) request.getSession().getAttribute("utente");
 			boolean admin = (boolean) request.getSession().getAttribute("admin");
 			List<IndirizzoBean> indirizzi = new ArrayList<>();
 			List<MetodoDiPagamentoBean> metodiPagamento = new ArrayList<>();
@@ -116,7 +116,7 @@ public class LoginServlet extends HttpServlet {
 					request.getSession().setAttribute("admin", false);
 				}
 				
-				response.sendRedirect("login?utente=" + username + "&mode=getInfo");
+				response.sendRedirect("login?mode=getInfo");
 			} else {
 				request.getSession().setAttribute("logged", (Boolean) false);
 				request.getSession().setAttribute("error", "Username e/o password invalidi.");

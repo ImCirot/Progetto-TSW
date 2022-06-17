@@ -15,7 +15,7 @@
 	<% Boolean logged = (Boolean) request.getSession().getAttribute("logged");
 		if(logged != null && logged.booleanValue()) {
 			String utente = (String) request.getSession().getAttribute("utente");
-			String redirect = "login?utente=" + utente +"&mode=getInfo";
+			String redirect = "login?mode=getInfo";
 			response.sendRedirect(redirect);
 		}%>
 		
