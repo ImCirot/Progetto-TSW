@@ -12,10 +12,10 @@
 </head>
 <body>
 
-		<% boolean logged = (boolean) request.getSession().getAttribute("logged");
-		if(!logged){
+		<% Boolean logged = (Boolean) request.getSession().getAttribute("logged");
+		if(logged == null){
 			response.sendRedirect("./loginForm.jsp");
-		}
+		} else {
 		
 		boolean admin = (boolean) request.getSession().getAttribute("admin");
 	%>
@@ -32,6 +32,7 @@
             <span class="material-icons-personal">build</span>
           </div>
           <div class="card-description">
+          	<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" id="utente">
             <h2>Accesso e impostizioni di sicurezza</h2>
             <p>Modifica credenziali: username, password, nome, email.</p>
           </div>
@@ -106,7 +107,8 @@
 
 
     </div>
-    <% } %>
+    <% }
+     }%>
     <div class="wrapper">
     <form action="LogOutServlet" method="get">
         <button type="submit" class="learn-more">

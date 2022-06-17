@@ -9,10 +9,10 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap%27">
 </head>
 <body>
-	<% boolean logged = (boolean) request.getSession().getAttribute("logged");
-		if(!logged){
+	<% Boolean logged = (Boolean) request.getSession().getAttribute("logged");
+		if(logged == null){
 			response.sendRedirect("./loginForm.jsp");
-		}
+		} else {
 		
 		boolean admin = (boolean) request.getSession().getAttribute("admin");
 	%>
@@ -268,7 +268,8 @@
   		</div>
   		<%}%>
   		</div>
-  <% } %>
+  <% } 
+  }%>
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>

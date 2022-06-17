@@ -9,7 +9,13 @@
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
-	<% String target = (String) request.getAttribute("target"); 
+	<% Boolean logged = (Boolean) request.getSession().getAttribute("logged");
+	
+	if(logged == null){
+		response.sendRedirect("./loginForm.jsp");
+	} else {
+	
+	String target = (String) request.getAttribute("target"); 
 		String error = (String) request.getSession().getAttribute("error");
 		if (target.equals("utente")) {
 			UtenteBean utente = (UtenteBean) request.getAttribute("utente");
@@ -146,7 +152,8 @@
 				<p> <% out.println(error); %> 
 				</p>
 			<% request.getSession().removeAttribute("error"); }%>
-		<% } %>
+		<% } 
+		}%>
 		</div>
 	<jsp:include page="./footer.jsp" />
 </body>
