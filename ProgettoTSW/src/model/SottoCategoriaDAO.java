@@ -168,4 +168,6 @@ public class SottoCategoriaDAO extends AbstractDAO<SottoCategoriaBean> {
 		}	
 		return listaSottoCategorie;
 	}
+	
+	
 }

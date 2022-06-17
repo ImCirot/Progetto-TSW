@@ -249,7 +249,7 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 		return result != 0;
 	}
 	
-	public synchronized List<DettaglioProdottoBean> filterBy(String filter) throws SQLException {
+	public synchronized List<DettaglioProdottoBean> filterByTipo(String tipo) throws SQLException {
 		List<DettaglioProdottoBean> listaDettagliProdottiFiltrati = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement statement = null;
@@ -259,7 +259,7 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
-			statement.setString(1, filter);
+			statement.setString(1, tipo);
 			
 			ResultSet result = statement.executeQuery();
 			
@@ -291,4 +291,47 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 		
 		return listaDettagliProdottiFiltrati;
 	}
+	
+//	public synchronized List<DettaglioProdottoBean> filterByCategoria(String categoria) throws SQLException {
+//		List<DettaglioProdottoBean> listaDettagliProdottiFiltrati = new ArrayList<>();
+//		Connection con = null;
+//		PreparedStatement statement = null;
+//		
+//		String query = "SELECT * FROM " + DettaglioProdottoDAO.TABLE_NAME + " WHERE categoria = ?";
+//		
+//		try {
+//			con = DriverManagerConnectionPool.getConnection();
+//			statement = con.prepareStatement(query);
+//			statement.setString(1, categoria);
+//			
+//			ResultSet result = statement.executeQuery();
+//			
+//			while(result.next()) {
+//				DettaglioProdottoBean dettaglioProdotto = new DettaglioProdottoBean();
+//				
+//				dettaglioProdotto.setTipo(result.getString("tipo"));
+//				dettaglioProdotto.setProdotto(result.getString("prodotto"));
+//				dettaglioProdotto.setCostoUnitario(result.getBigDecimal("costoUnitario"));
+//				dettaglioProdotto.setIVA(Integer.parseInt(result.getString("IVA")));
+//				dettaglioProdotto.setQuantita(Integer.parseInt(result.getString("quantita")));
+//				dettaglioProdotto.setOrigine(result.getString("origine"));
+//				dettaglioProdotto.setScadenza(result.getString("scadenza"));
+//				dettaglioProdotto.setPeso(result.getString("peso"));
+//				dettaglioProdotto.setVolume(result.getString("volume"));
+//				dettaglioProdotto.setImmagine(result.getString("immagine"));
+//				
+//				listaDettagliProdottiFiltrati.add(dettaglioProdotto);
+//			}
+//		} finally {
+//			try {
+//				if(statement != null) {
+//					statement.close();
+//				}
+//			} finally {
+//				DriverManagerConnectionPool.releaseConnection(con);
+//			}
+//		}
+//		
+//		return listaDettagliProdottiFiltrati;
+//	}
 }

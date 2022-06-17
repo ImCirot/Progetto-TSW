@@ -225,7 +225,7 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 		return prodottiTrovati;
 	}
 	
-	public synchronized List<ProdottoBean> filterBy(String filter) throws SQLException{
+	public synchronized List<ProdottoBean> filterByEDLimitata() throws SQLException{
 		List<ProdottoBean> listaProdotti = new ArrayList<>();
 		Connection con = null;
 		PreparedStatement statement = null;
@@ -236,6 +236,43 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			statement.setBoolean(1, true);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				ProdottoBean prodotto = new ProdottoBean();
+				
+				prodotto.setCodiceSeriale(result.getString("codiceSeriale"));
+				prodotto.setNome(result.getString("nome"));
+				prodotto.setMarca(result.getString("marca"));
+				prodotto.setDescrizioneBreve(result.getString("descrizioneBreve"));
+				prodotto.setEdLimitata(result.getBoolean("edLimitata"));
+				
+				listaProdotti.add(prodotto);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}	
+		return listaProdotti;
+	}
+	
+	public synchronized List<ProdottoBean> filterByMarca(String marca) throws SQLException{
+		List<ProdottoBean> listaProdotti = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement statement = null;
+		
+		String query = "SELECT * FROM " + ProdottoDAO.TABLE_NAME + " WHERE marca = ?";
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			statement.setString(1, marca);
 			
 			ResultSet result = statement.executeQuery();
 			

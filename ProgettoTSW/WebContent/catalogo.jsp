@@ -46,7 +46,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
   			}%>
         <div class="grid-card">
         <div class="cliccabile" onclick="click('<%out.print(prodotto.getCodiceSeriale());%>')">
-        <a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>"></a>
+        <a href="select?type=prodotto&prodotto=<%out.println(prodotto.getCodiceSeriale());%>"></a>
           <div class="img">
             <img src="<% out.println(dettagli.getImmagine()); %>" alt="prodotto">
           </div>

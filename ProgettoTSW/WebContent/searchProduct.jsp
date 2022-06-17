@@ -18,8 +18,10 @@
   	Boolean empty = (boolean) request.getSession().getAttribute("empty");
   	if(empty){%>
   		<h1>Nessun prodotto trovato!</h1>
-  	<% } else { %>
+  	<% } else { 
+  	if(request.getSession().getAttribute("search") != null) {%>
   	<h3>Risultati della ricerca "<%out.print(request.getSession().getAttribute("search"));%>"</h3>
+  	<% } request.getSession().removeAttribute("search"); %>
   <div class="section">
   	<% Boolean admin = (boolean) request.getSession().getAttribute("admin");
 		if((admin != null) && admin) {
@@ -54,7 +56,7 @@
 			
 		<div class="grid-card">
         <div class="cliccabile" onclick="click('<%out.print(prodotto.getCodiceSeriale());%>')">
-        <a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>"></a>
+        <a href="Select?type=prodotto&prodotto=<%out.println(prodotto.getCodiceSeriale());%>"></a>
           <div class="img">
             <img src="<% out.println(dettagli.getImmagine()); %>" alt="prodotto">
           </div>

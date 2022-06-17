@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.sql.SQLException;
@@ -66,7 +67,7 @@ public class SearchServlet extends HttpServlet {
 					
 					while(iterProdotti.hasNext()) {
 						prodotto = iterProdotti.next();
-						out.write("<a class=\"result\" href=\"SelectProdottoServlet?prodotto=" + prodotto.getCodiceSeriale() + "\">" + prodotto.getNome() + "</a>");
+						out.write("<a class=\"result\" href=\"select?type=prodotto&prodotto=" + prodotto.getCodiceSeriale() + "\">" + prodotto.getNome() + "</a>");
 					}
 							
 				}
@@ -94,7 +95,9 @@ public class SearchServlet extends HttpServlet {
 						sottoCategoria = iterSottoCat.next();
 						if(!sottoCategoriePresenti.contains(sottoCategoria.getNome())) {
 							sottoCategoriePresenti.add(sottoCategoria.getNome());
-							out.write("<a class=\"result\" href=\"#\">" + sottoCategoria.getNome() + "</a>");
+							String sottoCatStr = sottoCategoria.getNome();
+							sottoCatStr = toHTMLString(sottoCatStr);
+							out.write("<a class=\"result\" href=select?type=categoria&categoria=" + sottoCatStr + ">" + sottoCategoria.getNome() + "</a>");
 						}
 					}
 				}
@@ -118,7 +121,9 @@ public class SearchServlet extends HttpServlet {
 						prodotto = iterProdotti.next();
 						if(!marchePresenti.contains(prodotto.getMarca())) {
 							marchePresenti.add(prodotto.getMarca());
-							out.write("<a class=\"result\" href=\"#\">" + prodotto.getMarca() + "</a>");
+							String marcaStr = prodotto.getMarca();
+							marcaStr = marcaStr.replaceAll("\\s+", "%20");
+							out.write("<a class=\"result\" href=select?type=marca&marca=" + marcaStr + ">" + prodotto.getMarca() + "</a>");
 						}
 					}
 							
@@ -138,7 +143,7 @@ public class SearchServlet extends HttpServlet {
 					response.getWriter().print("./searchProduct.jsp");
 				} else if(prodottiTrovati.size() == 1) {
 					prodotto = prodottiTrovati.get(0);
-					response.getWriter().print("SelectProdottoServlet?prodotto=" + prodotto.getCodiceSeriale());
+					response.getWriter().print("select?type=prodotto&prodotto=" + prodotto.getCodiceSeriale());
 				} else {
 					request.getSession().setAttribute("empty", false);
 					request.getSession().setAttribute("search", search);
@@ -154,6 +159,15 @@ public class SearchServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	private String toHTMLString(String str) {
+		String formattedString;
+		
+		formattedString = str.replaceAll("&", "&amp");
+		formattedString = str.replaceAll("\\s+", "%20");
+		
+		return formattedString;
 	}
 
 }

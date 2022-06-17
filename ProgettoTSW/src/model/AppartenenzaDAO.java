@@ -141,4 +141,38 @@ public class AppartenenzaDAO extends AbstractDAO<AppartenenzaBean> {
 		
 		return appartenenze;
 	}
+	
+	public synchronized List<AppartenenzaBean> filterByCategoria(String categoria) throws SQLException {
+		Connection con = null;
+		PreparedStatement statement = null;
+		List<AppartenenzaBean> listaProd = new ArrayList<>();
+		
+		String query = "SELECT * FROM " + AppartenenzaDAO.TABLE_NAME + " WHERE sottocategoria = ?";
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			statement.setString(1, categoria);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				AppartenenzaBean appartenenza = new AppartenenzaBean();
+				appartenenza.setProdotto(result.getString("prodotto"));
+				appartenenza.setSottocategoria(result.getString("sottocategoria"));
+				
+				listaProd.add(appartenenza);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+		return listaProd;
+	}
 }

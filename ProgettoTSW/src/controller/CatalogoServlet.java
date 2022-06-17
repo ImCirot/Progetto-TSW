@@ -47,7 +47,7 @@ public class CatalogoServlet extends HttpServlet {
 		if(filter != null) {
 			if(filter.equals("snack") || filter.equals("drink")) {
 				try {
-					dettagliProdotti = dbDettagli.filterBy(filter);
+					dettagliProdotti = dbDettagli.filterByTipo(filter);
 					Iterator<DettaglioProdottoBean> iterDettagliProdotti = dettagliProdotti.iterator();
 					
 					while(iterDettagliProdotti.hasNext()) {
@@ -59,7 +59,8 @@ public class CatalogoServlet extends HttpServlet {
 						prodotti.add(prodotto);
 					}
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block				request.getSession().setAttribute("prodotti", prodotti);
+					// TODO Auto-generated catch block				
+					request.getSession().setAttribute("prodotti", prodotti);
 					request.getSession().setAttribute("dettagliProdotti", dettagliProdotti);
 					if (request.getSession().getAttribute("admin") == null) {
 						request.getSession().setAttribute("admin",false);
@@ -69,7 +70,7 @@ public class CatalogoServlet extends HttpServlet {
 			} else {
 				ProdottoBean prodotto = new ProdottoBean();
 				try {
-					prodotti = dbProdotti.filterBy("si");
+					prodotti = dbProdotti.filterByEDLimitata();
 					Iterator<ProdottoBean> iterProdottiTrovati = prodotti.iterator();
 					
 					while(iterProdottiTrovati.hasNext()) {
