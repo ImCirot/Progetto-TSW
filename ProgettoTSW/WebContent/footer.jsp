@@ -15,9 +15,9 @@
         <div class="info_footer">
           <p>Contatti</p>
           <ul>
-            <li>Numero</li>
-            <li>Indirizzo</li>
-            <li>Email</li>
+            <li>089-1234765</li>
+            <li>Via Roma, 10 <br>Fisciano (SA), Italia</li>
+            <li><a id="mail" href="mailto:supporto@snackz.it">supporto@snackz.it</a></li>
           </ul>
         </div>
         <div class="info_footer">

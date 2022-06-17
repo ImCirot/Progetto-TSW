@@ -9,8 +9,11 @@ body {
     background-color: #eee;
 }
 
+#mail {
+	text-decoration: none;
+	
+}
 
-/* From uiverse.io by @barisdogansutcu */
 .download-button {
  position: relative;
  border-width: 0;

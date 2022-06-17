@@ -49,6 +49,7 @@
                                         <li>Via Roma, 10</li>
                                         <li>Fisciano (SA), Italia</li>
                                         <li>089-1234765</li>
+                                        <li><a id="mail" href="mailto:supporto@snackz.it">supporto@snackz.it</a>
                                     </ul>
                                 </div>
                             </div>
@@ -73,7 +74,7 @@
                                     <li><% out.println(ordine.getCitta() + ", " + ordine.getCAP()); %></li>
                                     <li><% out.println(ordine.getProvincia()); %></li>
                                     <li><% out.println(ordine.getNazione()); %></li>
-                                    <li><a href="#" data-abc="true"><% out.print(cliente.getEmail()); %></a></li>
+                                    <li><a href="mailto:<% out.print(cliente.getEmail()); %>" data-abc="true"><% out.print(cliente.getEmail()); %></a></li>
                                 </ul>
                             </div>
                             <div class="mb-2 ml-auto"> <span class="text-muted">Dettagli pagamento:</span>
