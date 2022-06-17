@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `ecommercedb` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `ecommercedb`;
--- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.25, for Linux (x86_64)
 --
 -- Host: localhost    Database: ecommercedb
 -- ------------------------------------------------------
--- Server version	8.0.27
+-- Server version	8.0.29-0ubuntu0.22.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -70,7 +70,7 @@ CREATE TABLE `composizioneordine` (
 
 LOCK TABLES `composizioneordine` WRITE;
 /*!40000 ALTER TABLE `composizioneordine` DISABLE KEYS */;
-INSERT INTO `composizioneordine` VALUES (1,'LMiranda','UoESj9xK',1,4.99),(1,'LMiranda','xBDiMhYa',1,4.99),(2,'ANappi','GesKKqnx',1,6.50),(2,'ANappi','zC3RFPrT',1,1.50),(3,'GBasile','T4iGqTCG',1,6.50),(3,'GBasile','UoESj9xK',1,4.99),(3,'GBasile','xBDiMhYa',1,4.99);
+INSERT INTO `composizioneordine` VALUES (1,'LMiranda','gFEfPBJg',2,2.99),(1,'LMiranda','UoESj9xK',1,4.99),(1,'LMiranda','xBDiMhYa',1,1.99),(2,'ANappi','GesKKqnx',1,6.00),(2,'ANappi','zC3RFPrT',1,1.50),(3,'GBasile','T4iGqTCG',1,6.50),(3,'GBasile','UoESj9xK',1,4.99),(3,'GBasile','xBDiMhYa',1,1.99),(4,'CTroiano','hcCcRJX5',2,5.99),(4,'CTroiano','zC3RFPrT',3,1.50),(5,'LMessi10','Pz7nszym',2,2.49),(6,'LMessi10','Pz7nszym',2,2.49),(7,'GBasile','hcCcRJX5',1,5.99),(7,'GBasile','Pz7nszym',1,2.49),(9,'LMiranda','hcCcRJX5',1,5.99),(9,'LMiranda','Pz7nszym',1,2.49),(10,'LMiranda','gFEfPBJg',1,2.99),(10,'LMiranda','hcCcRJX5',1,5.99),(10,'LMiranda','Pz7nszym',1,2.49),(10,'LMiranda','PZzimtRa',1,1.99),(11,'LMiranda','GesKKqnx',1,6.00),(12,'LMiranda','GesKKqnx',2,6.00),(13,'LMiranda','gFEfPBJg',1,2.99),(13,'LMiranda','hcCcRJX5',2,5.99),(13,'LMiranda','Pz7nszym',1,2.49),(14,'LMiranda','gFEfPBJg',1,2.99),(14,'LMiranda','hcCcRJX5',1,5.99),(14,'LMiranda','Pz7nszym',2,2.49),(15,'LMiranda','hcCcRJX5',1,5.99),(15,'LMiranda','T4iGqTCG',1,6.50),(15,'LMiranda','tyih29rt',1,1.59),(15,'LMiranda','UoESj9xK',1,4.99),(15,'LMiranda','xBDiMhYa',1,1.99),(16,'GBasile','GesKKqnx',1,6.00),(16,'GBasile','gFEfPBJg',2,2.99),(16,'GBasile','UoESj9xK',1,4.99),(16,'GBasile','xBDiMhYa',1,1.99),(17,'GBasile','hcCcRJX5',1,5.99),(17,'GBasile','Pz7nszym',1,2.49),(17,'GBasile','PZzimtRa',1,1.99);
 /*!40000 ALTER TABLE `composizioneordine` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -91,7 +91,7 @@ CREATE TABLE `dettaglioprodotto` (
   `scadenza` date NOT NULL,
   `peso` varchar(25) DEFAULT NULL,
   `volume` varchar(25) DEFAULT NULL,
-  `immagine` varchar(500) DEFAULT NULL,
+  `immagine` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`tipo`,`prodotto`),
   KEY `fk_new_table_1_idx` (`prodotto`),
   CONSTRAINT `fk_new_table_1` FOREIGN KEY (`prodotto`) REFERENCES `prodotto` (`codiceSeriale`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -104,7 +104,7 @@ CREATE TABLE `dettaglioprodotto` (
 
 LOCK TABLES `dettaglioprodotto` WRITE;
 /*!40000 ALTER TABLE `dettaglioprodotto` DISABLE KEYS */;
-INSERT INTO `dettaglioprodotto` VALUES ('snack','GesKKqnx',6.00,22,99,'Giappone','2023-04-28','50g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/mildsalt.png'),('snack','gFEfPBJg',2.99,22,99,'USA','2023-04-26','154g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Oreo-Mint-Flavour-154g_1800x1800.png'),('snack','Pz7nszym',2.49,22,99,'USA','2023-04-10','49.9g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Snickers-Almond-50g_1800x1800.png'),('snack','PZzimtRa',1.99,22,99,'USA','2023-04-22','47g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/reesesnutbar.png'),('snack','tyih29rt',1.59,22,99,'UK','2023-04-21',NULL,'330ml','https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Dr-Pepper-330ml_1_1800x1800.png'),('snack','UoESj9xK',4.99,22,99,'USA','2023-04-17','226g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/cheetos-crunchy-226g_1800x1800.png'),('snack','xBDiMhYa',1.99,22,99,'USA','2023-04-20','40g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/memFudgeBrownie.png'),('drink','hcCcRJX5',5.99,22,99,'Giappone','2023-04-19',NULL,'355ml','https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Monster-Cuba-Libre-355ml_1800x1800.png'),('drink','T4iGqTCG',6.50,22,99,'Giappone','2023-04-07','115g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/chipstarnori.png'),('drink','zC3RFPrT',1.50,22,99,'Internazionale','2023-04-30',NULL,'500ml','https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/mangoloco.png');
+INSERT INTO `dettaglioprodotto` VALUES ('snack','GesKKqnx',6.00,22,95,'Giappone','2023-04-28','50g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/mildsalt.png'),('snack','gFEfPBJg',2.99,22,92,'USA','2023-04-26','154g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Oreo-Mint-Flavour-154g_1800x1800.png'),('snack','Pz7nszym',2.49,22,92,'USA','2023-04-10','49.9g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Snickers-Almond-50g_1800x1800.png'),('snack','PZzimtRa',1.99,22,97,'USA','2023-04-22','47g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/reesesnutbar.png'),('snack','T4iGqTCG',6.50,22,98,'Giappone','2023-04-07','115g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/chipstarnori.png'),('snack','tyih29rt',1.59,22,98,'UK','2023-04-21',NULL,'330ml','https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Dr-Pepper-330ml_1_1800x1800.png'),('snack','UoESj9xK',4.99,22,97,'USA','2023-04-17','226g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/cheetos-crunchy-226g_1800x1800.png'),('snack','xBDiMhYa',1.99,22,97,'USA','2023-04-20','40g',NULL,'https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/memFudgeBrownie.png'),('drink','hcCcRJX5',5.99,22,91,'Giappone','2023-04-19',NULL,'355ml','https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/Monster-Cuba-Libre-355ml_1800x1800.png'),('drink','zC3RFPrT',1.50,22,99,'Internazionale','2023-04-30',NULL,'500ml','https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/mangoloco.png');
 /*!40000 ALTER TABLE `dettaglioprodotto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,7 +130,7 @@ CREATE TABLE `indirizzo` (
   PRIMARY KEY (`numIndirizzoProgressivo`,`utente`),
   KEY `indirizzo_utente_username_fk` (`utente`),
   CONSTRAINT `indirizzo_utente_username_fk` FOREIGN KEY (`utente`) REFERENCES `utente` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -139,7 +139,7 @@ CREATE TABLE `indirizzo` (
 
 LOCK TABLES `indirizzo` WRITE;
 /*!40000 ALTER TABLE `indirizzo` DISABLE KEYS */;
-INSERT INTO `indirizzo` VALUES (1,'LMiranda','Via Giacomo Leopardi','San Giuseppe Vesuviano','80047','69','Napoli','Italia',NULL,NULL,'si'),(2,'LMiranda','Via Franco Civetta','Nola','80035','17','Napoli','Italia',NULL,NULL,'no'),(3,'ANappi','Via Rione ','Torre Annunziata','80058','32','Napoli','Italia','A','S','si'),(4,'GBasile','Via San Simone','Nola','80035','289','Napoli','Italia',NULL,NULL,'si'),(5,'CTroiano','Via Trieste','Portico di Caserta','81050','45','Caserta','Italia',NULL,NULL,'si');
+INSERT INTO `indirizzo` VALUES (1,'LMiranda','Via Giacomo Leopardi','San Giuseppe Vesuviano','80047','69','Napoli','Italia',NULL,NULL,'si'),(2,'LMiranda','Via Franco Civetta','Nola','80035','17','Napoli','Italia',NULL,NULL,'no'),(3,'ANappi','Via Rione ','Torre Annunziata','80058','32','Napoli','Italia','A','S','si'),(4,'GBasile','Via San Simone','Nola','80035','289','Napoli','Italia',NULL,NULL,'si'),(5,'CTroiano','Via Trieste','Portico di Caserta','81050','45','Caserta','Italia',NULL,NULL,'si'),(10,'LMessi10','Via Nazionale','Caivano','80023','9','Napoli','Italia','B','','si');
 /*!40000 ALTER TABLE `indirizzo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +166,7 @@ CREATE TABLE `metododipagamento` (
   PRIMARY KEY (`numPagamentoProgressivo`,`utente`),
   KEY `metodoDiPagamento_utente_username_fk` (`utente`),
   CONSTRAINT `metodoDiPagamento_utente_username_fk` FOREIGN KEY (`utente`) REFERENCES `utente` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +175,7 @@ CREATE TABLE `metododipagamento` (
 
 LOCK TABLES `metododipagamento` WRITE;
 /*!40000 ALTER TABLE `metododipagamento` DISABLE KEYS */;
-INSERT INTO `metododipagamento` VALUES (1,'LMiranda','Via Giacomo Leopardi','San Giuseppe Vesuviano','80047','69','Napoli','Italia','IBAN','IT22T0300203280284125425667',NULL,'no'),(2,'LMiranda','Via Franco Civetta','Nola','80035','17','Napoli','Italia','carta',NULL,'5111538754725418','si'),(3,'ANappi','Via Rione ','Torre Annunziata','80058','32','Napoli','Italia','carta',NULL,'5109337062062083','si'),(4,'GBasile','Via San Simone','Nola','80035','289','Napoli','Italia','IBAN','IT84G0300203280397435493853',NULL,'si'),(5,'CTroiano','Via Trieste','Portico di Caserta','81050','45','Caserta','Italia','IBAN','IT14U0300203280955173519725',NULL,'si');
+INSERT INTO `metododipagamento` VALUES (1,'LMiranda','Via Giacomo Leopardi','San Giuseppe Vesuviano','80047','69','Napoli','Italia','IBAN','IT22T0300203280284125425667',NULL,'si'),(2,'LMiranda','Via Franco Civetta','Nola','80035','17','Napoli','Italia','carta',NULL,'5111538754725418','no'),(3,'ANappi','Via Rione ','Torre Annunziata','80058','32','Napoli','Italia','carta',NULL,'5109337062062083','si'),(4,'GBasile','Via San Simone','Nola','80035','289','Napoli','Italia','IBAN','IT84G0300203280397435493853',NULL,'si'),(5,'CTroiano','Via Trieste','Portico di Caserta','81050','45','Caserta','Italia','IBAN','IT14U0300203280955173519725',NULL,'si'),(8,'LMessi10','Via Nazionale','Caivano','80023','9','Napoli','Italia','carta','null','1234567890','si');
 /*!40000 ALTER TABLE `metododipagamento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +203,7 @@ CREATE TABLE `ordine` (
   PRIMARY KEY (`numOrdineProgressivo`,`cliente`),
   KEY `ordine_utente_username_fk` (`cliente`),
   CONSTRAINT `ordine_utente_username_fk` FOREIGN KEY (`cliente`) REFERENCES `utente` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +212,7 @@ CREATE TABLE `ordine` (
 
 LOCK TABLES `ordine` WRITE;
 /*!40000 ALTER TABLE `ordine` DISABLE KEYS */;
-INSERT INTO `ordine` VALUES (1,'LMiranda','carta',NULL,'5111538754725418','San Giuseppe Vesuviano','80047','Via Franco Civetta','17','Napoli','Italia','2022-02-22',9.98),(2,'ANappi','carta',NULL,'5109337062062083','Torre Annunziata','80058','Via Rione ','32','Napoli','Italia','2022-02-11',8),(3,'GBasile','IBAN','IT84G0300203280397435493853',NULL,'Nola','80035','Via San Simone','289','Napoli','Italia','2022-03-04',16.48);
+INSERT INTO `ordine` VALUES (1,'LMiranda','carta',NULL,'5111538754725418','San Giuseppe Vesuviano','80047','Via Franco Civetta','17','Napoli','Italia','2022-02-22',6.98),(2,'ANappi','carta',NULL,'5109337062062083','Torre Annunziata','80058','Via Rione ','32','Napoli','Italia','2022-02-11',7.5),(3,'GBasile','IBAN','IT84G0300203280397435493853',NULL,'Nola','80035','Via San Simone','289','Napoli','Italia','2022-03-04',13.48),(4,'CTroiano','IBAN','IT14U0300203280955173519725','null','Portico di Caserta','81050','Via Trieste','45','Caserta','Italia','2022-05-09',16.48),(5,'LMessi10','carta','null','1234567890','Caivano','80023','Via Nazionale','9','Napoli','Italia','2022-05-10',4.98),(6,'LMessi10','carta','null','1234567890','Caivano','80023','Via Nazionale','9','Napoli','Italia','2022-05-10',4.98),(7,'GBasile','IBAN','IT84G0300203280397435493853','null','Nola','80035','Via San Simone','289','Napoli','Italia','2022-05-16',8.48),(8,'LMiranda','IBAN','IT22T0300203280284125425667','null','San Giuseppe Vesuviano','80047','Via Giacomo Leopardi','69','Napoli','Italia','2022-05-26',5.98),(9,'LMiranda','IBAN','IT22T0300203280284125425667','null','San Giuseppe Vesuviano','80047','Via Giacomo Leopardi','69','Napoli','Italia','2022-05-26',8.48),(10,'LMiranda','IBAN','IT22T0300203280284125425667','null','San Giuseppe Vesuviano','80047','Via Giacomo Leopardi','69','Napoli','Italia','2022-05-26',13.46),(11,'LMiranda','IBAN','IT22T0300203280284125425667','null','San Giuseppe Vesuviano','80047','Via Giacomo Leopardi','69','Napoli','Italia','2022-05-30',6),(12,'LMiranda','IBAN','IT22T0300203280284125425667','null','San Giuseppe Vesuviano','80047','Via Giacomo Leopardi','69','Napoli','Italia','2022-06-14',12),(13,'LMiranda','IBAN','IT22T0300203280284125425667','null','San Giuseppe Vesuviano','80047','Via Giacomo Leopardi','69','Napoli','Italia','2022-06-14',11.47),(14,'LMiranda','carta','null','5111538754725418','Nola','80035','Via Franco Civetta','17','Napoli','Italia','2022-06-14',13.96),(15,'LMiranda','carta','null','5111538754725418','San Giuseppe Vesuviano','80047','Via Giacomo Leopardi','69','Napoli','Italia','2022-06-14',21.06),(16,'GBasile','IBAN','IT84G0300203280397435493853','null','Nola','80035','Via San Simone','289','Napoli','Italia','2022-06-17',18.959999999999997),(17,'GBasile','IBAN','IT84G0300203280397435493853','null','Nola','80035','Via San Simone','289','Napoli','Italia','2022-06-17',10.47);
 /*!40000 ALTER TABLE `ordine` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -227,7 +227,7 @@ CREATE TABLE `prodotto` (
   `codiceSeriale` varchar(25) NOT NULL,
   `nome` varchar(50) NOT NULL,
   `marca` varchar(50) NOT NULL,
-  `descrizioneBreve` varchar(1000) NOT NULL,
+  `descrizioneBreve` varchar(500) NOT NULL,
   `edLimitata` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`codiceSeriale`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -239,7 +239,7 @@ CREATE TABLE `prodotto` (
 
 LOCK TABLES `prodotto` WRITE;
 /*!40000 ALTER TABLE `prodotto` DISABLE KEYS */;
-INSERT INTO `prodotto` VALUES ('GesKKqnx','Chip Star Potato Chips - Mild Salt','Chip Star YBC','Le Chip Star Potato Chips della YBC sono uno degli snack più famosi. La confezione è un pratico cilindro con chiusura per portarle ovunque! Queste patatine sono leggermente salate per offrire un gusto delicato. Disponibili anche in altre varietà.',0),('gFEfPBJg','Oreo Mint Flavour','Oreo','Biscotti Oreo alla menta, farciti con tutto il gusto della crema green. Uno snack dolce che potrai tenere con te sul posto di lavoro, a scuola, in ufficio oppure in giro.',0),('hcCcRJX5','Monster Cuba Libre','Monster','Bevanda energetica all\'intenso sapore di Cuba Libre, il famoso cocktail al rum, cola e lime. Una lattina davvero speciale, assolutamente da collezione che arriva direttamente dal Giappone.',1),('Pz7nszym','Snickers Almond','Snickers','Barretta di cioccolato Snickers Almond da 49.9 grammi per una candy bar farcita internamente con squisite ed originali mandorle americane. Ma non solo: questo snack dolce è composto',0),('PZzimtRa','Reese\'s Nut Bar','Reese\'s','Barretta di cioccolato Reese\'s Nut bar, con all\'interno crema di caramello e arachidi intere a comporre uno snack dolce fra i migliori e più buoni di tutto il catalogo Reese\'s.',0),('T4iGqTCG','Chip Star Nori-Shio','Chip Star YBC','Patatine Chip Star al gusto di alga marina Nori-shio e sale.',0),('tyih29rt','Dr Pepper','Dr Pepper','Dr Pepper UK, bevanda fruttata con vaniglia e caramello. Un prodotto che non può assolutamente mancare nella tua dispensa, nella versione britannica, sinonimo di storia ed effervescenza! Dr. Pepper infatti è fra le bibite più conosciute ed apprezzate anche negli Stati Uniti e se hai voglia di provare qualcosa mai assaggiato prima non puoi assolutamente fartela scappare!',0),('UoESj9xK','Cheetos Crunchy','Cheetos ','Cheetos, Crunchy Flavoured, arricchiti da un\'incredibile croccantezza in questa straordinaria variante all\'originale e intenso sapore di formaggio cheddar. Le Cheetos Crunchy rappresentano le patatine preferite dagli americani ormai già dal 1948 per via del magico gusto, della forma un po’ bizzarra e della croccantezza unica.',0),('xBDiMhYa','M&M\'s Fudge Brownie','M&M\'s','Confezione di M&M\'s Fudge Brownie, confetti al cioccolato con cuore morbido al brownie, un famoso dolcetto al cioccolato e nocciole. Questa soluzione M&M\'s da 40 grammi contiene tutta la bontà e la qualità dell\'impasto M&M\'s, accompagnato da un dolce cuore al brownie che farà impazzire tutti gli appassionati.',0),('zC3RFPrT','Monster Mango Loco','Monster','Monster Energy al gusto mango è un mix perfetto tra dolcezza ed energia elettrizzante! Lasciati trasportare dalla movida',0);
+INSERT INTO `prodotto` VALUES ('GesKKqnx','Chip Star Potato Chips - Mild Salt','Chip Star YBC','Le Chip Star Potato Chips della YBC sono uno degli snack più famosi. La confezione è un pratico cilindro con chiusura per portarle ovunque! Queste patatine sono leggermente salate per offrire un gusto delicato. Disponibili anche in altre varietà.',0),('gFEfPBJg','Oreo Mint Flavour','Oreo','Biscotti Oreo alla menta, farciti con tutto il gusto della crema green. Uno snack dolce che potrai tenere con te sul posto di lavoro, a scuola, in ufficio oppure in giro.',0),('hcCcRJX5','Monster Cuba Libre','Monster','Bevanda energetica all\'intenso sapore di Cuba Libre, il famoso cocktail al rum, cola e lime. Una lattina davvero speciale, assolutamente da collezione che arriva direttamente dal Giappone.',1),('Pz7nszym','Snickers Almond','Snickers','Barretta di cioccolato Snickers Almond da 49.9 grammi per una candy bar farcita internamente con squisite ed originali mandorle americane. Ma non solo: questo snack dolce è composto',0),('PZzimtRa','Reese\'s Nut Bar','Reese\'s','Barretta di cioccolato Reese\'s Nut bar, con all\'interno crema di caramello e arachidi intere a comporre uno snack dolce fra i migliori e più buoni di tutto il catalogo Reese\'s.',0),('T4iGqTCG','Chip Star Nori-Shio','Chip Star YBC','Patatine Chip Star al gusto di alga marina Nori-shio e sale.',0),('tyih29rt','Dr Pepper','Dr Pepper','Dr Pepper UK, bevanda fruttata con vaniglia e caramello. Un prodotto che non può assolutamente mancare nella tua dispensa, nella versione britannica, sinonimo di storia ed effervescenza! Dr. Pepper infatti è fra le bibite più conosciute ed apprezzate anche negli Stati Uniti e se hai voglia di provare qualcosa mai assaggiato prima non puoi assolutamente fartela scappare!',0),('UoESj9xK','Cheetos Crunchy','Cheetos','Cheetos, Crunchy Flavoured, arricchiti da un\'incredibile croccantezza in questa straordinaria variante all\'originale e intenso sapore di formaggio cheddar. Le Cheetos Crunchy rappresentano le patatine preferite dagli americani ormai già dal 1948 per via del magico gusto, della forma un po’ bizzarra e della croccantezza unica.',0),('xBDiMhYa','M&M\'s Fudge Brownie','M&M\'s','Confezione di M&M\'s Fudge Brownie, confetti al cioccolato con cuore morbido al brownie, un famoso dolcetto al cioccolato e nocciole. Questa soluzione M&M\'s da 40 grammi contiene tutta la bontà e la qualità dell\'impasto M&M\'s, accompagnato da un dolce cuore al brownie che farà impazzire tutti gli appassionati.',0),('zC3RFPrT','Monster Mango Loco','Monster','Monster Energy al gusto mango è un mix perfetto tra dolcezza ed energia elettrizzante! Lasciati trasportare dalla movida',0);
 /*!40000 ALTER TABLE `prodotto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,7 +291,7 @@ CREATE TABLE `utente` (
 
 LOCK TABLES `utente` WRITE;
 /*!40000 ALTER TABLE `utente` DISABLE KEYS */;
-INSERT INTO `utente` VALUES ('ANappi','bmFwcGk5OQ==','anappi@gmail.com','Antonio','Nappi','M',0),('CTroiano','dHJvaWFubzEx','ctroiano@gmail.com','Ciro','Troiano','M',0),('GBasile','YmFzaWxlMjI=','gbasile@gmail.com','Giuseppe','Basile','M',0),('LMiranda','bWlyYW5kYTY5','lmiranda12@gmail.com','Luigi','Miranda','M',0),('root','cm9vdA==','root@email.com','root','sudo','X',1),('utenteA','cGFzc3dvcmQ=','utentea@email.com','nome','cognome','M',0);
+INSERT INTO `utente` VALUES ('ANappi','bmFwcGk5OQ==','anappi@gmail.com','Antonio','Nappi','M',0),('CTroiano','dHJvaWFubzEx','ctroiano@gmail.com','Ciro','Troiano','M',0),('GBasile','YmFzaWxlMjI=','gbasile@gmail.com','Giuseppe','Basile','M',0),('LMessi10','TGlvbmVsMTA=','leomessi@email.it','Lionel','Messi','M',0),('LMiranda','bWlyYW5kYTY5','lmiranda12@gmail.com','Luigi','Miranda','M',0),('root','cm9vdA==','root@email.com','root','sudo','X',1),('utenteA','cGFzc3dvcmQ=','utentea@email.com','nome','cognome','M',0);
 /*!40000 ALTER TABLE `utente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -304,4 +304,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-06 16:22:48
+-- Dump completed on 2022-06-17 16:46:18
