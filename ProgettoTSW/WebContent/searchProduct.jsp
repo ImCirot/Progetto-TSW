@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Snackz</title>
-<link rel="stylesheet" href="./Css/mainpage.css">
+<link rel="stylesheet" href="./Css/catalogo.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap%27">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -20,16 +20,22 @@
   		<h1>Nessun prodotto trovato!</h1>
   	<% } else { %>
   	<h3>Risultati della ricerca "<%out.print(request.getSession().getAttribute("search"));%>"</h3>
-  <div class="container-catalogo">
+  <div class="section">
   	<% Boolean admin = (boolean) request.getSession().getAttribute("admin");
 		if((admin != null) && admin) {
 	%>
-		<div class="prodotto">
-			<a href="gestisciProdotti">
-			<img src="https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/plus.png" alt="aggiungiProdotto">
-			</a>
-			<h4>Gestisci prodotti</h4>
-		</div>
+		<div class="gestione">
+		<a href="gestisciProdotti"></a>
+        <div class="grid-card" id="img-aggiungi">
+          <div class="img">
+            <img src="https://raw.githubusercontent.com/ImCirot/Progetto-TSW/main/Immagini%20catalogo/plus.png" alt="aggiungiProdotto">
+          </div>
+          
+          <div class="nome_prodotto">
+            <h2>Gestisci prodotti</h2>
+          </div>
+          </div>
+        </div>
 	<% }
   	List<ProdottoBean> prodottiTrovati = (List<ProdottoBean>) request.getSession().getAttribute("prodottiTrovati");
   		List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");
@@ -46,37 +52,54 @@
   				if(prodotto.getCodiceSeriale().equals(dettagli.getProdotto())) break;
   			}%>
 			
-		<div class="prodotto">
-				<div class="posizione">
-  				<a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>">	
-  				<img src="<% out.println(dettagli.getImmagine()); %>" alt="prodotto">
-  				</a>
-  				</div>
-  				<div class="posizione">
-  				<h2><% out.println(prodotto.getNome()); %></h2>
-  				</div>
-  				<div class="posizione">
-  				<p class="prezzo"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
-  				</div>
-  				<div class="posizione">
-  				<form action="Carrello" method="get">
-  					<input type="hidden" id="mode" name="mode" value="add">
-  					<input type="hidden" id="prodotto" name="prodotto" value="<% out.print(prodotto.getCodiceSeriale()); %>">
-  					<input type="hidden" id="quantita" value="1" name="quantita">
-  					<input type="hidden" id="catalogo" value="catalogo" name="catalogo">
-  					<button id="addToCart<% out.print(prodotto.getCodiceSeriale());%>" type="submit">Acquista</button>
-  				</form>
-  				</div>
-  				 <div class="inside">
-    				<div class="icon"><i class="material-icons">info_outline</i></div>
-    				<div class="contents">
-      					<p><% out.println(prodotto.getDescrizioneBreve());%></p>
-    				</div>
-  					</div>
-  				<p id="added">Aggiunto al carrello!</p>
-  			</div>	
+		<div class="grid-card">
+        <div class="cliccabile" onclick="click('<%out.print(prodotto.getCodiceSeriale());%>')">
+        <a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>"></a>
+          <div class="img">
+            <img src="<% out.println(dettagli.getImmagine()); %>" alt="prodotto">
+          </div>
+          <div class="nome_prodotto">
+            <h2><% out.println(prodotto.getNome()); %></h2>
+          </div>
+          <div class="prezzo">
+            <p><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
+          </div>
+          </div>
+          <div class="acquista">
+          	<button class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">
+				  <div class="pretext">
+				     Acquista
+				  </div>
+				  
+				  <div class="pretext done" id="done<% out.print(prodotto.getCodiceSeriale()); %>">
+				    <div class="posttext"> Aggiunto</div>
+				  </div>
+				  
+				</button>
+          </div>
+          <div class="inside">
+      				<div class="icon"><i class="material-icons">info_outline</i></div>
+      				<div class="contents">
+        					<p><% out.println(prodotto.getDescrizioneBreve());%></p>
+      				</div>
+    					</div>
+        </div>
   		<% } %>
   		</div>
   		<% } %>
+  		<jsp:include page="./footer.jsp" />
+	<script src="./JS/addedToCart.js"></script>
+	<script>
+    $(".cliccabile").click(function(){
+        window.location=$(this).find("a").attr("href");
+        return false;
+      });
+	</script>
+	 <script type="text/javascript">
+      $(".gestione").click(function(){
+        window.location=$(this).find("a").attr("href");
+        return false;
+      });
+    </script>
 </body>
 </html>
