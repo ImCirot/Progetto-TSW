@@ -75,13 +75,6 @@ body {
  }
 }
 
-
-
-
-
-
-
-
 .mt-50 {
     margin-top: 50px
 }
@@ -135,12 +128,6 @@ a {
     text-decoration: none !important
 }
 
-/* .btn-light { */
-/*     color: #333; */
-/*     background-color: #fafafa; */
-/*     border-color: #ddd */
-/* } */
-
 .header-elements-inline {
     display: -ms-flexbox;
     display: flex;
@@ -157,21 +144,6 @@ a {
         min-width: 400px !important
     }
 }
-
-/* .btn-primary { */
-/*     color: #fff; */
-/*     background-color: #2196f3 */
-/* } */
-
-/* .btn-labeled>b { */
-/*     position: absolute; */
-/*     top: -1px; */
-/*     background-color: blue; */
-/*     display: block; */
-/*     line-height: 1; */
-/*     padding: .62503rem */
-/* } */
-
 .nascondi{
 	display:none;
 }
