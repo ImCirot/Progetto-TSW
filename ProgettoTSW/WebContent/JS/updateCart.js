@@ -11,7 +11,6 @@ function updateCart(input,prodotto) {
 		data: formData,
 		dataType: "html",
 		success: function(data){
-			console.log(data);
 			if(data == "reload"){
 				location.replace("./carrello.jsp");
 			} else {
