@@ -43,6 +43,7 @@ public class CatalogoServlet extends HttpServlet {
 		List<DettaglioProdottoBean> dettagliProdotti = new ArrayList<>();
 		DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
 		String filter = request.getParameter("filter");
+		String path = null;
 		
 		if(filter != null) {
 			if(filter.equals("snack") || filter.equals("drink")) {
@@ -109,7 +110,16 @@ public class CatalogoServlet extends HttpServlet {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			} else if (filter.equalsIgnoreCase("catalogo")) {
+				try {
+					prodotti = dbProdotti.doRetrieveAll("codiceSeriale");
+					dettagliProdotti = dbDettagli.doRetrieveAll("tipo");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+			path = "./catalogo.jsp";
 		} else {
 			try {
 				prodotti = dbProdotti.doRetrieveAll("codiceSeriale");
@@ -118,6 +128,7 @@ public class CatalogoServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			path = "./home.jsp";
 		}
 		
 		request.getSession().setAttribute("prodotti", prodotti);
@@ -126,7 +137,7 @@ public class CatalogoServlet extends HttpServlet {
 			request.getSession().setAttribute("admin",false);
 		}	
 		
-		RequestDispatcher view = request.getRequestDispatcher("./catalogo.jsp");
+		RequestDispatcher view = request.getRequestDispatcher(path);
 		view.forward(request, response);
 	}
 
