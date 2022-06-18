@@ -63,7 +63,6 @@
       </div>
     </div>
     <script>
-   
     	document.querySelector('.nav-icon-5').addEventListener("click", function() {
     		  document.body.classList.toggle('open');
     		});
@@ -75,5 +74,4 @@
       });
     </script>
   </body>
- 
 </html>
