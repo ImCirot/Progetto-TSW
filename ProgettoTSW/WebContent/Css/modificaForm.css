@@ -39,9 +39,7 @@ button:hover{
 	cursor: pointer;
 }
 
-img{
-  width: 104px;
-}
+
 
 input{
   -webkit-transition: all 0.30s ease-in-out;

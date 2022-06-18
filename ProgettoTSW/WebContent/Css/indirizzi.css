@@ -1,0 +1,124 @@
+.sezione{
+  display: grid;
+  width: 80%;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 5% auto;
+  gap: 2rem;
+}
+
+.carte{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border: 1px solid lightgrey;
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: space-between;
+
+}
+.aggiungi{
+    flex-direction:column;
+      justify-content: space-evenly;
+	display:flex;
+	justify-content:center;
+	align-items:center;
+      border-color: lightgray;
+}
+
+
+
+@media (max-width:768px){
+  .sezione{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width:769px) and (max-width:900px){
+  .sezione{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
+
+.cta {
+ position: relative;
+ margin: auto;
+ padding: 12px 18px;
+ transition: all 0.2s ease;
+ border: none;
+ background: none;
+}
+
+.cta:before {
+ content: "";
+ position: absolute;
+ top: 0;
+ left: 0;
+ display: block;
+ border-radius: 50px;
+ background: #b1dae7;
+ width: 45px;
+ height: 45px;
+ transition: all 0.3s ease;
+}
+
+.cta span {
+ position: relative;
+ font-family: "Ubuntu", sans-serif;
+ font-size: 18px;
+ font-weight: 700;
+ letter-spacing: 0.05em;
+ color: #234567;
+}
+
+.cta svg {
+ position: relative;
+ top: 0;
+ margin-left: 10px;
+ fill: none;
+ stroke-linecap: round;
+ stroke-linejoin: round;
+ stroke: #234567;
+ stroke-width: 2;
+ transform: translateX(-5px);
+ transition: all 0.3s ease;
+}
+
+.cta:hover:before {
+ width: 100%;
+ background: #b1dae7;
+}
+
+.cta:hover svg {
+ transform: translateX(0);
+}
+
+.cta:active {
+ transform: scale(0.95);
+}
+
+
+
+#bottone_elimina {
+	margin-top:1.7rem;
+ color: #090909;
+ padding: 0.7em 1.7em;
+ font-size: 12px;
+ border-radius: 0.5em;
+ background: #e8e8e8;
+ border: 1px solid #e8e8e8;
+ transition: all .3s;
+ box-shadow: 6px 6px 12px #c5c5c5,
+             -6px -6px 12px #ffffff;
+}
+
+#bottone_elimina:hover {
+ border: 1px solid white;
+ cursor:pointer;
+}
+
+#bottone_elimina:active {
+ box-shadow: 4px 4px 12px #c5c5c5,
+             -4px -4px 12px #ffffff;
+}

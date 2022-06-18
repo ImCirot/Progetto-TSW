@@ -60,49 +60,146 @@
 	</div>
 	
 	
-    <br><br><br><br><br>
-  	  
-    <div class="aggiungiProdotto">
-	    <h3>Aggiungi un prodotto</h3>
-	    <form action="modificaProdotto" method="get">
-	      <input required type="hidden" name="mode" value="aggiungi">	
-	      <label for="codiceSeriale">Codice Seriale</label><br>
-	      <input required type="text" name="codiceSeriale" placeholder="Codice seriale"><br><br>
-	      <label for="nome">Nome</label><br>
-	      <input required type="text" name="nome" placeholder="Nome"><br><br>
-	      <label for="marca">Marca</label><br>
-	      <input required type="text" name="marca" placeholder="Marca"><br><br>
-	      <label for="desc">Descrizione</label><br>
-	      <textarea required name="desc" rows="8" cols="80"></textarea><br><br>
-	      <label for="edLimitata">Edizione Limitata</label><br>
-	      <select required name="edLimitata">
-	        <option value="si">Si</option>
-	        <option value="no">No</option>
-	      </select><br><br>
-	      <label for="tipo">Tipo prodotto</label><br>
-	      <input required type="text" name="tipo" placeholder="Snack o drink"><br><br>
-	      <label for="costo">Costo</label><br>
-	      <input required type="text" name="costo" placeholder="Costo unitario"><br><br>
-	      <label for="sconto">Prezzo scontato</label><br>
-	      <input type="text" name="sconto" placeholder="Prezzo scontato"><br><br>
-	      <label for="IVA">IVA</label><br>
-	      <input required type="text" name="IVA" placeholder="IVA"><br><br>
-	      <label for="quantita">Quantita'</label><br>
-	      <input required type="text" name="quantita" placeholder="Quantita'"><br><br>
-	      <label for="origine">Origine</label><br>
-	      <input required type="text" name="origine" placeholder="Origine"><br><br>
-	      <label for="scadenza">Data scadenza</label><br>
-	      <input required type="date" name="scadenza"><br><br>
-	      <label for="peso">Peso</label><br>
-	      <input required type="text" name="peso" placeholder="Lascia vuoto e usa volume per i drink"><br><br>
-	      <label for="volume">Volume</label><br>
-	      <input required type="text" name="volume" placeholder="Lascia vuoto e usa peso per gli snack"><br><br>
-	      <label for="img">Link immagine</label><br>
-	      <input type="text" name="img" placeholder="Vai su github, genera link e incollalo qui"><br><br>
-	      <input type="submit" value="Aggiungi Prodotto">
-	    </form>
+    
+    
+    
+  	  <div class="container_form">
+  	  <h2>Aggiungi un prodotto</h2>
+  <form action="modificaProdotto" method="get">
+  <input required type="hidden" name="mode" value="aggiungi">
+    <div class="row">
+      <div class="col-25">
+        <label for="codiceSeriale">Codice seriale</label>
+      </div>
+      <div class="col-75">
+        <input required type="text" id="codiceSeriale" name="codiceSeriale" placeholder="GGCA..">
+      </div>
     </div>
-    <br><br><br>
+    <div class="row">
+      <div class="col-25">
+        <label for="nome">Nome</label>
+      </div>
+      <div class="col-75">
+        <input required type="text" id="nome" name="nome" placeholder="Chip potato..">
+      </div>
+    </div>
+     <div class="row">
+      <div class="col-25">
+        <label for="marca">Marca</label>
+      </div>
+      <div class="col-75">
+        <input required type="text" id="marca" name="marca" placeholder="Chip potato..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="desc">Descrizione</label>
+      </div>
+      <div class="col-75">
+        <textarea required id="desc" name="desc" placeholder="Write something.." style="height:200px"></textarea>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="edLimitata">Edizione limitata</label>
+      </div>
+      <div class="col-75">
+        <select required id="edLimitata" name="edLimitata">
+          <option value="si">Si</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="tipo">Tipo prodotto</label>
+      </div>
+      <div class="col-75">
+        <input required type="text" id="tipo" name="tipo" placeholder="Snack o drink">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="costo">Costo</label>
+      </div>
+      <div class="col-75">
+        <input required type="text" id="costo" name="costo" placeholder="Costo unitario">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="sconto">Prezzo scontanto</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="sconto" name="sconto" placeholder="Prezzo scontato">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="IVA">IVA</label>
+      </div>
+      <div class="col-75">
+        <input required type="text" id="IVA" name="IVA" placeholder="22%..">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="quantita">Quantita</label>
+      </div>
+      <div class="col-75">
+        <input required type="text" id="quantita" name="quantita" placeholder="1,2,3...">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="origine">Origine</label>
+      </div>
+      <div class="col-75">
+        <input required type="text" id="origine" name="origine" placeholder="America, Giappone...">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="scadenza">Scadenza</label>
+      </div>
+      <div class="col-75">
+        <input required type="date" id="scadenza" name="scadenza" placeholder="20-10-2022">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="peso">Peso</label>
+      </div>
+      <div class="col-75">
+        <input required type="text" id="peso" name="peso" placeholder="Lascia vuoto e usa volume per i drink">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="volume">Volume</label>
+      </div>
+      <div class="col-75">
+        <input required type="text" id="volume" name="volume" placeholder="Lascia vuoto e usa peso per gli snack">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-25">
+        <label for="img">Immagine</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="img" name="img" placeholder="Vai su gitHub, genera link e incollalo qui">
+      </div>
+    </div>
+    <div class="row">
+      <input type="submit" value="Aggiungi Prodotto">
+    </div>
+  </form>
+</div>
+
+
+
+    
+   
   <jsp:include page="./footer.jsp" />
 </body>
 </html>

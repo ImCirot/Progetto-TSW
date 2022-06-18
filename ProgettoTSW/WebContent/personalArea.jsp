@@ -45,7 +45,7 @@
           <div class="card-description">
             <h2>I miei ordini</h2>
             <p>Controlla i tuoi ordini</p>
-            <a href="./userPersonalArea.jsp"></a>
+            <a href="./listaOrdini.jsp"></a>
           </div>
         </div>
 
@@ -56,7 +56,7 @@
           <div class="card-description">
             <h2>I miei indirizzi</h2>
             <p>Controlla e/o modifica i tuoi indirizzi</p>
-            <a href="./paginaIndirizzi.jsp"></a>
+            <a href="./indirizzi.jsp"></a>
           </div>
         </div>
 
@@ -67,7 +67,7 @@
           <div class="card-description">
             <h2>I miei metodi di pagamento</h2>
             <p>Controlla e/o modifica i tuoi metodi di pagamento</p>
-            <a href="./paginaPagamenti.jsp"></a>
+            <a href="./metodiDiPagamento.jsp"></a>
           </div>
         </div>
 
@@ -75,9 +75,6 @@
     </div>
 	<% } else { %>
 		 <div class="section">
-		
-		
-		
         <div class="grid-card">
           <div class="img">
             <span class="material-icons-personal">assignment</span>
