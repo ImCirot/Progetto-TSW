@@ -52,7 +52,6 @@ function proseguiOrdine() {
 		dataType: "html",
 		success: function(data){
 			console.log($("#prezzoTot").html());
-			console.log(data);
 			window.location.replace(data);
 		}
 	});

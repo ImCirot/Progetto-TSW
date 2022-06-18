@@ -17,16 +17,16 @@
           <ul>
             <li>089-1234765</li>
             <li>Via Roma, 10 <br>Fisciano (SA), Italia</li>
-            <li><a id="mail" href="mailto:supporto@snackz.it">supporto@snackz.it</a></li>
+            <li><a class="footer-links" href="mailto:supporto@snackz.it">supporto@snackz.it</a></li>
           </ul>
         </div>
         <div class="info_footer">
           <p>Catalogo</p>
           
           <ul>
-            <li>Edizione limitata</li>
-            <li>Offerte</li>
-            <li>Specialita</li>
+            <li><a class="footer-links" href="catalogo?filter=catalogo">Tutti i prodotti</a></li>
+            <li><a class="footer-links" href="catalogo?filter=offerta">Offerte</a></li>
+            <li><a class="footer-links" href="catalogo?filter=edLimitata">Limited edition</a></li>
           </ul>
         </div>
         <div class="info_footer">

@@ -110,30 +110,33 @@ public class CarrelloServlet extends HttpServlet {
 			RequestDispatcher view = request.getRequestDispatcher("./carrello.jsp");
 			view.forward(request, response);
 		} else if(mode.equalsIgnoreCase("getTotal")) {
-			Double total = 0.0;
-			carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
-			DettaglioProdottoBean dettagliProdotto = new DettaglioProdottoBean();
-			DettaglioProdottoDAO dbDettagliProdotti = new DettaglioProdottoDAO();
-			String key;
-			Iterator<String> iterKeys = carrello.keySet().iterator();
-			
-			while(iterKeys.hasNext()) {
-				key = iterKeys.next();
-				try {
-					dettagliProdotto = dbDettagliProdotti.doRetrieveByKey(key);
-					if(dettagliProdotto.getPrezzoScontato() != null) {
-						total += dettagliProdotto.getPrezzoScontato().doubleValue() * carrello.get(key);
-					} else {
-						total += dettagliProdotto.getCostoUnitario().doubleValue() * carrello.get(key);
+			if(request.getSession().getAttribute("carrello") == null) {
+				return;
+			} else {
+				Double total = 0.0;
+				carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
+				DettaglioProdottoBean dettagliProdotto = new DettaglioProdottoBean();
+				DettaglioProdottoDAO dbDettagliProdotti = new DettaglioProdottoDAO();
+				String key;
+				Iterator<String> iterKeys = carrello.keySet().iterator();
+				
+				while(iterKeys.hasNext()) {
+					key = iterKeys.next();
+					try {
+						dettagliProdotto = dbDettagliProdotti.doRetrieveByKey(key);
+						if(dettagliProdotto.getPrezzoScontato() != null) {
+							total += dettagliProdotto.getPrezzoScontato().doubleValue() * carrello.get(key);
+						} else {
+							total += dettagliProdotto.getCostoUnitario().doubleValue() * carrello.get(key);
+						}
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
+				response.getWriter().print(String.format("%.2f", total));
 			}
-			response.getWriter().print(String.format("%.2f", total));
 		}
-		
 //		RequestDispatcher view = request.getRequestDispatcher(redirectPath);
 //		view.forward(request, response);
 	}
