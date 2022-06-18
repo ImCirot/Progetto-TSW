@@ -18,7 +18,7 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 		PreparedStatement statement = null;
 		
 		String query = "INSERT INTO " + DettaglioProdottoDAO.TABLE_NAME + 
-					" (tipo,prodotto,costoUnitario,IVA,quantita,origine,scadenza,peso,volume,immagine) "
+					" (tipo,prodotto,costoUnitario,prezzoScontato,IVA,quantita,origine,scadenza,peso,volume,immagine) "
 					+ "VALUES (?,?,?,?,?,?,?,?,?,?);";
 		
 		try {
@@ -28,13 +28,14 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 			statement.setString(1, bean.getTipo());
 			statement.setString(2, bean.getProdotto());
 			statement.setBigDecimal(3, bean.getCostoUnitario());
-			statement.setInt(4, bean.getIVA());
-			statement.setInt(5, bean.getQuantita());
-			statement.setString(6, bean.getOrigine());
-			statement.setString(7, bean.getScadenza());
-			statement.setString(8, bean.getPeso());
-			statement.setString(9, bean.getVolume());
-			statement.setString(10, bean.getImmagine());
+			statement.setBigDecimal(4, bean.getPrezzoScontato());
+			statement.setInt(5, bean.getIVA());
+			statement.setInt(6, bean.getQuantita());
+			statement.setString(7, bean.getOrigine());
+			statement.setString(8, bean.getScadenza());
+			statement.setString(9, bean.getPeso());
+			statement.setString(10, bean.getVolume());
+			statement.setString(11, bean.getImmagine());
 			
 			statement.executeUpdate();
 			
@@ -97,6 +98,7 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 				dettaglioProdotto.setTipo(result.getString("tipo"));
 				dettaglioProdotto.setProdotto(result.getString("prodotto"));
 				dettaglioProdotto.setCostoUnitario(result.getBigDecimal("costoUnitario"));
+				dettaglioProdotto.setPrezzoScontato(result.getBigDecimal("prezzoScontato"));
 				dettaglioProdotto.setIVA(Integer.parseInt(result.getString("IVA")));
 				dettaglioProdotto.setQuantita(Integer.parseInt(result.getString("quantita")));
 				dettaglioProdotto.setOrigine(result.getString("origine"));
@@ -139,6 +141,7 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 				dettaglioProdotto.setTipo(result.getString("tipo"));
 				dettaglioProdotto.setProdotto(result.getString("prodotto"));
 				dettaglioProdotto.setCostoUnitario(result.getBigDecimal("costoUnitario"));
+				dettaglioProdotto.setPrezzoScontato(result.getBigDecimal("prezzoScontato"));
 				dettaglioProdotto.setIVA(Integer.parseInt(result.getString("IVA")));
 				dettaglioProdotto.setQuantita(Integer.parseInt(result.getString("quantita")));
 				dettaglioProdotto.setOrigine(result.getString("origine"));
@@ -185,6 +188,7 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 				dettaglioProdotto.setTipo(result.getString("tipo"));
 				dettaglioProdotto.setProdotto(result.getString("prodotto"));
 				dettaglioProdotto.setCostoUnitario(result.getBigDecimal("costoUnitario"));
+				dettaglioProdotto.setPrezzoScontato(result.getBigDecimal("prezzoScontato"));
 				dettaglioProdotto.setIVA(Integer.parseInt(result.getString("IVA")));
 				dettaglioProdotto.setQuantita(Integer.parseInt(result.getString("quantita")));
 				dettaglioProdotto.setOrigine(result.getString("origine"));
@@ -215,7 +219,7 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 		int result = 0;
 		
 		String query = "UPDATE " + DettaglioProdottoDAO.TABLE_NAME + " SET "
-				+ "tipo = ?, costoUnitario = ?, IVA = ?, quantita = ?, origine = ?, scadenza = ?,"
+				+ "tipo = ?, costoUnitario = ?, prezzoScontato = ?, IVA = ?, quantita = ?, origine = ?, scadenza = ?,"
 				+ " peso = ?, volume = ?, immagine = ? WHERE prodotto = ?;";
 		
 		try {
@@ -224,14 +228,15 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 			
 			statement.setString(1, bean.getTipo());
 			statement.setBigDecimal(2, bean.getCostoUnitario());
-			statement.setInt(3, bean.getIVA());
-			statement.setInt(4, bean.getQuantita());
-			statement.setString(5, bean.getOrigine());
-			statement.setString(6, bean.getScadenza());
-			statement.setString(7, bean.getPeso());
-			statement.setString(8, bean.getVolume());
-			statement.setString(9, bean.getImmagine());
-			statement.setString(10, bean.getProdotto());
+			statement.setBigDecimal(3, bean.getPrezzoScontato());
+			statement.setInt(4, bean.getIVA());
+			statement.setInt(5, bean.getQuantita());
+			statement.setString(6, bean.getOrigine());
+			statement.setString(7, bean.getScadenza());
+			statement.setString(8, bean.getPeso());
+			statement.setString(9, bean.getVolume());
+			statement.setString(10, bean.getImmagine());
+			statement.setString(11, bean.getProdotto());
 			
 			result = statement.executeUpdate();
 			
@@ -269,6 +274,7 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 				dettaglioProdotto.setTipo(result.getString("tipo"));
 				dettaglioProdotto.setProdotto(result.getString("prodotto"));
 				dettaglioProdotto.setCostoUnitario(result.getBigDecimal("costoUnitario"));
+				dettaglioProdotto.setPrezzoScontato(result.getBigDecimal("prezzoScontato"));
 				dettaglioProdotto.setIVA(Integer.parseInt(result.getString("IVA")));
 				dettaglioProdotto.setQuantita(Integer.parseInt(result.getString("quantita")));
 				dettaglioProdotto.setOrigine(result.getString("origine"));
@@ -291,47 +297,4 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 		
 		return listaDettagliProdottiFiltrati;
 	}
-	
-//	public synchronized List<DettaglioProdottoBean> filterByCategoria(String categoria) throws SQLException {
-//		List<DettaglioProdottoBean> listaDettagliProdottiFiltrati = new ArrayList<>();
-//		Connection con = null;
-//		PreparedStatement statement = null;
-//		
-//		String query = "SELECT * FROM " + DettaglioProdottoDAO.TABLE_NAME + " WHERE categoria = ?";
-//		
-//		try {
-//			con = DriverManagerConnectionPool.getConnection();
-//			statement = con.prepareStatement(query);
-//			statement.setString(1, categoria);
-//			
-//			ResultSet result = statement.executeQuery();
-//			
-//			while(result.next()) {
-//				DettaglioProdottoBean dettaglioProdotto = new DettaglioProdottoBean();
-//				
-//				dettaglioProdotto.setTipo(result.getString("tipo"));
-//				dettaglioProdotto.setProdotto(result.getString("prodotto"));
-//				dettaglioProdotto.setCostoUnitario(result.getBigDecimal("costoUnitario"));
-//				dettaglioProdotto.setIVA(Integer.parseInt(result.getString("IVA")));
-//				dettaglioProdotto.setQuantita(Integer.parseInt(result.getString("quantita")));
-//				dettaglioProdotto.setOrigine(result.getString("origine"));
-//				dettaglioProdotto.setScadenza(result.getString("scadenza"));
-//				dettaglioProdotto.setPeso(result.getString("peso"));
-//				dettaglioProdotto.setVolume(result.getString("volume"));
-//				dettaglioProdotto.setImmagine(result.getString("immagine"));
-//				
-//				listaDettagliProdottiFiltrati.add(dettaglioProdotto);
-//			}
-//		} finally {
-//			try {
-//				if(statement != null) {
-//					statement.close();
-//				}
-//			} finally {
-//				DriverManagerConnectionPool.releaseConnection(con);
-//			}
-//		}
-//		
-//		return listaDettagliProdottiFiltrati;
-//	}
 }

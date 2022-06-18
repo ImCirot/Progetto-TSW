@@ -109,12 +109,23 @@
 }
 
 
-.prezzo p{
+.price{
 	font-weight: bold;
     font-size: 1.4em;
     color: mediumseagreen;
 }
 
+.full-price {
+	text-decoration: line-through;
+	color: grey;
+	font-size: .8em;	
+}
+
+.sale {
+	font-weight: bold;
+    color: red;
+    font-size: 1.4em;
+}
 
 #img-aggiungi{
 	display:flex;

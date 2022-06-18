@@ -9,6 +9,7 @@ public class DettaglioProdottoBean implements Serializable {
 	private String tipo;
 	private String prodotto;
 	private BigDecimal costoUnitario;
+	private BigDecimal prezzoScontato;
 	private int IVA;
 	private int quantita;
 	private String origine;
@@ -21,6 +22,7 @@ public class DettaglioProdottoBean implements Serializable {
 		this.tipo = "null";
 		this.prodotto = "null";
 		this.costoUnitario = BigDecimal.valueOf(-1);
+		this.prezzoScontato = BigDecimal.valueOf(-1);
 		this.IVA = -1;
 		this.quantita = -1;
 		this.origine = "null";
@@ -52,6 +54,14 @@ public class DettaglioProdottoBean implements Serializable {
 
 	public void setCostoUnitario(BigDecimal costoUnitario) {
 		this.costoUnitario = costoUnitario;
+	}
+	
+	public BigDecimal getPrezzoScontato() {
+		return prezzoScontato;
+	}
+
+	public void setPrezzoScontato(BigDecimal prezzoScontato) {
+		this.prezzoScontato = prezzoScontato;
 	}
 
 	public int getIVA() {

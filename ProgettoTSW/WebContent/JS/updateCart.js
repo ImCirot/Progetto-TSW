@@ -1,3 +1,7 @@
+$(document).ready( function() {
+	updatePrice();
+});
+
 function updateCart(input,prodotto) {
 	let formData = {
 		prodotto: prodotto,
@@ -32,7 +36,6 @@ function updatePrice(){
 			dataType: "html",
 			success: function(data){
 				$("#prezzoTot").html(data + " &euro;");
-				$("#costoTot").value(data);
 			}
 		});
 }

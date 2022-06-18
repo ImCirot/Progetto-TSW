@@ -22,7 +22,7 @@
 			Iterator<String> iterKeys = carrello.keySet().iterator();
 			List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
 			List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");
-			Double costoTot = 0.0;
+// 			Double costoTot = 0.0;
 			
 			Integer quantita = 0;
 			ProdottoBean prodotto = new ProdottoBean();
@@ -46,7 +46,7 @@
 					if(dettagli.getProdotto().equals(key)) break;
 				}
 				
-				costoTot += dettagli.getCostoUnitario().doubleValue() * quantita;
+// 				costoTot += dettagli.getCostoUnitario().doubleValue() * quantita;
 				%>
 				  
 				     <div class="cart-container-interno">
@@ -59,7 +59,11 @@
 				        <p><% out.print(prodotto.getNome()); %></p>
 				        </div>
 				        <div class="info-prodotto">
+				        <% if(dettagli.getPrezzoScontato() != null) { %>
+				        <p><del class="full-price"><% out.print(dettagli.getCostoUnitario()); %> &euro;</del>  <% out.print(dettagli.getPrezzoScontato()); %> &euro;</p>
+				        <% } else { %>
 				          <p> <% out.print(dettagli.getCostoUnitario()); %> &euro;</p>
+				         <% } %>
 				        </div>
 				        <div class="info-prodotto" class="flex-el">
 							<input type="number" placeholder="Quantità" name="quantita" onchange = "updateCart(this,'<%out.print(prodotto.getCodiceSeriale());%>')" value="<% out.print(quantita); %>">
@@ -80,14 +84,11 @@
 						<h2>Costo Totale Ordine</h2>
 						</div>
 						<div id="prezzo" class="totale-interno-disposizione">
-							<p id="prezzoTot">
-							<% 
-							out.println(String.format("%.2f", costoTot));%> &euro;
-							</p>
+							<p id="prezzoTot"></p>
 						</div>
 				<div id="procedi" class="totale-interno-disposizione">
 				<form action="ordine" method="get">
-					<input type="hidden" name="costoTot" value="<%out.print(costoTot);%>">
+					<input type="hidden" name="costoTot" value="">
 					<button class="noselect2"><span class="text">Procedi</span><span class="icon"> <img id="checkbox" src="./Images/checkbox.png" alt=""></span></button>
 				</form>
 				</div>

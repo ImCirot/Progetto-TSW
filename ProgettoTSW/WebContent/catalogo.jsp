@@ -54,7 +54,11 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
             <h2><% out.println(prodotto.getNome()); %></h2>
           </div>
           <div class="prezzo">
-            <p><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
+          <% if(dettagli.getPrezzoScontato() != null) {%>
+          <p class="sale"><del class="full-price"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</del>  <% out.println(dettagli.getPrezzoScontato().toPlainString()); %>&euro;</p>
+          <% } else { %>
+            <p class="price"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
+            <% } %>
           </div>
           </div>
           <div class="acquista">

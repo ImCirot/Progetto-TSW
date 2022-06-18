@@ -121,13 +121,16 @@ public class CarrelloServlet extends HttpServlet {
 				key = iterKeys.next();
 				try {
 					dettagliProdotto = dbDettagliProdotti.doRetrieveByKey(key);
-					total += dettagliProdotto.getCostoUnitario().doubleValue() * carrello.get(key);
+					if(dettagliProdotto.getPrezzoScontato() != null) {
+						total += dettagliProdotto.getPrezzoScontato().doubleValue() * carrello.get(key);
+					} else {
+						total += dettagliProdotto.getCostoUnitario().doubleValue() * carrello.get(key);
+					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
-			
 			response.getWriter().print(String.format("%.2f", total));
 		}
 		
