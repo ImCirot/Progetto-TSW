@@ -30,10 +30,6 @@
 		MetodoDiPagamentoBean metodPagamento = new MetodoDiPagamentoBean();%>
 		<div class="container">
 		<form action="ordine" method="post">
-		<input type="hidden" name="costoTot" value="<% out.print(request.getAttribute("costoTot"));%>">
-		
-		
-		
 			<div class="container-interno">
 			<h4>Scegli indirizzo di spedizione</h4><br>
 		<%	while(iterIndirizzi.hasNext()){

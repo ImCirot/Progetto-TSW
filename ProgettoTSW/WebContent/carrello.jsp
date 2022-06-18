@@ -80,13 +80,10 @@
 						<h2>Costo Totale Ordine</h2>
 						</div>
 						<div id="prezzo" class="totale-interno-disposizione">
-							<p id="prezzoTot"></p>
+							<p id="prezzoTot"></p><p>&euro;</p>
 						</div>
 				<div id="procedi" class="totale-interno-disposizione">
-				<form action="ordine" method="get">
-					<input type="hidden" name="costoTot" value="">
-					<button class="noselect2"><span class="text">Procedi</span><span class="icon"> <img id="checkbox" src="./Images/checkbox.png" alt=""></span></button>
-				</form>
+					<button class="noselect2" onclick="proseguiOrdine()"><span class="text">Procedi</span><span class="icon"> <img id="checkbox" src="./Images/checkbox.png" alt=""></span></button>
 				</div>
 				<div id="pulisci" class="totale-interno-disposizione">
 				<form action="Carrello" method="get">

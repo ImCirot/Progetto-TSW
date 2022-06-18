@@ -35,7 +35,25 @@ function updatePrice(){
 			data: formData,
 			dataType: "html",
 			success: function(data){
-				$("#prezzoTot").html(data + " &euro;");
+				$("#prezzoTot").html(data);
 			}
 		});
+}
+
+function proseguiOrdine() {
+	let formData = {
+			costoTot: $("#prezzoTot").html(),
+	}
+	
+	$.ajax({
+		type: "GET",
+		url: "ordine",
+		data: formData,
+		dataType: "html",
+		success: function(data){
+			console.log($("#prezzoTot").html());
+			console.log(data);
+			window.location.replace(data);
+		}
+	});
 }

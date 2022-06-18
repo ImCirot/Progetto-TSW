@@ -48,29 +48,26 @@ public class OrdineServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String redirectPath = null;
+		response.setContentType("text/plain");
 		
 		if(request.getSession().getAttribute("logged") == null) {
 			request.getSession().setAttribute("error", "Devi essere loggato per procedere all'acquisto");
-			redirectPath = "./loginForm.jsp";
+			response.getWriter().print("./loginForm.jsp");
 		} else {
-			request.setAttribute("costoTot", request.getParameter("costoTot"));
-			redirectPath = "./riepilogoOrdine.jsp";
+			request.getSession().setAttribute("costoTot", (String) request.getParameter("costoTot"));
+			response.getWriter().print("./riepilogoOrdine.jsp");
+			
 		}
-		
-		RequestDispatcher view = request.getRequestDispatcher(redirectPath);
-		view.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String redirectPath = null;
-		
+		String path = null;
 		if(request.getSession().getAttribute("logged") == null) {
 			request.getSession().setAttribute("error", "Devi accedere per poter acquistare!");
-			redirectPath = "./loginForm.jsp";
+			path = "./loginForm.jsp";
 		}
 		
 		String indirizzoID = (String) request.getParameter("indirizzo");
@@ -78,7 +75,7 @@ public class OrdineServlet extends HttpServlet {
 		IndirizzoBean indirizzo = new IndirizzoBean();
 		MetodoDiPagamentoBean metodoDiPagamento = new MetodoDiPagamentoBean();
 		String utente = (String) request.getSession().getAttribute("utente");
-		double costoTot = Double.parseDouble(request.getParameter("costoTot"));
+		double costoTot = Double.parseDouble((String) request.getSession().getAttribute("costoTot"));
 		OrdineBean ordine = new OrdineBean();
 		OrdineDAO dbOrdini = new OrdineDAO();
 		IndirizzoDAO dbIndirizzi = new IndirizzoDAO();
@@ -91,7 +88,8 @@ public class OrdineServlet extends HttpServlet {
 			if(indirizzo == null || metodoDiPagamento == null) {
 				if(request.getSession().getAttribute("logged") == null) {
 					request.getSession().setAttribute("error", "Devi aggiungere un indirizzo/metodo di pagamento per poter acquistare!");
-					redirectPath = "./personalArea.jsp";
+					path = "./personalArea.jsp";
+					return;
 				}
 			}
 			ordine.setCliente(utente);
@@ -131,21 +129,25 @@ public class OrdineServlet extends HttpServlet {
 				composizione.setProdotto(key);
 				composizione.setQuantitaProdotto(carrello.get(key).intValue());
 				prodotto.setQuantita(prodotto.getQuantita() - carrello.get(key).intValue());
-				composizione.setCostoUnitario(prodotto.getCostoUnitario());
+				if(prodotto.getPrezzoScontato() != null) {
+				composizione.setCostoUnitario(prodotto.getPrezzoScontato());
+				} else {
+					composizione.setCostoUnitario(prodotto.getCostoUnitario());
+				}
 				
 				dbComposizioni.doSave(composizione);
 				dbDettagli.doUpdate(prodotto);
 			}
 			
 			request.getSession().removeAttribute("carrello");
-			redirectPath = "./acquisto.jsp";
+			request.getSession().removeAttribute("costoTot");
+			path = "./acquisto.jsp";
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher(redirectPath);
+		RequestDispatcher view = request.getRequestDispatcher(path);
 		view.forward(request, response);
 	}
-
 }
