@@ -57,7 +57,7 @@
           	</div>
           </li>
           <li><a class="links" href="#" onclick="showSearch()"><span class="material-icons md-36">search</span></a></li>
-          <li><a class="links" href="carrello.jsp"><span class="material-icons md-36">local_grocery_store</span></a></li>
+          <li><a class="links"  href="#" id="carrello" onclick="showCart()"><span class="material-icons md-36">local_grocery_store</span></a></li>
           <li><a class="links" href="./loginForm.jsp"><span class="material-icons md-36">person</span></a></li>
         </ul>
       </div>

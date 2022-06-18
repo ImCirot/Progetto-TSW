@@ -75,3 +75,14 @@ $(document).ready(function() {
         }
 	});
 });
+
+function showCart(){
+	$.ajax({
+		  type: "GET",
+		  url: "catalogo",
+		  success: function(data){
+			  console.log("fatto");
+			  window.location.replace("carrello.jsp");
+		  }
+	});
+}
