@@ -18,6 +18,10 @@
 			<div class="carrello-vuoto">
 				<p>Carrello vuoto!</p>
 			</div>
+			<div class="centra_ancora">
+				<a href="catalogo?filter=catalogo">Continua lo shopping</a>
+			</div>
+			
 			<%}else{ 
 			Iterator<String> iterKeys = carrello.keySet().iterator();
 			List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
@@ -62,7 +66,7 @@
 				         <% } %>
 				        </div>
 				        <div class="info-prodotto" class="flex-el">
-							<input type="number" placeholder="Quantità" name="quantita" onchange = "updateCart(this,'<%out.print(prodotto.getCodiceSeriale());%>')" value="<% out.print(quantita); %>">
+							<input type="number" placeholder="Quantità" min="0" max="<% out.print(dettagli.getQuantita());%>" name="quantita" onchange = "updateCart(this,'<%out.print(prodotto.getCodiceSeriale());%>')" value="<% out.print(quantita); %>">
 							<input type="hidden" id="costoUnitarioTot" value="">
  				        </div>
 				        <div class="info-prodotto" class="flex-el">

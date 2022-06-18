@@ -92,6 +92,7 @@
            <span class="material-icons-personal">dashboard</span>
           </div>
           <div class="card-description">
+          	<a href="gestisciProdotti"></a>
             <h2>Gestisci prodotti</h2>
             <p>Rimuovi, aggiungi, modifica prodotti del catalogo</p>
           </div>
