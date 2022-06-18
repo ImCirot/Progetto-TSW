@@ -21,9 +21,7 @@
 			<%}else{ 
 			Iterator<String> iterKeys = carrello.keySet().iterator();
 			List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
-			List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");
-// 			Double costoTot = 0.0;
-			
+			List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");			
 			Integer quantita = 0;
 			ProdottoBean prodotto = new ProdottoBean();
 			DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
@@ -45,8 +43,6 @@
 					dettagli = iterDettagli.next();
 					if(dettagli.getProdotto().equals(key)) break;
 				}
-				
-// 				costoTot += dettagli.getCostoUnitario().doubleValue() * quantita;
 				%>
 				  
 				     <div class="cart-container-interno">
