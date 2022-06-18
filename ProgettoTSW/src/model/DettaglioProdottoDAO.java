@@ -297,4 +297,47 @@ public class DettaglioProdottoDAO extends AbstractDAO<DettaglioProdottoBean> {
 		
 		return listaDettagliProdottiFiltrati;
 	}
+	
+	public synchronized List<DettaglioProdottoBean> filterByOfferta() throws SQLException {
+		List<DettaglioProdottoBean> listaDettagliProdottiFiltrati = new ArrayList<>();
+		Connection con = null;
+		PreparedStatement statement = null;
+		
+		String query = "SELECT * FROM " + DettaglioProdottoDAO.TABLE_NAME + " WHERE prezzoScontato IS NOT NULL";
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				DettaglioProdottoBean dettaglioProdotto = new DettaglioProdottoBean();
+				
+				dettaglioProdotto.setTipo(result.getString("tipo"));
+				dettaglioProdotto.setProdotto(result.getString("prodotto"));
+				dettaglioProdotto.setCostoUnitario(result.getBigDecimal("costoUnitario"));
+				dettaglioProdotto.setPrezzoScontato(result.getBigDecimal("prezzoScontato"));
+				dettaglioProdotto.setIVA(Integer.parseInt(result.getString("IVA")));
+				dettaglioProdotto.setQuantita(Integer.parseInt(result.getString("quantita")));
+				dettaglioProdotto.setOrigine(result.getString("origine"));
+				dettaglioProdotto.setScadenza(result.getString("scadenza"));
+				dettaglioProdotto.setPeso(result.getString("peso"));
+				dettaglioProdotto.setVolume(result.getString("volume"));
+				dettaglioProdotto.setImmagine(result.getString("immagine"));
+				
+				listaDettagliProdottiFiltrati.add(dettaglioProdotto);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+		return listaDettagliProdottiFiltrati;
+	}
 }

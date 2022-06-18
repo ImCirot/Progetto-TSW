@@ -298,4 +298,5 @@ public class ProdottoDAO extends AbstractDAO<ProdottoBean> {
 		}	
 		return listaProdotti;
 	}
+	
 }

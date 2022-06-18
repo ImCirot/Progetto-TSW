@@ -67,7 +67,7 @@ public class CatalogoServlet extends HttpServlet {
 					}
 					e.printStackTrace();
 				}
-			} else {
+			} else if(filter.equalsIgnoreCase("edLimitata")){
 				ProdottoBean prodotto = new ProdottoBean();
 				try {
 					prodotti = dbProdotti.filterByEDLimitata();
@@ -79,6 +79,31 @@ public class CatalogoServlet extends HttpServlet {
 						dettagli = dbDettagli.doRetrieveByKey(prodotto.getCodiceSeriale());
 						
 						dettagliProdotti.add(dettagli);
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else if (filter.equalsIgnoreCase("offerta")) {
+				DettaglioProdottoBean dettaglioProdotto = new DettaglioProdottoBean();
+				ProdottoBean prodotto = new ProdottoBean();
+				List<ProdottoBean> prodottiTotali = new ArrayList<>();
+				try {
+					dettagliProdotti = dbDettagli.filterByOfferta();
+					prodottiTotali = dbProdotti.doRetrieveAll("tipo");
+					Iterator<DettaglioProdottoBean> iterProdottiTrovati = dettagliProdotti.iterator();
+					Iterator<ProdottoBean> iterProdotti;
+					
+					while(iterProdottiTrovati.hasNext()) {
+						dettaglioProdotto = iterProdottiTrovati.next();
+						iterProdotti = prodottiTotali.iterator();
+						
+						while(iterProdotti.hasNext()) {
+							prodotto = iterProdotti.next();
+							if(prodotto.getCodiceSeriale().equalsIgnoreCase(dettaglioProdotto.getProdotto())) {
+								prodotti.add(prodotto);
+							}
+						}
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block

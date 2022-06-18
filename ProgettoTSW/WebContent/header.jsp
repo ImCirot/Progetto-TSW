@@ -31,8 +31,10 @@
     <div class="navbar">
       <div class="catalogo">
         <ul>
-          <li><a class="links" href="catalogo">Home</a></li>
+          <li><a class="links" href="home.jsp">Home</a></li>
+          <li><a class="links" href="catalogo">Catalogo</a></li>
           <li><a class="links" href="catalogo?filter=edLimitata">Ed. Limitata</a></li>
+          <li><a class="links" href="catalogo?filter=offerta">Offerte</a></li>
           <li><a class="links" href="catalogo?filter=snack">Snack</a></li>
           <li><a class="links" href="catalogo?filter=drink">Bibite</a></li>
         </ul>
