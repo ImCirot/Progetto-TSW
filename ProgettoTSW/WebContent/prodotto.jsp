@@ -26,7 +26,11 @@
               <p><%out.println(prodotto.getDescrizioneBreve());%></p>
             </div>
             <div class="prezzo_prodotto">
+            <% if(dettagli.getPrezzoScontato() != null) { %>
+            <p class="sale"><del class="full-price"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</del>    <% out.println(dettagli.getPrezzoScontato().toPlainString()); %>&euro;</p>
+            <% } else { %>
               <p><%out.println(dettagli.getCostoUnitario());%> &euro;</p>
+            <% } %>
             </div>
             <div class="info_pagamento">
               <ul>

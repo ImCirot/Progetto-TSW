@@ -86,9 +86,15 @@
   align-items: center;
 }
 
+.sale {
+	color: red;	
+}
 
-
-
+.full-price {
+	font-size: .8em;
+	text-decoration: line-through;
+	color: grey;
+}
 
 /* bottone */
 .addtocart{
