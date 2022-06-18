@@ -81,6 +81,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 			String edLimitata = request.getParameter("edLimitata");
 			String tipo = request.getParameter("tipo");
 			String costo = request.getParameter("costo");
+			String sconto = request.getParameter("sconto");
 			String IVA = request.getParameter("IVA");
 			String quantita = request.getParameter("quantita");
 			String origine = request.getParameter("origine");
@@ -106,6 +107,7 @@ public class ModificaProdottoServlet extends HttpServlet {
 			dettagli.setProdotto(codiceSeriale);
 			dettagli.setTipo(tipo);
 			dettagli.setCostoUnitario(BigDecimal.valueOf(Double.parseDouble(costo)));
+			dettagli.setCostoUnitario(BigDecimal.valueOf(Double.parseDouble(sconto)));
 			dettagli.setIVA(Integer.parseInt(IVA));
 			dettagli.setQuantita(Integer.parseInt(quantita));
 			dettagli.setOrigine(origine);
@@ -147,6 +149,10 @@ public class ModificaProdottoServlet extends HttpServlet {
 		String edLimitata = request.getParameter("edLimitata");
 		String tipo = request.getParameter("tipo");
 		BigDecimal valore = BigDecimal.valueOf(Double.parseDouble(request.getParameter("costo")));
+		BigDecimal sconto = null;
+		if(!request.getParameter("sconto").equalsIgnoreCase("")) {
+			sconto = BigDecimal.valueOf(Double.parseDouble(request.getParameter("sconto")));
+		}
 		Integer IVA = Integer.parseInt(request.getParameter("IVA"));
 		Integer quantita = Integer.parseInt(request.getParameter("quantita"));
 		String origine = request.getParameter("origine");
@@ -191,6 +197,16 @@ public class ModificaProdottoServlet extends HttpServlet {
 		
 		if(!dettagli.getCostoUnitario().equals(valore)) {
 			dettagli.setCostoUnitario(valore);
+		}
+		
+		if(dettagli.getPrezzoScontato() != null) {
+			if(!dettagli.getPrezzoScontato().equals(sconto)) {
+				dettagli.setPrezzoScontato(sconto);
+			}
+		} else {
+			if(sconto != null) {
+				dettagli.setPrezzoScontato(sconto);
+			}
 		}
 		
 		if(dettagli.getIVA() != IVA) {

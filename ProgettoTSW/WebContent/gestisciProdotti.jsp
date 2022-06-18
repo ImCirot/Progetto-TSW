@@ -196,6 +196,8 @@
 	      <input type="text" name="tipo" placeholder="Snack o drink"><br><br>
 	      <label for="costo">Costo</label><br>
 	      <input type="text" name="costo" placeholder="Costo unitario"><br><br>
+	      <label for="sconto">Prezzo scontato</label><br>
+	      <input type="text" name="sconto" placeholder="Prezzo scontato"><br><br>
 	      <label for="IVA">IVA</label><br>
 	      <input type="text" name="IVA" placeholder="IVA"><br><br>
 	      <label for="quantita">Quantita'</label><br>

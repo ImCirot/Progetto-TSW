@@ -38,6 +38,12 @@
 	      <input type="text" name="tipo" placeholder="Snack o drink" value="<%out.print(dettagli.getTipo());%>"><br><br>
 	      <label for="costo">Costo</label><br>
 	      <input type="text" name="costo" placeholder="Costo unitario" value="<%out.print(dettagli.getCostoUnitario().toString());%>"><br><br>
+	      <label for="sconto">Prezzo Scontato</label><br>
+	      <% if (dettagli.getPrezzoScontato() != null) { %>
+	      <input type="text" name="sconto" placeholder="Prezzo scontato" value="<%out.print(dettagli.getPrezzoScontato().toString());%>"><br><br>
+	      <% } else { %>
+	      <input type="text" name="sconto" placeholder="Prezzo scontato" value=""><br><br>
+	      <% } %>
 	      <label for="IVA">IVA</label><br>
 	      <input type="text" name="IVA" placeholder="IVA" value="<%out.print(dettagli.getIVA());%>"><br><br>
 	      <label for="quantita">Quantita'</label><br>
@@ -54,7 +60,7 @@
 	      <input type="text" name="volume" placeholder="Volume" value="<%out.print(dettagli.getVolume());%>"><br><br>
 	      <%} %>
 	      <label for="img">Link immagine</label><br>
-	      <input type="text" name="img" placeholder="Vai su gdurl, genera link e incollalo qui" value="<%out.print(dettagli.getImmagine());%>"><br><br>
+	      <input type="text" name="img" placeholder="caricalo su github e incollalo qui" value="<%out.print(dettagli.getImmagine());%>"><br><br>
 	      <input type="submit" value="Modifica Prodotto">
 	</form>
 	</div>
