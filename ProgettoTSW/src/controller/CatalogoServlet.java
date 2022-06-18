@@ -40,8 +40,11 @@ public class CatalogoServlet extends HttpServlet {
 		ProdottoDAO dbProdotti = new ProdottoDAO();
 		DettaglioProdottoDAO dbDettagli = new DettaglioProdottoDAO();
 		List<ProdottoBean> prodotti = new ArrayList<>();
+		List<ProdottoBean> prodottiSconto = new ArrayList<>();
 		List<DettaglioProdottoBean> dettagliProdotti = new ArrayList<>();
+		List<DettaglioProdottoBean> dettagliProdottiSconto = new ArrayList<>();
 		DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
+		ProdottoBean prodotto = new ProdottoBean();
 		String filter = request.getParameter("filter");
 		String path = null;
 		
@@ -53,7 +56,6 @@ public class CatalogoServlet extends HttpServlet {
 					
 					while(iterDettagliProdotti.hasNext()) {
 						dettagli = iterDettagliProdotti.next();
-						ProdottoBean prodotto = new ProdottoBean();
 						
 						prodotto = dbProdotti.doRetrieveByKey(dettagli.getProdotto());
 						
@@ -69,7 +71,6 @@ public class CatalogoServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			} else if(filter.equalsIgnoreCase("edLimitata")){
-				ProdottoBean prodotto = new ProdottoBean();
 				try {
 					prodotti = dbProdotti.filterByEDLimitata();
 					Iterator<ProdottoBean> iterProdottiTrovati = prodotti.iterator();
@@ -86,8 +87,6 @@ public class CatalogoServlet extends HttpServlet {
 					e.printStackTrace();
 				}
 			} else if (filter.equalsIgnoreCase("offerta")) {
-				DettaglioProdottoBean dettaglioProdotto = new DettaglioProdottoBean();
-				ProdottoBean prodotto = new ProdottoBean();
 				List<ProdottoBean> prodottiTotali = new ArrayList<>();
 				try {
 					dettagliProdotti = dbDettagli.filterByOfferta();
@@ -96,12 +95,12 @@ public class CatalogoServlet extends HttpServlet {
 					Iterator<ProdottoBean> iterProdotti;
 					
 					while(iterProdottiTrovati.hasNext()) {
-						dettaglioProdotto = iterProdottiTrovati.next();
+						dettagli = iterProdottiTrovati.next();
 						iterProdotti = prodottiTotali.iterator();
 						
 						while(iterProdotti.hasNext()) {
 							prodotto = iterProdotti.next();
-							if(prodotto.getCodiceSeriale().equalsIgnoreCase(dettaglioProdotto.getProdotto())) {
+							if(prodotto.getCodiceSeriale().equalsIgnoreCase(dettagli.getProdotto())) {
 								prodotti.add(prodotto);
 							}
 						}
@@ -114,6 +113,7 @@ public class CatalogoServlet extends HttpServlet {
 				try {
 					prodotti = dbProdotti.doRetrieveAll("codiceSeriale");
 					dettagliProdotti = dbDettagli.doRetrieveAll("tipo");
+					
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -124,6 +124,21 @@ public class CatalogoServlet extends HttpServlet {
 			try {
 				prodotti = dbProdotti.doRetrieveAll("codiceSeriale");
 				dettagliProdotti = dbDettagli.doRetrieveAll("tipo");
+				dettagliProdottiSconto = dbDettagli.filterByOfferta();
+				Iterator<DettaglioProdottoBean> iterDettagli = dettagliProdottiSconto.iterator();
+				Iterator<ProdottoBean> iterProdotti;
+				while(iterDettagli.hasNext()) {
+					dettagli = iterDettagli.next();
+					iterProdotti = prodotti.iterator();
+					while(iterProdotti.hasNext()) {
+						prodotto = iterProdotti.next();
+						
+						if(prodotto.getCodiceSeriale().equalsIgnoreCase(dettagli.getProdotto())) {
+							prodottiSconto.add(prodotto);
+						}
+					}
+				}
+				request.getSession().setAttribute("prodottiSconto", prodottiSconto);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

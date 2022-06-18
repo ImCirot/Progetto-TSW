@@ -31,7 +31,7 @@
     <div class="navbar">
       <div class="catalogo">
         <ul>
-          <li><a class="links" href="home.jsp">Home</a></li>
+          <li><a class="links" href="catalogo">Home</a></li>
           <li><a class="links" href="catalogo?filter=catalogo">Catalogo</a></li>
           <li><a class="links" href="catalogo?filter=edLimitata">Ed. Limitata</a></li>
           <li><a class="links" href="catalogo?filter=offerta">Offerte</a></li>
