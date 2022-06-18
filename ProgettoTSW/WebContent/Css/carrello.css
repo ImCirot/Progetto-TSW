@@ -5,7 +5,9 @@ body{
   font-family: 'Montserrat', sans-serif;
   min-height: 100vh;
 }
-
+.centra_ancora{
+	margin:2% auto;
+}
 #checkbox{
   width: 20px;
   margin-right: 8%;

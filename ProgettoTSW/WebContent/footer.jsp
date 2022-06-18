@@ -33,9 +33,9 @@
           <p>Seguici</p>
           <div class="social-icon">
             <ul>
-              <li><a href="#" class="fa fa-facebook"></a></li>
-              <li><a href="#" class="fa fa-instagram"></a></a></li>
-              <li><a href="#" class="fa fa-twitter"></a></a></li>
+              <li><a href="https://www.facebook.com/luigi.miranda.98" target="_blank" class="fa fa-facebook"></a></li>
+              <li><a href="https://instagram.com/_cirotroiano" target="_blank" class="fa fa-instagram"></a></a></li>
+              <li><a href="https://twitter.com/rimuru_sama7" target="_blank" class="fa fa-twitter"></a></a></li>
             </ul>
           </div>
         </div>
