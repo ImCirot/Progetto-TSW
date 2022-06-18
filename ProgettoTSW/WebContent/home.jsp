@@ -16,13 +16,13 @@
   <div class="slide_viewer">
     <div class="slide_group">
       <div class="slide">
-      	<img alt="" src="./Images/image1.jpg">
+      	
       </div>
       <div class="slide">
-      	<img alt="" src="./Images/image2.jpg">
+     
       </div>
       <div class="slide">
-      	<img alt="" src="./Images/image3.jpg">
+      	
       </div>
     </div>
   </div>
