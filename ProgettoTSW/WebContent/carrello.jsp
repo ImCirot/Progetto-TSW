@@ -10,7 +10,7 @@
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
-	<h1>Carrello</h1>
+	
 	<div class="cart-container">
 		
 		<% Map<String,Integer> carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
