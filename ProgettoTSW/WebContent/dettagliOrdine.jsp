@@ -23,7 +23,7 @@
 		
 		
 		<div class="container-ordine">
-		<h1>Ordine num: <% out.println(ordine.getNumOrdineProgressivo()); %></h1>
+		<h1>Ordine #<% out.println(ordine.getNumOrdineProgressivo()); %></h1>
 		<h3>Cliente: <% out.println(ordine.getCliente()); %></h3>
 		</div>
 		<div class="container-tabella">
@@ -74,11 +74,14 @@
   			</p>
 
 			<p>
-				<strong>Pagato Con</strong>: <% out.println(ordine.getTipoPagamento());
-				 if(ordine.getTipoPagamento().equals("carta")){
-					out.println(ordine.getNumCarta());
-					 } else { 
-					 	out.println(ordine.getIBAN());
+				<strong>Pagato Con</strong>: <% out.println(ordine.getTipoPagamento().toUpperCase());%>
+				<br><br>
+				<% if(ordine.getTipoPagamento().equals("carta")){%>
+				 <strong>Num. Carta: </strong>
+					<% out.println(ordine.getNumCarta());
+					 } else { %>
+					<strong>Num. IBAN:</strong>
+					 <% out.println(ordine.getIBAN());
 					 } %>
 			</p>
 			</div>

@@ -56,7 +56,6 @@ public class OrdineServlet extends HttpServlet {
 		} else {
 			request.getSession().setAttribute("costoTot", (String) request.getParameter("costoTot"));
 			response.getWriter().print("./riepilogoOrdine.jsp");
-			
 		}
 	}
 

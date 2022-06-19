@@ -18,7 +18,7 @@
 	Double costoNetto;
 	DecimalFormat df = new DecimalFormat("0.00");
 	%>
-    <title>Fattura #<% out.print(ordine.getNumOrdineProgressivo()); %></title>
+    <title>Fattura ordine #<% out.print(ordine.getNumOrdineProgressivo()); %></title>
   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" href="./Css/fattura.css" />
     <link rel="stylesheet" href="./Css/printFattura.css" media="print"/>
@@ -56,7 +56,7 @@
                             <div class="col-sm-6">
                                 <div class="mb-4 ">
                                     <div class="text-sm-right">
-                                        <h4 class="invoice-color mb-2 mt-md-2">Fattura #<% out.println(ordine.getNumOrdineProgressivo()); %></h4>
+                                        <h4 class="invoice-color mb-2 mt-md-2">Ordine #<% out.println(ordine.getNumOrdineProgressivo()); %></h4>
                                         <ul class="list list-unstyled mb-0">
                                             <li>Data: <span class="font-weight-semibold"><% out.println(ordine.getDataAcquisto()); %></span></li>
                                         </ul>
@@ -170,7 +170,7 @@
                                             <tr>
                                                 <th class="text-left">Totale:</th>
                                                 <td class="text-right text-primary">
-                                                    <h5 class="font-weight-semibold"><% out.println(ordine.getCostoTotale()); %> &euro;</h5>
+                                                    <h5 class="font-weight-semibold"><% out.println(df.format(ordine.getCostoTotale())); %> &euro;</h5>
                                                 </td>
                                             </tr>
                                         </tbody>

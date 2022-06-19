@@ -11,15 +11,21 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
 <body>
 	<jsp:include page="./header.jsp" />
 	 <div class="sezione">
-    
+    	<% if(request.getSession().getAttribute("logged") == null) {
+    		response.sendRedirect("./loginForm.jsp");
+    	} else {%>
       <% List<OrdineBean> ordini = (List<OrdineBean>) request.getSession().getAttribute("ordini"); 
   		Iterator<OrdineBean> iterOrdini = ordini.iterator();
+  		boolean admin = (boolean) request.getSession().getAttribute("admin");
   		OrdineBean ordine = new OrdineBean(); 
   		while (iterOrdini.hasNext()){
   			ordine = iterOrdini.next();%>
   		<div class="carte">
-  		<h3>Ordine <% out.println(ordine.getNumOrdineProgressivo()); %></h3>
-  		<p>
+  		<h3>Ordine #<% out.println(ordine.getNumOrdineProgressivo()); %></h3>
+  		<%  if(admin) {%>
+  			<b style="font-size:1.2em;">Cliente: <% out.println(ordine.getCliente()); %></b>
+  		<% } %>
+   		<p style="font-size:1.2em;">
   			<% out.println(String.format("%.2f", ordine.getCostoTotale())); %> &euro;<br><br>
   		</p>
   			<form action="gestisciOrdine" method="get">
@@ -34,7 +40,8 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
 				</button>
   			</form>
   		</div>
-  		<%}%>
+  		<%}
+  		}%>
         
       </div>
    

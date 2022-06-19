@@ -23,6 +23,11 @@
 	
 	<div class="titolo">
       <h1>Bentornato <% out.println(request.getSession().getAttribute("nome")); %></h1>
+      <% if(request.getSession().getAttribute("messaggio") != null) {
+    	  String messaggio = (String) request.getSession().getAttribute("messaggio");
+    	  request.getSession().removeAttribute("messaggio");%>
+    	<p><% out.println(messaggio);%></p>
+      <%}%>
     </div>
      <% if (!admin) { %>
      <div class="section">
@@ -82,6 +87,7 @@
           <div class="card-description">
             <h2>Gestisci ordini</h2>
             <p>Controlla gli ordini dei clienti.</p>
+            <a href="./listaOrdini.jsp"></a>
           </div>
         </div>
 	   <div class="grid-card">
@@ -101,6 +107,7 @@
           <div class="card-description">
             <h2>I miei dati</h2>
             <p>Controlla e/o modifica i dati admin.</p>
+            <a href="modificaInfo?mode=update&target=utente"></a>
           </div>
         </div>
 

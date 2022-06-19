@@ -14,14 +14,14 @@
 		Boolean admin = (Boolean) request.getSession().getAttribute("admin");
 	
 	if(admin){
-		request.getSession().setAttribute("message", "L'admin non può acquistare. Utilizza un account pubblico!");
-		response.sendRedirect("./userPersonalArea.jsp");
+		request.getSession().setAttribute("messaggio", "L'admin non può acquistare. Utilizza un account pubblico!");
+		response.sendRedirect("./personalArea.jsp");
 	} else {
 	List<MetodoDiPagamentoBean> listaMetodi = (List<MetodoDiPagamentoBean>) request.getSession().getAttribute("metodiPagamento");
 		List<IndirizzoBean> listaIndirizzi = (List<IndirizzoBean>) request.getSession().getAttribute("indirizzi");
 		
 		if(listaMetodi.isEmpty() || listaIndirizzi.isEmpty()){
-			request.getSession().setAttribute("message", "Devi aggiungere un indirizzo/metodo di pagamento prima di continuare con l'acquisto");
+			request.getSession().setAttribute("messaggio", "Devi aggiungere un indirizzo/metodo di pagamento prima di continuare con l'acquisto");
 			response.sendRedirect("./userPersonalArea.jsp");
 		}
 		Iterator<MetodoDiPagamentoBean> iterMetodiPagamento = listaMetodi.iterator();
@@ -93,10 +93,7 @@
 		</div>
 		</form>
 		</div>
-		
-		
 		<br><br>
-		
 		<% } %>
 	<jsp:include page="./footer.jsp" />
 </body>
