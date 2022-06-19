@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-</div><!-- End // .slider -->
+</div>
 
 <div class="slide_buttons">
 </div>
@@ -53,7 +53,7 @@
       </g>
     </svg>
   </div>
-</div><!-- End // .directional_nav -->
+</div>
     
     
       <div class="content">
@@ -138,7 +138,7 @@
       	<% 
       		if(i == 4) break;
       	} %>
-    </div> 
+    </div>
     </div>
     <jsp:include page="./footer.jsp" />
      <script src="./JS/slider.js"></script>
