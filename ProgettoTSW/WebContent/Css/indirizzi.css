@@ -84,10 +84,13 @@
  transform: translateX(-5px);
  transition: all 0.3s ease;
 }
-
+.cta:hover{
+ cursor:pointer;
+}
 .cta:hover:before {
  width: 100%;
  background: #b1dae7;
+ 
 }
 
 .cta:hover svg {

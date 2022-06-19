@@ -29,39 +29,6 @@ body{
 
 
 
-
-/* table, td, th */
-/* { */
-/* 	width: 150px; */
-/*     table-layout: fixed; */
-/* 	border:1px solid violet; */
-/* 	border-collapse: separate; */
-/*     border-spacing: 10px 20px; */
-/* 	padding: 3px; */
-/* 	margin-right: auto; */
-/* } */
-
-/* caption */
-/* { */
-/* 	font-weight:bold; */
-/* 	color: #999 */
-/* } */
-
-/* td */
-/* { */
-/* 	text-align: right */
-/* } */
-/* th */
-/* { */
-/* 	text-align: left */
-/* } */
-
-body{
-	margin:0;
-	padding:20px;
-	font-family: sans-serif;
-}
-
 *{
 	box-sizing: border-box;
 }
