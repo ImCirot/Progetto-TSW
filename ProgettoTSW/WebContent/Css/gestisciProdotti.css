@@ -73,12 +73,17 @@ input[type=text], select, textarea {
   resize: vertical;
 }
 
+input[type=text]:focus, textarea:focus, select:focus{
+	outline: 2px solid darkblue;
+}
+
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
 }
 
 input[type=submit] {
+  margin: 2%;
   background-color: #04AA6D;
   color: white;
   padding: 12px 20px;
