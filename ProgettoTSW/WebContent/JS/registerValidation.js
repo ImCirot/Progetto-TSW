@@ -34,7 +34,7 @@ $(document).ready(function(){
         let pwdCheck = $("#passwordCheck").val();
 
         if(pwdCheck.match(pwd)){
-            console.log("Le password corrispondo!");
+            console.log("Le password corrispondono!");
         } else {
             console.log("Le password non corrispondono");
         }
