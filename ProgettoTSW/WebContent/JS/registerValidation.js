@@ -11,20 +11,24 @@ $(document).ready(function(){
                 url: "login",
                 data: {
                 	mode: "checkEmail",
-                    email: $("#email").val()
+                    email: email,
                 },
                 dataType: "html",
                 success: function(data) {
+                	console.log(data);
                     if(data == "non disponibile") {
-                        $("#error-email").html("Email gia in uso");
+                    	$("#error-email").show();
+                    	$("#error-email").text("Email gia in uso");
                     } else if (data == "disponibile"){
-                        $("#error-email").html("");
+                    	$("#error-email").text("");
+                    	$("#error-email").hide();
                     }
                 }
             });
         } else {
             console.log("email non valida");
-            $("#error-email").html("Inserisci un email valida");
+            $("#error-email").show();
+            $("#error-email").text("Inserisci un email valida");
         }
     });
 });

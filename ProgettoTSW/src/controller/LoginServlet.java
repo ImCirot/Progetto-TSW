@@ -179,6 +179,21 @@ public class LoginServlet extends HttpServlet {
 			
 			RequestDispatcher view = request.getRequestDispatcher(path);
 			view.forward(request, response);
+		} else if(mode.equalsIgnoreCase("checkEmail")) {
+			response.setContentType("text/plain");
+			UtenteDAO dbUtenti = new UtenteDAO();
+			String email = request.getParameter("email");
+			
+			try {
+				if(dbUtenti.checkEmail(email)) {
+					response.getWriter().print("non disponibile");
+				} else {
+					response.getWriter().print("disponibile");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	

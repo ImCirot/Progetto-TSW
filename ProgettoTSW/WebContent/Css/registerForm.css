@@ -56,6 +56,10 @@ body{
  background: transparent;
 }
 
+.errors{
+	display: block;
+}
+
 .input:focus {
  outline: none;
 }

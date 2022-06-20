@@ -23,45 +23,45 @@
 				
  			<input type="hidden" name="mode" value="register">
 			<div class= "group">
-				<input required="" type="text" class="input" name="username">
+				<input required type="text" class="input" name="username">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
 				  <label class="label-registrazione">Username</label>
-				  <p id="username-error"></p>
+				  <p class="errors" id="username-error"></p>
 			</div>  
-			
+				
 				<div class="group">
-				  <input required="" type="text" class="input" name="email" id="email">
+				  <input required type="text" class="input" name="email" id="email">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
 				  <label class="label-registrazione">E-mail</label>
-				  <p id="email-error"></p>
+				  <p class="errors" id="email-error"></p>
 				</div>  
 				
 				<div class="group">
-				  <input required="" type="password" class="input" name="password">
+				  <input required type="password" class="input" name="password">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
 				  <label class="label-registrazione">Password</label>
 				</div>  
 				
 				<div class="group">
-				  <input required="" type="password" class="input" name="passwordCheck">
+				  <input required type="password" class="input" name="passwordCheck">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
 				  <label class="label-registrazione">Ripeti Password</label>
-				  <p id="pwd-check-error"></p>
+				  <p class="errors" id="pwd-check-error"></p>
 				</div>
 				
 				<div class="group">
-				  <input required="" type="text" class="input" name="nome">
+				  <input required type="text" class="input" name="nome">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
 				  <label class="label-registrazione">Nome</label>
 				</div>
 				
 				<div class="group">
-				  <input required="" type="text" class="input" name="cognome">
+				  <input required type="text" class="input" name="cognome">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
 				  <label class="label-registrazione">Cognome</label>
