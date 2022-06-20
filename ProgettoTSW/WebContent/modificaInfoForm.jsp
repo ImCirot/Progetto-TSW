@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
+<link rel="stylesheet" href="./Css/modificaForm.css">
 <title>Snackz</title>
 </head>
 <body>
@@ -22,47 +22,137 @@
 			Decoder decoder = Base64.getDecoder();	
 			String decodedPwd = new String(decoder.decode(utente.getPassword()));
 		%>
-		<div class="modifica"> 
- 			<form action="modificaInfo" method="post"> 
-				<input type="hidden" name="utente" value="<% out.print(utente.getUsername());%>">
- 				<input type="hidden" name="target" value="utente">
- 				<input type="hidden" name="mode" value="update">
-  				<label for="username">Username</label><br>
- 				<input type="text" name="username" value="<% out.print(utente.getUsername());%>"><br><br>
- 				<label for="password">Password</label><br>
- 				<input type="password" name="password" value="<% out.print(decodedPwd);%>"><br><br>
-  				<label for="passwordCheck">Ripeti password</label><br> 
- 				<input type="password" name="passwordCheck" value="<% out.print(decodedPwd);%>"><br><br>
- 				<label for="email">Email</label><br>
-				<input type="text" name="email" value="<%out.print(utente.getEmail());%>"><br><br>
-				<label for="nome">Nome</label><br> 
-				<input type="text" name="nome" value="<%out.print(utente.getNome());%>"><br><br>
-				<label for="cognome">Cognome</label><br> 
-				<input type="text" name="cognome" value="<%out.print(utente.getCognome());%>"><br><br>
- 				<label for="sesso">Sesso</label><br> 
- 				<select name="sesso"> 
-					<% if (utente.getSesso().equalsIgnoreCase("M")) {%>
-						<option value="M" selected>M</option> 
- 						<option value="F">F</option> 
-						<option value="X">Altro</option> 
-					<% } else if (utente.getSesso().equalsIgnoreCase("F")) {%> 
- 						<option value="M">M</option> 
- 						<option value="F" selected>F</option> 
-						<option value="X">Altro</option> 
-					<% } else if (utente.getSesso().equalsIgnoreCase("X")) {%>
+<!-- 		<div class="modifica">  -->
+<!--  			<form action="modificaInfo" method="post">  -->
+<%-- 				<input type="hidden" name="utente" value="<% out.print(utente.getUsername());%>"> --%>
+<!--  				<input type="hidden" name="target" value="utente"> -->
+<!--  				<input type="hidden" name="mode" value="update"> -->
+<!--   				<label for="username">Username</label><br> -->
+<%--  				<input type="text" name="username" value="<% out.print(utente.getUsername());%>"><br><br> --%>
+<!--  				<label for="password">Password</label><br> -->
+<%--  				<input type="password" name="password" value="<% out.print(decodedPwd);%>"><br><br> --%>
+<!--   				<label for="passwordCheck">Ripeti password</label><br>  -->
+<%--  				<input type="password" name="passwordCheck" value="<% out.print(decodedPwd);%>"><br><br> --%>
+<!--  				<label for="email">Email</label><br> -->
+<%-- 				<input type="text" name="email" value="<%out.print(utente.getEmail());%>"><br><br> --%>
+<!-- 				<label for="nome">Nome</label><br>  -->
+<%-- 				<input type="text" name="nome" value="<%out.print(utente.getNome());%>"><br><br> --%>
+<!-- 				<label for="cognome">Cognome</label><br>  -->
+<%-- 				<input type="text" name="cognome" value="<%out.print(utente.getCognome());%>"><br><br> --%>
+<!--  				<label for="sesso">Sesso</label><br>  -->
+<!--  				<select name="sesso">  -->
+<%-- 					<% if (utente.getSesso().equalsIgnoreCase("M")) {%> --%>
+<!-- 						<option value="M" selected>M</option>  -->
+<!--  						<option value="F">F</option>  -->
+<!-- 						<option value="X">Altro</option>  -->
+<%-- 					<% } else if (utente.getSesso().equalsIgnoreCase("F")) {%>  --%>
+<!--  						<option value="M">M</option>  -->
+<!--  						<option value="F" selected>F</option>  -->
+<!-- 						<option value="X">Altro</option>  -->
+<%-- 					<% } else if (utente.getSesso().equalsIgnoreCase("X")) {%> --%>
+<!--  						<option value="M">M</option> -->
+<!-- 						<option value="F">F</option> -->
+<!--  						<option value="X" selected>Altro</option> -->
+<%-- 					<% } %> --%>
+<!-- 				</select><br><br>  -->
+<!-- 				<button type="submit">Modifica dati</button>  -->
+<!--  			</form> -->
+<%-- 			<% if(error != null) { %> --%>
+<%-- 				<p> <% out.println(error); %> </p> --%>
+<%-- 			<% request.getSession().removeAttribute("error"); }%> --%>
+<!-- 			</div> -->
+
+
+<!-- 		NUOVO FORM DELLE INFO -->
+
+	  <div class="container_form">
+  	  <h3>Riempi i campi che vuoi cambiare con la modifica</h3>
+	  	   <form action="modificaInfo" method="post">
+			<input type="hidden" name="utente" value="<% out.print(utente.getUsername());%>">
+			<input type="hidden" name="target" value="utente">
+			<input type="hidden" name="mode" value="update">
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="username">Username</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="text" id="username" name="username" placeholder="Username" value="<%out.print(utente.getUsername());%>">
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="password">Password</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="password" id="password" name="password" placeholder="Password" value="<%out.print(decodedPwd);%>" >
+	      </div>
+	    </div>
+	     <div class="row">
+	      <div class="col-25">
+	        <label for="passwordCheck">Ripeti Password</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="password" id="passwordCheck" name="passwordCheck" placeholder="Ripeti Password" value="<%out.print(decodedPwd);%>" >
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="email">Email</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="text" id="email" name="email" placeholder="Email" value="<%out.print(utente.getEmail());%>">
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="nome">Nome</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="text" id="nome" name="nome" placeholder="Nome" value="<%out.print(utente.getNome());%>">
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="cognome">Cognome</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="text" id="cognome" name="cognome" placeholder="Cognome" value="<%out.print(utente.getCognome());%>">
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="sesso">Sesso</label>
+	      </div>
+	      <div class="col-75">
+	        <select required id="sesso" name="sesso">
+	         <% if (utente.getSesso().equalsIgnoreCase("M")) {%>
+ 						<option value="M" selected>M</option>
+ 						<option value="F">F</option>
+						<option value="X">Altro</option>
+ 					<% } else if (utente.getSesso().equalsIgnoreCase("F")) {%>
  						<option value="M">M</option>
-						<option value="F">F</option>
+ 						<option value="F" selected>F</option>
+ 						<option value="X">Altro</option>
+ 					<% } else if (utente.getSesso().equalsIgnoreCase("X")) {%>
+ 						<option value="M">M</option>
+ 						<option value="F">F</option>
  						<option value="X" selected>Altro</option>
-					<% } %>
-				</select><br><br> 
-				<button type="submit">Modifica dati</button> 
- 			</form>
-			<% if(error != null) { %>
-				<p> <% out.println(error); %> </p>
-			<% request.getSession().removeAttribute("error"); }%>
-			</div>
+ 					<%}%>
+	        </select>
+	      </div>
+	    </div>
+		    <div class="row">
+	      		<input type="submit" value="Modifica dati">
+	    	</div>
+	    </form>
+
+	    <% if(error != null) { %>
+			<p> <% out.println(error); %> </p>
+			<% request.getSession().removeAttribute("error");}%>
+	   </div>
 
 
+<!--                       FINE -->
 
 
 
