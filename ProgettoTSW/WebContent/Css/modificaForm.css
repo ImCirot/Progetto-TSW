@@ -1,83 +1,65 @@
-body{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-  min-height: 100vh;
+input[type=text], input[type=password], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
 }
 
-input[type=text]:focus,  input[type=password]:focus {
-	 box-shadow: 0 0 5px rgba(141, 57, 197, 1);
-	 border: 1px solid rgba(141, 57, 197, 1);
+input[type=text]:focus, input[type=password]:focus, select:focus{
+	outline: 2px solid darkblue;
 }
 
-input[type=text], input[type=password]{
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  -ms-transition: all 0.30s ease-in-out;
-  -o-transition: all 0.30s ease-in-out;
-  outline: none;
-  padding: 3px 0px 3px 3px;
-  margin: 5px 1px 3px 0px;
-  border: 1px solid lightgrey;
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
 }
 
-.modifica {
+input[type=submit] {
+  margin: 2%;
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container_form {
+  border-radius: 5px;
+ width:60%;
+ margin:3% auto;
   padding: 20px;
-  display:-webkit-flex;
-  display:-moz-flex;
-  display:-ms-flex;
-  display:flex;
-  -webkit-flex-direction:row;
-  flex-direction:row;
-  -webkit-justify-content:center;
-  justify-content:center;
 }
 
-button:hover{
-	animation: myAnim 1s ease 0s 1 normal forwards;
-	cursor: pointer;
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
 }
 
-
-
-input{
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  -ms-transition: all 0.30s ease-in-out;
-  -o-transition: all 0.30s ease-in-out;
-  outline: none;
-  padding: 3px 0px 3px 3px;
-  margin: 5px 1px 3px 0px;
-  border: 1px solid lightgrey;
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
 }
 
-@keyframes myAnim {
-	0% {
-		transform: scale3d(1, 1, 1);
-	}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
 
-	30% {
-		transform: scale3d(1.25, 0.75, 1);
-	}
-
-	40% {
-		transform: scale3d(0.75, 1.25, 1);
-	}
-
-	50% {
-		transform: scale3d(1.15, 0.85, 1);
-	}
-
-	65% {
-		transform: scale3d(0.95, 1.05, 1);
-	}
-
-	75% {
-		transform: scale3d(1.05, 0.95, 1);
-	}
-
-	100% {
-		transform: scale3d(1, 1, 1);
-	}
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
 }

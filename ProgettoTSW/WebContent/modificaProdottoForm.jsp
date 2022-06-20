@@ -125,7 +125,7 @@
 	        <label for="peso">Peso</label>
 	      </div>
 	      <div class="col-75">
-	        <input required type="text" id="peso" name="peso" placeholder="Lascia vuoto e usa volume per i drink" >
+	        <input required type="text" id="peso" name="peso" value="<%out.print(dettagli.getPeso());%>">
 	      </div>
 	    </div>
 	    <%} else {%>
@@ -134,7 +134,7 @@
 	        <label for="volume">Volume</label>
 	      </div>
 	      <div class="col-75">
-	        <input required type="text" id="volume" name="volume" placeholder="Lascia vuoto e usa peso per gli snack">
+	        <input required type="text" id="volume" name="volume" value="<%out.print(dettagli.getVolume());%>">
 	      </div>
 	    </div>
 	    <%}%>

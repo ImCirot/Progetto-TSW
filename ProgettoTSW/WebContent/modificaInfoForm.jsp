@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="./Css/modificaForm.css">
+
 <title>Snackz</title>
 </head>
 <body>
@@ -22,45 +22,51 @@
 			Decoder decoder = Base64.getDecoder();	
 			String decodedPwd = new String(decoder.decode(utente.getPassword()));
 		%>
-		<div class="modifica">
-			<form action="modificaInfo" method="post">
+		<div class="modifica"> 
+ 			<form action="modificaInfo" method="post"> 
 				<input type="hidden" name="utente" value="<% out.print(utente.getUsername());%>">
-				<input type="hidden" name="target" value="utente">
-				<input type="hidden" name="mode" value="update">
- 				<label for="username">Username</label><br>
+ 				<input type="hidden" name="target" value="utente">
+ 				<input type="hidden" name="mode" value="update">
+  				<label for="username">Username</label><br>
  				<input type="text" name="username" value="<% out.print(utente.getUsername());%>"><br><br>
  				<label for="password">Password</label><br>
  				<input type="password" name="password" value="<% out.print(decodedPwd);%>"><br><br>
- 				<label for="passwordCheck">Ripeti password</label><br>
+  				<label for="passwordCheck">Ripeti password</label><br> 
  				<input type="password" name="passwordCheck" value="<% out.print(decodedPwd);%>"><br><br>
  				<label for="email">Email</label><br>
 				<input type="text" name="email" value="<%out.print(utente.getEmail());%>"><br><br>
-				<label for="nome">Nome</label><br>
+				<label for="nome">Nome</label><br> 
 				<input type="text" name="nome" value="<%out.print(utente.getNome());%>"><br><br>
-				<label for="cognome">Cognome</label><br>
+				<label for="cognome">Cognome</label><br> 
 				<input type="text" name="cognome" value="<%out.print(utente.getCognome());%>"><br><br>
-				<label for="sesso">Sesso</label><br>
-				<select name="sesso">
+ 				<label for="sesso">Sesso</label><br> 
+ 				<select name="sesso"> 
 					<% if (utente.getSesso().equalsIgnoreCase("M")) {%>
-						<option value="M" selected>M</option>
-						<option value="F">F</option>
-						<option value="X">Altro</option>
+						<option value="M" selected>M</option> 
+ 						<option value="F">F</option> 
+						<option value="X">Altro</option> 
 					<% } else if (utente.getSesso().equalsIgnoreCase("F")) {%> 
-						<option value="M">M</option>
-						<option value="F" selected>F</option>
-						<option value="X">Altro</option>
+ 						<option value="M">M</option> 
+ 						<option value="F" selected>F</option> 
+						<option value="X">Altro</option> 
 					<% } else if (utente.getSesso().equalsIgnoreCase("X")) {%>
-						<option value="M">M</option>
+ 						<option value="M">M</option>
 						<option value="F">F</option>
-						<option value="X" selected>Altro</option>
+ 						<option value="X" selected>Altro</option>
 					<% } %>
-				</select><br><br>
-				<button type="submit">Modifica dati</button>
-			</form>
+				</select><br><br> 
+				<button type="submit">Modifica dati</button> 
+ 			</form>
 			<% if(error != null) { %>
 				<p> <% out.println(error); %> </p>
 			<% request.getSession().removeAttribute("error"); }%>
 			</div>
+
+
+
+
+
+
 		<% } else if (target.equals("indirizzo")) {
 			IndirizzoBean indirizzo = (IndirizzoBean) request.getAttribute("indirizzo");%>
 			<div class="modifica">
@@ -152,7 +158,7 @@
 				<p> <% out.println(error); %> 
 				</p>
 			<% request.getSession().removeAttribute("error"); }%>
-		<% } 
+		<% }
 		}%>
 		</div>
 	<jsp:include page="./footer.jsp" />
