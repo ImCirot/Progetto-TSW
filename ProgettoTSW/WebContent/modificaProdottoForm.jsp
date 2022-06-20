@@ -21,7 +21,8 @@
 	      <label for="nome">Nome</label><br>
 	      <input type="text" name="nome" placeholder="Nome" value="<%out.print(prodotto.getNome());%>"><br><br>
 	      <label for="marca">Marca</label><br>
-	      <input type="text" name="marca" placeholder="Marca" value="<%out.print(prodotto.getMarca());%>"><br><br>
+	      <input type="text" name="marca" id="marca" placeholder="Marca" value="<%out.print(prodotto.getMarca());%>"><br><br>
+	      <p id="error-marca" class="error"></p>
 	      <label for="desc">Descrizione</label><br>
 	      <textarea name="desc" rows="8" cols="80"><% out.print(prodotto.getDescrizioneBreve());%></textarea><br><br>
 	      <label for="edLimitata">Edizione Limitata</label><br>
@@ -65,5 +66,19 @@
 	</form>
 	</div>
 	<jsp:include page="./footer.jsp" />
+	<script>
+	$(document).ready(function() {
+		$("#marca").keyup(function() {
+			let marca = $("#marca").val();
+
+			if(marca.match("suca")){
+				$("#error-marca").text("marche combaciano");
+				
+			} else {
+				$("#error-marca").text("marche non combaciano");
+			}
+		});
+	});
+	</script>
 </body>
 </html>

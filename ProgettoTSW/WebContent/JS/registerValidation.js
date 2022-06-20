@@ -17,18 +17,26 @@ $(document).ready(function(){
                 success: function(data) {
                 	console.log(data);
                     if(data == "non disponibile") {
-                    	$("#error-email").show();
-                    	$("#error-email").text("Email gia in uso");
+                    	$(this).find("#error-email").text("Email gia in uso");
                     } else if (data == "disponibile"){
-                    	$("#error-email").text("");
-                    	$("#error-email").hide();
+                    	$(this).find("#error-email").text("");
                     }
                 }
             });
         } else {
             console.log("email non valida");
-            $("#error-email").show();
-            $("#error-email").text("Inserisci un email valida");
+            $(this).find("#error-email").text("Inserisci un email valida");
+        }
+    });
+
+    $("#passwordCheck").keyup(function () {
+        let pwd = $("#password").val();
+        let pwdCheck = $("#passwordCheck").val();
+
+        if(pwdCheck.match(pwd)){
+            console.log("Le password corrispondo!");
+        } else {
+            console.log("Le password non corrispondono");
         }
     });
 });

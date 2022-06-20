@@ -89,6 +89,7 @@
       </div>
       <div class="col-75">
         <input required type="text" id="marca" name="marca" placeholder="Chip potato..">
+        <p class="errors" id="error-marca"></p>
       </div>
     </div>
     <div class="row">
@@ -195,11 +196,20 @@
     </div>
   </form>
 </div>
-
-
-
-    
-   
   <jsp:include page="./footer.jsp" />
+  <script>
+    $(document).ready(function() {
+		$("#marca").keyup(function() {
+			let marca = $("#marca").val();
+
+			if(marca.match("suca")){
+				$("#error-marca").text("marche combaciano");
+				
+			} else {
+				$("#error-marca").text("marche non combaciano");
+			}
+		});
+	});
+  </script>
 </body>
 </html>
