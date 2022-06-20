@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="./Css/gestisciProdotti.css">
 <title>Snackz</title>
 </head>
 <body>
@@ -13,59 +14,147 @@
 		DettaglioProdottoBean dettagli = (DettaglioProdottoBean) request.getAttribute("dettagli");
 	%>
 	<jsp:include page="./header.jsp" />
-	<div class="modificaForm">
-	<form action="modificaProdotto" method="post">
-		<h4>Riempi i campi che vuoi cambiare con la modifica</h4>
-		<input type = "hidden" name = "mode" value = "modifica">
-		 <input type ="hidden" name ="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
-	      <label for="nome">Nome</label><br>
-	      <input type="text" name="nome" placeholder="Nome" value="<%out.print(prodotto.getNome());%>"><br><br>
-	      <label for="marca">Marca</label><br>
-	      <input type="text" name="marca" id="marca" placeholder="Marca" value="<%out.print(prodotto.getMarca());%>"><br><br>
-	      <p id="error-marca" class="error"></p>
-	      <label for="desc">Descrizione</label><br>
-	      <textarea name="desc" rows="8" cols="80"><% out.print(prodotto.getDescrizioneBreve());%></textarea><br><br>
-	      <label for="edLimitata">Edizione Limitata</label><br>
-	      <select name="edLimitata">
-	      <% if(prodotto.isEdLimitata()) {%>
-	      	<option selected value="si">Si</option>
-	        <option value="no">No</option>
-	      <% } else { %>
-	        <option value="si">Si</option>
-	        <option selected value="no">No</option>
-	      <% } %>
-	      </select><br><br>
-	      <label for="tipo">Tipo prodotto</label><br>
-	      <input type="text" name="tipo" placeholder="Snack o drink" value="<%out.print(dettagli.getTipo());%>"><br><br>
-	      <label for="costo">Costo</label><br>
-	      <input type="text" name="costo" placeholder="Costo unitario" value="<%out.print(dettagli.getCostoUnitario().toString());%>"><br><br>
-	      <label for="sconto">Prezzo Scontato</label><br>
-	      <% if (dettagli.getPrezzoScontato() != null) { %>
-	      <input type="text" name="sconto" placeholder="Prezzo scontato" value="<%out.print(dettagli.getPrezzoScontato().toString());%>"><br><br>
-	      <% } else { %>
-	      <input type="text" name="sconto" placeholder="Prezzo scontato" value=""><br><br>
-	      <% } %>
-	      <label for="IVA">IVA</label><br>
-	      <input type="text" name="IVA" placeholder="IVA" value="<%out.print(dettagli.getIVA());%>"><br><br>
-	      <label for="quantita">Quantita'</label><br>
-	      <input type="text" name="quantita" placeholder="Quantita'" value="<%out.print(dettagli.getQuantita());%>"><br><br>
-	      <label for="origine">Origine</label><br>
-	      <input type="text" name="origine" placeholder="Origine" value="<%out.print(dettagli.getOrigine());%>"><br><br>
-	      <label for="scadenza">Data scadenza</label><br>
-	      <input type="text" name="scadenza" value="<%out.print(dettagli.getScadenza().toString());%>"><br><br>
-	      <% if(dettagli.getTipo().equalsIgnoreCase("snack")){ %>
-	    	  <label for="peso">Peso</label><br>
-		      <input type="text" name="peso" placeholder="Peso" value="<%out.print(dettagli.getPeso());%>"><br><br>
-	      <%} else {%>
-	      <label for="volume">Volume</label><br>
-	      <input type="text" name="volume" placeholder="Volume" value="<%out.print(dettagli.getVolume());%>"><br><br>
-	      <%} %>
-	      <label for="img">Link immagine</label><br>
-	      <input type="text" name="img" placeholder="caricalo su github e incollalo qui" value="<%out.print(dettagli.getImmagine());%>"><br><br>
+	<div class="container_form">
+  	  <h3>Riempi i campi che vuoi cambiare con la modifica</h3>
+	  	   <form action="modificaProdotto" method="post">
+			<input type = "hidden" name = "mode" value = "modifica">
+			 <input type ="hidden" name ="prodotto" value="<%out.print(prodotto.getCodiceSeriale());%>">
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="nome">Nome</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="text" id="nome" name="nome" placeholder="Nome" value="<%out.print(prodotto.getNome());%>">
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="marca">Marca</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="text" id="marca" name="marca" placeholder="Marca" value="<%out.print(prodotto.getMarca());%>" >
+	      </div>
+	    </div>
+	     <div class="row">
+	      <div class="col-25">
+	        <label for="desc">Descrizione</label>
+	      </div>
+	      <div class="col-75">
+	        <textarea required id="desc" name="desc" style="height:200px"><%out.print(prodotto.getDescrizioneBreve());%></textarea>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="edLimitata">Edizione Limitata</label>
+	      </div>
+	      <div class="col-75">
+	        <select required id="edLimitata" name="edLimitata">
+	          <% if(prodotto.isEdLimitata()) {%>
+		      	<option selected value="si">Si</option>
+		        <option value="no">No</option>
+		      <% } else { %>
+		        <option value="si">Si</option>
+		        <option selected value="no">No</option>
+		      <% } %>
+	        </select>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="tipo">Tipo prodotto</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="text" id="tipo" name="tipo" placeholder="Snack o drink" value="<%out.print(dettagli.getTipo());%>">
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="costo">Costo</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="text" id="costo" name="costo" placeholder="Costo unitario" value="<%out.print(dettagli.getCostoUnitario());%>">
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="sconto">Prezzo scontanto</label>
+	      </div>
+	      <div class="col-75">
+	       <% if (dettagli.getPrezzoScontato() != null) { %>
+		      <input type="text" name="sconto" placeholder="Prezzo scontato" value="<%out.print(dettagli.getPrezzoScontato().toString());%>">
+		      <% } else { %>
+		      <input type="text" name="sconto" placeholder="Prezzo scontato" value="">
+		      <% } %>
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="IVA">IVA</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="text" id="IVA" name="IVA" placeholder="22%.." value="<%out.print(dettagli.getIVA());%>">
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="quantita">Quantita</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="text" id="quantita" name="quantita" placeholder="1,2,3..." value="<%out.print(dettagli.getQuantita());%>">
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="origine">Origine</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="text" id="origine" name="origine" placeholder="America, Giappone..." value="<%out.print(dettagli.getOrigine());%>">
+	      </div>
+	    </div>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="scadenza">Scadenza</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="date" id="scadenza" name="scadenza" placeholder="20-10-2022" value="<%out.print(dettagli.getScadenza().toString());%>">
+	      </div>
+	    </div>
+	    <% if(dettagli.getTipo().equalsIgnoreCase("snack")){ %>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="peso">Peso</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="text" id="peso" name="peso" placeholder="Lascia vuoto e usa volume per i drink" >
+	      </div>
+	    </div>
+	    <%} else {%>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="volume">Volume</label>
+	      </div>
+	      <div class="col-75">
+	        <input required type="text" id="volume" name="volume" placeholder="Lascia vuoto e usa peso per gli snack">
+	      </div>
+	    </div>
+	    <%}%>
+	    <div class="row">
+	      <div class="col-25">
+	        <label for="img">Immagine</label>
+	      </div>
+	      <div class="col-75">
+	        <input type="text" id="img" name="img" placeholder="Vai su gitHub, genera link e incollalo qui" value="<%out.print(dettagli.getImmagine());%>">
+	      </div>
+	    </div>
+	    <div class="row">
 	      <input type="submit" value="Modifica Prodotto">
-	</form>
-	</div>
+	    </div>
+	  </form>
+</div>
+
 	<jsp:include page="./footer.jsp" />
+	
+	
 	<script>
 	$(document).ready(function() {
 		$("#marca").keyup(function() {
