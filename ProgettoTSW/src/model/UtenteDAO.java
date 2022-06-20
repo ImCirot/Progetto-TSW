@@ -168,9 +168,6 @@ public class UtenteDAO extends AbstractDAO<UtenteBean> {
 			
 			statement.setString(1, bean.getUsername());
 			statement.setString(2, bean.getPassword());
-			statement.setString(3, bean.getEmail());
-			statement.setString(4, bean.getNome());
-			statement.setString(5, bean.getCognome());
 			statement.setString(6, bean.getSesso());
 			statement.setString(7, key);
 			
@@ -187,5 +184,35 @@ public class UtenteDAO extends AbstractDAO<UtenteBean> {
 			}
 		}
 		return result != 0;
+	}
+
+	public synchronized boolean checkEmail(String email) throws SQLException{
+		boolean alreadyUsed = false;
+		Connection con = null;
+		PreparedStatement statement = null;
+
+		String query = "SELECT * FROM " + UtenteDAO.TABLE_NAME + " WHERE email = ?";
+
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+
+			statement.setString(1, email);
+			ResultSet result = statement.executeQuery();
+			
+			if(result.next()) {
+				alreadyUsed = true;
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+
+		return alreadyUsed;
 	}
 }

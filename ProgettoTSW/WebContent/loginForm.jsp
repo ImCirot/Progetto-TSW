@@ -54,12 +54,9 @@
           <br>
           
           <div >
-          <form action="login" method="get">
-            <input type="hidden" name="mode" value="register">
-            <button class="registrati" type="submit">Registrati</button>
+            <a href="./registerForm.jsp">Registrati</a>
              
           <a id="home" href="catalogo"><i class="fa fa-home" style="font-size:24px"></i></a>
-          </form>
           
           
          

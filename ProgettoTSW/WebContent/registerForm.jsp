@@ -27,13 +27,15 @@
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
 				  <label class="label-registrazione">Username</label>
+				  <p id="username-error"></p>
 			</div>  
 			
 				<div class="group">
-				  <input required="" type="text" class="input" name="email">
+				  <input required="" type="text" class="input" name="email" id="email">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
 				  <label class="label-registrazione">E-mail</label>
+				  <p id="email-error"></p>
 				</div>  
 				
 				<div class="group">
@@ -48,6 +50,7 @@
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
 				  <label class="label-registrazione">Ripeti Password</label>
+				  <p id="pwd-check-error"></p>
 				</div>
 				
 				<div class="group">
@@ -105,5 +108,7 @@
 		  $('.dropdown-el').removeClass('expanded');
 		});
 	</script>
+
+	<script src="./JS/registerValidation.js"></script>
 </body>	
 </html>
