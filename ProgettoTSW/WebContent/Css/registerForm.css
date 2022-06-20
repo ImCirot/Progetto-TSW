@@ -38,9 +38,6 @@ body{
   justify-content: space-evenly;
 }
 
-
-
-
 .group {
  position: relative;
  margin: 30px auto;
@@ -326,7 +323,6 @@ button:hover .button-text {
   font-size:0.7rem;
  }
  .container h1{
-  
   font-size:1rem;
  }
  .input{
@@ -337,9 +333,6 @@ button:hover .button-text {
 @media (min-width:769px) and (max-width:1200px){
  .container{
   width:50%;
- 
- margin:10% auto;
+  margin:10% auto;
  }
- 
- 
 }
