@@ -47,7 +47,7 @@
         <ul>
           <li>
           	<div id="search-zone">
-          	<input type="text" id="search-bar" name="search" placeholder="Cerca prodotto">
+          	<input type="text" id="search-bar" autocomplete="off" name="search" placeholder="Cerca prodotto">
           	<div id="search-result">
 	          	<div id="search-type-result"></div>
 	          	<div id="search-product-result"></div>
