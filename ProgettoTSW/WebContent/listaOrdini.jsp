@@ -23,7 +23,9 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
   		<div class="carte">
   		<h3>Ordine #<% out.println(ordine.getNumOrdineProgressivo()); %></h3>
   		<%  if(admin) {%>
-  			<b style="font-size:1.2em;">Cliente: <% out.println(ordine.getCliente()); %></b>
+  			<p style="font-size:1.2em;">
+  				<strong>Cliente:</strong> <% out.print(ordine.getCliente()); %>
+  			</p>
   		<% } %>
   		<p style="font-size:1.2em;">
   			<strong>Data acquisto:</strong> <% out.print(ordine.getDataAcquisto()); %>

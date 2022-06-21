@@ -15,18 +15,19 @@ public class RecensioneDAO {
 		PreparedStatement statement = null;
 		
 		String query = "INSERT INTO " + RecensioneDAO.TABLE_NAME + 
-					" (cliente,prodotto,voto,testoRecensione,data,anonimo) VALUES (?,?,?,?,?,?);";
+					" (cliente,codiceSerialeProdotto,prodotto,voto,testoRecensione,data,anonimo) VALUES (?,?,?,?,?,?,?);";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			
 			statement.setString(1, bean.getCliente());
-			statement.setString(2, bean.getProdotto());
-			statement.setInt(3, bean.getVoto());
-			statement.setString(4, bean.getTestoRecensione());
-			statement.setString(5, bean.getData());
-			statement.setBoolean(6, bean.isAnonimo());
+			statement.setString(2, bean.getCodiceSerialeProdotto());
+			statement.setString(3, bean.getProdotto());
+			statement.setInt(4, bean.getVoto());
+			statement.setString(5, bean.getTestoRecensione());
+			statement.setString(6, bean.getData());
+			statement.setBoolean(7, bean.isAnonimo());
 
 			statement.executeUpdate();
 			
@@ -46,7 +47,7 @@ public class RecensioneDAO {
 		Connection con = null;
 		PreparedStatement statement = null;
 		int result = 0;
-		String query = "DELETE FROM " + RecensioneDAO.TABLE_NAME + " WHERE cliente = ? AND prodotto = ?";
+		String query = "DELETE FROM " + RecensioneDAO.TABLE_NAME + " WHERE cliente = ? AND codiceSerialeProdotto = ?";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -87,6 +88,7 @@ public class RecensioneDAO {
 			
 			while(result.next()) {
 				recensione.setCliente(result.getString("cliente"));
+				recensione.setCodiceSerialeProdotto(result.getString("codiceSerialeProdotto"));
                 recensione.setProdotto(result.getString("prodotto"));
                 recensione.setVoto(result.getInt("voto"));
                 recensione.setTestoRecensione(result.getString("testoRecensione"));
@@ -127,6 +129,51 @@ public class RecensioneDAO {
 			
 			while(result.next()) {
 				recensione.setCliente(result.getString("cliente"));
+				recensione.setCodiceSerialeProdotto(result.getString("codiceSerialeProdotto"));
+                recensione.setProdotto(result.getString("prodotto"));
+                recensione.setVoto(result.getInt("voto"));
+                recensione.setTestoRecensione(result.getString("testoRecensione"));
+                recensione.setData(result.getString("data"));
+                recensione.setAnonimo(result.getBoolean("anonimo"));
+				
+				recensioni.add(recensione);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+		return recensioni;
+	}
+    
+    public synchronized List<RecensioneBean> doRetrieveAllByKey(String cliente) throws SQLException {
+		Connection con = null;
+		PreparedStatement statement = null;
+		RecensioneBean recensione = new RecensioneBean();
+		List<RecensioneBean> recensioni = new ArrayList<>();
+		
+		String query = "SELECT * FROM " + RecensioneDAO.TABLE_NAME + " WHERE cliente = ?";
+		
+//		if(checkOrder(order)) {
+//			query += " ORDER BY" + order;
+//		}
+//		se ne parla dopo TODO
+		
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			statement.setString(1, cliente);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				recensione.setCliente(result.getString("cliente"));
+				recensione.setCodiceSerialeProdotto(result.getString("codiceSerialeProdotto"));
                 recensione.setProdotto(result.getString("prodotto"));
                 recensione.setVoto(result.getInt("voto"));
                 recensione.setTestoRecensione(result.getString("testoRecensione"));
@@ -154,7 +201,7 @@ public class RecensioneDAO {
 		int result = 0;
 		
 		String query = "UPDATE " + RecensioneDAO.TABLE_NAME + " SET "
-				+ "voto = ?, testoRecensione = ?, data = ? WHERE cliente = ? AND prodotto = ?;";
+				+ "voto = ?, testoRecensione = ?, data = ? WHERE cliente = ? AND codiceSerialeProdotto = ?;";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -163,8 +210,7 @@ public class RecensioneDAO {
             statement.setString(2, bean.getTestoRecensione());
             statement.setString(3, bean.getData());
             statement.setString(4, bean.getCliente());
-            statement.setString(5, bean.getProdotto());
-
+            statement.setString(5, bean.getCodiceSerialeProdotto());
 			result = statement.executeUpdate();
 			
 			con.commit();
@@ -198,6 +244,7 @@ public class RecensioneDAO {
 			
             while(result.next()){
                 recensione.setCliente(result.getString("cliente"));
+                recensione.setCodiceSerialeProdotto(result.getString("codiceSerialeProdotto"));
                 recensione.setProdotto(result.getString("prodotto"));
                 recensione.setVoto(result.getInt("voto"));
                 recensione.setTestoRecensione(result.getString("testoRecensione"));
@@ -225,7 +272,7 @@ public class RecensioneDAO {
         List<RecensioneBean> recensioniProdotto = new ArrayList<>();
         RecensioneBean recensione = new RecensioneBean();
 
-        String query = "SELECT * FROM " + RecensioneDAO.TABLE_NAME + " WHERE prodotto = ?;";
+        String query = "SELECT * FROM " + RecensioneDAO.TABLE_NAME + " WHERE codiceSerialeProdotto = ?;";
 
         try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -236,6 +283,7 @@ public class RecensioneDAO {
 			
             while(result.next()){
                 recensione.setCliente(result.getString("cliente"));
+                recensione.setCodiceSerialeProdotto(result.getString("codiceSerialeProdotto"));
                 recensione.setProdotto(result.getString("prodotto"));
                 recensione.setVoto(result.getInt("voto"));
                 recensione.setTestoRecensione(result.getString("testoRecensione"));

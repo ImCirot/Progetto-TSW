@@ -21,6 +21,8 @@ import model.MetodoDiPagamentoBean;
 import model.MetodoDiPagamentoDAO;
 import model.OrdineBean;
 import model.OrdineDAO;
+import model.RecensioneBean;
+import model.RecensioneDAO;
 import model.UtenteBean;
 import model.UtenteDAO;
 
@@ -51,17 +53,19 @@ public class LoginServlet extends HttpServlet {
 			List<IndirizzoBean> indirizzi = new ArrayList<>();
 			List<MetodoDiPagamentoBean> metodiPagamento = new ArrayList<>();
 			List<OrdineBean> ordini = new ArrayList<>();
+			List<RecensioneBean> recensioni = new ArrayList<>();
 			
 			IndirizzoDAO dbIndirizzo = new IndirizzoDAO();
 			MetodoDiPagamentoDAO dbPagamento = new MetodoDiPagamentoDAO();
 			OrdineDAO dbOrdine = new OrdineDAO();
+			RecensioneDAO dbRecensioni = new RecensioneDAO();
 			
 			if(!admin) {
 				try {
 					indirizzi = dbIndirizzo.doRetrieveAllByKey(utente);
 					metodiPagamento = dbPagamento.doRetrieveAllByKey(utente);
 					ordini = dbOrdine.doRetrieveAllByKey(utente);
-					
+					recensioni = dbRecensioni.doRetrieveAllByKey(utente);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -70,18 +74,20 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("indirizzi", indirizzi);
 				request.getSession().setAttribute("metodiPagamento", metodiPagamento);
 				request.getSession().setAttribute("ordini", ordini);
+				request.getSession().setAttribute("recensioni", recensioni);
 				
 				RequestDispatcher view = request.getRequestDispatcher("./personalArea.jsp");
 				view.forward(request, response);
 			} else {
 				try {
 					ordini = dbOrdine.doRetrieveAll(utente);
-					
+					recensioni = dbRecensioni.doRetrieveAll(utente);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				request.getSession().setAttribute("ordini", ordini);
+				request.getSession().setAttribute("recensioni", recensioni);
 				
 				RequestDispatcher view = request.getRequestDispatcher("./personalArea.jsp");
 				view.forward(request, response);

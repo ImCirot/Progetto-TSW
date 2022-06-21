@@ -6,6 +6,7 @@ public class RecensioneBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String cliente;
+	private String codiceSerialeProdotto;
 	private String prodotto;
 	private int voto;
 	private String testoRecensione;
@@ -14,6 +15,7 @@ public class RecensioneBean implements Serializable {
 
 	public RecensioneBean(){
 		this.cliente = "null";
+		this.setCodiceSerialeProdotto("null");
 		this.prodotto = "null";
 		this.voto = -1;
 		this.testoRecensione = "null";
@@ -71,5 +73,13 @@ public class RecensioneBean implements Serializable {
 
 	public void setAnonimo(boolean anonimo) {
 		this.anonimo = anonimo;
+	}
+
+	public String getCodiceSerialeProdotto() {
+		return codiceSerialeProdotto;
+	}
+
+	public void setCodiceSerialeProdotto(String codiceSerialeProdotto) {
+		this.codiceSerialeProdotto = codiceSerialeProdotto;
 	}
 }

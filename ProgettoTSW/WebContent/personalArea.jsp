@@ -83,7 +83,7 @@
           <div class="card-description">
             <h2>Le mie recensioni</h2>
             <p>Controlla e/o modifica le tue recensioni</p>
-            <a href="./metodiDiPagamento.jsp"></a>
+            <a href="./listaRecensioni.jsp"></a>
           </div>
         </div>
     </div>
@@ -106,7 +106,7 @@
           <div class="card-description">
             <h2>Recensioni</h2>
             <p>Controlla le recensioni dei clienti</p>
-            <a href="./metodiDiPagamento.jsp"></a>
+            <a href="./listaRecensioni.jsp"></a>
           </div>
         </div>
 	   <div class="grid-card">
