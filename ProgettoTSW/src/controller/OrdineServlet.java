@@ -74,7 +74,9 @@ public class OrdineServlet extends HttpServlet {
 		IndirizzoBean indirizzo = new IndirizzoBean();
 		MetodoDiPagamentoBean metodoDiPagamento = new MetodoDiPagamentoBean();
 		String utente = (String) request.getSession().getAttribute("utente");
-		double costoTot = Double.parseDouble((String) request.getSession().getAttribute("costoTot"));
+		String costoStr = (String) request.getSession().getAttribute("costoTot");
+		costoStr = costoStr.replaceAll(",", ".");
+		double costoTot = Double.parseDouble(costoStr);
 		OrdineBean ordine = new OrdineBean();
 		OrdineDAO dbOrdini = new OrdineDAO();
 		IndirizzoDAO dbIndirizzi = new IndirizzoDAO();
