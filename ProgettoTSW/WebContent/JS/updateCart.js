@@ -35,10 +35,10 @@ function updatePrice(){
 			data: formData,
 			dataType: "html",
 			success: function(data){
+				let prezzo = parseFloat(data);
 				if(data < 45) {
 					$("#netto").html(data);
 					$("#spedizione").html("5 &euro;");
-					let prezzo = parseFloat(data);
 					prezzo += 5;
 					$("#prezzoTot").html(prezzo);
 				} else {

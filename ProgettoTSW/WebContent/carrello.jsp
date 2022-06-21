@@ -92,7 +92,7 @@
           <h2 class="h2_style">Totale parziale:</h2>
         </div>
         <div class="card2">
-          <p class="p_style"  id="netto"> &euro;</p>
+          <p class="p_style"  id="netto"><p class="p_style">&nbsp;&euro;</p>
         </div>
 
       </div>
@@ -117,7 +117,7 @@
               <h2 class="h2_style">Totale:</h2>
         </div>
         <div class="card2">
-          <p class="p_style" id="prezzoTot"> &euro;</p>
+          <p class="p_style" id="prezzoTot"></p><p class="p_style">&nbsp;&euro;</p>
         </div>
       </div>
       <div class="totale_parziale">
