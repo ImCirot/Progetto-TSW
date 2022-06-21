@@ -32,7 +32,6 @@
 	    <div class="row">
 	      <div class="col-25">
 	        <label for="username">Username</label>
-	        <input type="hidden" name="oldUsername" id="oldUsername" value="<%out.print(utente.getUsername());%>">
 	      </div>
 	      <div class="col-75">
 	        <input required type="text" id="username" name="username" placeholder="Username" value="<%out.print(utente.getUsername());%>">
@@ -42,7 +41,6 @@
 	    <div class="row">
 	      <div class="col-25">
 	        <label for="password">Password</label>
-	        <input type="hidden" name="oldPassword" id="oldPassword" value="<%out.print(decodedPwd);%>">
 	      </div>
 	      <div class="col-75">
 	        <input required type="password" id="password" name="password" placeholder="Password" value="<%out.print(decodedPwd);%>" >
@@ -60,7 +58,6 @@
 	    <div class="row">
 	      <div class="col-25">
 	        <label for="email">Email</label>
-	        <input type="hidden" name="oldEmail" id="oldEmail" value="<% out.print(utente.getEmail());%>">
 	      </div>
 	      <div class="col-75">
 	        <input required type="text" id="email" name="email" placeholder="Email" value="<%out.print(utente.getEmail());%>">

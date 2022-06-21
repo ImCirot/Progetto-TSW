@@ -16,7 +16,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
       	<form action="modificaInfo" method="get">
   				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
   				<input type="hidden" name="mode" value="add">
-  				<input type="hidden" name="target" value="indirizzo">
+  				<input type="hidden" name="target" value="metodoPagamento">
   				<button class="cta">
 					  <span id="aggiungi" >Aggiungi</span>
 					  <svg viewBox="0 0 13 10" height="10px" width="15px">
@@ -73,9 +73,9 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
   			</form>
   			<form action="modificaInfo" method="post">
   				<input type="hidden" value="<% out.print(request.getSession().getAttribute("utente"));%>" name="utente">
-  				<input type="hidden" value="<% out.print(metodoPagamento.getNumPagamentoProgressivo());%>" name="indirizzoID">
+  				<input type="hidden" value="<% out.print(metodoPagamento.getNumPagamentoProgressivo());%>" name="metodoPagamentoID">
 				<input type="hidden" name="mode" value="delete">
-				<input type="hidden" name="target" value="indirizzo">
+				<input type="hidden" name="target" value="metodoPagamento">
 				<button id="bottone_elimina" type="submit">Elimina</button>
   			</form>
   			</div>
