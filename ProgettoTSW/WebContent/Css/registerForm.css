@@ -370,7 +370,7 @@ body {
   background: #fff;
   padding: 25px 30px;
   border-radius: 15px;
-  border: 1px solid #9932CC; /* bordo aggiunto al div */
+  box-shadow: 4px 3px 22px 11px rgba(189,158,222,0.9); /* ombra come nel login */
 }
 .container .title {
   font-size: 25px;
