@@ -215,4 +215,34 @@ public class UtenteDAO extends AbstractDAO<UtenteBean> {
 
 		return alreadyUsed;
 	}
+	
+	public synchronized boolean checkUsername(String username) throws SQLException{
+		boolean alreadyUsed = false;
+		Connection con = null;
+		PreparedStatement statement = null;
+
+		String query = "SELECT * FROM " + UtenteDAO.TABLE_NAME + " WHERE username = ?";
+
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+
+			statement.setString(1, username);
+			ResultSet result = statement.executeQuery();
+			
+			if(result.next()) {
+				alreadyUsed = true;
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+
+		return alreadyUsed;
+	}
 }

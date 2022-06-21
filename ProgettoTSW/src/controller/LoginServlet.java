@@ -97,6 +97,7 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mode = request.getParameter("mode");
 		String path = null;
+		UtenteDAO dbUtenti = new UtenteDAO();
 		
 		if(mode.equalsIgnoreCase("login")) {
 			String username = request.getParameter("username");
@@ -140,7 +141,6 @@ public class LoginServlet extends HttpServlet {
 			try {
 				if(pwd64.equals(pwdchk64)) {
 					UtenteBean utente = new UtenteBean();
-					UtenteDAO dbUtenti = new UtenteDAO();
 					UtenteBean utenteRicercato = new UtenteBean();
 					boolean flag = false;
 					List<UtenteBean> listaUtenti = dbUtenti.doRetrieveAll(username);
@@ -181,11 +181,24 @@ public class LoginServlet extends HttpServlet {
 			view.forward(request, response);
 		} else if(mode.equalsIgnoreCase("checkEmail")) {
 			response.setContentType("text/plain");
-			UtenteDAO dbUtenti = new UtenteDAO();
 			String email = request.getParameter("email");
 			
 			try {
 				if(dbUtenti.checkEmail(email)) {
+					response.getWriter().print("non disponibile");
+				} else {
+					response.getWriter().print("disponibile");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} else if(mode.equalsIgnoreCase("checkUsername")) {
+			response.setContentType("text/plain");
+			String username = request.getParameter("username");
+			
+			try {
+				if(dbUtenti.checkUsername(username)) {
 					response.getWriter().print("non disponibile");
 				} else {
 					response.getWriter().print("disponibile");

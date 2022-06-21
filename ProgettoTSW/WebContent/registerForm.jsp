@@ -86,8 +86,8 @@
     <div class="user__details">
       <div class="input__box">
         <span class="details">Username</span>
-        <input type="text" placeholder="E.g: John Smith" name="username" required>
-        
+        <input type="text" placeholder="E.g: John Smith" name="username" id="username" required>
+        <p class="error" id="error-username"></p>
       </div>
       <div class="input__box">
       
@@ -103,6 +103,7 @@
       <div class="input__box">
         <span class="details">Ripeti Password</span>
         <input type="password" placeholder="********" name="passwordCheck" id="passwordCheck" required>
+        <p class="error" id="error-pwd"></p>
       </div>
       <div class="input__box">
         <span class="details">Nome</span>
@@ -152,6 +153,6 @@
 		});
 	</script>
 
-<!-- 	<script src="./JS/registerValidation.js"></script> -->
+	<script src="./JS/registerValidation.js"></script>
 </body>	
 </html>
