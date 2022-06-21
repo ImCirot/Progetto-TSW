@@ -75,6 +75,17 @@
             <a href="./metodiDiPagamento.jsp"></a>
           </div>
         </div>
+        
+        <div class="grid-card">
+          <div class="img">
+           <span class="material-icons-personal">star</span>
+          </div>
+          <div class="card-description">
+            <h2>Le mie recensioni</h2>
+            <p>Controlla e/o modifica le tue recensioni</p>
+            <a href="./metodiDiPagamento.jsp"></a>
+          </div>
+        </div>
     </div>
 	<% } else { %>
 		 <div class="section">
@@ -84,8 +95,18 @@
           </div>
           <div class="card-description">
             <h2>Gestisci ordini</h2>
-            <p>Controlla gli ordini dei clienti.</p>
+            <p>Controlla gli ordini dei clienti</p>
             <a href="./listaOrdini.jsp"></a>
+          </div>
+        </div>
+        <div class="grid-card">
+          <div class="img">
+           <span class="material-icons-personal">star</span>
+          </div>
+          <div class="card-description">
+            <h2>Recensioni</h2>
+            <p>Controlla le recensioni dei clienti</p>
+            <a href="./metodiDiPagamento.jsp"></a>
           </div>
         </div>
 	   <div class="grid-card">
@@ -104,7 +125,7 @@
           </div>
           <div class="card-description">
             <h2>I miei dati</h2>
-            <p>Controlla e/o modifica i dati admin.</p>
+            <p>Controlla e/o modifica i dati admin</p>
             <a href="modificaInfo?mode=update&target=utente"></a>
           </div>
         </div>
