@@ -352,7 +352,9 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--main-blue), var(--main-purple));
+/*   background: linear-gradient(135deg, var(--main-blue), var(--main-purple)); */
+  background: url('../Images/backgroundImage.png');
+  background-size: cover;
   font-family: 'Montserrat', sans-serif;
   display: flex;
   height: 100vh;
@@ -368,6 +370,7 @@ body {
   background: #fff;
   padding: 25px 30px;
   border-radius: 5px;
+  border: 1px solid #9932CC; /* bordo aggiunto al div */
 }
 .container .title {
   font-size: 25px;
