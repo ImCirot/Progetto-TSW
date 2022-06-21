@@ -120,8 +120,7 @@
           <p class="p_style" id="prezzoTot"> &euro;</p>
         </div>
       </div>
-      <%} %>
-       <div class="totale_parziale">
+      <div class="totale_parziale">
         <div class="prova">
 
         </div>
@@ -150,7 +149,10 @@
 				</div> 
         </div>
       </div>
+      <%} %>
     </div>
+      
+       
 
 		<jsp:include page="./footer.jsp" />
 		<script src="./JS/updateCart.js"></script>
