@@ -27,7 +27,7 @@
 <!-- 		NUOVO FORM DELLE INFO -->
 
 	  <div class="container_form">
-  	  <h3>Riempi i campi che vuoi cambiare con la modifica</h3>
+  	  <h3>Riempi i campi che vuoi cambiare</h3>
 	  	   <form action="modificaInfo" method="post">
 			<input type="hidden" name="utente" value="<% out.print(utente.getUsername());%>">
 			<input type="hidden" name="target" value="utente">
@@ -35,14 +35,17 @@
 	    <div class="row">
 	      <div class="col-25">
 	        <label for="username">Username</label>
+	        <input type="hidden" name="oldUsername" id="oldUsername" value="<%out.print(utente.getUsername());%>">
 	      </div>
 	      <div class="col-75">
 	        <input required type="text" id="username" name="username" placeholder="Username" value="<%out.print(utente.getUsername());%>">
+	        <span class="errors" id="error-username"></span>
 	      </div>
 	    </div>
 	    <div class="row">
 	      <div class="col-25">
 	        <label for="password">Password</label>
+	        <input type="hidden" name="oldPassword" id="oldPassword" value="<%out.print(decodedPwd);%>">
 	      </div>
 	      <div class="col-75">
 	        <input required type="password" id="password" name="password" placeholder="Password" value="<%out.print(decodedPwd);%>" >
@@ -54,14 +57,17 @@
 	      </div>
 	      <div class="col-75">
 	        <input required type="password" id="passwordCheck" name="passwordCheck" placeholder="Ripeti Password" value="<%out.print(decodedPwd);%>" >
+	      	<span class="errors" id="error-pwd"></span>
 	      </div>
 	    </div>
 	    <div class="row">
 	      <div class="col-25">
 	        <label for="email">Email</label>
+	        <input type="hidden" name="oldEmail" id="oldEmail" value="<% out.print(utente.getEmail());%>">
 	      </div>
 	      <div class="col-75">
 	        <input required type="text" id="email" name="email" placeholder="Email" value="<%out.print(utente.getEmail());%>">
+	        <span class="errors" id="error-email"></span>
 	      </div>
 	    </div>
 	    <div class="row">
@@ -111,11 +117,6 @@
 			<p> <% out.println(error); %> </p>
 			<% request.getSession().removeAttribute("error");}%>
 	   </div>
-
-
-<!--                       FINE -->
-
-
 		<% } else if (target.equals("indirizzo")) {
 			IndirizzoBean indirizzo = (IndirizzoBean) request.getAttribute("indirizzo");%>	
 				<div class="container_form">
@@ -333,8 +334,7 @@
 			<%}
 		 }%>
 	   </div>
-	   
-	   
 	<jsp:include page="./footer.jsp" />
+	<script src="./JS/updateFormValidation.js"></script>
 </body>
 </html>

@@ -25,8 +25,11 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
   		<%  if(admin) {%>
   			<b style="font-size:1.2em;">Cliente: <% out.println(ordine.getCliente()); %></b>
   		<% } %>
+  		<p style="font-size:1.2em;">
+  			<strong>Data acquisto:</strong> <% out.print(ordine.getDataAcquisto()); %>
+  		</p>
    		<p style="font-size:1.2em;">
-  			<% out.println(String.format("%.2f", ordine.getCostoTotale())); %> &euro;<br><br>
+  			<strong>Totale:</strong> <% out.println(String.format("%.2f", ordine.getCostoTotale())); %> &euro;<br><br>
   		</p>
   			<form action="gestisciOrdine" method="get">
   				<input type="hidden" name="ordine" value="<%out.print(ordine.getNumOrdineProgressivo());%>">

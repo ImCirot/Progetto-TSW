@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
     let emailValidator = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    let usernameValidator = /^[a-z0-9_.]{4,15}$/;
+    let usernameValidator = /^[a-zA-Z0-9_.]{4,15}$/;
     
     $("#email").keyup(function() {
 
