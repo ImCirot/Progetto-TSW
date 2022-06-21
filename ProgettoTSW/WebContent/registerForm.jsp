@@ -153,6 +153,6 @@
 		});
 	</script>
 
-	<script src="./JS/registerValidation.js"></script>
+	<script src="./JS/formValidation.js"></script>
 </body>	
 </html>
