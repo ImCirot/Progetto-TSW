@@ -145,8 +145,8 @@ $(document).ready(function(){
         let pwd = $("#password").val();
         let pwdCheck = $("#passwordCheck").val();
 
-        if(pwdCheck.match(pwd)){
-
+        if(pwdCheck.valueOf() === pwd.valueOf()){
+        	
             console.log("Le password corrispondono!");
             slidePwd = 0;
             $("#error-pwd").slideUp();

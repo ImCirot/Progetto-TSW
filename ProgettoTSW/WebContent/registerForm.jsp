@@ -81,7 +81,7 @@
 	
 	<div class="container">
   <div class="title">Registrazione</div>
-  <form action="login" method="post">
+  <form action="login" method="post" autocomplete="off">
   <input type="hidden" name="mode" value="register">
     <div class="user__details">
       <div class="input__box">
