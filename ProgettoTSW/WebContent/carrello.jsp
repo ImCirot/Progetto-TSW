@@ -81,7 +81,7 @@
 			<div class="totale">
 				<div class="totale-interno">
 				<div id="costo" class="totale-interno-disposizione">
-						<h2>Costo Totale Ordine</h2>
+						<h2>Totale parziale</h2>
 						</div>
 						<div id="prezzo" class="totale-interno-disposizione">
 							<p id="prezzoTot"></p><p>&euro;</p>
