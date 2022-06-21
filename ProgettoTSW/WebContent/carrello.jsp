@@ -83,8 +83,23 @@
 						<h2>Totale parziale</h2>
 						</div>
 						<div id="prezzo" class="totale-interno-disposizione">
+							<p id="netto"></p><p>&euro;</p>
+						</div>
+						<div class="totale-interno">
+				<div id="costo" class="totale-interno-disposizione">
+						<h2>Spedizione</h2>
+						</div>
+						<div id="prezzo" class="totale-interno-disposizione">
+							<p id="spedizione"></p>
+						</div>
+						<div class="totale-interno">
+				<div id="costo" class="totale-interno-disposizione">
+						<h2>Totale</h2>
+						</div>
+						<div id="prezzo" class="totale-interno-disposizione">
 							<p id="prezzoTot"></p><p>&euro;</p>
 						</div>
+				</div>
 				<div id="procedi" class="totale-interno-disposizione">
 					<button class="noselect2" onclick="proseguiOrdine()"><span class="text">Procedi</span><span class="icon"> <img id="checkbox" src="./Images/checkbox.png" alt=""></span></button>
 				</div>
