@@ -150,7 +150,7 @@ form .button input:hover {
 
 @media only screen and (max-width: 768px) {
 	.user__details .input__box input{
-    width: 85%;
+    width: 100%;
   }
   .container {
     max-width: 100%;
@@ -174,3 +174,13 @@ form .button input:hover {
     width: 0;
   }
 }
+
+
+
+
+
+
+
+
+
+

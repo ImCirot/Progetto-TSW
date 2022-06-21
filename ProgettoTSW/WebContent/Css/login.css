@@ -234,4 +234,11 @@ button:hover .button-text {
   font-size:0.8rem;
  }
 }
-
+.material-icons{
+	position: absolute;
+    right: 0;
+    top: 20%;
+}
+.material-icons:hover{
+	cursor:pointer;
+}

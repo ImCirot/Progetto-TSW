@@ -6,7 +6,9 @@
 <meta charset="UTF-8">
 <title>Snackz</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="./Css/login.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
@@ -30,10 +32,11 @@
 			</div>  
             
             <div class= "group">
-				<input required type="password" class="input" name="password">
+				<input required type="password" class="input" name="password" id="password">
 				  <span class="highlight"></span>
 				  <span class="bar"></span>
 				  <label class="label-registrazione">Password</label>
+				  <i class="material-icons">visibility</i>
 			</div> 
           
             <button type="submit" class="learn-more">
@@ -61,5 +64,20 @@
   		<% request.getSession().removeAttribute("result"); }%>
   </div>
 </div>
+
+<script>
+	 
+     $(".material-icons").click(function(){
+    	 if ($("#password").attr('type') == "password") {
+    		 $("#password").attr('type','text');
+    		 $(".material-icons").text('visibility_off');
+    		 } else {
+    			 
+    			 $("#password").attr('type','password');
+    			 $(".material-icons").text('visibility');
+    		 }
+     });
+  
+    </script>
 </body>
 </html>
