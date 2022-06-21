@@ -369,7 +369,7 @@ body {
   width: 100%;
   background: #fff;
   padding: 25px 30px;
-  border-radius: 5px;
+  border-radius: 15px;
   border: 1px solid #9932CC; /* bordo aggiunto al div */
 }
 .container .title {

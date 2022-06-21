@@ -218,7 +218,7 @@ button:hover .button-text {
   min-width: 30%;
   min-height: 50%;
   margin: 50px auto;
-  border-radius: 70px;
+  border-radius: 15px;
   background: white;
   padding: 50px;
   box-shadow: 4px 3px 22px 11px rgba(189,158,222,0.9);
