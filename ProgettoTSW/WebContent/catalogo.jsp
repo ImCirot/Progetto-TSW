@@ -25,10 +25,8 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
           <div class="nome_prodotto">
             <h2>Gestisci prodotti</h2>
           </div>
-          
         </div>
         </div>
-        
         <% }
   	List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
   		List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");

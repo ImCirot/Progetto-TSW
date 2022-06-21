@@ -21,7 +21,6 @@
 		DettaglioProdottoBean dettaglio = new DettaglioProdottoBean();
 		%>
 		
-		
 		<div class="container-ordine">
 		<h1>Ordine #<% out.println(ordine.getNumOrdineProgressivo()); %></h1>
 		<h3>Cliente: <% out.println(ordine.getCliente()); %></h3>
@@ -33,8 +32,7 @@
 			     	 <th>Nome prodotto</th>
 			     	 <th>Quantita</th>
 			     	 <th>Prezzo</th>
-			     	 <th>Immagine</th>
-			     	 
+			     	 <th>Immagine</th> 
 			     	</tr>
 			     </thead>
 			     	<% while(iterComposizione.hasNext()){
@@ -46,16 +44,12 @@
 						}
 					%>
 			     <tbody>
-			     
 			     	  <tr>
 			     	  	  <td data-label="Nome prodotto"><% out.println(singolaComposizione.getProdotto());%></td>
 			     	  	  <td data-label="Quantita"><% out.println(singolaComposizione.getQuantitaProdotto()); %></td>
 			     	  	  <td data-label="Prezzo"><% out.println(singolaComposizione.getCostoUnitario()); %> &euro;</td>
-			     	  	  <td data-label="Immagine"><img style="width:100px" src=" <% out.print(dettaglio.getImmagine()); %>"></td>
-			     	  	  
-			     	  </tr>
-			
-			     	  
+			     	  	  <td data-label="Immagine"><img style="width:100px" src=" <% out.print(dettaglio.getImmagine()); %>"></td>  
+			     	  </tr> 
 			     </tbody>
 			     <% } %>
    			</table>
@@ -93,8 +87,6 @@
 				<button type="submit">Genera fattura</button>
 			</form>
 		</div>
-		   
-			
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>

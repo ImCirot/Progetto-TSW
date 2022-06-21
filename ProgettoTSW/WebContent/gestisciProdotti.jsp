@@ -52,17 +52,11 @@
 				          <a href="modificaProdotto?mode=elimina&prodotto=<% out.println(prodotto.getCodiceSeriale());%>">Elimina</a></td>
      				</tr>
     	<%}%>
-			
-			     	  
 			     </tbody>
    			</table>
 		</div>
 	</div>
-	
-	
-    
-    
-    
+
   	  <div class="container_form">
   	  <h2>Aggiungi un prodotto</h2>
   <form action="modificaProdotto" method="get">

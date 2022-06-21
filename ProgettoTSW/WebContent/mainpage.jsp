@@ -16,7 +16,6 @@
   <jsp:include page="./header.jsp" />
   <script src="./JS/addedToCart.js"></script>
   <div class="container-catalogo">
-
   	<% 
   	Boolean admin = (boolean) request.getSession().getAttribute("admin");
 		if((admin != null) && admin) {
@@ -42,7 +41,6 @@
   				dettagli = iterDettagli.next();
   				if(prodotto.getCodiceSeriale().equals(dettagli.getProdotto())) break;
   			}%>
-			
 		<div class="prodotto">
 				<div class="posizione">
   				<a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>">	

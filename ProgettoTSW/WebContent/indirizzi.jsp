@@ -25,8 +25,6 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
 					  </svg>
 				</button>
   			</form>
-      	
-      	
       </div>
       <% List<IndirizzoBean> indirizzi = (List<IndirizzoBean>) request.getSession().getAttribute("indirizzi"); 
   		Iterator<IndirizzoBean> iterIndirizzi = indirizzi.iterator();
@@ -78,14 +76,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
   			</form>
   			</div>
   			<%}%>
-        
       </div>
-   
-	
-	
-	
-	
-	
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>

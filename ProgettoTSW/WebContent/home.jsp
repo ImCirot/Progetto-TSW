@@ -55,7 +55,6 @@
   </div>
 </div>
     
-    
       <div class="content">
         <div class="content_img">
           <img src="./Images/img2.png" alt="">
@@ -99,7 +98,6 @@
       	if(i == 4) break;
       	}%>
       </div>
-      
       
       <div class="content content_reverse">
         <div class="content_img content_img_reverse">

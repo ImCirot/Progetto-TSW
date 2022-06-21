@@ -12,7 +12,6 @@
 	<jsp:include page="./header.jsp" />
 	
 	<div class="cart-container">
-		
 		<% Map<String,Integer> carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
 		if(carrello == null){%>
 			<div class="carrello-vuoto">
@@ -99,7 +98,6 @@
 				</div>
 				<%} %>
 			</div>
-		
 		<jsp:include page="./footer.jsp" />
 		<script src="./JS/updateCart.js"></script>
 		<script>

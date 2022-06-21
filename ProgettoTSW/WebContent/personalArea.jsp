@@ -75,8 +75,6 @@
             <a href="./metodiDiPagamento.jsp"></a>
           </div>
         </div>
-
-    
     </div>
 	<% } else { %>
 		 <div class="section">
@@ -110,10 +108,6 @@
             <a href="modificaInfo?mode=update&target=utente"></a>
           </div>
         </div>
-
-    
-
-
     </div>
     <% }
      }%>
@@ -127,16 +121,12 @@
          </button>
          </form>
 	</div>
-   
-	
     <script type="text/javascript">
       $(".grid-card").click(function(){
         window.location=$(this).find("a").attr("href");
         return false;
       });
     </script>
-	
-	
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>

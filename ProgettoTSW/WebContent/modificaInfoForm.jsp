@@ -22,10 +22,7 @@
 			Decoder decoder = Base64.getDecoder();	
 			String decodedPwd = new String(decoder.decode(utente.getPassword()));
 		%>
-
-
 <!-- 		NUOVO FORM DELLE INFO -->
-
 	  <div class="container_form">
   	  <h3>Riempi i campi che vuoi cambiare</h3>
 	  	   <form action="modificaInfo" method="post">
@@ -215,8 +212,6 @@
 			<p> <% out.println(error); %> </p>
 			<% request.getSession().removeAttribute("error");}%>
 	   </div>
-
-		
 		<% } else if (target.equals("metodoPagamento")) {
 				MetodoDiPagamentoBean metodoPagamento = (MetodoDiPagamentoBean) request.getAttribute("metodoPagamento");%>
 		
@@ -327,7 +322,6 @@
 				      		<input type="submit" value="Modifica dati">
 				    	</div>
 				    </form>
-
 	    <% if(error != null) { %>
 			<p> <% out.println(error); %> </p>
 			<%request.getSession().removeAttribute("error");} %>

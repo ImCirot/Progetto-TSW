@@ -151,10 +151,7 @@
 	    </div>
 	  </form>
 </div>
-
 	<jsp:include page="./footer.jsp" />
-	
-	
 	<script>
 	$(document).ready(function() {
 		$("#marca").keyup(function() {

@@ -139,8 +139,6 @@
     </div>
   </form>
 </div>
-
-
 	<script>
 		$('.dropdown-el').click(function(e) {
 		  	e.preventDefault();
@@ -152,7 +150,6 @@
 		  $('.dropdown-el').removeClass('expanded');
 		});
 	</script>
-
 	<script src="./JS/registerValidation.js"></script>
 </body>	
 </html>

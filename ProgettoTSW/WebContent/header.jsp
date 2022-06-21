@@ -21,7 +21,6 @@
       <div class="header_filter">
       </div>
       
-       
        <div class="logo">
        <a href="catalogo"></a>
        		<img width="70%" alt="" src="./Images/logopreciso.png">

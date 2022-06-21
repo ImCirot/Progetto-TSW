@@ -80,14 +80,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
   			</form>
   			</div>
   			<% } %>
-        
       </div>
-   
-	
-	
-	
-	
-	
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>
