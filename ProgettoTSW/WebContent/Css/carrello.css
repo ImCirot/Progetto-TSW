@@ -16,6 +16,9 @@ body{
 h1{
   margin-left: 7%;
 }
+h2{
+	font-size:1.2rem;
+}
 .cart-container{
   width: 100%;
   display: flex;
@@ -70,20 +73,6 @@ h1{
 
 
 
-.totale{
-	display: flex;
-	justify-content: flex-end;
-}
-
-.totale-interno{
-	display: flex;
-    margin: 20px;
-    padding: 20px;
-    font-size: 1.5em;
-    flex-direction: column;
-    align-items: center;
-}
-
 .full-price {
 	font-size: .8em;
 	color: grey;
@@ -100,26 +89,21 @@ h1{
 	font-size:25px;
 }
 
-.totale-interno h2{
-		text-align: center;
-	}
-.totale-interno-disposizione{
-	width: 100%;
-    display: flex;
-    text-align: center;
-    justify-content: center;
+
+#margine{
+	margin-top:2%;
 }
 #pulisci{
-	margin-top:10%;
+	margin-top:5%;
 }
 #pulisci button{
 	border:0;
-	font-size:0.7em;
+	font-size:1.2rem;
 }
 #pulisci button:hover{
 	color:#9932CC;
 	cursor:pointer;
-	font-size:0.8em;
+	
 }
 /*
  media resposnive*/
@@ -277,5 +261,58 @@ h1{
  transform: scale(0.8);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+.riepilogo{
+  width: 100%;
+  
+}
+
+.totale_parziale{
+  width: 100%;
+  margin: 5% 5%;
+}
+
+.h2_style{
+  font-size: 1.6rem;
+}
+.p_style {
+  font-size: 1.4rem;
+}
+
+@media (min-width: 768px){
+  .riepilogo{
+	margin-bottom:5%;
+  }
+
+  .totale_parziale{
+  display: flex;
+  margin:0;
+
+  }.prova{
+    width: 100%;
+  }
+  .card{
+    width: 45%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .card2{
+    width: 20%;
+    display: flex;
+    align-items: center;
+  }
+
+}
 
 

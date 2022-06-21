@@ -77,42 +77,81 @@
 				    </div>
 				</div>
 			<%}%>
-			<div class="totale">
-				<div class="totale-interno">
-				<div id="costo" class="totale-interno-disposizione">
-						<h2>Totale parziale</h2>
-						</div>
-						<div id="prezzo" class="totale-interno-disposizione">
-							<p id="netto"></p><p>&euro;</p>
-						</div>
-						<div class="totale-interno">
-				<div id="costo" class="totale-interno-disposizione">
-						<h2>Spedizione</h2>
-						</div>
-						<div id="prezzo" class="totale-interno-disposizione">
-							<p id="spedizione"></p>
-						</div>
-						<div class="totale-interno">
-				<div id="costo" class="totale-interno-disposizione">
-						<h2>Totale</h2>
-						</div>
-						<div id="prezzo" class="totale-interno-disposizione">
-							<p id="prezzoTot"></p><p>&euro;</p>
-						</div>
-				</div>
-				<div id="procedi" class="totale-interno-disposizione">
-					<button class="noselect2" onclick="proseguiOrdine()"><span class="text">Procedi</span><span class="icon"> <img id="checkbox" src="./Images/checkbox.png" alt=""></span></button>
-				</div>
-				<div id="pulisci" class="totale-interno-disposizione">
-				<form action="Carrello" method="get">
-					<input type="hidden" name="mode" value="reset">
-					<button  type="submit">Svuota Carrello</button>
-				</form>
-				</div>
-					</div>
-				</div>
-				<%} %>
-			</div>
+			
+			
+			
+			
+			
+			
+			<div class="riepilogo">
+      <div class="totale_parziale">
+        <div class="prova">
+
+        </div>
+        <div class="card">
+          <h2 class="h2_style">Totale parziale:</h2>
+        </div>
+        <div class="card2">
+          <p class="p_style"  id="netto"> &euro;</p>
+        </div>
+
+      </div>
+
+      <div class="totale_parziale">
+        <div class="prova">
+
+        </div>
+        <div class="card">
+            <h2 class="h2_style">Spedizione:</h2>
+        </div>
+        <div class="card2">
+            <p class="p_style" id="spedizione"></p>
+        </div>
+
+      </div>
+      <div class="totale_parziale">
+        <div class="prova">
+
+        </div>
+        <div class="card">
+              <h2 class="h2_style">Totale:</h2>
+        </div>
+        <div class="card2">
+          <p class="p_style" id="prezzoTot"> &euro;</p>
+        </div>
+      </div>
+      <%} %>
+       <div class="totale_parziale">
+        <div class="prova">
+
+        </div>
+        <div class="card">
+             
+        </div>
+        <div class="card2">
+          <div id="procedi" > 
+					<button class="noselect2" onclick="proseguiOrdine()"><span class="text">Procedi</span><span class="icon"> <img id="checkbox" src="./Images/checkbox.png" alt=""></span></button> 
+			</div> 
+        </div>
+      </div>
+      <div class="totale_parziale" id="margine">
+        <div class="prova">
+
+        </div>
+        <div class="card">
+             
+        </div>
+        <div class="card2">
+         <div id="pulisci"> 
+			<form action="Carrello" method="get"> 
+					<input type="hidden" name="mode" value="reset"> 
+ 					<button  type="submit">Svuota Carrello</button> 
+ 				</form> 
+				</div> 
+        </div>
+      </div>
+    </div>
+
 		<jsp:include page="./footer.jsp" />
 		<script src="./JS/updateCart.js"></script>
 		<script>
