@@ -183,10 +183,10 @@ public class ModificaInfoServlet extends HttpServlet {
 						if(!flag) {
 							if(!dbUtente.doUpdate(utente,username)) {
 								request.getSession().setAttribute("error", "Aggiornamento non effettuato!");
-								path = "modificaInfo?mode=update&target=utente&utente=" + username;
+								path = "modificaInfo?mode=update&target=utente";
 							} else {
 								request.getSession().setAttribute("message", "Aggiornato con successo!");
-								path = "login?mode=getInfo&utente=" + newUsername;
+								path = "login?mode=getInfo";
 							}
 						} else {
 							request.getSession().setAttribute("error", "Impossibile usare l'email scelta. Riprova.");
@@ -458,7 +458,7 @@ public class ModificaInfoServlet extends HttpServlet {
 				try {
 					dbIndirizzo.doSave(indirizzo);
 					request.getSession().setAttribute("message", "Aggiunto nuovo indirizzo con successo!");
-					path = "login?mode=getInfo&utente=" + utente;
+					path = "login?mode=getInfo";
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -535,7 +535,7 @@ public class ModificaInfoServlet extends HttpServlet {
 				try {
 					dbMetodiPagamento.doSave(metodoPagamento);
 					request.getSession().setAttribute("message", "Aggiunto nuovo metodo di pamento con successo!");
-					path = "login?mode=getInfo&utente=" + utente;
+					path = "login?mode=getInfo";
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
@@ -549,10 +549,10 @@ public class ModificaInfoServlet extends HttpServlet {
 				try {
 					if(!dbIndirizzi.doDelete(indirizzoID,utente)) {
 						request.getSession().setAttribute("message", "Indirizzo non rimosso!");
-						path = "login?mode=getInfo&utente=" + utente;
+						path = "login?mode=getInfo";
 					} else {
 						request.getSession().setAttribute("message", "Indirizzo rimosso correttamente!");
-						path = "login?mode=getInfo&utente=" + utente;
+						path = "login?mode=getInfo";
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -564,10 +564,10 @@ public class ModificaInfoServlet extends HttpServlet {
 				try {
 					if(!dbMetodiPagamento.doDelete(metodoPagamentoID, utente)) {
 						request.getSession().setAttribute("message", "Metodo di pagamento non rimosso!");
-						path = "login?mode=getInfo&utente=" + utente;
+						path = "login?mode=getInfo";
 					} else {
 						request.getSession().setAttribute("message", "Metodo di pagamento rimosso correttamente!");
-						path = "login?mode=getInfo&utente=" + utente;
+						path = "login?mode=getInfo";
 					}
 				} catch (SQLException e) {
 					e.printStackTrace();

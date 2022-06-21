@@ -169,6 +169,10 @@ public class UtenteDAO extends AbstractDAO<UtenteBean> {
 			statement.setString(1, bean.getUsername());
 			statement.setString(2, bean.getPassword());
 			statement.setString(6, bean.getSesso());
+			statement.setString(3, bean.getEmail());
+			statement.setString(4, bean.getNome());
+			statement.setString(5, bean.getCognome());
+			statement.setString(6, bean.getSesso());
 			statement.setString(7, key);
 			
 			result = statement.executeUpdate();
