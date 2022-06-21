@@ -91,7 +91,7 @@ public class ModificaInfoServlet extends HttpServlet {
 				pathRedirect = "./modificaInfoForm.jsp";
 			}
 		} else if (mode.equals("add")) {
-			String utente = request.getParameter("utente");
+			String utente = (String) request.getSession().getAttribute("utente");
 			request.setAttribute("utente", utente);
 			if(target.equals("indirizzo")) {
 				request.setAttribute("target", "indirizzo");

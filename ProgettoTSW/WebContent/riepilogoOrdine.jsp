@@ -13,6 +13,9 @@
 	<% 
 		Boolean admin = (Boolean) request.getSession().getAttribute("admin");
 	
+	if(request.getSession().getAttribute("carrello") == null) {
+		response.sendRedirect("index.jsp");
+	}
 	if(admin){
 		request.getSession().setAttribute("messaggio", "L'admin non può acquistare. Utilizza un account pubblico!");
 		response.sendRedirect("./personalArea.jsp");
@@ -58,7 +61,7 @@
 						%></label><br><br>
 			<% } %>
 		<%}%>
-		<a href="#">Aggiungi indirizzo</a>
+		<a href="modificaInfo?mode=add&target=indirizzo">Aggiungi indirizzo</a>
 		</div>
 		
 		
@@ -86,7 +89,7 @@
 						%></label><br><br>
 		<% }
 		} %>
-		<a href="#">Aggiungi metodo di pagamento</a>
+		<a href="modificaInfo?mode=add&target=metodoPagamento">Aggiungi metodo di pagamento</a>
 		</div>
 		<div class="button-acquista">
 			<button type="submit">Acquista</button>

@@ -142,7 +142,8 @@ public class OrdineServlet extends HttpServlet {
 			
 			request.getSession().removeAttribute("carrello");
 			request.getSession().removeAttribute("costoTot");
-			path = "./acquisto.jsp";
+			response.sendRedirect("./login?mode=getInfo&next=acquisto");
+			return;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

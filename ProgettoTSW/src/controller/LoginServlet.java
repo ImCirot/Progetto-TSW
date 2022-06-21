@@ -46,6 +46,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mode = request.getParameter("mode");
+		String path = null;
 		
 		if(mode.equalsIgnoreCase("getInfo")) {
 			String utente = (String) request.getSession().getAttribute("utente");
@@ -76,8 +77,13 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("ordini", ordini);
 				request.getSession().setAttribute("recensioni", recensioni);
 				
-				RequestDispatcher view = request.getRequestDispatcher("./personalArea.jsp");
-				view.forward(request, response);
+				if(request.getParameter("next") != null) {
+					int ordineID = ordini.get(ordini.size()-1).getNumOrdineProgressivo();
+					response.sendRedirect("./gestisciOrdine?ordine=" + ordineID + "&cliente=" + utente);
+					return;
+				} else {
+					path = "./personalArea.jsp";
+				}
 			} else {
 				try {
 					ordini = dbOrdine.doRetrieveAll(utente);
@@ -89,12 +95,16 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("ordini", ordini);
 				request.getSession().setAttribute("recensioni", recensioni);
 				
-				RequestDispatcher view = request.getRequestDispatcher("./personalArea.jsp");
-				view.forward(request, response);
+				path = "./personalArea.jsp";
 			}
 		} else if(mode.equalsIgnoreCase("register")) {
 			response.sendRedirect("./registerForm.jsp");
+		} else if(mode.equalsIgnoreCase("acquisto")) {
+			path = "acquisto.jsp";
 		}
+		
+		RequestDispatcher view = request.getRequestDispatcher(path);
+		view.forward(request, response);
 	}
 
 	/**
