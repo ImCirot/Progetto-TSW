@@ -135,11 +135,14 @@ a{
   max-width: 35vh;
   height: auto;
   max-height: 40vh;
-  overflow: scroll;
+  overflow-y: scroll;
   background: white;
-  margin: 1px #9932CC solid;
+  border: 1px solid #9932CC;
 }
 
+.search-result::-webkit-scrollbar {
+    display: none;
+}
 
 .type {
 	padding: 5px;
@@ -311,10 +314,6 @@ visibility: visible;
   box-shadow: 0 0 20px rgba(104, 85, 224, 0.6);
   background-color: rgba(104, 85, 224, 1);
 }
-
-
-
-
 
 .material-icons {
     font-family: 'Material Icons';
