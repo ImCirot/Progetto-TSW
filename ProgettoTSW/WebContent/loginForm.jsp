@@ -22,7 +22,8 @@
       <div class="container-login">
         <h1>Accedi all'area personale</h1>
           <form action="login" method="post" id="login">
-            <input type="hidden" name="mode" value="login">
+           <input type="hidden" name="mode" value="login">
+
             
 			<div class= "group">
 				<input required type="text" class="input" name="username">
