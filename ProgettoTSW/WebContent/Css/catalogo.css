@@ -166,7 +166,21 @@
   display:flex;
   justify-content:center;
   align-items:center;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.pretext-terminato{
+  color:#fff;
+  background:red;
+  position:absolute;
+  top:0;
+  left:0;
+  height:100%;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .done{
