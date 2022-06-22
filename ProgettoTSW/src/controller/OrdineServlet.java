@@ -142,6 +142,7 @@ public class OrdineServlet extends HttpServlet {
 			
 			request.getSession().removeAttribute("carrello");
 			request.getSession().removeAttribute("costoTot");
+			response.reset();
 			response.sendRedirect("./login?mode=getInfo&next=acquisto");
 			return;
 		} catch (SQLException e) {

@@ -137,6 +137,7 @@
                             		if(dettagli.getProdotto().equals(prodotto.getCodiceSeriale())) break;
                             	}
                             	
+                            	
                             	costoNetto = ((composizione.getCostoUnitario().doubleValue() * composizione.getQuantitaProdotto()) * 100) / (100 + dettagli.getIVA());
                             	totNetto += costoNetto;
                             	%>
@@ -165,7 +166,11 @@
                                             </tr>
                                             <tr>
                                                 <th class="text-left">IVA:</th>
+                                                <% if((ordine.getCostoTotale().doubleValue() - 5) < 45) { %>
+                                                <td class="text-right"><% out.println(df.format(ordine.getCostoTotale().doubleValue() - totNetto - 5)); %> &euro;</td>
+                                                <% } else { %>
                                                 <td class="text-right"><% out.println(df.format(ordine.getCostoTotale().doubleValue() - totNetto)); %> &euro;</td>
+                                                <% } %>
                                             </tr>
                                             <tr>
                                                 <th class="text-left">Spedizione:</th>

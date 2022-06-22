@@ -4,7 +4,6 @@ body{
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
   font-size: 17px;
-  text-align: center;
 }
 
 .button-acquista button {
@@ -45,6 +44,9 @@ button:hover{
 	cursor: pointer;
 }
 
+form {
+	 text-align: center;
+}
 
 @keyframes myAnim {
 	0% {
