@@ -21,7 +21,7 @@
   <div class="login">
       <div class="container-login">
         <h1>Accedi all'area personale</h1>
-          <form action="login" method="post" id="login">
+          <form action="login" method="post" id="login">         
            <input type="hidden" name="mode" value="login">
 
             
