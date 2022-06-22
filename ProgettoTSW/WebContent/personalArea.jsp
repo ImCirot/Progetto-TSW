@@ -96,7 +96,7 @@
           <div class="card-description">
             <h2>Gestisci ordini</h2>
             <p>Controlla gli ordini dei clienti</p>
-            <a href="./listaOrdini.jsp"></a>
+            <a href="./ordiniAdmin.jsp"></a>
           </div>
         </div>
         <div class="grid-card">

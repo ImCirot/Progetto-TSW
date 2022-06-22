@@ -85,13 +85,27 @@ public class LoginServlet extends HttpServlet {
 					path = "./personalArea.jsp";
 				}
 			} else {
+				List<String> usernameList = new ArrayList<>();
+				List<UtenteBean> utenti = new ArrayList<>();
+				Iterator<UtenteBean> iterUtenti;
+				UtenteDAO dbUtenti = new UtenteDAO();
+				UtenteBean utenteTrovato = new UtenteBean();
 				try {
 					ordini = dbOrdine.doRetrieveAll(utente);
 					recensioni = dbRecensioni.doRetrieveAll(utente);
+					utenti = dbUtenti.doRetrieveAll(utente);
+					iterUtenti = utenti.iterator();
+					
+					while(iterUtenti.hasNext()) {
+						utenteTrovato = iterUtenti.next();
+						
+						if(!utenteTrovato.isAdmin()) usernameList.add(utenteTrovato.getUsername());
+					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+				request.getSession().setAttribute("usernameList", usernameList);
 				request.getSession().setAttribute("ordini", ordini);
 				request.getSession().setAttribute("recensioni", recensioni);
 				

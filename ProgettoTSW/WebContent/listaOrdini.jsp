@@ -6,15 +6,22 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
 	<meta charset="UTF-8">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="./Css/indirizzi.css">
-	<title>I miei ordini</title>
+	<title>Snackz</title>
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
+	<% if(request.getAttribute("cliente") != null){ 
+	  		String cliente = (String) request.getAttribute("cliente"); 
+	  		request.removeAttribute("cliente");%>
+  			<h1 style="text-align: center;font-size: 2rem">Storico ordini del cliente "<%out.print(cliente);%>"</h1>
+  		<% } else { %>
+	  		<h1 style="text-align: center;font-size: 2rem">Storico ordini</h1>
+	  		<% } %>
 	 <div class="sezione">
     	<% if(request.getSession().getAttribute("logged") == null) {
     		response.sendRedirect("./loginForm.jsp");
-    	} else {%>
-      <% List<OrdineBean> ordini = (List<OrdineBean>) request.getSession().getAttribute("ordini"); 
+    	} else {
+    	List<OrdineBean> ordini = (List<OrdineBean>) request.getSession().getAttribute("ordini"); 
   		Iterator<OrdineBean> iterOrdini = ordini.iterator();
   		boolean admin = (boolean) request.getSession().getAttribute("admin");
   		OrdineBean ordine = new OrdineBean(); 

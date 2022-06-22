@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -35,25 +36,45 @@ public class GestisciOrdineServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String ordineID = request.getParameter("ordine");
-		String cliente = request.getParameter("cliente");
+		String mode = request.getParameter("mode");
 		OrdineBean ordine = new OrdineBean();
 		OrdineDAO dbOrdini = new OrdineDAO();
 		List<ComposizioneOrdineBean> composizioneOrdine = null;
 		ComposizioneOrdineDAO dbComposizioni = new ComposizioneOrdineDAO();
 		
-		try {
-			ordine = dbOrdini.doRetrieveByKey(ordineID, cliente);
-			composizioneOrdine = dbComposizioni.doRetrieveAllByKey(ordineID);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if(mode == null) {
+			String ordineID = request.getParameter("ordine");
+			String cliente = request.getParameter("cliente");
+			
+			
+			try {
+				ordine = dbOrdini.doRetrieveByKey(ordineID, cliente);
+				composizioneOrdine = dbComposizioni.doRetrieveAllByKey(ordineID);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("ordine", ordine);
+			request.setAttribute("composizione", composizioneOrdine);
+			RequestDispatcher view = request.getRequestDispatcher("./dettagliOrdine.jsp");
+			view.forward(request, response);
+		} else if(mode.equalsIgnoreCase("admin")) {
+			String target = request.getParameter("target");
+			List<OrdineBean> listaOrdiniCliente = new ArrayList<>();
+			
+			try {
+				listaOrdiniCliente = dbOrdini.doRetrieveAllByKey(target);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.getSession().setAttribute("ordini", listaOrdiniCliente);
+			request.setAttribute("cliente", target);
+			RequestDispatcher view = request.getRequestDispatcher("./listaOrdini.jsp");
+			view.forward(request, response);
 		}
-		
-		request.setAttribute("ordine", ordine);
-		request.setAttribute("composizione", composizioneOrdine);
-		RequestDispatcher view = request.getRequestDispatcher("./dettagliOrdine.jsp");
-		view.forward(request, response);
 	}
 
 	/**
