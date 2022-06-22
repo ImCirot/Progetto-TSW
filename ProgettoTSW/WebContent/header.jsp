@@ -13,7 +13,6 @@
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet"> 
 	<link rel="stylesheet" href="./Css/header.css">
-	
 	<link rel="apple-touch-icon" sizes="57x57" href="./Images/fav-icon/apple-icon-57x57.png">
 	<link rel="apple-touch-icon" sizes="60x60" href="./Images/fav-icon/apple-icon-60x60.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="./Images/fav-icon/apple-icon-72x72.png">
@@ -76,13 +75,39 @@
           </li>
           <li><a class="links" href="#" onclick="showSearch()"><span class="material-icons md-36">search</span></a></li>
           <li><a class="links"  href="#" id="carrello" onclick="showCart()"><span class="material-icons md-36">local_grocery_store</span></a></li>
-          <li><a class="links" href="./loginForm.jsp"><span class="material-icons md-36">person</span></a></li>
+          <li  id="utente"><a class="links" href="#"><span class="material-icons md-36">person</span></a></li>
         </ul>
       </div>
     </div>
+      <div class="user">
+      <div class="text">
+    	<p>Ciao cazzo umano</p>
+      </div>
+      <div class="flex">
+      <div class="user_action">
+        <button class="button_user log">Login</button>
+      </div>
+      <div class="user_action">
+        <button class="button_user reg">Sign up</button>
+      </div>
+    </div>
+    </div>
     <script>
+      let item = document.querySelector('.user');
+      		document.querySelector('#utente').addEventListener("click", function() {
+          	item.classList.toggle('aperto');
+        });
+ 
     	document.querySelector('.nav-icon-5').addEventListener("click", function() {
     		  document.body.classList.toggle('open');
+    		});
+    	
+    	window.addEventListener("scroll", function(){
+    		  console.log(window.scrollY);
+
+    		  if(window.scrollY > 50){
+    		      item.classList.remove('aperto');
+    		  }
     		});
     </script>
     <script type="text/javascript">
