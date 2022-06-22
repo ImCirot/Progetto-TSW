@@ -6,7 +6,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
 	<meta charset="UTF-8">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link rel="stylesheet" href="./Css/indirizzi.css">
-	<title>Snackz</title>
+	<title>Ordini</title>
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
