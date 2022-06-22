@@ -25,7 +25,7 @@
 }
 
 .slide:nth-of-type(1) {
-  background: url('../Images/image1.jpg');
+  background: url('../Images/slideshow4.jpg');
   background-size:cover;
 }
 
@@ -35,10 +35,9 @@
 }
 
 .slide:nth-of-type(3) {
-  background: url('../Images/image3.jpg');
+  background: url('../Images/slideshow5.jpg');
   background-size:cover;
 }
-
 
 
 
