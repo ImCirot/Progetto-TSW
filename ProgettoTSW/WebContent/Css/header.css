@@ -246,7 +246,9 @@ a{
 
 }
 
-
+.flex{
+  display: flex;
+}
 
 .user{
 
@@ -256,6 +258,7 @@ a{
   position: absolute;
   right: 0;
   display: flex;
+  flex-direction:column;
   align-items: center;
   visibility: hidden;
   opacity: 0;

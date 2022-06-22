@@ -81,8 +81,9 @@
     </div>
       <div class="user">
       <div class="text">
-    
+    	<p>Ciao cazzo umano</p>
       </div>
+      <div class="flex">
       <div class="user_action">
         <button class="button_user log">Login</button>
       </div>
@@ -90,7 +91,7 @@
         <button class="button_user reg">Sign up</button>
       </div>
     </div>
-    
+    </div>
     <script>
       let item = document.querySelector('.user');
       		document.querySelector('#utente').addEventListener("click", function() {
