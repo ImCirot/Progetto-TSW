@@ -37,7 +37,7 @@ function updatePrice(){
 			success: function(data){
 				let prezzo = parseFloat(data);
 				if(prezzo < 45) {
-					$("#netto").html(prezzo);
+					$("#netto").html(prezzo.toFixed(2));
 					$("#spedizione").html("5.00 &euro;");
 					prezzo += 5;
 					$("#prezzoTot").html(prezzo.toFixed(2));
