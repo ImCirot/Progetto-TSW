@@ -168,6 +168,14 @@
                                                 <td class="text-right"><% out.println(df.format(ordine.getCostoTotale().doubleValue() - totNetto)); %> &euro;</td>
                                             </tr>
                                             <tr>
+                                                <th class="text-left">Spedizione:</th>
+                                                <% if((ordine.getCostoTotale().doubleValue() - 5) < 45) { %>
+                                                <td class="text-right">5.00 &euro;</td>
+                                                <% } else { %>
+                                                <td class="text-right">0.00 &euro;</td>
+                                                <% } %>
+                                            </tr>
+                                            <tr>
                                                 <th class="text-left">Totale:</th>
                                                 <td class="text-right text-primary">
                                                     <h5 class="font-weight-semibold"><% out.println(df.format(ordine.getCostoTotale())); %> &euro;</h5>

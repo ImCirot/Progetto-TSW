@@ -38,12 +38,12 @@ function updatePrice(){
 				let prezzo = parseFloat(data);
 				if(data < 45) {
 					$("#netto").html(data);
-					$("#spedizione").html("5 &euro;");
+					$("#spedizione").html("5.00 &euro;");
 					prezzo += 5;
-					$("#prezzoTot").html(prezzo);
+					$("#prezzoTot").html(prezzo.toFixed(2));
 				} else {
 				$("#netto").html(data);
-				$("#spedizione").html("gratuita");
+				$("#spedizione").html("0.00 &euro;");
 				$("#prezzoTot").html(data);
 				}
 			}
