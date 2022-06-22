@@ -53,7 +53,7 @@
       </div>
     </div>
     <div class="gender__details">
-      <input type="radio" name="sesso" id="dot-1" value="M">
+      <input type="radio" name="sesso" id="dot-1" value="M" required>
       <input type="radio" name="sesso" id="dot-2" value="F">
       <input type="radio" name="sesso" id="dot-3" value="X">
       <span class="gender__title">Sesso</span>
