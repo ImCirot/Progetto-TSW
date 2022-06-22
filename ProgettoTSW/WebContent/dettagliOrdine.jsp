@@ -58,9 +58,23 @@
 		<div class="container-info">
 
 		<p>
-			<strong>Totale</strong>: <% out.println(ordine.getCostoTotale()); %> &euro;
+			<% if((ordine.getCostoTotale().doubleValue() - 5) < 45) {%>
+			<strong>Totale prodotti</strong>: <% out.println(String.format("%.2f",ordine.getCostoTotale().doubleValue() - 5)); %> &euro;
+			<% } else { %>
+			<strong>Totale prodotti</strong>: <% out.println(String.format("%.2f",ordine.getCostoTotale())); %> &euro;
+			<% } %>
 		</p>
 		
+		<p> 
+		<% if((ordine.getCostoTotale().doubleValue() - 5) < 45) {%>
+			<strong>Spedizione</strong>: 5.00 &euro;
+			<% } else { %>
+			<strong>Spedizione</strong>: 0.00 &euro;
+			<% } %>
+		</p>
+		<p>
+			<strong>Totale</strong>: <% out.println(String.format("%.2f",ordine.getCostoTotale())); %> &euro;
+		</p>
 			<p>
   				<strong>Spedito a</strong>: <% out.println(ordine.getVia() + " " + ordine.getCivico() + " ");
   					out.println(ordine.getCitta() + ", " + ordine.getProvincia() + " " + ordine.getCAP());
