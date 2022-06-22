@@ -81,7 +81,7 @@
     </div>
       <div class="user">
       <div class="text">
-    	<p>Ciao GBasile</p>
+    	<p>Ciao Gbasile</p>
       </div>
       <div class="flex">
       <div class="user_action">
