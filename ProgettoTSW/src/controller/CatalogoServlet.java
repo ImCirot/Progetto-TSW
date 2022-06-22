@@ -41,6 +41,7 @@ public class CatalogoServlet extends HttpServlet {
 		DettaglioProdottoDAO dbDettagli = new DettaglioProdottoDAO();
 		List<ProdottoBean> prodotti = new ArrayList<>();
 		List<ProdottoBean> prodottiSconto = new ArrayList<>();
+		List<ProdottoBean> prodottiTerminati = new ArrayList<>();
 		List<DettaglioProdottoBean> dettagliProdotti = new ArrayList<>();
 		List<DettaglioProdottoBean> dettagliProdottiSconto = new ArrayList<>();
 		DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
@@ -59,10 +60,15 @@ public class CatalogoServlet extends HttpServlet {
 						
 						prodotto = dbProdotti.doRetrieveByKey(dettagli.getProdotto());
 						
-						prodotti.add(prodotto);
+						if(dettagli.getQuantita() == 0) {
+							prodottiTerminati.add(prodotto);
+						} else {
+							prodotti.add(prodotto);
+						}
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block				
+					request.getSession().setAttribute("prodottiTerminati", prodottiTerminati);
 					request.getSession().setAttribute("prodotti", prodotti);
 					request.getSession().setAttribute("dettagliProdotti", dettagliProdotti);
 					if (request.getSession().getAttribute("admin") == null) {
@@ -79,8 +85,16 @@ public class CatalogoServlet extends HttpServlet {
 						prodotto = iterProdottiTrovati.next();
 						
 						dettagli = dbDettagli.doRetrieveByKey(prodotto.getCodiceSeriale());
-						
+						if(dettagli.getQuantita() == 0) {
+							prodottiTerminati.add(prodotto);
+						}
 						dettagliProdotti.add(dettagli);
+					}
+					
+					iterProdottiTrovati = prodottiTerminati.iterator();
+					while(iterProdottiTrovati.hasNext()) {
+						prodotto = iterProdottiTrovati.next();
+						prodotti.remove(prodotto);
 					}
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -101,7 +115,11 @@ public class CatalogoServlet extends HttpServlet {
 						while(iterProdotti.hasNext()) {
 							prodotto = iterProdotti.next();
 							if(prodotto.getCodiceSeriale().equalsIgnoreCase(dettagli.getProdotto())) {
-								prodotti.add(prodotto);
+								if(dettagli.getQuantita() == 0) {
+									prodottiTerminati.add(prodotto);
+								} else {
+									prodotti.add(prodotto);
+								}
 							}
 						}
 					}
@@ -112,6 +130,23 @@ public class CatalogoServlet extends HttpServlet {
 			} else if (filter.equalsIgnoreCase("catalogo")) {
 				try {
 					prodotti = dbProdotti.doRetrieveAll("codiceSeriale");
+					dettagliProdotti = dbDettagli.filterByTerminati();
+					
+					Iterator<ProdottoBean> iterProdotti;
+					Iterator<DettaglioProdottoBean> iterDettagliTerminati = dettagliProdotti.iterator();
+					DettaglioProdottoBean dettaglio = new DettaglioProdottoBean();
+					
+					while(iterDettagliTerminati.hasNext()) {
+						dettaglio = iterDettagliTerminati.next();
+						iterProdotti = prodotti.iterator();
+						while(iterProdotti.hasNext()) {
+							prodotto = iterProdotti.next();
+							if(prodotto.getCodiceSeriale().equalsIgnoreCase(dettaglio.getProdotto())) {
+								prodottiTerminati.add(prodotto);
+							}
+						}
+					}
+					
 					dettagliProdotti = dbDettagli.doRetrieveAll("tipo");
 					
 				} catch (SQLException e) {
@@ -134,7 +169,11 @@ public class CatalogoServlet extends HttpServlet {
 						prodotto = iterProdotti.next();
 						
 						if(prodotto.getCodiceSeriale().equalsIgnoreCase(dettagli.getProdotto())) {
-							prodottiSconto.add(prodotto);
+							if(dettagli.getQuantita() == 0) {
+								prodottiTerminati.add(prodotto);
+							} else {
+								prodottiSconto.add(prodotto);
+							}
 						}
 					}
 				}
@@ -147,6 +186,7 @@ public class CatalogoServlet extends HttpServlet {
 		}
 		
 		request.getSession().setAttribute("prodotti", prodotti);
+		request.getSession().setAttribute("prodottiTerminati", prodottiTerminati);
 		request.getSession().setAttribute("dettagliProdotti", dettagliProdotti);
 		if (request.getSession().getAttribute("admin") == null) {
 			request.getSession().setAttribute("admin",false);

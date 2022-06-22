@@ -48,7 +48,17 @@
               </div>
 
               <div class="bottone_prodotto">
-                <button class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCartN('<% out.print(prodotto.getCodiceSeriale());%>')">
+              <% if(dettagli.getQuantita() == 0) { %>
+                <button disabled class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCartN('<% out.print(prodotto.getCodiceSeriale());%>')">
+                    <div class="pretext-terminato">
+                       Terminato
+                    </div>
+                    <div class="pretext done" id="done<% out.print(prodotto.getCodiceSeriale()); %>">
+                      <div class="posttext"> Aggiunto</div>
+                    </div>
+                </button>
+                <% } else { %>
+                <button disabled class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCartN('<% out.print(prodotto.getCodiceSeriale());%>')">
                     <div class="pretext">
                        Acquista
                     </div>
@@ -56,6 +66,7 @@
                       <div class="posttext"> Aggiunto</div>
                     </div>
                 </button>
+                <% } %>
               </div>
             </div>
       </div>
