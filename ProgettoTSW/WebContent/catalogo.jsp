@@ -91,7 +91,7 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
   				dettagli = iterDettagli.next();
   				if(prodotto.getCodiceSeriale().equals(dettagli.getProdotto())) break;
   			}%>
-        <div class="grid-card">
+        <div class="grid-card-terminato">
         <div class="cliccabile" onclick="click('<%out.print(prodotto.getCodiceSeriale());%>')">
         <a href="select?type=prodotto&prodotto=<%out.println(prodotto.getCodiceSeriale());%>"></a>
           <div class="img">
