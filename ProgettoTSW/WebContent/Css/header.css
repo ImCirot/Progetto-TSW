@@ -135,11 +135,14 @@ a{
   max-width: 35vh;
   height: auto;
   max-height: 40vh;
-  overflow: scroll;
+  overflow-y: scroll;
   background: white;
-  margin: 1px #9932CC solid;
+  border: 1px solid #9932CC;
 }
-
+.search-zone::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
 
 .type {
 	padding: 5px;
