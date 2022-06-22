@@ -1,7 +1,7 @@
 .section {
   max-width: 1300px;
   padding: 25px;
-  margin: 5% auto;
+  margin: 0 auto;
   display: grid;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -25,7 +25,7 @@
 .titolo{
     padding: 10px;
     text-align: center;
-    margin: 30px auto;
+    margin: 1% auto;
 
 }
 

@@ -103,7 +103,7 @@
     		});
     	
     	window.addEventListener("scroll", function(){
-    		  console.log(window.scrollY);
+    		 
 
     		  if(window.scrollY > 50){
     		      item.classList.remove('aperto');

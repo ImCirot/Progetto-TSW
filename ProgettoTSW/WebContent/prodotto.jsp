@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Snackz</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <link rel="stylesheet" href="./Css/prodotto.css">
 </head>
 <body>
@@ -58,6 +60,74 @@
             </div>
       </div>
     </div>
+    
+<!--     RECENSIONI -->
+
+    			<div class="container_form">
+  	  				<h3>Aggiungi nuova recensione</h3>
+				  	   <form action="modificaInfo" method="post">
+							<input type="hidden" name="utente" value="">
+							<input type="hidden" name="target" value="indirizzo">
+							<input type="hidden" name="mode" value="add">
+				    
+				    <div class="row">
+					      <div class="col-25">
+					        <label for="recensione">Recensione</label>
+					      </div>
+					      <div class="col-75">
+					        <textarea required id="recensione" name="recensione" style="height:200px" placeholder="Max 250 caratteri"></textarea>
+					      </div>
+	    			</div>
+	    			<div class="row">
+				      <div class="col-25">
+				        <label for="anonimo">Anonimo</label>
+				      </div>
+				      <div class="col-75">
+				        <select required id="anonimo" name="anonimo">
+			 					<option value="si" selected>Si</option>
+			 					<option value="no">No</option>
+				        </select>
+				      </div>
+				       </div>
+				      <div class="row">
+				      <div class="col-25">
+				        <label for="anonimo">Voto</label>
+				      </div>
+				      <div class="col-75">
+				       	<div class="c4l-rating">
+						    <input required name="c4l-rating" type="radio" id="c4l-rate1" value="1" checked/>
+						    <label for="c4l-rate1"></label>
+						 
+						    <input name="c4l-rating" type="radio" id="c4l-rate2" value="2" />
+						    <label for="c4l-rate2"></label>
+						 
+						    <input name="c4l-rating" type="radio" id="c4l-rate3" value="3" />
+						    <label for="c4l-rate3"></label>
+						 
+						    <input name="c4l-rating" type="radio" id="c4l-rate4" value="4" />
+						    <label for="c4l-rate4"></label>
+						 
+						    <input name="c4l-rating" type="radio" id="c4l-rate5" value="5"  />
+						    <label for="c4l-rate5"></label>
+						</div>
+				    </div>
+				      </div>
+				      
+					    <div class="row">
+				      		<input type="submit" value="Aggiungi Recensione">
+				    	</div>
+				    	
+				    </form>
+	   			</div>
+   
+    
+    
+    
+    
+    
+    
+    
+    
 	<jsp:include page="./footer.jsp" />
 	<script src="./JS/addedToCart.js"></script>
 </body>
