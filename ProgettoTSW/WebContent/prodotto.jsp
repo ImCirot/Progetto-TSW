@@ -151,26 +151,26 @@
 				      </div>
 				      <div class="col-75">
 				       	<div class="c4l-rating">
-						    <input required name="c4l-rating" type="radio" id="c4l-rate1" value="1" checked/>
+						    <input required class="input_prodotto" name="c4l-rating" type="radio" id="c4l-rate1" value="1" checked/>
 						    <label for="c4l-rate1"></label>
 						 
-						    <input name="c4l-rating" type="radio" id="c4l-rate2" value="2" />
+						    <input class="input_prodotto" name="c4l-rating" type="radio" id="c4l-rate2" value="2" />
 						    <label for="c4l-rate2"></label>
 						 
-						    <input name="c4l-rating" type="radio" id="c4l-rate3" value="3" />
+						    <input class="input_prodotto" name="c4l-rating" type="radio" id="c4l-rate3" value="3" />
 						    <label for="c4l-rate3"></label>
 						 
-						    <input name="c4l-rating" type="radio" id="c4l-rate4" value="4" />
+						    <input class="input_prodotto" name="c4l-rating" type="radio" id="c4l-rate4" value="4" />
 						    <label for="c4l-rate4"></label>
 						 
-						    <input name="c4l-rating" type="radio" id="c4l-rate5" value="5"  />
+						    <input class="input_prodotto" name="c4l-rating" type="radio" id="c4l-rate5" value="5"  />
 						    <label for="c4l-rate5"></label>
 						</div>
 				    </div>
 				      </div>
 				      
 					    <div class="row">
-				      		<input type="submit" value="Aggiungi Recensione">
+				      		<input type="submit" class="input_prodotto" value="Aggiungi Recensione">
 				    	</div>
 				    	
 				    </form>
