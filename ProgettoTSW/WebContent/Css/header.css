@@ -130,9 +130,7 @@ a{
 
 #search-result {
   position: absolute;
-  width: 20%;
-  min-width: 35vh;
-  max-width: 35vh;
+ 
   height: auto;
   max-height: 40vh;
   overflow-y: scroll;
