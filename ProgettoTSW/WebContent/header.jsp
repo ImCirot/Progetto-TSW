@@ -34,7 +34,6 @@
     <title>Snackz</title>
   </head>
   <body>
-  <script src="./JS/searchFunctions.js"></script>
     <div class="header">
       <div class="header_filter">
       </div>
@@ -65,7 +64,7 @@
         <ul>
           <li>
           	<div id="search-zone">
-          	<input type="text" id="search-bar" autocomplete="off" name="search" placeholder="Cerca prodotto">
+          	<input type="text" id="search-bar" class="my_textbox" autocomplete="off" name="search" placeholder="Cerca prodotto">
           	<div id="search-result">
 	          	<div id="search-type-result"></div>
 	          	<div id="search-product-result"></div>
@@ -73,7 +72,7 @@
           	</div>
           	</div>
           </li>
-          <li><a class="links" href="#" onclick="showSearch()"><span class="material-icons md-36">search</span></a></li>
+          <li><a class="links" href="#" onclick="showSearch()"><span id="my_button" class="material-icons md-36">search</span></a></li>
           <li><a class="links"  href="#" id="carrello" onclick="showCart()"><span class="material-icons md-36">local_grocery_store</span></a></li>
           <li  id="utente"><a class="links" href="#"><span class="material-icons md-36">person</span></a></li>
         </ul>
@@ -125,7 +124,7 @@
     		  }
     		});
     </script>
-    <script type="text/javascript">
+    <script>
       $(".logo").click(function(){
         window.location=$(this).find("a").attr("href");
         return false;
@@ -142,6 +141,8 @@
       function register(){
     	  location.href = "./registerForm.jsp";
       }
-    </script>
+     </script> 
+     
+     <script src="./JS/searchFunctions.js"></script>
   </body>
 </html>

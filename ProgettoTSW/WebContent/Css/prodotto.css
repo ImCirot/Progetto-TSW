@@ -176,7 +176,7 @@
   }
 
 
- input[type=text], select, textarea {
+  .input_prodotto[type=text], select, textarea {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
@@ -186,7 +186,7 @@
 textarea{
 	font-size:1rem;
 }
-input[type=text]:focus, textarea:focus, select:focus{
+.input_prodotto[type=text]:focus, textarea:focus, select:focus{
 	outline: 2px solid darkblue;
 }
 
@@ -195,7 +195,7 @@ label {
   display: inline-block;
 }
 
-input[type=submit] {
+.input_prodotto[type=submit] {
   margin: 2%;
   background-color: #04AA6D;
   color: white;
@@ -206,7 +206,7 @@ input[type=submit] {
   float: right;
 }
 
-input[type=submit]:hover {
+.input_prodotto[type=submit]:hover {
   background-color: #45a049;
 }
 
@@ -238,7 +238,7 @@ input[type=submit]:hover {
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=submit] {
+  .col-25, .col-75, .input_prodotto[type=submit] {
     width: 100%;
     margin-top: 0;
   }
