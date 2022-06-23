@@ -40,7 +40,7 @@ CREATE TABLE `appartenenza` (
 
 LOCK TABLES `appartenenza` WRITE;
 /*!40000 ALTER TABLE `appartenenza` DISABLE KEYS */;
-INSERT INTO `appartenenza` VALUES ('gBHM8710J','biscotti'),('gFEfPBJg','biscotti'),('t6hyM8710J','biscotti'),('ONEPC69','coffee drink'),('hcCcRJX5','energy drink'),('MElE578','energy drink'),('MONST03','energy drink'),('SPMA675','energy drink'),('zC3RFPrT','energy drink'),('4X6AYOAF','merendine'),('7P6TAKI9P','merendine'),('JgrrTR876','merendine'),('GesKKqnx','patatine'),('UoESj9xK','patatine'),('CPCMC125','popcorn'),('BEFJ201','prodotto essiccato'),('4X6AYOAF','snack dolci'),('7P6TAKI9P','snack dolci'),('CPCMC125','snack dolci'),('DORC189','snack dolci'),('gBHM8710J','snack dolci'),('JgrrTR876','snack dolci'),('MOCH123','snack dolci'),('Pz7nszym','snack dolci'),('PZzimtRa','snack dolci'),('t6hyM8710J','snack dolci'),('xBDiMhYa','snack dolci'),('BEFJ201','snack salati'),('BIFC675','snack salati'),('GesKKqnx','snack salati'),('T4iGqTCG','snack salati'),('UoESj9xK','snack salati'),('BLUEF234','soft drink'),('FANTW69','soft drink'),('TOMW312','soft drink'),('tyih29rt','soft drink'),('YHGv875TyK','soft drink'),('YJtnPO97G','soft drink');
+INSERT INTO `appartenenza` VALUES ('gBHM8710J','biscotti'),('gFEfPBJg','biscotti'),('t6hyM8710J','biscotti'),('tyPOJ864PL','biscotti'),('ONEPC69','coffee drink'),('hcCcRJX5','energy drink'),('MElE578','energy drink'),('MONST03','energy drink'),('SPMA675','energy drink'),('zC3RFPrT','energy drink'),('4X6AYOAF','merendine'),('7P6TAKI9P','merendine'),('JgrrTR876','merendine'),('GesKKqnx','patatine'),('UoESj9xK','patatine'),('CPCMC125','popcorn'),('BEFJ201','prodotto essiccato'),('4X6AYOAF','snack dolci'),('7P6TAKI9P','snack dolci'),('CPCMC125','snack dolci'),('DORC189','snack dolci'),('gBHM8710J','snack dolci'),('JgrrTR876','snack dolci'),('MOCH123','snack dolci'),('Pz7nszym','snack dolci'),('PZzimtRa','snack dolci'),('t6hyM8710J','snack dolci'),('tyPOJ864PL','snack dolci'),('xBDiMhYa','snack dolci'),('BEFJ201','snack salati'),('BIFC675','snack salati'),('GesKKqnx','snack salati'),('T4iGqTCG','snack salati'),('UoESj9xK','snack salati'),('BLUEF234','soft drink'),('FANTW69','soft drink'),('TOMW312','soft drink'),('tyih29rt','soft drink'),('YHGv875TyK','soft drink'),('YJtnPO97G','soft drink');
 /*!40000 ALTER TABLE `appartenenza` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -337,4 +337,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-23 15:10:41
+-- Dump completed on 2022-06-23 15:30:35
