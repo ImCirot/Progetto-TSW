@@ -230,7 +230,7 @@ public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 		List<ComposizioneOrdineBean> composizioniOrdini = new ArrayList<>();
 		ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
 		
-		String query = "SELECT * FORM " + ComposizioneOrdineDAO.TABLE_NAME + " WHERE cliente = ?" ;
+		String query = "SELECT * FROM " + ComposizioneOrdineDAO.TABLE_NAME + " WHERE cliente = ?" ;
 
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -240,6 +240,7 @@ public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
+				composizione = new ComposizioneOrdineBean();
 				composizione.setOrdine(result.getInt("ordine"));
 				composizione.setCliente(result.getString("cliente"));
 				composizione.setProdotto(result.getString("prodotto"));
