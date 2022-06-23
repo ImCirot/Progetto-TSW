@@ -145,6 +145,16 @@ public class CatalogoServlet extends HttpServlet {
 								prodottiTerminati.add(prodotto);
 							}
 						}
+						
+						iterProdotti = prodottiTerminati.iterator();
+						
+						while(iterProdotti.hasNext()) {
+							prodotto = iterProdotti.next();
+							
+							if(prodotti.contains(prodotto)) {
+								prodotti.remove(prodotto);
+							}
+						}
 					}
 					
 					dettagliProdotti = dbDettagli.doRetrieveAll("tipo");
