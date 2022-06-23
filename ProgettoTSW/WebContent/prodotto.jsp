@@ -120,17 +120,17 @@
 			%>	
     			<div class="container_form">
   	  				<h3>Aggiungi nuova recensione</h3>
-				  	   <form action="modificaInfo" method="post">
-							<input type="hidden" name="utente" value="">
-							<input type="hidden" name="target" value="indirizzo">
-							<input type="hidden" name="mode" value="add">
+				  	   <form action="recensione" method="post">
+				  	   		<input type="hidden" name="mode" value="aggiungi">
+							<input type="hidden" name="seriale" value="<% out.print(prodotto.getCodiceSeriale());%>">
+							<input type="hidden" name="prodotto" value="<%out.print(prodotto.getNome());%>">
 				    
 				    <div class="row">
 					      <div class="col-25">
 					        <label for="recensione">Recensione</label>
 					      </div>
 					      <div class="col-75">
-					        <textarea required id="recensione" name="recensione" style="height:200px" placeholder="Max 250 caratteri"></textarea>
+					        <textarea required id="recensione" name="testo" style="height:200px" placeholder="Max 250 caratteri"></textarea>
 					      </div>
 	    			</div>
 	    			<div class="row">
@@ -150,19 +150,19 @@
 				      </div>
 				      <div class="col-75">
 				       	<div class="c4l-rating">
-						    <input required name="c4l-rating" type="radio" id="c4l-rate1" value="1" checked/>
+						    <input required name="voto" type="radio" id="c4l-rate1" value="1" checked/>
 						    <label for="c4l-rate1"></label>
 						 
-						    <input name="c4l-rating" type="radio" id="c4l-rate2" value="2" />
+						    <input name="voto" type="radio" id="c4l-rate2" value="2" />
 						    <label for="c4l-rate2"></label>
 						 
-						    <input name="c4l-rating" type="radio" id="c4l-rate3" value="3" />
+						    <input name="voto" type="radio" id="c4l-rate3" value="3" />
 						    <label for="c4l-rate3"></label>
 						 
-						    <input name="c4l-rating" type="radio" id="c4l-rate4" value="4" />
+						    <input name="voto" type="radio" id="c4l-rate4" value="4" />
 						    <label for="c4l-rate4"></label>
 						 
-						    <input name="c4l-rating" type="radio" id="c4l-rate5" value="5"  />
+						    <input name="voto" type="radio" id="c4l-rate5" value="5"  />
 						    <label for="c4l-rate5"></label>
 						</div>
 				    </div>

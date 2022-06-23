@@ -128,6 +128,7 @@ public class RecensioneDAO {
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
+				recensione = new RecensioneBean();
 				recensione.setCliente(result.getString("cliente"));
 				recensione.setCodiceSerialeProdotto(result.getString("codiceSerialeProdotto"));
                 recensione.setProdotto(result.getString("prodotto"));
@@ -172,6 +173,7 @@ public class RecensioneDAO {
 			ResultSet result = statement.executeQuery();
 			
 			while(result.next()) {
+				recensione = new RecensioneBean();
 				recensione.setCliente(result.getString("cliente"));
 				recensione.setCodiceSerialeProdotto(result.getString("codiceSerialeProdotto"));
                 recensione.setProdotto(result.getString("prodotto"));
@@ -243,6 +245,7 @@ public class RecensioneDAO {
 			ResultSet result = statement.executeQuery();
 			
             while(result.next()){
+            	recensione = new RecensioneBean();
                 recensione.setCliente(result.getString("cliente"));
                 recensione.setCodiceSerialeProdotto(result.getString("codiceSerialeProdotto"));
                 recensione.setProdotto(result.getString("prodotto"));
@@ -282,6 +285,7 @@ public class RecensioneDAO {
 			ResultSet result = statement.executeQuery();
 			
             while(result.next()){
+            	recensione = new RecensioneBean();
                 recensione.setCliente(result.getString("cliente"));
                 recensione.setCodiceSerialeProdotto(result.getString("codiceSerialeProdotto"));
                 recensione.setProdotto(result.getString("prodotto"));

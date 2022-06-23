@@ -246,10 +246,10 @@ input[type=submit]:hover {
 
 
 
-.c4l-rating input[name="c4l-rating"] { display: none; }
-.c4l-rating input[name="c4l-rating"] + label:after { content: none; }
-.c4l-rating input[name="c4l-rating"] + label { font-family: 'FontAwesome'; }
-.c4l-rating input[name="c4l-rating"] + label:before {
+.c4l-rating input[name="voto"] { display: none; }
+.c4l-rating input[name="voto"] + label:after { content: none; }
+.c4l-rating input[name="voto"] + label { font-family: 'FontAwesome'; }
+.c4l-rating input[name="voto"] + label:before {
     background-color: transparent;
     border: none;
     color: #9932CC;
@@ -257,13 +257,13 @@ input[type=submit]:hover {
     font-size: 1.33333333em;
     transition: none;
 }
-.c4l-rating input[name="c4l-rating"]:checked ~ label:before {
+.c4l-rating input[name="voto"]:checked ~ label:before {
     background-color: transparent;
     border: none;
     color: #607d8b;
 }
-.c4l-rating input[name="c4l-rating"]:checked + label:before { color: #9932CC; }
-.c4l-rating input[name="c4l-rating"] + label:hover ~ input + label:before { opacity: 0.6; }
+.c4l-rating input[name="voto"]:checked + label:before { color: #9932CC; }
+.c4l-rating input[name="voto"] + label:hover ~ input + label:before { opacity: 0.6; }
 
 
 
