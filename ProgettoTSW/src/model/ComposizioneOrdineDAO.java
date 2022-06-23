@@ -224,4 +224,40 @@ public class ComposizioneOrdineDAO extends AbstractDAO<ComposizioneOrdineBean> {
 		return result != 0;
 	}
 	
+	public synchronized List<ComposizioneOrdineBean> filterByCliente(String cliente) throws SQLException {
+		Connection con = null;
+		PreparedStatement statement = null;
+		List<ComposizioneOrdineBean> composizioniOrdini = new ArrayList<>();
+		ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
+		
+		String query = "SELECT * FORM " + ComposizioneOrdineDAO.TABLE_NAME + " WHERE cliente = ?" ;
+
+		try {
+			con = DriverManagerConnectionPool.getConnection();
+			statement = con.prepareStatement(query);
+			statement.setString(1, cliente);
+			
+			ResultSet result = statement.executeQuery();
+			
+			while(result.next()) {
+				composizione.setOrdine(result.getInt("ordine"));
+				composizione.setCliente(result.getString("cliente"));
+				composizione.setProdotto(result.getString("prodotto"));
+				composizione.setQuantitaProdotto(result.getInt("quantitaProdotto"));
+				composizione.setCostoUnitario(result.getBigDecimal("costoUnitario"));
+				
+				composizioniOrdini.add(composizione);
+			}
+		} finally {
+			try {
+				if(statement != null) {
+					statement.close();
+				}
+			} finally {
+				DriverManagerConnectionPool.releaseConnection(con);
+			}
+		}
+		
+		return composizioniOrdini;
+	}
 }

@@ -5,8 +5,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Base64.Encoder;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.ComposizioneOrdineBean;
+import model.ComposizioneOrdineDAO;
 import model.IndirizzoBean;
 import model.IndirizzoDAO;
 import model.MetodoDiPagamentoBean;
@@ -51,15 +55,22 @@ public class LoginServlet extends HttpServlet {
 		if(mode.equalsIgnoreCase("getInfo")) {
 			String utente = (String) request.getSession().getAttribute("utente");
 			boolean admin = (boolean) request.getSession().getAttribute("admin");
+			
 			List<IndirizzoBean> indirizzi = new ArrayList<>();
 			List<MetodoDiPagamentoBean> metodiPagamento = new ArrayList<>();
 			List<OrdineBean> ordini = new ArrayList<>();
 			List<RecensioneBean> recensioni = new ArrayList<>();
+			List<ComposizioneOrdineBean> composizioni = new ArrayList<>();
+			Map<Integer,List<ComposizioneOrdineBean>> composizioniOrdini = new HashMap<>();
+			List<ComposizioneOrdineBean> composizioniTemp = new ArrayList<>();
+			
+			ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
 			
 			IndirizzoDAO dbIndirizzo = new IndirizzoDAO();
 			MetodoDiPagamentoDAO dbPagamento = new MetodoDiPagamentoDAO();
 			OrdineDAO dbOrdine = new OrdineDAO();
 			RecensioneDAO dbRecensioni = new RecensioneDAO();
+			ComposizioneOrdineDAO dbComposizioni = new ComposizioneOrdineDAO();
 			
 			if(!admin) {
 				try {
@@ -67,15 +78,25 @@ public class LoginServlet extends HttpServlet {
 					metodiPagamento = dbPagamento.doRetrieveAllByKey(utente);
 					ordini = dbOrdine.doRetrieveAllByKey(utente);
 					recensioni = dbRecensioni.doRetrieveAllByKey(utente);
+					composizioni = dbComposizioni.doRetrieveAllByKey(utente);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+				}
+				
+				Iterator<ComposizioneOrdineBean> iterComposizioni = composizioni.iterator();
+				
+				while(iterComposizioni.hasNext()) {
+					composizione = iterComposizioni.next();
+					
+					composizioniOrdini.getOrDefault((Integer) composizione.getOrdine(), new ArrayList<>()).add(composizione);
 				}
 				
 				request.getSession().setAttribute("indirizzi", indirizzi);
 				request.getSession().setAttribute("metodiPagamento", metodiPagamento);
 				request.getSession().setAttribute("ordini", ordini);
 				request.getSession().setAttribute("recensioni", recensioni);
+				request.getSession().setAttribute("composizioniOrdini", composizioniOrdini);
 				
 				if(request.getParameter("next") != null) {
 					int ordineID = ordini.get(ordini.size()-1).getNumOrdineProgressivo();

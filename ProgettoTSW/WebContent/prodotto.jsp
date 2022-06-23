@@ -1,5 +1,4 @@
-<%@page import="model.DettaglioProdottoBean"%>
-<%@page import="model.ProdottoBean"%>
+<%@page import="model.*" import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -73,7 +72,51 @@
     </div>
     
 <!--     RECENSIONI -->
-
+	<% 	boolean logged = (boolean) request.getSession().getAttribute("logged");
+		if(logged) {
+			List<RecensioneBean> listaRecensioni = (List<RecensioneBean>) request.getSession().getAttribute("recensioni");
+			Iterator<RecensioneBean> iterRecensioni = listaRecensioni.iterator();
+			RecensioneBean recensione = new RecensioneBean();
+			boolean recensito = false;
+			
+			while(iterRecensioni.hasNext()) {
+				recensione = iterRecensioni.next();
+				
+				if(recensione.getCodiceSerialeProdotto().equalsIgnoreCase(prodotto.getCodiceSeriale())) {
+					recensito = true;
+					break;
+				}
+			}
+			
+			if(recensito){%>
+				<h1>Hai gia recensito questo prodotto!</h1>
+			<%} else {
+				Map<Integer,List<ComposizioneOrdineBean>> composizioniOrdini = (Map<Integer,List<ComposizioneOrdineBean>>) request.getSession().getAttribute("composizioniOrdini");
+				Iterator<Integer> iterOrdineID = composizioniOrdini.keySet().iterator();
+				Iterator<ComposizioneOrdineBean> iterComposizioni;
+				Integer ordineID = null;
+				List<ComposizioneOrdineBean> composizioni = new ArrayList<>();
+				ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
+				boolean acquistato = false;
+				
+				while(iterOrdineID.hasNext()){
+					ordineID = iterOrdineID.next();
+					
+					composizioni = composizioniOrdini.get(ordineID);
+					iterComposizioni = composizioni.iterator();
+					
+					while(iterComposizioni.hasNext()){
+						composizione = iterComposizioni.next();
+						
+						if(composizione.getProdotto().equalsIgnoreCase(prodotto.getCodiceSeriale())){
+							acquistato = true;
+							break;
+						}
+					}
+				}
+				
+				if(acquistato) {
+			%>	
     			<div class="container_form">
   	  				<h3>Aggiungi nuova recensione</h3>
 				  	   <form action="modificaInfo" method="post">
@@ -130,15 +173,11 @@
 				    	
 				    </form>
 	   			</div>
-   
-    
-    
-    
-    
-    
-    
-    
-    
+   				<% } else { %>
+						<h1>Devi prima acquistare il prodotto per recensire</h1>
+					<%}
+				}
+			}%>
 	<jsp:include page="./footer.jsp" />
 	<script src="./JS/addedToCart.js"></script>
 </body>
