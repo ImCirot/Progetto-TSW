@@ -78,7 +78,7 @@ public class LoginServlet extends HttpServlet {
 					metodiPagamento = dbPagamento.doRetrieveAllByKey(utente);
 					ordini = dbOrdine.doRetrieveAllByKey(utente);
 					recensioni = dbRecensioni.doRetrieveAllByKey(utente);
-					composizioni = dbComposizioni.doRetrieveAllByKey(utente);
+					composizioni = dbComposizioni.filterByCliente(utente);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -88,12 +88,18 @@ public class LoginServlet extends HttpServlet {
 				
 				while(iterComposizioni.hasNext()) {
 					composizione = iterComposizioni.next();
-					
-					if(composizioniOrdini.containsKey(composizione.getOrdine())) {
-						composizioniTemp = composizioniOrdini.get(composizione.getOrdine());
-						
+					System.out.println("ordineID:" + composizione.getOrdine() + "\n");
+					if(composizioniOrdini.containsKey((Integer) composizione.getOrdine())) {
+						System.out.println("ordine: " + composizione.getOrdine() + " ci sta gia");
+						composizioniTemp = composizioniOrdini.get((Integer) composizione.getOrdine());
+					} else {
+						System.out.println("ordine: " + composizione.getOrdine() + " non ci stava");
+						composizioniTemp = new ArrayList<>();
+						composizioniTemp.add(composizione);
 					}
-					composizioniOrdini.getOrDefault((Integer) composizione.getOrdine(), new ArrayList<>()).add(composizione);
+					
+					composizioniTemp.add(composizione);
+					composizioniOrdini.put((Integer) composizione.getOrdine(), composizioniTemp);
 				}
 				
 				request.getSession().setAttribute("indirizzi", indirizzi);

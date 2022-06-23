@@ -103,7 +103,6 @@
 				
 				while(iterOrdineID.hasNext()){
 					ordineID = iterOrdineID.next();
-					
 					composizioni = composizioniOrdini.get(ordineID);
 					iterComposizioni = composizioni.iterator();
 					
