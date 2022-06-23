@@ -34,7 +34,6 @@
     <title>Snackz</title>
   </head>
   <body>
-  <script src="./JS/searchFunctions.js"></script>
     <div class="header">
       <div class="header_filter">
       </div>
@@ -65,7 +64,7 @@
         <ul>
           <li>
           	<div id="search-zone">
-          	<input type="text" id="search-bar" autocomplete="off" name="search" placeholder="Cerca prodotto">
+          	<input type="text" id="search-bar" class="my_textbox" autocomplete="off" name="search" placeholder="Cerca prodotto">
           	<div id="search-result">
 	          	<div id="search-type-result"></div>
 	          	<div id="search-product-result"></div>
@@ -73,7 +72,7 @@
           	</div>
           	</div>
           </li>
-          <li><a class="links" href="#" onclick="showSearch()"><span class="material-icons md-36">search</span></a></li>
+          <li><a class="links" href="#" onclick="showSearch()"><span id="my_button" class="material-icons md-36">search</span></a></li>
           <li><a class="links"  href="#" id="carrello" onclick="showCart()"><span class="material-icons md-36">local_grocery_store</span></a></li>
           <li  id="utente"><a class="links" href="#"><span class="material-icons md-36">person</span></a></li>
         </ul>
@@ -81,15 +80,30 @@
     </div>
       <div class="user">
       <div class="text">
-    	<p>Ciao Gbasile</p>
+      <% if(request.getSession().getAttribute("logged") == null) {%>
+    	<p>Ciao!</p>
+      <% } else { %>
+      	<p>Ciao <strong style="color:#9932CC;"><% out.print(request.getSession().getAttribute("nome"));%></strong></p>
+      <% } %>
       </div>
       <div class="flex">
+      <% if(request.getSession().getAttribute("logged") == null) {%>
       <div class="user_action">
-        <button class="button_user log">Login</button>
+        <button class="button_user log" onclick="login()">Login</button>
       </div>
       <div class="user_action">
-        <button class="button_user reg">Sign up</button>
+        <button class="button_user log" onclick="register()">Registrati</button>
       </div>
+      <% } else { %>
+      <div class="user_action">
+        <button class="button_user reg" onclick="persArea()">Pers. area</button>
+      </div>
+      <div class="user_action">
+      	<form action="LogOutServlet" method="Get">
+        <button type="submit" class="button_user log">Log out</button>
+        </form>
+      </div>
+      <% } %>
     </div>
     </div>
     <script>
@@ -110,11 +124,25 @@
     		  }
     		});
     </script>
-    <script type="text/javascript">
+    <script>
       $(".logo").click(function(){
         window.location=$(this).find("a").attr("href");
         return false;
       });
-    </script>
+      
+      function login(){
+    	  location.href = "./loginForm.jsp";
+      }
+      
+      function persArea(){
+    	  location.href = "./personalArea.jsp";
+      }
+      
+      function register(){
+    	  location.href = "./registerForm.jsp";
+      }
+     </script> 
+     
+     <script src="./JS/searchFunctions.js"></script>
   </body>
 </html>

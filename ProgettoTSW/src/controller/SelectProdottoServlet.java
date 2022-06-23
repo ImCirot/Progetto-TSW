@@ -63,25 +63,66 @@ public class SelectProdottoServlet extends HttpServlet {
 		} else if(type.equalsIgnoreCase("marca")) {
 			
 			List<ProdottoBean> listaProdottiTrovati = new ArrayList<>();
+			List<DettaglioProdottoBean> dettagli = new ArrayList<>();
+			Iterator<ProdottoBean> iterProdotti;
+			Iterator<DettaglioProdottoBean> iterDettagli;
+			List<ProdottoBean> prodottiTerminati = new ArrayList<>();
+			DettaglioProdottoBean dettaglio = new DettaglioProdottoBean();
 			try {
 				listaProdottiTrovati = dbProdotto.filterByMarca(request.getParameter("marca"));
-				if(listaProdottiTrovati.isEmpty()) {
-					request.getSession().setAttribute("empty", true);
-				}
+				dettagli = dbDettagli.doRetrieveAll("prova");
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			request.getSession().setAttribute("empty", false);
-			request.getSession().setAttribute("prodottiTrovati", listaProdottiTrovati);
-			path = "./searchProduct.jsp";
+			if(listaProdottiTrovati.isEmpty()) {
+				request.getSession().setAttribute("empty", true);
+			} else if(listaProdottiTrovati.size() == 1) {
+				path = "select?type=prodotto&prodotto=" + listaProdottiTrovati.get(0).getCodiceSeriale();
+			} else {
+				iterProdotti = listaProdottiTrovati.iterator();
+				
+				while(iterProdotti.hasNext()) {
+					prodotto = iterProdotti.next();
+					iterDettagli = dettagli.iterator();
+					
+					while(iterDettagli.hasNext()) {
+						dettaglio = iterDettagli.next();
+						
+						if(dettaglio.getProdotto().equalsIgnoreCase(prodotto.getCodiceSeriale())) break;
+					}
+					
+					if(dettaglio.getQuantita() == 0) {
+						prodottiTerminati.add(prodotto);
+					}
+				}
+				
+				iterProdotti = prodottiTerminati.iterator();
+				
+				while(iterProdotti.hasNext()) {
+					prodotto = iterProdotti.next();
+					
+					listaProdottiTrovati.remove(prodotto);
+				}
+				request.getSession().setAttribute("prodottiTerminati", prodottiTerminati);
+				request.getSession().setAttribute("empty", false);
+				request.getSession().setAttribute("prodottiTrovati", listaProdottiTrovati);
+				path = "./searchProduct.jsp";
+			}
 		} else if(type.equalsIgnoreCase("categoria")) {
 			List<ProdottoBean> listaProdottiTrovati = new ArrayList<>();
 			List <AppartenenzaBean> listaSottoCategorie = new ArrayList<>();
+			List<DettaglioProdottoBean> dettagli = new ArrayList<>();
+			Iterator<ProdottoBean> iterProdotti;
+			Iterator<DettaglioProdottoBean> iterDettagliProd;
+			List<ProdottoBean> prodottiTerminati = new ArrayList<>();
+			DettaglioProdottoBean dettaglio = new DettaglioProdottoBean();
 			AppartenenzaDAO dbCategorie = new AppartenenzaDAO();
 			AppartenenzaBean sottoCat = new AppartenenzaBean();
 			try {
 				listaSottoCategorie = dbCategorie.filterByCategoria(request.getParameter("categoria"));
+				dettagli = dbDettagli.doRetrieveAll("prova");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
@@ -101,7 +142,34 @@ public class SelectProdottoServlet extends HttpServlet {
 			}
 			if(listaProdottiTrovati.isEmpty()) {
 				request.getSession().setAttribute("empty", true);
+			} else if(listaProdottiTrovati.size() == 1){
+				path = "select?type=prodotto&prodotto=" + listaProdottiTrovati.get(0).getCodiceSeriale();
 			} else {
+				iterProdotti = listaProdottiTrovati.iterator();
+				
+				while(iterProdotti.hasNext()) {
+					prodotto = iterProdotti.next();
+					iterDettagliProd = dettagli.iterator();
+					
+					while(iterDettagliProd.hasNext()) {
+						dettaglio = iterDettagliProd.next();
+						
+						if(dettaglio.getProdotto().equalsIgnoreCase(prodotto.getCodiceSeriale())) break;
+					}
+					
+					if(dettaglio.getQuantita() == 0) {
+						prodottiTerminati.add(prodotto);
+					}
+				}
+				
+				iterProdotti = prodottiTerminati.iterator();
+				
+				while(iterProdotti.hasNext()) {
+					prodotto = iterProdotti.next();
+					
+					listaProdottiTrovati.remove(prodotto);
+				}
+				request.getSession().setAttribute("prodottiTerminati", prodottiTerminati);
 				request.getSession().setAttribute("empty", false);
 				request.getSession().setAttribute("prodottiTrovati", listaProdottiTrovati);
 			}

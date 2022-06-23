@@ -4,6 +4,8 @@ function showSearch() {
 	$("#search-product-result").html("");
 	$("#search-type-result").html("");
 	$("#search-brand-result").html("");
+	$(".my_textbox").focus();
+
 }
 
 $(document).ready(function() {

@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.DettaglioProdottoBean;
+import model.DettaglioProdottoDAO;
 import model.ProdottoBean;
 import model.ProdottoDAO;
 import model.SottoCategoriaBean;
@@ -130,8 +132,15 @@ public class SearchServlet extends HttpServlet {
 				}
 			}
 		} else if(target.equals("search-enter")) {
+			List<ProdottoBean> prodottiTerminati = new ArrayList<>();
+			Iterator<ProdottoBean> iterProdotti;
+			List<DettaglioProdottoBean> dettagli = new ArrayList<>();
+			Iterator<DettaglioProdottoBean> iterDettagli;
+			DettaglioProdottoBean dettaglio = new DettaglioProdottoBean();
+			DettaglioProdottoDAO dbDettagli = new DettaglioProdottoDAO();
 				try {
 					prodottiTrovati = dbProdotti.searchBy(search);
+					dettagli = dbDettagli.doRetrieveAll(search);
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -145,9 +154,36 @@ public class SearchServlet extends HttpServlet {
 					prodotto = prodottiTrovati.get(0);
 					response.getWriter().print("select?type=prodotto&prodotto=" + prodotto.getCodiceSeriale());
 				} else {
+					
+					iterProdotti = prodottiTrovati.iterator();
+					
+					while(iterProdotti.hasNext()) {
+						prodotto = iterProdotti.next();
+						iterDettagli = dettagli.iterator();
+						
+						while(iterDettagli.hasNext()) {
+							dettaglio = iterDettagli.next();
+							
+							if(dettaglio.getProdotto().equalsIgnoreCase(prodotto.getCodiceSeriale())) break;
+						}
+						
+						if(dettaglio.getQuantita() == 0) {
+							prodottiTerminati.add(prodotto);
+						}
+					}
+					
+					iterProdotti = prodottiTerminati.iterator();
+					
+					while(iterProdotti.hasNext()) {
+						prodotto = iterProdotti.next();
+						
+						prodottiTrovati.remove(prodotto);
+					}
+					
 					request.getSession().setAttribute("empty", false);
 					request.getSession().setAttribute("search", search);
 					request.getSession().setAttribute("prodottiTrovati", prodottiTrovati);
+					request.getSession().setAttribute("prodottiTerminati", prodottiTerminati);
 					response.getWriter().print("./searchProduct.jsp");
 				}
 			}

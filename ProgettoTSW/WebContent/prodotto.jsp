@@ -1,5 +1,4 @@
-<%@page import="model.DettaglioProdottoBean"%>
-<%@page import="model.ProdottoBean"%>
+<%@page import="model.*" import="java.util.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -73,7 +72,52 @@
     </div>
     
 <!--     RECENSIONI -->
-
+	
+	<% 	if(request.getSession().getAttribute("logged") != null){
+		boolean logged = (boolean) request.getSession().getAttribute("logged");
+		if(logged) {
+			List<RecensioneBean> listaRecensioni = (List<RecensioneBean>) request.getSession().getAttribute("recensioni");
+			Iterator<RecensioneBean> iterRecensioni = listaRecensioni.iterator();
+			RecensioneBean recensione = new RecensioneBean();
+			boolean recensito = false;
+			
+			while(iterRecensioni.hasNext()) {
+				recensione = iterRecensioni.next();
+				
+				if(recensione.getCodiceSerialeProdotto().equalsIgnoreCase(prodotto.getCodiceSeriale())) {
+					recensito = true;
+					break;
+				}
+			}
+		
+			if(recensito){%>
+				<h1>Hai gia recensito questo prodotto!</h1>
+			<%} else {
+				Map<Integer,List<ComposizioneOrdineBean>> composizioniOrdini = (Map<Integer,List<ComposizioneOrdineBean>>) request.getSession().getAttribute("composizioniOrdini");
+				Iterator<Integer> iterOrdineID = composizioniOrdini.keySet().iterator();
+				Iterator<ComposizioneOrdineBean> iterComposizioni;
+				Integer ordineID = null;
+				List<ComposizioneOrdineBean> composizioni = new ArrayList<>();
+				ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
+				boolean acquistato = false;
+				
+				while(iterOrdineID.hasNext()){
+					ordineID = iterOrdineID.next();
+					composizioni = composizioniOrdini.get(ordineID);
+					iterComposizioni = composizioni.iterator();
+					
+					while(iterComposizioni.hasNext()){
+						composizione = iterComposizioni.next();
+						
+						if(composizione.getProdotto().equalsIgnoreCase(prodotto.getCodiceSeriale())){
+							acquistato = true;
+							break;
+						}
+					}
+				}
+				
+				if(acquistato) {
+			%>	
     			<div class="container_form">
   	  				<h3>Aggiungi nuova recensione</h3>
 				  	   <form action="modificaInfo" method="post">
@@ -106,39 +150,36 @@
 				      </div>
 				      <div class="col-75">
 				       	<div class="c4l-rating">
-						    <input required name="c4l-rating" type="radio" id="c4l-rate1" value="1" checked/>
+						    <input required class="input_prodotto" name="c4l-rating" type="radio" id="c4l-rate1" value="1" checked/>
 						    <label for="c4l-rate1"></label>
 						 
-						    <input name="c4l-rating" type="radio" id="c4l-rate2" value="2" />
+						    <input class="input_prodotto" name="c4l-rating" type="radio" id="c4l-rate2" value="2" />
 						    <label for="c4l-rate2"></label>
 						 
-						    <input name="c4l-rating" type="radio" id="c4l-rate3" value="3" />
+						    <input class="input_prodotto" name="c4l-rating" type="radio" id="c4l-rate3" value="3" />
 						    <label for="c4l-rate3"></label>
 						 
-						    <input name="c4l-rating" type="radio" id="c4l-rate4" value="4" />
+						    <input class="input_prodotto" name="c4l-rating" type="radio" id="c4l-rate4" value="4" />
 						    <label for="c4l-rate4"></label>
 						 
-						    <input name="c4l-rating" type="radio" id="c4l-rate5" value="5"  />
+						    <input class="input_prodotto" name="c4l-rating" type="radio" id="c4l-rate5" value="5"  />
 						    <label for="c4l-rate5"></label>
 						</div>
 				    </div>
 				      </div>
 				      
 					    <div class="row">
-				      		<input type="submit" value="Aggiungi Recensione">
+				      		<input type="submit" class="input_prodotto" value="Aggiungi Recensione">
 				    	</div>
 				    	
 				    </form>
 	   			</div>
-   
-    
-    
-    
-    
-    
-    
-    
-    
+   				<% } else { %>
+						<h1>Devi prima acquistare il prodotto per recensire</h1>
+					<%}
+				}
+			}
+		}%>
 	<jsp:include page="./footer.jsp" />
 	<script src="./JS/addedToCart.js"></script>
 </body>

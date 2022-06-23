@@ -5,12 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Snackz</title>
-<link rel="stylesheet" href="./Css/catalogo.css">
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap%27">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="./Css/catalogo.css">
 </head>
 <body>
   <jsp:include page="./header.jsp" />
@@ -64,7 +65,11 @@
             <h2><% out.println(prodotto.getNome()); %></h2>
           </div>
           <div class="prezzo">
-            <p><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
+          <% if(dettagli.getPrezzoScontato() != null) {%>
+          <p class="sale"><del class="full-price"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</del>  <% out.println(dettagli.getPrezzoScontato().toPlainString()); %>&euro;</p>
+          <% } else { %>
+            <p class="price"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
+            <% } %>
           </div>
           </div>
           <div class="acquista">
@@ -87,8 +92,58 @@
     					</div>
         </div>
   		<% } %>
-  		</div>
-  		<% } %>
+  		<%  
+  		List<ProdottoBean> prodottiTerminati = (List<ProdottoBean>) request.getSession().getAttribute("prodottiTerminati");
+        if(!prodottiTerminati.isEmpty()){
+        iterProdotto = prodottiTerminati.iterator();
+        
+        while(iterProdotto.hasNext()){
+        	prodotto = iterProdotto.next();
+  			iterDettagli = dettagliProdotti.iterator();
+  			while(iterDettagli.hasNext()){
+  				dettagli = iterDettagli.next();
+  				if(prodotto.getCodiceSeriale().equals(dettagli.getProdotto())) break;
+  			}%>
+        <div class="grid-card-terminato">
+        <div class="cliccabile" onclick="click('<%out.print(prodotto.getCodiceSeriale());%>')">
+        <a href="select?type=prodotto&prodotto=<%out.println(prodotto.getCodiceSeriale());%>"></a>
+          <div class="img">
+            <img src="<% out.println(dettagli.getImmagine()); %>" alt="prodotto">
+          </div>
+          <div class="nome_prodotto">
+            <h2><% out.println(prodotto.getNome()); %></h2>
+          </div>
+          <div class="prezzo">
+          <% if(dettagli.getPrezzoScontato() != null) {%>
+          <p class="sale"><del class="full-price"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</del>  <% out.println(dettagli.getPrezzoScontato().toPlainString()); %>&euro;</p>
+          <% } else { %>
+            <p class="price"><% out.println(dettagli.getCostoUnitario().toPlainString()); %>&euro;</p>
+            <% } %>
+          </div>
+          </div>
+          <div class="acquista">
+          	<button disabled class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCart('<% out.print(prodotto.getCodiceSeriale());%>')">
+				  <div class="pretext-terminato">
+				     Terminato
+				  </div>
+				  
+				  <div class="pretext done" id="done<% out.print(prodotto.getCodiceSeriale()); %>">
+				    <div class="posttext"> Aggiunto</div>
+				  </div>
+				  
+				</button>
+          </div>
+          <div class="inside">
+      				<div class="icon"><i class="material-icons">info_outline</i></div>
+      				<div class="contents">
+        					<p><% out.println(prodotto.getDescrizioneBreve());%></p>
+      				</div>
+    					</div>
+        </div>
+        <%}
+        }
+        }%>
+        </div>
   		<jsp:include page="./footer.jsp" />
 	<script src="./JS/addedToCart.js"></script>
 	<script>
