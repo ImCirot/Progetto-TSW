@@ -162,7 +162,6 @@
 						    <input name="voto" type="radio" id="c4l-rate4" value="4" />
 						    <input class="input_prodotto" name="c4l-rating" type="radio" id="c4l-rate4" value="4" />
 						    <label for="c4l-rate4"></label>
-						 
 						    <input name="voto" type="radio" id="c4l-rate5" value="5"  />
 						    <input class="input_prodotto" name="c4l-rating" type="radio" id="c4l-rate5" value="5"  />
 						    <label for="c4l-rate5"></label>
