@@ -72,7 +72,9 @@
     </div>
     
 <!--     RECENSIONI -->
-	<% 	boolean logged = (boolean) request.getSession().getAttribute("logged");
+	
+	<% 	if(request.getSession().getAttribute("logged") != null){
+		boolean logged = (boolean) request.getSession().getAttribute("logged");
 		if(logged) {
 			List<RecensioneBean> listaRecensioni = (List<RecensioneBean>) request.getSession().getAttribute("recensioni");
 			Iterator<RecensioneBean> iterRecensioni = listaRecensioni.iterator();
@@ -87,7 +89,7 @@
 					break;
 				}
 			}
-			
+		
 			if(recensito){%>
 				<h1>Hai gia recensito questo prodotto!</h1>
 			<%} else {
@@ -177,7 +179,8 @@
 						<h1>Devi prima acquistare il prodotto per recensire</h1>
 					<%}
 				}
-			}%>
+			}
+		}%>
 	<jsp:include page="./footer.jsp" />
 	<script src="./JS/addedToCart.js"></script>
 </body>
