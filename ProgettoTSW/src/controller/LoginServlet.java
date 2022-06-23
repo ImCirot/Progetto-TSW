@@ -89,6 +89,10 @@ public class LoginServlet extends HttpServlet {
 				while(iterComposizioni.hasNext()) {
 					composizione = iterComposizioni.next();
 					
+					if(composizioniOrdini.containsKey(composizione.getOrdine())) {
+						composizioniTemp = composizioniOrdini.get(composizione.getOrdine());
+						
+					}
 					composizioniOrdini.getOrDefault((Integer) composizione.getOrdine(), new ArrayList<>()).add(composizione);
 				}
 				
