@@ -108,11 +108,11 @@ a{
   display: inline-block;
 }
 
-.catalogo ul li .links{
+ .links{
   padding: 12px;
   display: block;
   color: white;
-  font-size: 18px;
+  font-size: 1.2rem;
 }
 
 .catalogo ul li .links:hover{
@@ -181,10 +181,12 @@ a{
 	display:none;
 }
 	
-@media (min-width: 769px) and (max-width: 887px){
+@media (min-width: 769px) and (max-width: 935px){
 	.links{
-		padding: 6px;
+		font-size:0.9rem;
+		padding:5px;
 	}
+	
 }
 
 
