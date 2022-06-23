@@ -81,15 +81,30 @@
     </div>
       <div class="user">
       <div class="text">
-    	<p>Ciao Gbasile</p>
+      <% if(request.getSession().getAttribute("logged") == null) {%>
+    	<p>Ciao!</p>
+      <% } else { %>
+      	<p>Ciao <strong style="color:#9932CC;"><% out.print(request.getSession().getAttribute("nome"));%></strong></p>
+      <% } %>
       </div>
       <div class="flex">
+      <% if(request.getSession().getAttribute("logged") == null) {%>
       <div class="user_action">
-        <button class="button_user log">Login</button>
+        <button class="button_user log" onclick="login()">Login</button>
       </div>
       <div class="user_action">
-        <button class="button_user reg">Sign up</button>
+        <button class="button_user log" onclick="register()">Registrati</button>
       </div>
+      <% } else { %>
+      <div class="user_action">
+        <button class="button_user reg" onclick="persArea()">Pers. area</button>
+      </div>
+      <div class="user_action">
+      	<form action="LogOutServlet" method="Get">
+        <button type="submit" class="button_user log">Log out</button>
+        </form>
+      </div>
+      <% } %>
     </div>
     </div>
     <script>
@@ -115,6 +130,18 @@
         window.location=$(this).find("a").attr("href");
         return false;
       });
+      
+      function login(){
+    	  location.href = "./loginForm.jsp";
+      }
+      
+      function persArea(){
+    	  location.href = "./personalArea.jsp";
+      }
+      
+      function register(){
+    	  location.href = "./registerForm.jsp";
+      }
     </script>
   </body>
 </html>
