@@ -178,28 +178,82 @@
 		}%>
 		<h2 style="text-align: center;">Recensioni dei nostri clienti</h2>
 		<div class="recensioni">
+		<% 	Map<String,List<RecensioneBean>> recensioniPerProdotto = (Map<String,List<RecensioneBean>>) request.getSession().getAttribute("recensioniPerProdotto");
+			Iterator<String> iterKey = recensioniPerProdotto.keySet().iterator();
+			List<RecensioneBean> listaRecensioni = new ArrayList<>();
+			String serialeProdotto = null;
+			boolean recensioniVuote = true;
+			while(iterKey.hasNext()){
+				serialeProdotto = iterKey.next();
+				
+				if(serialeProdotto.equalsIgnoreCase(prodotto.getCodiceSeriale())){
+					listaRecensioni = recensioniPerProdotto.get(serialeProdotto);
+					recensioniVuote = false;
+					break;
+				}
+			}
+			
+			if(!recensioniVuote){
+				Iterator<RecensioneBean> iterRecensioni = listaRecensioni.iterator();
+				RecensioneBean recensione = new RecensioneBean();
+				
+				while(iterRecensioni.hasNext()){
+					recensione = iterRecensioni.next();%>
 	      <div class="card_recensione">
 	        <div class="titolo">
-	          <h2>Nome cazzo Cognome</h2>
+	        <% if (recensione.isAnonimo()) { %>
+	          <h2>Anonimo</h2>
+	        <% } else { %>
+	          <h2><% out.print(recensione.getCliente()); %></h2>
+	        <% } %>
 	        </div>
 	        <div class="description">
-	          <p>è molto bella anche se la spedizione lascia a desiderare, e anche i metodi di pagamaneto non sono sicuri</p>
+	          <p><% out.print(recensione.getTestoRecensione()); %></p>
 	        </div>
 	        <div class="voto">
 	          <div class="c4l-rating-recensioni">
-	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1"/>
+	          	<% if(recensione.getVoto() == 1) {%>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1" checked/>
 	                <label for="c4l-rate1"></label>
-	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" />
+	            <% } else { %>
+	            	<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1"/>
+	                <label for="c4l-rate1"></label>
+	            <% } %>
+	            <% if(recensione.getVoto() == 2) { %>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" checked/>
 	                <label for="c4l-rate2"></label>
-	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" />
+	            <% } else { %>
+	            	<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" />
+	                <label for="c4l-rate2"></label>
+	           	<% } %>
+	           	<% if(recensione.getVoto() == 3) { %>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" checked/>
 	                <label for="c4l-rate3"></label>
-	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" />
+	            <% } else { %>
+	           		<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" />
+	                <label for="c4l-rate3"></label>
+	            <% } %>
+	            <% if(recensione.getVoto() == 4) { %>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" checked/>
 	                <label for="c4l-rate4"></label>
-	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5"  />
+	            <% } else { %>
+	            	<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" />
+	                <label for="c4l-rate4"></label>
+	            <% } %>
+	            <% if(recensione.getVoto() == 5) { %>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5" checked/>
 	                <label for="c4l-rate5"></label>
+	            <% } else { %>
+	             	<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5"  />
+	                <label for="c4l-rate5"></label>
+	            <% } %>
 	            </div>
 	        </div>
       	</div>
+      	<% } %>
+      	<% } else { %>
+      	<h1 style="text-align:center;">Nessuna recensione per questo prodotto</h1>
+      	<% } %>
     </div>
 	<jsp:include page="./footer.jsp" />
 	<script src="./JS/addedToCart.js"></script>

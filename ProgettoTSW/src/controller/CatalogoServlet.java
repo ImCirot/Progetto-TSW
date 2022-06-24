@@ -3,8 +3,10 @@ package controller;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,6 +19,8 @@ import model.DettaglioProdottoBean;
 import model.DettaglioProdottoDAO;
 import model.ProdottoBean;
 import model.ProdottoDAO;
+import model.RecensioneBean;
+import model.RecensioneDAO;
 
 /**
  * Servlet implementation class CatalogoServlet
@@ -44,6 +48,11 @@ public class CatalogoServlet extends HttpServlet {
 		List<ProdottoBean> prodottiTerminati = new ArrayList<>();
 		List<DettaglioProdottoBean> dettagliProdotti = new ArrayList<>();
 		List<DettaglioProdottoBean> dettagliProdottiSconto = new ArrayList<>();
+		Map<String,List<RecensioneBean>> recensioniPerProdotto = new HashMap<>();
+		List<RecensioneBean> recensioniTemp = new ArrayList<>();
+		List<RecensioneBean> recensioni = new ArrayList<>();
+		RecensioneBean recensione = new RecensioneBean();
+		RecensioneDAO dbRecensioni = new RecensioneDAO();
 		DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
 		ProdottoBean prodotto = new ProdottoBean();
 		String filter = request.getParameter("filter");
@@ -166,12 +175,15 @@ public class CatalogoServlet extends HttpServlet {
 			}
 			path = "./catalogo.jsp";
 		} else {
+			Iterator<RecensioneBean> iterRecensioni = null;
+			Iterator<DettaglioProdottoBean> iterDettagli = null;
+			Iterator<ProdottoBean> iterProdotti = null;
 			try {
 				prodotti = dbProdotti.doRetrieveAll("codiceSeriale");
 				dettagliProdotti = dbDettagli.doRetrieveAll("tipo");
 				dettagliProdottiSconto = dbDettagli.filterByOfferta();
-				Iterator<DettaglioProdottoBean> iterDettagli = dettagliProdottiSconto.iterator();
-				Iterator<ProdottoBean> iterProdotti;
+				recensioni = dbRecensioni.doRetrieveAll("prova");
+				iterDettagli = dettagliProdottiSconto.iterator();
 				while(iterDettagli.hasNext()) {
 					dettagli = iterDettagli.next();
 					iterProdotti = prodotti.iterator();
@@ -188,6 +200,25 @@ public class CatalogoServlet extends HttpServlet {
 					}
 				}
 				request.getSession().setAttribute("prodottiSconto", prodottiSconto);
+				
+				iterRecensioni = recensioni.iterator();
+				
+				while(iterRecensioni.hasNext()) {
+					recensione = new RecensioneBean();
+					recensione = iterRecensioni.next();
+					
+					if(recensioniPerProdotto.containsKey(recensione.getCodiceSerialeProdotto())) {
+						recensioniTemp = recensioniPerProdotto.get(recensione.getCodiceSerialeProdotto());
+					} else {
+						recensioniTemp = new ArrayList<>();
+					}
+					
+					recensioniTemp.add(recensione);
+					recensioniPerProdotto.put(recensione.getCodiceSerialeProdotto(), recensioniTemp);
+				}
+				
+				request.getSession().setAttribute("recensioniPerProdotto", recensioniPerProdotto);
+				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -198,6 +229,7 @@ public class CatalogoServlet extends HttpServlet {
 		request.getSession().setAttribute("prodotti", prodotti);
 		request.getSession().setAttribute("prodottiTerminati", prodottiTerminati);
 		request.getSession().setAttribute("dettagliProdotti", dettagliProdotti);
+		
 		if (request.getSession().getAttribute("admin") == null) {
 			request.getSession().setAttribute("admin",false);
 		}	
