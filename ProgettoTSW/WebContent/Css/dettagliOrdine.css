@@ -92,17 +92,16 @@ body{
 	
 	margin: 20px auto;
 }
- button {
+ #bottone_fattura {
 	padding: 10px;
 	border: none;
 	background-color: #9932CC;
 	color: white;
 	font-size: 16px;
-	min-width: 150px;
 	border-radius: 10px;
 }
 
- button:hover{
+#bottone_fattura:hover{
 	animation: myAnim 1s ease 0s 1 normal forwards;
 	cursor: pointer;
 }
