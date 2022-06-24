@@ -315,4 +315,6 @@ h2{
 
 }
 
-
+.p_style:after{
+	content: " \20AC";
+}

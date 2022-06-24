@@ -232,7 +232,9 @@ h4{
 .noselect2:active .icon svg {
  transform: scale(0.8);
 }
-
+.p_style:after{
+	content: " \20AC";
+}
 #checkbox{
   width: 20px;
   margin-right: 8%;

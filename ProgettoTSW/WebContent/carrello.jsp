@@ -50,7 +50,7 @@
 				  
 				     <div class="cart-container-interno">
 				        	<div class="info-prodotto"> 
-				        	<a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>"> 	
+				        	<a href="select?type=prodotto&prodotto=<%out.println(prodotto.getCodiceSeriale());%>"> 	
 				        	<img src="<% out.print(dettagli.getImmagine()); %>" alt="ciao"></a>
 				        	</div>
 				        
