@@ -10,7 +10,10 @@
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
-	
+	<% if(request.getAttribute("acquisto") != null){ 
+	request.removeAttribute("acquisto"); %>
+	<h1 style="text-align: center;">Acquisto affettuato!</h1>
+	<% } %>
 	<div class="container">
 	<% OrdineBean ordine = (OrdineBean) request.getAttribute("ordine");
 		List<ComposizioneOrdineBean> composizioneOrdine = (List<ComposizioneOrdineBean>) request.getAttribute("composizione");
@@ -29,7 +32,7 @@
 			<table class="table">
 			     <thead>
 			     	<tr>
-			     	 <th>Nome prodotto</th>
+			     	 <th>Codice seriale prodotto</th>
 			     	 <th>Quantita</th>
 			     	 <th>Prezzo</th>
 			     	 <th>Immagine</th> 

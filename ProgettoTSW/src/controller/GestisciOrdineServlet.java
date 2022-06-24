@@ -57,6 +57,9 @@ public class GestisciOrdineServlet extends HttpServlet {
 			
 			request.setAttribute("ordine", ordine);
 			request.setAttribute("composizione", composizioneOrdine);
+			if(request.getParameter("acquisto") != null) {
+				request.setAttribute("acquisto", "si");
+			}
 			RequestDispatcher view = request.getRequestDispatcher("./dettagliOrdine.jsp");
 			view.forward(request, response);
 		} else if(mode.equalsIgnoreCase("admin")) {

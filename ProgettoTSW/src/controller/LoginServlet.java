@@ -107,7 +107,7 @@ public class LoginServlet extends HttpServlet {
 				
 				if(request.getParameter("next") != null) {
 					int ordineID = ordini.get(ordini.size()-1).getNumOrdineProgressivo();
-					response.sendRedirect("./gestisciOrdine?ordine=" + ordineID + "&cliente=" + utente);
+					response.sendRedirect("./gestisciOrdine?ordine=" + ordineID + "&cliente=" + utente + "&acquisto=si");
 					return;
 				} else {
 					path = "./personalArea.jsp";

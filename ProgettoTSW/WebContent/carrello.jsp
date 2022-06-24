@@ -77,12 +77,6 @@
 				    </div>
 				</div>
 			<%}%>
-			
-			
-			
-			
-			
-			
 			<div class="riepilogo">
       <div class="totale_parziale">
         <div class="prova">
@@ -151,9 +145,6 @@
       </div>
       <%} %>
     </div>
-      
-       
-
 		<jsp:include page="./footer.jsp" />
 		<script src="./JS/updateCart.js"></script>
 		<script>
