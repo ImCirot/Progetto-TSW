@@ -268,6 +268,87 @@ label {
 .c4l-rating input[name="voto"]:checked + label:before { color: #9932CC; }
 .c4l-rating input[name="voto"] + label:hover ~ input + label:before { opacity: 0.6; }
 
+
+
+
+
+
+
+
+.recensioni{
+	box-shadow: 0 4px 8px 0 rgba(14,30,187, 0.3);
+	 border: 1px solid lightgrey;
+  max-width: 80%;
+  display: grid;
+  margin: 1rem auto;
+  padding: 1rem;
+  gap: 2rem;
+  max-height: 50vh;
+  overflow-y:scroll;
+}
+.card_recensione{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  border: 1px solid lightgrey;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.description p{
+  line-height: 1.5;
+}
+
+
+@media (min-width:768px) {
+  .recensioni{
+    max-width: 80%;
+    grid-template-columns: repeat(3, 1fr);
+    max-height: 100%;
+    overflow:hidden;
+    margin: 2rem auto;
+  }
+}
+
+
+.c4l-rating-recensioni input[name="voto"] { display: none; }
+.c4l-rating-recensioni input[name="voto"] + label:after { content: none; }
+.c4l-rating-recensioni input[name="voto"] + label { font-family: 'FontAwesome'; }
+.c4l-rating-recensioni input[name="voto"] + label:before {
+    background-color: transparent;
+    border: none;
+    color: #9932CC;
+    content: '\f005';
+    font-size: 1.33333333em;
+    transition: none;
+}
+.c4l-rating-recensioni input[name="voto"]:checked ~ label:before {
+    background-color: transparent;
+    border: none;
+    color: #607d8b;
+}
+.c4l-rating-recensioni input[name="voto"]:checked + label:before { color: #9932CC; }
+.c4l-rating-recensioni input[name="voto"] + label:hover ~ input + label:before { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 *,
 *:before,
 *:after {

@@ -176,6 +176,31 @@
 				}
 			}
 		}%>
+		<h2 style="text-align: center;">Recensioni dei nostri clienti</h2>
+		<div class="recensioni">
+	      <div class="card_recensione">
+	        <div class="titolo">
+	          <h2>Nome cazzo Cognome</h2>
+	        </div>
+	        <div class="description">
+	          <p>è molto bella anche se la spedizione lascia a desiderare, e anche i metodi di pagamaneto non sono sicuri</p>
+	        </div>
+	        <div class="voto">
+	          <div class="c4l-rating-recensioni">
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1"/>
+	                <label for="c4l-rate1"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" />
+	                <label for="c4l-rate2"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" />
+	                <label for="c4l-rate3"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" />
+	                <label for="c4l-rate4"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5"  />
+	                <label for="c4l-rate5"></label>
+	            </div>
+	        </div>
+      	</div>
+    </div>
 	<jsp:include page="./footer.jsp" />
 	<script src="./JS/addedToCart.js"></script>
 	<script src="./JS/recensione.js"></script>
