@@ -57,7 +57,7 @@
                     </div>
                 </button>
                 <% } else { %>
-                <button disabled class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCartN('<% out.print(prodotto.getCodiceSeriale());%>')">
+                <button class="addtocart" id="added<% out.print(prodotto.getCodiceSeriale()); %>" onclick="addToCartN('<% out.print(prodotto.getCodiceSeriale());%>')">
                     <div class="pretext">
                        Acquista
                     </div>
