@@ -91,91 +91,7 @@
 			}
 		
 			if(recensito){%>
-				    			<div class="container_form">
-  	  				<h3>La tua recensione</h3>
-				  	   <form action="recensione" method="post">
-				  	   		<input type="hidden" name="mode" value="aggiungi">
-							<input type="hidden" name="seriale" value="<% out.print(prodotto.getCodiceSeriale());%>">
-							<input type="hidden" name="prodotto" value="<%out.print(prodotto.getNome());%>">
-				    
-				    <div class="row">
-					      <div class="col-25">
-					        <label for="recensione">Recensione</label>
-					      </div>
-					      <div class="col-75">
-					        <textarea disabled required id="recensione" name="testo" style="height:200px" placeholder="Max 250 caratteri"><% out.print(recensione.getTestoRecensione());%></textarea>
-					      </div>
-	    			</div>
-	    			<div class="row">
-				      <div class="col-25">
-				        <label for="anonimo">Anonimo</label>
-				      </div>
-				      <div class="col-75">
-				        <select disabled required id="anonimo" name="anonimo">
-				        	<% if(recensione.isAnonimo()) {%>
-			 					<option value="si" selected>Si</option>
-			 					<option value="no">No</option>
-			 				<% } else { %>
-			 					<option value="si">Si</option>
-			 					<option value="no" selected>No</option>
-			 				<% } %>
-				        </select>
-				      </div>
-				       </div>
-				      <div class="row">
-				      <div class="col-25">
-				        <label for="anonimo">Voto</label>
-				      </div>
-				      <div class="col-75">
-				       	<div class="c4l-rating-disabled">
-				       	<% if(recensione.getVoto() == 1) {%>
-						    <input disabled required class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1" checked/>
-						    <label for="c4l-rate1"></label>
-						<% } else { %>
-							<input disabled required class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1"/>
-							<label for="c4l-rate1"></label>
-						<% } %>
-						<% if(recensione.getVoto() == 2) {%>
-						   	<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" checked/>
-						  	<label for="c4l-rate2"></label>
-						<% } else { %>
-							<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" />
-						  	<label for="c4l-rate2"></label>
-						<% } %>
-						<% if(recensione.getVoto() == 3) {%>
-						    <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" checked/>
-						    <label for="c4l-rate3"></label>
-						<% } else { %>    
-							<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" />
-						    <label for="c4l-rate3"></label>
-						<% } %>
-						<% if(recensione.getVoto() == 4) {%>
-						    <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" checked/>
-						    <label for="c4l-rate4"></label>
-						<% } else { %>
-							<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4"/>
-						    <label for="c4l-rate4"></label>
-						<% } %>
-						<% if(recensione.getVoto() == 5) {%>    
-						    <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5" checked/>
-						    <label for="c4l-rate5"></label>
-						<% } else { %>
-							<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5"/>
-						    <label for="c4l-rate5"></label>
-						<% } %>
-						</div>
-				    </div>
-				      </div>
-				      
-					    <div class="row">
-				      		<input disabled type="submit" class="input_prodotto_disabled" value="Aggiungi Recensione">
-				    	</div>
-				    	
-				    </form>
-				    <div class="row">
-				    <button class="modifica_recensione">Modifica recensione</button>
-				    </div>
-	   			</div>
+				    			<h1 style="text-align:center;">Hai gia recensito questo prodotto</h1>
 			<%} else {
 				Map<Integer,List<ComposizioneOrdineBean>> composizioniOrdini = (Map<Integer,List<ComposizioneOrdineBean>>) request.getSession().getAttribute("composizioniOrdini");
 				Iterator<Integer> iterOrdineID = composizioniOrdini.keySet().iterator();
@@ -214,7 +130,7 @@
 					        <label for="recensione">Recensione</label>
 					      </div>
 					      <div class="col-75">
-					        <textarea required id="recensione" name="testo" style="height:200px" placeholder="Max 250 caratteri"></textarea>
+					        <textarea required id="recensioneTesto" name="testo" style="height:200px" placeholder="Max 250 caratteri" maxlength="250"></textarea>
 					      </div>
 	    			</div>
 	    			<div class="row">
@@ -249,18 +165,19 @@
 				      </div>
 				      
 					    <div class="row">
-				      		<input type="submit" class="input_prodotto" value="Aggiungi Recensione">
+				      		<input type="submit" id="aggiungiRecensione" class="input_prodotto" value="Aggiungi Recensione">
 				    	</div>
 				    	
 				    </form>
 	   			</div>
    				<% } else { %>
-						<h1>Devi prima acquistare il prodotto per recensire</h1>
+						<h1 style="text-align:center;">Devi prima acquistare il prodotto per recensire</h1>
 					<%}
 				}
 			}
 		}%>
 	<jsp:include page="./footer.jsp" />
 	<script src="./JS/addedToCart.js"></script>
+	<script src="./JS/recensione.js"></script>
 </body>
 </html>
