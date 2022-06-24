@@ -38,7 +38,7 @@ h4{
   	margin: 10px auto;
   	
 }
-button:hover{
+.button-acquista button:hover{
 	animation: myAnim 1s ease 0s 1 normal forwards;
 	cursor: pointer;
 }
