@@ -195,9 +195,42 @@ label {
   display: inline-block;
 }
 
-.input_prodotto[type=submit] {
+.input_prodotto_disabled[type=submit] {
+  margin: 2%;
+  background-color: grey;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.input_prodotto [type=submit] {
   margin: 2%;
   background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.modifica_recensione {
+  margin: 2%;
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+.modifica_recensione_disabled {
+  margin: 2%;
+  background-color: gray;
   color: white;
   padding: 12px 20px;
   border: none;
@@ -210,6 +243,9 @@ label {
   background-color: #45a049;
 }
 
+.modifica_recensione:hover {
+  background-color: #45a049;
+}
 .container_form {
   border-radius: 5px;
  width:60%;
@@ -257,15 +293,34 @@ label {
     font-size: 1.33333333em;
     transition: none;
 }
-.c4l-rating input[name="voto"]:checked ~ label:before {
+.c4l-rating-disabled input[name="voto"]:checked ~ label:before {
     background-color: transparent;
     border: none;
     color: #607d8b;
 }
-.c4l-rating input[name="voto"]:checked + label:before { color: #9932CC; }
-.c4l-rating input[name="voto"] + label:hover ~ input + label:before { opacity: 0.6; }
+.c4l-rating-disabled input[name="voto"]:checked + label:before { color: #9932CC; }
+.c4l-rating-disabled input[name="voto"] + label:hover ~ input + label:before { opacity: 0.6; }
 
+.c4l-rating-disabled input[name="voto"] { display: none; }
+.c4l-rating-disabled input[name="voto"] + label:after { content: none; }
+.c4l-rating-disabled input[name="voto"] + label { font-family: 'FontAwesome'; }
+.c4l-rating-disabled input[name="voto"] + label:before {
+    background-color: transparent;
+    border: none;
+    color: #9932CC;
+    content: '\f005';
+    font-size: 1.33333333em;
+    transition: none;
+}
+.c4l-rating-disabled input[name="voto"]:checked ~ label:before {
+    background-color: transparent;
+    border: none;
+    color: #607d8b;
+}
+.c4l-rating-disabled input[name="voto"]:checked + label:before { color: #9932CC; }
+.c4l-rating-disabled input[name="voto"] + label:hover ~ input + label:before { opacity: 0.6; }
 
+.c4l-rating-disabled input[name="voto"] + label:hover ~ input + label:before { opacity: 1; }
 
 
 

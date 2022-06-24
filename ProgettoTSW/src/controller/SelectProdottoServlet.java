@@ -59,6 +59,12 @@ public class SelectProdottoServlet extends HttpServlet {
 		
 		request.setAttribute("prodotto", prodotto);
 		request.setAttribute("dettagliProdotto", dettagliProdotto);
+		
+		if(request.getParameter("recensione") != null) {
+			String cliente = request.getParameter("recensione");
+			
+			request.setAttribute("clienteRecensione", cliente);
+		}
 		path = "./prodotto.jsp";
 		} else if(type.equalsIgnoreCase("marca")) {
 			

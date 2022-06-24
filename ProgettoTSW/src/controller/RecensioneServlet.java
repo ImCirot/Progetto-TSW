@@ -35,8 +35,15 @@ public class RecensioneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String cliente = request.getParameter("cliente");
+		String prodotto = request.getParameter("prodotto");
+		boolean admin = (boolean) request.getSession().getAttribute("admin");
+		String path = null;
+		
+		path = "SelectProdottoServlet?prodotto=" + prodotto + "&recensione" + cliente;
+		
+		RequestDispatcher view = request.getRequestDispatcher(path);
+		view.forward(request, response);
 	}
 
 	/**
