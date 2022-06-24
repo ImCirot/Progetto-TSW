@@ -188,7 +188,7 @@ a{
 	.menu ul li .links{
 		padding: 10px;
 	}
-	
+
 }
 
 
@@ -391,7 +391,7 @@ visibility: visible;
 	background-color: #555;
 }
 
-.material-icons {
+.material-icons-header {
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;

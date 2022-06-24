@@ -132,6 +132,9 @@
       		<div class="main_card" onclick="click('<%out.print(prodotto.getCodiceSeriale());%>')">
       		 <a href="select?type=prodotto&prodotto=<%out.print(prodotto.getCodiceSeriale());%>"></a>
             <img src="<% out.print(dettaglio.getImmagine()); %>" alt="">
+            <div class="prezzo">
+          <p class="sale"><del class="full-price"><% out.println(dettaglio.getCostoUnitario().toPlainString()); %>&euro;</del>  <% out.println(dettaglio.getPrezzoScontato().toPlainString()); %>&euro;</p>
+          </div>
           	</div>
       	<% 
       		if(i == 4) break;

@@ -39,8 +39,17 @@
   background-size:cover;
 }
 
+.full-price {
+	text-decoration: line-through;
+	color: grey;
+	font-size: .8em;	
+}
 
-
+.sale {
+	font-weight: bold;
+    color: red;
+    font-size: 1.4em;
+}
 
 .slide_buttons {
   left: 0;
@@ -173,6 +182,7 @@ a.slide_btn {
   border: 1px solid lightgrey;
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: space-between;
 }
 
