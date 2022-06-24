@@ -31,8 +31,9 @@
 		Iterator<IndirizzoBean> iterIndirizzi = listaIndirizzi.iterator(); 
 		IndirizzoBean indirizzo = new IndirizzoBean();
 		MetodoDiPagamentoBean metodPagamento = new MetodoDiPagamentoBean();%>
-		<div class="container">
 		<form action="ordine" method="post">
+		<div class="container">
+		
 			<div class="container-interno">
 			<h4>Scegli indirizzo di spedizione</h4><br>
 		<%	while(iterIndirizzi.hasNext()){
@@ -91,13 +92,115 @@
 		} %>
 		<a href="modificaInfo?mode=add&target=metodoPagamento">Aggiungi metodo di pagamento</a>
 		</div>
-		<div class="button-acquista">
-			<button type="submit">Acquista</button>
-		</div>
+		
+		<%
+			 Map<String,Integer> carrello = (Map<String,Integer>) request.getSession().getAttribute("carrello");
+			Iterator<String> iterKeys = carrello.keySet().iterator();
+			List<ProdottoBean> prodotti = (List<ProdottoBean>) request.getSession().getAttribute("prodotti");
+			List<DettaglioProdottoBean> dettagliProdotti = (List<DettaglioProdottoBean>) request.getSession().getAttribute("dettagliProdotti");			
+			Integer quantita = 0;
+			ProdottoBean prodotto = new ProdottoBean();
+			DettaglioProdottoBean dettagli = new DettaglioProdottoBean();
+			Iterator<ProdottoBean> iterProdotti;
+			Iterator<DettaglioProdottoBean> iterDettagli;
+			String key;
+			
+			while(iterKeys.hasNext()){
+				key = iterKeys.next();
+				quantita = carrello.get(key);
+				iterProdotti = prodotti.iterator();
+				while(iterProdotti.hasNext()){
+					prodotto = iterProdotti.next();
+					if(prodotto.getCodiceSeriale().equals(key)) break;
+				}
+				
+				iterDettagli = dettagliProdotti.iterator();
+				while(iterDettagli.hasNext()){
+					dettagli = iterDettagli.next();
+					if(dettagli.getProdotto().equals(key)) break;
+				}
+				%>
+				  
+				     <div class="cart-container-interno">
+				        	<div class="info-prodotto"> 
+				        	<a href="SelectProdottoServlet?prodotto=<%out.println(prodotto.getCodiceSeriale());%>"> 	
+				        	<img src="<% out.print(dettagli.getImmagine()); %>" alt="ciao"></a>
+				        	</div>
+				        
+				        <div class="info-prodotto">
+				        <p><% out.print(prodotto.getNome()); %></p>
+				        </div>
+				        <div class="info-prodotto">
+				        <% if(dettagli.getPrezzoScontato() != null) { %>
+				        <p><del class="full-price"><% out.print(dettagli.getCostoUnitario()); %> &euro;</del>  <% out.print(dettagli.getPrezzoScontato()); %> &euro;</p>
+				        <% } else { %>
+				          <p> <% out.print(dettagli.getCostoUnitario()); %> &euro;</p>
+				         <% } %>
+				        </div>
+				        <div class="info-prodotto" class="flex-el">
+							<p> Quantita: <% out.print(quantita); %></p>
+ 				        </div>
+				</div>
+			<%}%>
+			</div>
+			<div class="riepilogo">
+			      <div class="totale_parziale">
+			        <div class="prova">
+			
+			        </div>
+			        <div class="card">
+			          <h2 class="h2_style">Totale parziale:</h2>
+			        </div>
+			        <div class="card2">
+			          <p class="p_style"  id="netto"></p>
+			        </div>
+			
+			      </div>
+			
+			      <div class="totale_parziale">
+			        <div class="prova">
+			
+			        </div>
+			        <div class="card">
+			            <h2 class="h2_style">Spedizione:</h2>
+			        </div>
+			        <div class="card2">
+			            <p class="p_style" id="spedizione"></p>
+			        </div>
+			
+			      </div>
+			      <div class="totale_parziale">
+			        <div class="prova">
+			
+			        </div>
+			        <div class="card">
+			              <h2 class="h2_style">Totale:</h2>
+			        </div>
+			        <div class="card2">
+			          <p class="p_style" id="prezzoTot"></p>
+			        </div>
+			      </div>
+			      <div class="totale_parziale">
+			        <div class="prova">
+			
+			        </div>
+			        <div class="card">
+			             
+			        </div>
+			        <div class="card2">
+			          <div id="procedi" > 
+								<button type="submit" class="noselect2"><span class="text">Acquista</span><span class="icon"> <img id="checkbox" src="./Images/checkbox.png" alt=""></span></button> 
+						</div> 
+			        </div>
+			      </div>
+     
+    		</div>
 		</form>
-		</div>
-		<br><br>
+		
+		
+		
 		<% } %>
+		<script src="./JS/updateCart.js"></script>
 	<jsp:include page="./footer.jsp" />
 </body>
 </html>

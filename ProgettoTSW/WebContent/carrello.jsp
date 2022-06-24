@@ -59,9 +59,9 @@
 				        </div>
 				        <div class="info-prodotto">
 				        <% if(dettagli.getPrezzoScontato() != null) { %>
-				        <p><del class="full-price"><% out.print(dettagli.getCostoUnitario()); %> &euro;</del>  <% out.print(dettagli.getPrezzoScontato()); %> &euro;</p>
+				        <p><del class="full-price"><% out.print(dettagli.getCostoUnitario()); %>&euro;</del>  <% out.print(dettagli.getPrezzoScontato()); %> &euro;</p>
 				        <% } else { %>
-				          <p> <% out.print(dettagli.getCostoUnitario()); %> &euro;</p>
+				          <p> <% out.print(dettagli.getCostoUnitario()); %>&euro;</p>
 				         <% } %>
 				        </div>
 				        <div class="info-prodotto" class="flex-el">
@@ -77,6 +77,7 @@
 				    </div>
 				</div>
 			<%}%>
+			</div>
 			<div class="riepilogo">
       <div class="totale_parziale">
         <div class="prova">
@@ -86,7 +87,7 @@
           <h2 class="h2_style">Totale parziale:</h2>
         </div>
         <div class="card2">
-          <p class="p_style"  id="netto"><p class="p_style">&nbsp;&euro;</p>
+          <p class="p_style" id="netto"></p>
         </div>
 
       </div>
@@ -111,7 +112,7 @@
               <h2 class="h2_style">Totale:</h2>
         </div>
         <div class="card2">
-          <p class="p_style" id="prezzoTot"></p><p class="p_style">&nbsp;&euro;</p>
+          <p class="p_style" id="prezzoTot"></p>
         </div>
       </div>
       <div class="totale_parziale">
