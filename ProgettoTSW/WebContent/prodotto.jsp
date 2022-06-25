@@ -189,15 +189,16 @@
 					recensioniVuote = false;
 					break;
 				}
-			} 
-			if(!recensioniVuote){
+			}
 			
-				Iterator<RecensioneBean> iterRecensioni = listaRecensioni.iterator();
+			if(!recensioniVuote){%>
+			
+			<h2 style="text-align: center;">Recensioni dei nostri clienti</h2>
+				<div class="recensioni">
+				<% Iterator<RecensioneBean> iterRecensioni = listaRecensioni.iterator();
 				RecensioneBean recensione = new RecensioneBean();
-			%>
-		<h2 style="text-align: center;">Recensioni dei nostri clienti</h2>
-		<div class="recensioni">
-				<% while(iterRecensioni.hasNext()){
+				
+				while(iterRecensioni.hasNext()){
 					recensione = iterRecensioni.next();%>
 	      <div class="card_recensione">
 	        <div class="titolo">
@@ -251,13 +252,14 @@
 	        </div>
       	</div>
       	<% } %>
+      	</div>
       	<% } else { %>
-      		<h2 style="text-align: center;">Ancora nessuna recensione</h2>
-			<div class="recensioni">
-			<p></p>
-			</div>
+      		<h2 style="text-align: center;">Nessuna recensione</h2>
+				<div class="recensioni">
+				<p></p>
+				</div>
       	<% } %>
-    </div>
+    
 	<jsp:include page="./footer.jsp" />
 	<script src="./JS/addedToCart.js"></script>
 	<script src="./JS/recensione.js"></script>
