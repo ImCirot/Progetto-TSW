@@ -176,8 +176,6 @@
 				}
 			}
 		}%>
-		<h2 style="text-align: center;">Recensioni dei nostri clienti</h2>
-		<div class="recensioni">
 		<% 	Map<String,List<RecensioneBean>> recensioniPerProdotto = (Map<String,List<RecensioneBean>>) request.getSession().getAttribute("recensioniPerProdotto");
 			Iterator<String> iterKey = recensioniPerProdotto.keySet().iterator();
 			List<RecensioneBean> listaRecensioni = new ArrayList<>();
@@ -191,13 +189,15 @@
 					recensioniVuote = false;
 					break;
 				}
-			}
-			
+			} 
 			if(!recensioniVuote){
+			
 				Iterator<RecensioneBean> iterRecensioni = listaRecensioni.iterator();
 				RecensioneBean recensione = new RecensioneBean();
-				
-				while(iterRecensioni.hasNext()){
+			%>
+		<h2 style="text-align: center;">Recensioni dei nostri clienti</h2>
+		<div class="recensioni">
+				<% while(iterRecensioni.hasNext()){
 					recensione = iterRecensioni.next();%>
 	      <div class="card_recensione">
 	        <div class="titolo">
@@ -252,7 +252,10 @@
       	</div>
       	<% } %>
       	<% } else { %>
-      	<h1 style="text-align:center;">Nessuna recensione per questo prodotto</h1>
+      		<h2 style="text-align: center;">Ancora nessuna recensione</h2>
+			<div class="recensioni">
+			<p></p>
+			</div>
       	<% } %>
     </div>
 	<jsp:include page="./footer.jsp" />
