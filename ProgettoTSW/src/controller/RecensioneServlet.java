@@ -4,7 +4,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,6 +47,11 @@ public class RecensioneServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mode = request.getParameter("mode");
 		String path = null;
+		Map<String,List<RecensioneBean>> recensioniPerProdotto = new HashMap<>();
+		List<RecensioneBean> recensioniTotali = new ArrayList<>();
+		List<RecensioneBean> recensioniTemp = new ArrayList<>();
+		RecensioneDAO dbRecensioni = new RecensioneDAO();
+		RecensioneBean recensione = new RecensioneBean();
 		
 		if(mode.equalsIgnoreCase("aggiungi")) {
 			String codiceSeriale = request.getParameter("seriale");
@@ -52,9 +60,7 @@ public class RecensioneServlet extends HttpServlet {
 			String testo = request.getParameter("testo");
 			String anonimo = request.getParameter("anonimo");
 			int voto = Integer.parseInt(request.getParameter("voto"));
-			
-			RecensioneDAO dbRecensioni = new RecensioneDAO();
-			RecensioneBean recensione = new RecensioneBean();
+		
 			List<RecensioneBean> recensioni = new ArrayList<>();
 			
 			recensione.setCodiceSerialeProdotto(codiceSeriale);
@@ -78,11 +84,35 @@ public class RecensioneServlet extends HttpServlet {
 			}
 			
 			request.getSession().setAttribute("recensioni", recensioni);
+			
 			path = "select?type=prodotto&prodotto=" + codiceSeriale;
 		} else if(mode.equalsIgnoreCase("modifica")) {
 			
 		}
 		
+		
+		try {
+			recensioniTotali = dbRecensioni.doRetrieveAll("prova");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Iterator<RecensioneBean> iterRecensioni = recensioniTotali.iterator();
+		while(iterRecensioni.hasNext()) {
+			recensione = iterRecensioni.next();
+			
+			if(recensioniPerProdotto.containsKey(recensione.getCodiceSerialeProdotto())) {
+				recensioniTemp = recensioniPerProdotto.get(recensione.getCodiceSerialeProdotto());
+			} else {
+				recensioniTemp = new ArrayList<>();
+			}
+			
+			recensioniTemp.add(recensione);
+			recensioniPerProdotto.put(recensione.getCodiceSerialeProdotto(), recensioniTemp);
+		}
+		
+		request.getSession().setAttribute("recensioniPerProdotto", recensioniPerProdotto);
 		RequestDispatcher view = request.getRequestDispatcher(path);
 		view.forward(request, response);
 	}
