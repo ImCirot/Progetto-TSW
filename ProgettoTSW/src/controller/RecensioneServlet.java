@@ -87,7 +87,18 @@ public class RecensioneServlet extends HttpServlet {
 			
 			path = "select?type=prodotto&prodotto=" + codiceSeriale;
 		} else if(mode.equalsIgnoreCase("modifica")) {
+			String prodotto = request.getParameter("prodotto");
+			String cliente = request.getParameter("cliente");
 			
+			try {
+				recensione = dbRecensioni.doRetrieveByKey(cliente, prodotto);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			request.setAttribute("recensione", recensione);
+			path = "./modificaRecensioneForm.jsp";
 		}
 		
 		
