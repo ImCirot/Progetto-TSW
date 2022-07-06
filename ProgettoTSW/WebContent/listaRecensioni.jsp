@@ -44,11 +44,12 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
   			no
   			<% } %>
   		</p><br><br>
-  			<form action="recensione" method="get">
+  			<form action="recensione" method="post">
   				<input type="hidden" name="prodotto" value="<%out.print(recensione.getProdotto());%>">
   				<input type="hidden" name="cliente" value="<% out.print(recensione.getCliente()); %>">
+  				<input type="hidden" name="mode" value="modifica">
   				<button class="cta">
-					  <span>Vedi dettagli</span>
+					  <span>Modifica recensione</span>
 					  <svg viewBox="0 0 13 10" height="10px" width="15px">
 					    <path d="M1,5 L11,5"></path>
 					    <polyline points="8 1 12 5 8 9"></polyline>
