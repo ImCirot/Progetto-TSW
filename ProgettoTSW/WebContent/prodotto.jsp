@@ -199,6 +199,7 @@
 				RecensioneBean recensione = new RecensioneBean();
 				
 				while(iterRecensioni.hasNext()){
+					recensione = new RecensioneBean();
 					recensione = iterRecensioni.next();%>
 	      <div class="card_recensione">
 	        <div class="titolo">
@@ -216,36 +217,57 @@
 	          	<% if(recensione.getVoto() == 1) {%>
 	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1" checked/>
 	                <label for="c4l-rate1"></label>
-	            <% } else { %>
-	            	<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1"/>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" />
+	                <label for="c4l-rate2"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" />
+	                <label for="c4l-rate3"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" />
+	                <label for="c4l-rate4"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5" />
+	                <label for="c4l-rate5"></label>
+	            <% } else if(recensione.getVoto() == 2) {%>
+	            	<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1" />
 	                <label for="c4l-rate1"></label>
-	            <% } %>
-	            <% if(recensione.getVoto() == 2) { %>
 	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" checked/>
 	                <label for="c4l-rate2"></label>
-	            <% } else { %>
-	            	<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" />
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" />
+	                <label for="c4l-rate3"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" />
+	                <label for="c4l-rate4"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5" />
+	                <label for="c4l-rate5"></label>
+	            <% } else if(recensione.getVoto() == 3) { %>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1" />
+	                <label for="c4l-rate1"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" />
 	                <label for="c4l-rate2"></label>
-	           	<% } %>
-	           	<% if(recensione.getVoto() == 3) { %>
 	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" checked/>
 	                <label for="c4l-rate3"></label>
-	            <% } else { %>
-	           		<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" />
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" />
+	                <label for="c4l-rate4"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5" />
+	                <label for="c4l-rate5"></label>
+	            <% } else if(recensione.getVoto() == 4) { %>
+ 					<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1" />
+	                <label for="c4l-rate1"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" />
+	                <label for="c4l-rate2"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" />
 	                <label for="c4l-rate3"></label>
-	            <% } %>
-	            <% if(recensione.getVoto() == 4) { %>
 	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" checked/>
 	                <label for="c4l-rate4"></label>
-	            <% } else { %>
-	            	<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" />
-	                <label for="c4l-rate4"></label>
-	            <% } %>
-	            <% if(recensione.getVoto() == 5) { %>
-	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5" checked/>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5" />
 	                <label for="c4l-rate5"></label>
-	            <% } else { %>
-	             	<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5"  />
+	            <% } else if(recensione.getVoto() == 5) {%>
+					<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1" />
+	                <label for="c4l-rate1"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" />
+	                <label for="c4l-rate2"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" />
+	                <label for="c4l-rate3"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" />
+	                <label for="c4l-rate4"></label>
+	                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5" checked/>
 	                <label for="c4l-rate5"></label>
 	            <% } %>
 	            </div>
