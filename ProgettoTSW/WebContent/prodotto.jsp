@@ -218,7 +218,11 @@
 				<div class="recensione_personale">
 					<div class="card_recensione_personale">
 					<div class="titolo">
+					<% if(recensionePersonale.isAnonimo()){ %>
+					<h2><% out.print(recensionePersonale.getCliente()); %> (Anonima)</h2>
+					<% } else { %>
 					<h2><% out.print(recensionePersonale.getCliente()); %></h2>
+					<% } %>
 					</div>
 			        <div class="description">
 			          <p><% out.print(recensionePersonale.getTestoRecensione()); %></p>
