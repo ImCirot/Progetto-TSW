@@ -109,7 +109,7 @@
 				      </div>
 				      
 					    <div class="row">
-				      		<input type="submit" id="aggiungiRecensione" class="input_prodotto" value="Aggiungi Recensione">
+				      		<input type="submit" id="aggiungiRecensione" class="input_prodotto" value="Modifica Recensione">
 				    	</div>
 				    	
 				    </form>
