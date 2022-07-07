@@ -58,11 +58,11 @@
       <div class="category">
         <label for="dot-1">
           <span class="dot one"></span>
-          <span>Male</span>
+          <span>Maschio</span>
         </label>
         <label for="dot-2">
           <span class="dot two"></span>
-          <span>Female</span>
+          <span>Femmina</span>
         </label>
         <label for="dot-3">
           <span class="dot three"></span>
