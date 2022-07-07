@@ -313,7 +313,7 @@ label {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  width: 40%;
+  min-width: 40%;
   margin: 0 auto;
 }
 
