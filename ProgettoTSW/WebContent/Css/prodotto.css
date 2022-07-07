@@ -314,7 +314,7 @@ label {
 .c4l-rating-recensioni input[name="voto"] { display: none; }
 .c4l-rating-recensioni input[name="voto"] + label:after { content: none; }
 .c4l-rating-recensioni input[name="voto"] + label { font-family: 'FontAwesome'; }
-.c4l-rating-recensioni input[name="voto"] + label:before {
+.c4l-rating-recensioni input[name="voto"] + .checked:before {
     background-color: transparent;
     border: none;
     color: #9932CC;
@@ -322,32 +322,15 @@ label {
     font-size: 1.33333333em;
     transition: none;
 }
-.c4l-rating-recensioni input[name="voto"]:checked ~ label:before {
+
+.c4l-rating-recensioni input[name="voto"] + .unchecked:before {
     background-color: transparent;
     border: none;
+    content: '\f005';
+    font-size: 1.33333333em;
+    transition: none;
     color: #607d8b;
 }
-.c4l-rating-recensioni input[name="voto"]:checked + label:before { color: #9932CC; }
-.c4l-rating-recensioni input[name="voto"] + label:hover ~ input + label:before { }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 *,
 *:before,
