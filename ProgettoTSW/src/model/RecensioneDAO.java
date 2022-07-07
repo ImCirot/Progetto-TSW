@@ -82,7 +82,7 @@ public class RecensioneDAO {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
 			statement.setString(1, key1);
-            statement.setString(1, key2);
+            statement.setString(2, key2);
 			
 			ResultSet result = statement.executeQuery();
 			

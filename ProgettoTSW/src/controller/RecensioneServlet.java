@@ -99,6 +99,8 @@ public class RecensioneServlet extends HttpServlet {
 			
 			request.setAttribute("recensione", recensione);
 			path = "./modificaRecensioneForm.jsp";
+		} else if(mode.equalsIgnoreCase("aggiorna")) {
+			//TODO
 		}
 		
 		
