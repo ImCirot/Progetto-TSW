@@ -35,16 +35,18 @@ function updatePrice(){
 			data: formData,
 			dataType: "html",
 			success: function(data){
-				let prezzo = parseFloat(data);
+				
+				let prezzo = parseFloat(data.replace(",", "."));
+				console.log(prezzo);
 				if(prezzo < 45) {
 					$("#netto").html(prezzo.toFixed(2));
 					$("#spedizione").html("5.00");
 					prezzo += 5;
 					$("#prezzoTot").html(prezzo.toFixed(2));
 				} else {
-				$("#netto").html(data);
+				$("#netto").html(prezzo);
 				$("#spedizione").html("0.00");
-				$("#prezzoTot").html(data);
+				$("#prezzoTot").html(prezzo);
 				}
 			}
 		});
