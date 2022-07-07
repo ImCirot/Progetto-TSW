@@ -10,6 +10,14 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
 </head>
 <body>
 	<jsp:include page="./header.jsp" />
+	<% if(request.getSession().getAttribute("logged") == null){ 
+			response.sendRedirect("./loginForm.jsp");
+	} else {
+		boolean logged = (boolean) request.getSession().getAttribute("logged"); 
+		if(!logged) {
+			response.sendRedirect("./loginForm.jsp");
+		} else {
+	%>
 	 <div class="sezione">
       <div class="aggiungi">
       <img alt="" src="./Images/metodo_pagamento.png">
@@ -75,7 +83,9 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
 				<button id="bottone_elimina" type="submit">Elimina</button>
   			</form>
   			</div>
-  			<%}%>
+  			<%		}
+				}
+  			}%>
       </div>
 	<jsp:include page="./footer.jsp" />
 </body>

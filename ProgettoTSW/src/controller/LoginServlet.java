@@ -104,7 +104,7 @@ public class LoginServlet extends HttpServlet {
 				request.getSession().setAttribute("ordini", ordini);
 				request.getSession().setAttribute("recensioni", recensioni);
 				request.getSession().setAttribute("composizioniOrdini", composizioniOrdini);
-				
+
 				if(request.getParameter("next") != null) {
 					int ordineID = ordini.get(ordini.size()-1).getNumOrdineProgressivo();
 					response.sendRedirect("./gestisciOrdine?ordine=" + ordineID + "&cliente=" + utente + "&acquisto=si");
@@ -234,6 +234,7 @@ public class LoginServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			path = "./loginForm.jsp";
+			request.removeAttribute("acquisto");
 			
 			RequestDispatcher view = request.getRequestDispatcher(path);
 			view.forward(request, response);

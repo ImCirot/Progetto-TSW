@@ -11,6 +11,10 @@
 <body>
 	<jsp:include page="./header.jsp" />
 	<% 
+	  response.setHeader("Cache-Control","no-cache");
+	  response.setHeader("Cache-Control","no-store");
+	  response.setHeader("Pragma","no-cache");
+	  response.setDateHeader ("Expires", 0);
 		Boolean admin = (Boolean) request.getSession().getAttribute("admin");
 	
 	if(request.getSession().getAttribute("carrello") == null) {

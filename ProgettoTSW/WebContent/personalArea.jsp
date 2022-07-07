@@ -131,7 +131,7 @@
         </div>
     </div>
     <% }
-     }%>
+        }%>
     <div class="wrapper">
     <form action="LogOutServlet" method="get">
         <button type="submit" class="learn-more">

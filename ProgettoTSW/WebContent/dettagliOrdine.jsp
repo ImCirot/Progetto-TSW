@@ -11,7 +11,11 @@
 <body>
 	<jsp:include page="./header.jsp" />
 	<% if(request.getAttribute("acquisto") != null){ 
-	request.removeAttribute("acquisto"); %>
+	request.removeAttribute("acquisto");
+	response.setHeader("Cache-Control","no-cache");
+	  response.setHeader("Cache-Control","no-store");
+	  response.setHeader("Pragma","no-cache");
+	  response.setDateHeader ("Expires", 0);%>
 	<h1 style="text-align: center;">Acquisto affettuato!</h1>
 	<% } %>
 	<div class="container">

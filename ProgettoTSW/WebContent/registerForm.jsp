@@ -13,8 +13,6 @@
 <title>Snackz</title>
 </head>
 <body>	
-	
-	
 	<div class="container">
   <div class="title">Registrazione</div>
   <form action="login" method="post" autocomplete="off">
