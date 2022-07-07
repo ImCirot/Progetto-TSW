@@ -13,6 +13,7 @@
 <body>
 	<% ProdottoBean prodotto = (ProdottoBean) request.getAttribute("prodotto");
 		DettaglioProdottoBean dettagli = (DettaglioProdottoBean) request.getAttribute("dettagliProdotto");
+		RecensioneBean recensionePersonale = null;
 	%>
 	<jsp:include page="./header.jsp" />
     <div class="grid-display">
@@ -75,11 +76,12 @@
 	
 	<% 	if(request.getSession().getAttribute("logged") != null){
 		boolean logged = (boolean) request.getSession().getAttribute("logged");
+		boolean recensito = false;
 		if(logged) {
 			List<RecensioneBean> listaRecensioni = (List<RecensioneBean>) request.getSession().getAttribute("recensioni");
 			Iterator<RecensioneBean> iterRecensioni = listaRecensioni.iterator();
 			RecensioneBean recensione = new RecensioneBean();
-			boolean recensito = false;
+			
 			
 			while(iterRecensioni.hasNext()) {
 				recensione = iterRecensioni.next();
@@ -191,13 +193,108 @@
 				}
 			}
 			
-			if(!recensioniVuote){%>
-			
+			if(!recensioniVuote){
+				Iterator<RecensioneBean> iterRecensioni = listaRecensioni.iterator();
+				RecensioneBean recensione = new RecensioneBean();
+				if(request.getSession().getAttribute("logged") != null){
+					boolean logged = (boolean) request.getSession().getAttribute("logged");
+					String utente = (String) request.getSession().getAttribute("utente");
+				if(logged){
+				while(iterRecensioni.hasNext()){
+					recensione = null;
+					recensione = iterRecensioni.next();
+					
+					if(recensione.getCliente().equalsIgnoreCase(utente)){
+						recensionePersonale = recensione;
+						break;
+					}
+				}
+					iterRecensioni = listaRecensioni.iterator();
+					}
+				}
+				
+				if(recensionePersonale != null){%>
+				<h2 style="text-align: center;">La tua recensione</h2>
+				<div class="recensione_personale">
+					<div class="card_recensione_personale">
+					<div class="titolo">
+					<h2><% out.print(recensionePersonale.getCliente()); %></h2>
+					</div>
+			        <div class="description">
+			          <p><% out.print(recensionePersonale.getTestoRecensione()); %></p>
+			        </div>
+			        <div class="voto">
+			          <div class="c4l-rating-recensioni">
+			          	<% if(recensionePersonale.getVoto() == 1) {%>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1" checked/>
+			                <label class="checked" for="c4l-rate1"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" />
+			                <label class="unchecked" for="c4l-rate2"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" />
+			                <label class="unchecked" for="c4l-rate3"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" />
+			                <label class="unchecked" for="c4l-rate4"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5" />
+			                <label class="unchecked" for="c4l-rate5"></label>
+			            <% } else if(recensionePersonale.getVoto() == 2) {%>
+			            	<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1" />
+			                <label class="checked" for="c4l-rate1"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" checked/>
+			                <label class="checked" for="c4l-rate2"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" />
+			                <label class="unchecked" for="c4l-rate3"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" />
+			                <label class="unchecked" for="c4l-rate4"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5" />
+			                <label class="unchecked" id="checked" for="c4l-rate5"></label>
+			            <% } else if(recensionePersonale.getVoto() == 3) { %>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1" />
+			                <label class="checked" for="c4l-rate1"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" />
+			                <label class="checked" for="c4l-rate2"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" checked/>
+			                <label class="checked" for="c4l-rate3"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" />
+			                <label class="unchecked" for="c4l-rate4"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5" />
+			                <label class="unchecked" for="c4l-rate5"></label>
+			            <% } else if(recensionePersonale.getVoto() == 4) { %>
+		 					<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1" />
+			                <label class="checked" for="c4l-rate1"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" />
+			                <label class="checked" for="c4l-rate2"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" />
+			                <label class="checked" for="c4l-rate3"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" checked/>
+			                <label class="checked" for="c4l-rate4"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5" />
+			                <label class="unchecked" for="c4l-rate5"></label>
+			            <% } else if(recensionePersonale.getVoto() == 5) {%>
+							<input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate1" value="1" />
+			                <label class="checked" for="c4l-rate1"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate2" value="2" />
+			                <label class="checked" for="c4l-rate2"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate3" value="3" />
+			                <label class="checked" for="c4l-rate3"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate4" value="4" />
+			                <label class="checked" for="c4l-rate4"></label>
+			                <input disabled class="input_prodotto" name="voto" type="radio" id="c4l-rate5" value="5" checked/>
+			                <label class="checked" for="c4l-rate5"></label>
+			            <% } %>
+			            </div>
+			        </div>
+			        <form action="recensione" method="post">
+			        <input type="hidden" name="prodotto" value="<%out.print(recensionePersonale.getProdotto());%>">
+  					<input type="hidden" name="cliente" value="<% out.print(recensionePersonale.getCliente()); %>">
+  					<input type="hidden" name="mode" value="modifica">
+			        <input type="submit" id="aggiungiRecensione" class="input_prodotto" value="Modifica Recensione">
+			        </form>
+		      	</div>
+		      	</div>
+				<% } %>
 			<h2 style="text-align: center;">Recensioni dei nostri clienti</h2>
 				<div class="recensioni">
-				<% Iterator<RecensioneBean> iterRecensioni = listaRecensioni.iterator();
-				RecensioneBean recensione = new RecensioneBean();
-				
+				<% 
 				while(iterRecensioni.hasNext()){
 					recensione = null;
 					recensione = iterRecensioni.next();%>
