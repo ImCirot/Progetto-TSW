@@ -44,6 +44,9 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
   			no
   			<% } %>
   		</p><br><br>
+  		<%
+  			if(!admin) {
+  		%>
   			<form action="recensione" method="post">
   				<input type="hidden" name="prodotto" value="<%out.print(recensione.getProdotto());%>">
   				<input type="hidden" name="cliente" value="<% out.print(recensione.getCliente()); %>">
@@ -56,6 +59,9 @@ pageEncoding="UTF-8" import="model.*" import="java.util.*"%>
 					  </svg>
 				</button>
   			</form>
+  		<% } else {%>
+  			<!-- da fare dopo TODO -->
+  		<% } %>
   		</div>
   		<%}
   		}%>
