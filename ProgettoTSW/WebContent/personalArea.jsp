@@ -83,7 +83,7 @@
           <div class="card-description">
             <h2>Le mie recensioni</h2>
             <p>Controlla e/o modifica le tue recensioni</p>
-            <a href="./listaRecensioni.jsp"></a>
+            <a href="recensione?mode=show"></a>
           </div>
         </div>
     </div>

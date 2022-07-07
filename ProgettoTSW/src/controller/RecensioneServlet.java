@@ -38,7 +38,7 @@ public class RecensioneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doPost(request,response);
 	}
 
 	/**
@@ -100,7 +100,57 @@ public class RecensioneServlet extends HttpServlet {
 			request.setAttribute("recensione", recensione);
 			path = "./modificaRecensioneForm.jsp";
 		} else if(mode.equalsIgnoreCase("aggiorna")) {
-			//TODO
+			String seriale = request.getParameter("seriale");
+			String prodotto = request.getParameter("prodotto");
+			String testo = request.getParameter("testo");
+			String cliente = (String) request.getSession().getAttribute("utente");
+			String anonimo = request.getParameter("anonimo");
+			int voto = Integer.parseInt(request.getParameter("voto"));
+			
+			recensione = new RecensioneBean();
+			
+			recensione.setCodiceSerialeProdotto(seriale);
+			recensione.setProdotto(prodotto);
+			recensione.setCliente(cliente);
+			recensione.setTestoRecensione(testo);
+			recensione.setData(LocalDate.now().toString());
+			
+			if(anonimo.equalsIgnoreCase("si")) {
+				recensione.setAnonimo(true);
+			} else {
+				recensione.setAnonimo(false);
+			}
+			
+			recensione.setVoto(voto);
+			
+			try {
+				dbRecensioni.doUpdate(recensione);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+			path = "select?type=prodotto&prodotto=" + seriale;
+		} else {
+			List<RecensioneBean> recensioni = new ArrayList<>();
+			boolean admin = (boolean) request.getSession().getAttribute("admin");
+			String cliente = (String) request.getSession().getAttribute("utente");
+			if(!admin) {
+				try {
+					recensioni = dbRecensioni.doRetrieveAllByKey(cliente);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				try {
+					recensioni = dbRecensioni.doRetrieveAll(cliente);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			request.getSession().setAttribute("recensioni", recensioni);
+			path = "./listaRecensioni.jsp";
 		}
 		
 		
