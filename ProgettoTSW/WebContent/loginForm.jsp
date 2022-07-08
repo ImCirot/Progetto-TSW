@@ -38,8 +38,11 @@
 				  <span class="bar"></span>
 				  <label class="label-registrazione">Password</label>
 				  <i class="material-icons">visibility</i>
+				  
 			</div> 
-          
+          	<div class="group">
+          	<a id="pwdDimenticata" href="login?mode=forgot">Password dimenticata?</a>
+          	</div>
             <button type="submit" class="learn-more">
               <span class="circle" aria-hidden="true">
               <span class="icon arrow"></span>
@@ -54,6 +57,7 @@
           <div >
             <a href="./registerForm.jsp">Registrati</a>
           <a id="home" href="catalogo"><i class="fa fa-home" style="font-size:24px"></i></a>
+          
       </div>
   	<% String error = (String) request.getSession().getAttribute("error");
   		String result = (String) request.getSession().getAttribute("result");

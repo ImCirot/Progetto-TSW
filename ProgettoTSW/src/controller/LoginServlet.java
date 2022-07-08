@@ -143,6 +143,9 @@ public class LoginServlet extends HttpServlet {
 			response.sendRedirect("./registerForm.jsp");
 		} else if(mode.equalsIgnoreCase("acquisto")) {
 			path = "acquisto.jsp";
+		} else if(mode.equalsIgnoreCase("forgot")) {
+			request.setAttribute("forgot", "yes");
+			path = "./resetPasswordForm.jsp";
 		}
 		
 		RequestDispatcher view = request.getRequestDispatcher(path);
@@ -266,6 +269,53 @@ public class LoginServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		} else if(mode.equalsIgnoreCase("resetPwdData")) {
+			String username = request.getParameter("username");
+			String nome = request.getParameter("nome");
+			String cognome = request.getParameter("cognome");
+			String email = request.getParameter("email");
+			boolean valid = true;
+			
+			UtenteBean utenteReset;
+			try {
+				utenteReset = dbUtenti.doRetrieveByKey(username);
+				
+				if(utenteReset != null) {
+					if(!utenteReset.getNome().equalsIgnoreCase(nome)) {
+						valid = false;
+					}
+					
+					if(!utenteReset.getCognome().equalsIgnoreCase(cognome)) {
+						valid = false;
+					}
+					
+					if(!utenteReset.getEmail().equalsIgnoreCase(email)) {
+						valid = false;
+					}
+				} else {
+					valid = false;
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if(valid) {
+				request.setAttribute("username", username);
+				request.setAttribute("nome", nome);
+				request.setAttribute("cognome", cognome);
+				request.setAttribute("email", email);
+				path = "./resetPassword.jsp";
+			} else {
+				request.setAttribute("error", "Dati inseriti incorretti o utente inesistente!");
+				path = "./resetPasswordForm.jsp";
+			}
+			
+			RequestDispatcher view = request.getRequestDispatcher(path);
+			view.forward(request, response);
+			
+		} else if(mode.equalsIgnoreCase("resetPwd")) {
+			
 		}
 	}
 	
