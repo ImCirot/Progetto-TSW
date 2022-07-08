@@ -3,9 +3,8 @@ $(document).ready(function(){
     let emailValidator = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
     let usernameValidator = /^[a-zA-Z0-9_.]{4,15}$/;
     let nameValidator = /^[a-zA-Z]{3,}$/;
-    let validEmail = false;
+    let validEmail= false;
     let validUsername = false;
-    let validPwdCheck = false;
     let validName = false;
     let validSurname = false;
     
@@ -17,53 +16,27 @@ $(document).ready(function(){
         if (email.match(emailValidator)) {
 
             console.log("email valida");
-            $.ajax({
-                type: "POST",
-                url: "login",
-                data: {
-                	mode: "checkEmail",
-                    email: email,
-                },
-                dataType: "html",
-                success: function(data) {
-                	console.log(data);
-
-                    if(data.match("non disponibile")) {
-                    	
-                    	validEmail = false;
+                    	validEmail = true;
+                    	console.log(validEmail);
+                        if(slideEmail == 1){
+                            $("#error-email").slideUp();
+                            slide = 0;
+                        } else {
+                        	$("#error-email").html("");
+                        }
+                    } else {
+                        validEmail = false;
+                        console.log(validEmail);
                         if(slideEmail == 0){
                             $("#error-email").slideDown();
                             slide = 1;
                         }
-
-                    	$("#error-email").text("Email gia in uso");
-
-                    } else if (data.match("disponibile")){
-                        slide = 0;
-                        validEmail = true;
-                        $("#error-email").slideUp();
-                    	$("#error-email").text("");
+                        
+                        $("#error-email").html("Email non valida");
                     }
-                }
-            });
-
-        } else {
-
-            console.log("email non valida");
-            validEmail = false;
-            if(slideEmail == 0){
-
-                $("#error-email").slideDown();
-                slide = 1;
-
-            }
-
-            $("#error-email").text("Inserisci un email valida");
-
-        }
-
         if(email == "") {
         	validEmail = false;
+        	console.log(validEmail);
             if(slideEmail == 1) {
             	
                 slideEmail = 0;
@@ -74,7 +47,7 @@ $(document).ready(function(){
             $("#error-email").text("");
 
         }
-    });
+                });
     
     $("#username").keyup(function (){
 
@@ -84,42 +57,21 @@ $(document).ready(function(){
         if(username.match(usernameValidator)){
 
     		console.log("username formattato bene");
+    		validUsername = true;
+    		console.log(validUsername);
     		
-    		$.ajax({
-                type: "POST",
-                url: "login",
-                data: {
-                	mode: "checkUsername",
-                    username: username,
-                },
-                dataType: "html",
-                success: function(data) {
-                	console.log(data);
-                    if(data.match("non disponibile")) {
-                    	validUsername = false;
-                        if(slideUsername == 0) {
-
-                            $("#error-username").slideDown();
-                            slideUsername = 1;
-
-                        }
-
-                    	$("#error-username").text("Username non disponibile e/o gia in uso");
-
-                    } else if (data.match("disponibile")){
-                    	validUsername = true;
-                        slideUsername = 0;
-                        $("#error-username").text("Username disponibile");
-                        $("#error-username").slideUp();
-
-                    }
-                }
-            });
+    		if(slideUsername == 1){
+    			slideUsername = 0;
+    			$("#error-username").slideUp();
+    			
+    		}
+    		$("#error-username").html("");
 
     	} else {
 
-            console.log("username non disponibile");
+            console.log("Username non valido");
             validUsername = false;
+            console.log(validUsername);
             if(slideUsername == 0) {
 
                 $("#error-username").slideDown();
@@ -133,6 +85,7 @@ $(document).ready(function(){
 
         if(username == ""){
         	validUsername = false;
+        	console.log(validUsername);
             if(slideUsername == 1) {
                 
                 slideUsername = 0;
@@ -145,37 +98,6 @@ $(document).ready(function(){
         }
     });
     
-    
-    $("#passwordCheck").keyup(function () {
-
-        let slidePwd = 0;
-        let pwd = $("#password").val();
-        let pwdCheck = $("#passwordCheck").val();
-
-        if(pwdCheck.valueOf() === pwd.valueOf()){
-        	
-            console.log("Le password corrispondono!");
-            slidePwd = 0;
-            validPwdCheck = true;
-            $("#error-pwd").slideUp();
-            $("#error-pwd").text("");
-
-        } else {
-
-            console.log("Le password non corrispondono");
-            validPwdCheck = false;
-            if(slidePwd == 0) {
-
-                $("#error-pwd").slideDown();
-                slidePwd = 1;
-
-            }
-
-            $("#error-pwd").text("Le password non corrispondono");
-
-        }
-    });
-    
     $("#nome").keyup(function () {
     	let slideNome = 0;
     	let nome = $("#nome").val();
@@ -183,6 +105,7 @@ $(document).ready(function(){
     	if(nome.match(nameValidator)){
     		console.log("Nome valido");
     		validName = true;
+    		console.log(validName);
     		
     		if(slideNome == 1){
     			slideNome = 0;
@@ -192,6 +115,7 @@ $(document).ready(function(){
     	} else {
     		console.log("Nome non valido");
     		validName = false;
+    		console.log(validName);
 
     		if(slideNome == 0){
     			$("#error-name").slideDown();
@@ -220,6 +144,7 @@ $(document).ready(function(){
     	if(cognome.match(nameValidator)){
     		console.log("Cognome valido");
     		validSurname = true;
+    		console.log(validSurname);
     		
     		if(slideSurname == 1){
     			slideSurname = 0;
@@ -229,7 +154,7 @@ $(document).ready(function(){
     	} else {
     		console.log("Cognome non valido");
     		validSurname = false;
-
+    		console.log(validSurname);
     		if(slideSurname == 0){
     			$("#error-surname").slideDown();
     			slideSurname = 1;
@@ -240,7 +165,7 @@ $(document).ready(function(){
     	
     	if(cognome == ""){
     		validSurname = false;
-    		
+    		console.log(validSurname);
     		if(slideSurname == 1){
     			slideSurname = 0;
     			$("#error-surname").slideUp();
@@ -250,9 +175,9 @@ $(document).ready(function(){
     	}
     });
     
-    $("#registrati").click(function(){
-    	if(validEmail && validPwdCheck && validUsername && validName && validSurname){
-    		$("#registrazione").submit();
+    $("#inviaDatiBtn").click(function(){
+    	if(validUsername && validName && validSurname && validEmail){
+    		$("#inviaDati").submit();
     	} else {
     		event.preventDefault();
     	}

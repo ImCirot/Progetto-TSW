@@ -281,6 +281,11 @@ public class LoginServlet extends HttpServlet {
 				utenteReset = dbUtenti.doRetrieveByKey(username);
 				
 				if(utenteReset != null) {
+					
+					if(!utenteReset.getUsername().equals(username)) {
+						valid = false;
+					}
+					
 					if(!utenteReset.getNome().equalsIgnoreCase(nome)) {
 						valid = false;
 					}
@@ -307,7 +312,8 @@ public class LoginServlet extends HttpServlet {
 				request.setAttribute("email", email);
 				path = "./resetPassword.jsp";
 			} else {
-				request.setAttribute("error", "Dati inseriti incorretti o utente inesistente!");
+				request.setAttribute("forgot", "yes");
+				request.getSession().setAttribute("error", "Dati inseriti incorretti o utente inesistente!");
 				path = "./resetPasswordForm.jsp";
 			}
 			
@@ -315,7 +321,35 @@ public class LoginServlet extends HttpServlet {
 			view.forward(request, response);
 			
 		} else if(mode.equalsIgnoreCase("resetPwd")) {
+			String username = request.getParameter("username");
+			String pwd = request.getParameter("pwd");
+			String pwdCheck = request.getParameter("pwdCheck");
+			Encoder encoder = Base64.getEncoder();
+			String pwd64 = encoder.encodeToString(pwd.getBytes());
+			String pwdCheck64 = encoder.encodeToString(pwdCheck.getBytes());
+			UtenteBean utenteTarget = new UtenteBean();
+			if(pwd64.equalsIgnoreCase(pwdCheck64)) {
+				try {
+					utenteTarget = dbUtenti.doRetrieveByKey(username);
+					
+					utenteTarget.setPassword(pwd64);
+					
+					dbUtenti.doUpdate(utenteTarget,username);
+					
+					request.getSession().setAttribute("result", "Password cambiata con successo!");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					request.getSession().setAttribute("result", "Password non modificata!");
+				}
+			} else {
+				request.getSession().setAttribute("result", "Password non modificata!");
+			}
 			
+			path = "./loginForm.jsp";
+			
+			RequestDispatcher view = request.getRequestDispatcher(path);
+			view.forward(request, response);
 		}
 	}
 	

@@ -25,7 +25,7 @@
 <!-- 		NUOVO FORM DELLE INFO -->
 	  <div class="container_form">
   	  <h3>Riempi i campi che vuoi cambiare</h3>
-	  	   <form action="modificaInfo" method="post">
+	  	   <form action="modificaInfo" id="modificaInfo" method="post">
 			<input type="hidden" name="utente" value="<% out.print(utente.getUsername());%>">
 			<input type="hidden" name="target" value="utente">
 			<input type="hidden" name="mode" value="update">
@@ -70,6 +70,7 @@
 	      </div>
 	      <div class="col-75">
 	        <input required type="text" id="nome" name="nome" placeholder="Nome" value="<%out.print(utente.getNome());%>">
+	        <span class="errors" id="error-name"></span>
 	      </div>
 	    </div>
 	    <div class="row">
@@ -78,6 +79,7 @@
 	      </div>
 	      <div class="col-75">
 	        <input required type="text" id="cognome" name="cognome" placeholder="Cognome" value="<%out.print(utente.getCognome());%>">
+	        <span class="errors" id="error-surname"></span>
 	      </div>
 	    </div>
 	    <div class="row">
@@ -103,7 +105,7 @@
 	      </div>
 	    </div>
 		    <div class="row">
-	      		<input type="submit" value="Modifica dati">
+	      		<input type="submit" id="modificaInfoBtn" value="Modifica dati">
 	    	</div>
 	    </form>
 

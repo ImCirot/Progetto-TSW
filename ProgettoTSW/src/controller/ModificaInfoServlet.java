@@ -186,6 +186,7 @@ public class ModificaInfoServlet extends HttpServlet {
 								path = "modificaInfo?mode=update&target=utente";
 							} else {
 								request.getSession().setAttribute("message", "Aggiornato con successo!");
+								request.getSession().setAttribute("utente", utente.getUsername());
 								path = "login?mode=getInfo";
 							}
 						} else {

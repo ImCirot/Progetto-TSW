@@ -135,7 +135,7 @@
       }
       
       function persArea(){
-    	  location.href = "./personalArea.jsp";
+    	  location.href = "login?mode=getInfo";
       }
       
       function register(){
