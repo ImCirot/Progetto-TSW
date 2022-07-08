@@ -15,7 +15,7 @@
 <body>	
 	<div class="container">
   <div class="title">Registrazione</div>
-  <form action="login" method="post" autocomplete="off">
+  <form action="login" id="registrazione" method="post" autocomplete="off">
   <input type="hidden" name="mode" value="register">
     <div class="user__details">
       <div class="input__box">
@@ -44,10 +44,12 @@
       <div class="input__box">
         <span class="details">Nome</span>
         <input type="text" placeholder="Mario" name="nome" id="nome" required>
+        <p class="error" id="error-name"></p>
       </div>
       <div class="input__box">
         <span class="details">Cognome</span>
         <input type="text" placeholder="Rossi" name="cognome" id="cognome" required>
+        <p class="error" id="error-surname"></p>
       </div>
     </div>
     <div class="gender__details">
@@ -71,7 +73,7 @@
       </div>
     </div>
     <div class="button">
-      <input type="submit" value="Registrati">
+      <input type="submit" id="registrati" value="Registrati">
     </div>
   </form>
   <a id="home" href="catalogo"><i class="fa fa-home" style="font-size:24px"></i></a>
