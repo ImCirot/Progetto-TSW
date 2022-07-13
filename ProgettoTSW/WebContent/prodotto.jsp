@@ -14,6 +14,7 @@
 	<% ProdottoBean prodotto = (ProdottoBean) request.getAttribute("prodotto");
 		DettaglioProdottoBean dettagli = (DettaglioProdottoBean) request.getAttribute("dettagliProdotto");
 		RecensioneBean recensionePersonale = null;
+		boolean admin = (boolean) request.getSession().getAttribute("admin");
 	%>
 	<jsp:include page="./header.jsp" />
     <div class="grid-display">
@@ -77,7 +78,7 @@
 	<% 	if(request.getSession().getAttribute("logged") != null){
 		boolean logged = (boolean) request.getSession().getAttribute("logged");
 		boolean recensito = false;
-		if(logged) {
+		if(logged && !admin) {
 			List<RecensioneBean> listaRecensioni = (List<RecensioneBean>) request.getSession().getAttribute("recensioni");
 			Iterator<RecensioneBean> iterRecensioni = listaRecensioni.iterator();
 			RecensioneBean recensione = new RecensioneBean();
