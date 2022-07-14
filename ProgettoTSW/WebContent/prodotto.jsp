@@ -78,6 +78,7 @@
 	<% 	if(request.getSession().getAttribute("logged") != null){
 		boolean logged = (boolean) request.getSession().getAttribute("logged");
 		boolean recensito = false;
+		boolean acquistato = false;
 		if(logged && !admin) {
 			List<RecensioneBean> listaRecensioni = (List<RecensioneBean>) request.getSession().getAttribute("recensioni");
 			Iterator<RecensioneBean> iterRecensioni = listaRecensioni.iterator();
@@ -102,7 +103,6 @@
 				Integer ordineID = null;
 				List<ComposizioneOrdineBean> composizioni = new ArrayList<>();
 				ComposizioneOrdineBean composizione = new ComposizioneOrdineBean();
-				boolean acquistato = false;
 				
 				while(iterOrdineID.hasNext()){
 					ordineID = iterOrdineID.next();
