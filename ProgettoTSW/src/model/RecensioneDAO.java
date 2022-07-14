@@ -203,7 +203,7 @@ public class RecensioneDAO {
 		int result = 0;
 		
 		String query = "UPDATE " + RecensioneDAO.TABLE_NAME + " SET "
-				+ "voto = ?, testoRecensione = ?, data = ? WHERE cliente = ? AND codiceSerialeProdotto = ?;";
+				+ "voto = ?, testoRecensione = ?, data = ?, anonimo = ? WHERE cliente = ? AND codiceSerialeProdotto = ?;";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
@@ -211,8 +211,10 @@ public class RecensioneDAO {
             statement.setInt(1, bean.getVoto());
             statement.setString(2, bean.getTestoRecensione());
             statement.setString(3, bean.getData());
-            statement.setString(4, bean.getCliente());
-            statement.setString(5, bean.getCodiceSerialeProdotto());
+            statement.setBoolean(4, bean.isAnonimo());
+            statement.setString(5, bean.getCliente());
+            statement.setString(6, bean.getCodiceSerialeProdotto());
+            
 			result = statement.executeUpdate();
 			
 			con.commit();
