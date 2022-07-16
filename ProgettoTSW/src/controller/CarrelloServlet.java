@@ -79,7 +79,7 @@ public class CarrelloServlet extends HttpServlet {
 				redirectPath = "catalogo";
 			} else {
 				request.getSession().setAttribute("aggiunto", "Aggiunto al carrello!");
-				redirectPath = "SelectProdottoServlet?prodotto=" + prodotto;
+				redirectPath = "select?prodotto=" + prodotto;
 			}
 			
 		} else if(mode.equalsIgnoreCase("update")) {
