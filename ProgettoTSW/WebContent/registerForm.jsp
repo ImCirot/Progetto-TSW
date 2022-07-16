@@ -33,13 +33,13 @@
       <div class="input__box">
         <span class="details">Password</span>
         <input type="password" placeholder="********" name="password" id="password" required>
-        
+        <p class="error" id="error-pwd"></p>
       </div>
       <div class="input__box">
         <span class="details">Ripeti Password</span>
         <input type="password" placeholder="********" name="passwordCheck" id="passwordCheck" required>
        
-        <p class="error" id="error-pwd"></p>
+        <p class="error" id="error-pwdchk"></p>
       </div>
       <div class="input__box">
         <span class="details">Nome</span>

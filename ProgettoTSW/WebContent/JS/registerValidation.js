@@ -5,6 +5,7 @@ $(document).ready(function(){
     let nameValidator = /^[a-zA-Z]{3,}$/;
     let validEmail = false;
     let validUsername = false;
+    let validPwd = false;
     let validPwdCheck = false;
     let validName = false;
     let validSurname = false;
@@ -33,13 +34,13 @@ $(document).ready(function(){
                     	validEmail = false;
                         if(slideEmail == 0){
                             $("#error-email").slideDown();
-                            slide = 1;
+                            slideEmail = 1;
                         }
 
                     	$("#error-email").text("Email gia in uso");
 
                     } else if (data.match("disponibile")){
-                        slide = 0;
+                        slideEmail = 0;
                         validEmail = true;
                         $("#error-email").slideUp();
                     	$("#error-email").text("");
@@ -54,7 +55,7 @@ $(document).ready(function(){
             if(slideEmail == 0){
 
                 $("#error-email").slideDown();
-                slide = 1;
+                slideEmail = 1;
 
             }
 
@@ -145,20 +146,45 @@ $(document).ready(function(){
         }
     });
     
+    $("#password").keyup(function (){
+    	let pwd = $("#password").val();
+    	slidePwd = 0;
+    	if(pwd.length < 5){
+    		validPwd = false;
+    		if(slidePwd == 0){
+    			$("#error-pwd").text("Password troppo corta!");
+    			$("#error-pwd").slideDown();
+    			slidePwd = 1;
+    		} else {
+    			$("#error-pwd").text("Password troppo corta!");
+    		}
+    	} else {
+    		validPwd = true;
+    		
+    		if(slidePwd == 1){
+    			$("#error-pwd").slideUp();
+    			slidePwd = 0;
+    		}
+    		
+    		$("#error-pwd").text("");
+    	}
+    	
+    	
+    });
     
     $("#passwordCheck").keyup(function () {
 
         let slidePwd = 0;
         let pwd = $("#password").val();
         let pwdCheck = $("#passwordCheck").val();
-
+        
         if(pwdCheck.valueOf() === pwd.valueOf()){
         	
             console.log("Le password corrispondono!");
             slidePwd = 0;
             validPwdCheck = true;
-            $("#error-pwd").slideUp();
-            $("#error-pwd").text("");
+            $("#error-pwdchk").slideUp();
+            $("#error-pwdchk").text("");
 
         } else {
 
@@ -166,12 +192,12 @@ $(document).ready(function(){
             validPwdCheck = false;
             if(slidePwd == 0) {
 
-                $("#error-pwd").slideDown();
+                $("#error-pwdchk").slideDown();
                 slidePwd = 1;
 
             }
 
-            $("#error-pwd").text("Le password non corrispondono");
+            $("#error-pwdchk").text("Le password non corrispondono");
 
         }
     });
@@ -251,7 +277,7 @@ $(document).ready(function(){
     });
     
     $("#registrati").click(function(){
-    	if(validEmail && validPwdCheck && validUsername && validName && validSurname){
+    	if(validEmail && validPwdCheck && validUsername && validName && validSurname && validPwd){
     		$("#registrazione").submit();
     	} else {
     		event.preventDefault();
