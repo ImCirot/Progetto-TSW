@@ -44,9 +44,9 @@ function updatePrice(){
 					prezzo += 5;
 					$("#prezzoTot").html(prezzo.toFixed(2));
 				} else {
-				$("#netto").html(prezzo);
+				$("#netto").html(prezzo.toFixed(2));
 				$("#spedizione").html("0.00");
-				$("#prezzoTot").html(prezzo);
+				$("#prezzoTot").html(prezzo.toFixed(2));
 				}
 			}
 		});
