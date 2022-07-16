@@ -17,6 +17,7 @@
 	
 	<div class="container-gestione">
 		<div class="container-tabella">
+			<h2 id="titolo_tabella">Lista Prodotti</h2>
 			<table class="table">
 			     <thead>
 			     	<tr>
