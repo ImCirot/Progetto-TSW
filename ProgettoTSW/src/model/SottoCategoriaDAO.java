@@ -142,11 +142,12 @@ public class SottoCategoriaDAO extends AbstractDAO<SottoCategoriaBean> {
 		Connection con = null;
 		PreparedStatement statement = null;
 		
-		String query = "SELECT " + SottoCategoriaDAO.TABLE_NAME + ".* FROM " + SottoCategoriaDAO.TABLE_NAME + " WHERE nome LIKE '%" + search + "%';";
+		String query = "SELECT " + SottoCategoriaDAO.TABLE_NAME + ".* FROM " + SottoCategoriaDAO.TABLE_NAME + " WHERE nome LIKE ?;";
 		
 		try {
 			con = DriverManagerConnectionPool.getConnection();
 			statement = con.prepareStatement(query);
+			statement.setString(1, "%" + search + "%");
 			
 			ResultSet result = statement.executeQuery();
 			
