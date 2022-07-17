@@ -37,7 +37,7 @@
             <span class="material-icons-personal">build</span>
           </div>
           <div class="card-description">
-            <h2>Accesso e impostizioni di sicurezza</h2>
+            <h2>Accesso e impostazioni di sicurezza</h2>
             <p>Modifica credenziali: username, password, nome, email.</p>
             <a href="modificaInfo?mode=update&target=utente"></a>
           </div>
