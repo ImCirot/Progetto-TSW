@@ -101,10 +101,10 @@
       
       <div class="content content_reverse">
         <div class="content_img content_img_reverse">
-          <img src="./Images/img3.jpg" alt="">
+          <img src="./Images/img36.jpg" alt="">
         </div>
         <div class="description">
-          <p>Siamo 4 amici appasionati di informatica e snack e abbiamo deciso di creare il nostro sito personale per la vendita di snack provenienti da tutto il mondo.</p>
+          <p>Il sito offre un’ampia selezione, con l’obiettivo di soddisfare i gusti più particolari, viaggiando tra gli snack di tutto il globo a portata di un click.</p>
         </div>
       </div>
     
